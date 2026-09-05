@@ -127,7 +127,7 @@
   </div>
 
   <div class="seg" id="seg">
-    <button data-p="today" class="on">오늘</button>
+    <button data-p="day" class="on">일별</button>
     <button data-p="month">월별</button>
   </div>
   <select id="monthSel" style="display:none; width:100%; margin:-4px 0 14px; font-family:inherit; font-size:15.5px; font-weight:700; border:1px solid var(--line); border-radius:11px; padding:10px 12px; background:var(--surface); color:var(--ink);"></select>
@@ -180,7 +180,8 @@ const MENU = [
   ["불닭볶음면",4000,1.2],["무파마",4000,0.7],["멸치칼국수",4000,0.6],["진쫄뽕",4000,0.7]
 ];
 let TX = [];            // {machine, product, amount, date:"YYYY-MM-DD", time:"HH:MM"}
-let period = "today";   // today | month
+let period = "day";     // day | month
+let selDay = "";        // "YYYY-MM-DD" selected in 일별 tab
 let selMonth = "";      // "YYYY-MM" when viewing a specific month
 let prodGroup = "전체";  // 잘나가는 상품 그룹 탭
 const PGROUPS = [["전체",["슬림","라면1","라면2","냉장","냉동"]],["슬림",["슬림"]],["라면",["라면1","라면2"]],["냉장",["냉장"]],["냉동",["냉동"]]];
@@ -252,6 +253,7 @@ function thisMonth(){const t=new Date();return t.getFullYear()+"-"+String(t.getM
 function filtered(){return machFilter==="전체"?TX:TX.filter(t=>t.machine===machFilter);}
 function prevMonth(ym){var y=+ym.slice(0,4),m=+ym.slice(5,7)-1;if(m===0){m=12;y--;}return y+"-"+String(m).padStart(2,"0");}
 function monthLabel(ym){return (+ym.slice(5,7))+"월";}
+function dayLabel(d){return (+d.slice(5,7))+"월 "+(+d.slice(8,10))+"일";}
 function scopeMonth(){return selMonth||thisMonth();}
 function availableMonths(){var set={};TX.forEach(function(r){if(r.date)set[r.date.slice(0,7)]=1;});set[thisMonth()]=1;return Object.keys(set).sort().reverse();}
 function monthDayList(ym){var y=+ym.slice(0,4),m=+ym.slice(5,7);var last=new Date(y,m,0).getDate();var out=[];for(var d=1;d<=last;d++){out.push(ym+"-"+String(d).padStart(2,"0"));}return out;}
@@ -268,11 +270,12 @@ function render(){
 
   // hero
   let cur,prev,curCnt;
-  if(period==="today"){
-    const t=todayStr(); const y=fmtD(new Date(Date.now()-864e5));
-    const c=rows.filter(r=>r.date===t); const p=rows.filter(r=>r.date===y);
+  if(period==="day"){
+    if(!selDay) selDay=todayStr();
+    const d=selDay; const y=fmtD(new Date(new Date(d+"T00:00").getTime()-864e5));
+    const c=rows.filter(r=>r.date===d); const p=rows.filter(r=>r.date===y);
     cur=sum(c); curCnt=c.length; prev=sum(p);
-    document.getElementById("heroLab").textContent="오늘 매출";
+    document.getElementById("heroLab").textContent=(d===todayStr()?"오늘":dayLabel(d))+" 매출";
   }else{
     const cm=scopeMonth(); const lm=prevMonth(cm);
     const c=rows.filter(r=>r.date.startsWith(cm)); const p=rows.filter(r=>r.date.startsWith(lm));
@@ -281,8 +284,10 @@ function render(){
   }
   renderHero(cur,curCnt,prev);
 
-  // sections
-  const html = dailySec(rows) + monthlySec(rows) + machineSec() + productSec(rows);
+  // sections — 일별: 일별그래프+기계별 / 월별: 월별그래프+기계별+상품
+  const html = (period==="day")
+    ? dailySec(rows) + machineSec()
+    : monthlySec(rows) + machineSec() + productSec(rows);
   document.getElementById("content").innerHTML = html;
   wireCharts(rows);
 }
@@ -301,9 +306,9 @@ function renderHero(cur,cnt,prev){
   document.getElementById("heroTotal").innerHTML=won(cur)+"<span>원</span>";
   document.getElementById("heroCount").textContent=cnt.toLocaleString("ko-KR")+"건 · "+(machFilter==="전체"?MACHINES.length+"대":machFilter);
   const el=document.getElementById("heroDelta");
-  if(prev==null||prev===0){ el.className="delta flat"; el.textContent=period==="today"?"어제 기록 없음":"지난달 기록 없음"; return; }
+  if(prev==null||prev===0){ el.className="delta flat"; el.textContent=period==="day"?"전일 기록 없음":"지난달 기록 없음"; return; }
   const pct=Math.round((cur-prev)/prev*100);
-  const lab=period==="today"?"어제":"지난달";
+  const lab=period==="day"?"전일":"지난달";
   if(pct>0){el.className="delta up"; el.textContent="▲ "+pct+"% "+lab;}
   else if(pct<0){el.className="delta down"; el.textContent="▼ "+Math.abs(pct)+"% "+lab;}
   else{el.className="delta flat"; el.textContent="0% "+lab;}
@@ -323,22 +328,21 @@ function renderEmpty(){
 
 /* daily column chart — 오늘 보기: 최근 2주 / 월별 보기: 그 달 전체 */
 function dailySec(rows){
-  let days, note;
-  if(period==="month"){ const mon=scopeMonth(); days=monthDayList(mon); note=mon.slice(0,4)+"년 "+monthLabel(mon); }
-  else{ days=[]; const base=new Date(); base.setHours(0,0,0,0);
-        for(let i=13;i>=0;i--){const d=new Date(base); d.setDate(base.getDate()-i); days.push(fmtD(d));} note="최근 2주"; }
+  const days=[]; const base=new Date(); base.setHours(0,0,0,0);
+  for(let i=13;i>=0;i--){const d=new Date(base); d.setDate(base.getDate()-i); days.push(fmtD(d));}
   const vals=days.map(dt=>sum(rows.filter(r=>r.date===dt)));
   const max=Math.max(1,...vals);
   const t=todayStr();
   const cols=days.map((dt,i)=>{
-    const h=Math.round(vals[i]/max*100); const isToday=dt===t;
-    return `<div class="col ${isToday?'today':''}" data-i="${i}" data-date="${dt}" data-val="${vals[i]}">
+    const h=Math.round(vals[i]/max*100);
+    const cls=(dt===t?"today ":"")+(dt===selDay?"sel":"");
+    return `<div class="col ${cls}" data-i="${i}" data-date="${dt}" data-val="${vals[i]}">
       <div class="bar" style="height:${h}%"></div></div>`;
   }).join("");
-  const step=days.length>20?4:2;
-  const labels=days.map((dt,i)=> (i%step===0)? `<span>${(+dt.slice(8,10))}</span>`:`<span></span>`).join("");
-  return `<div class="sec"><div class="sec-h"><h2>일별 매출</h2><span class="note">${note}</span></div>
-    <div class="readout" id="dReadout"><span class="d">막대를 누르면 그 날 매출이 보여요</span><span class="v"></span></div>
+  const labels=days.map((dt,i)=> (i%2===0)? `<span>${(+dt.slice(8,10))}</span>`:`<span></span>`).join("");
+  const selVal=sum(rows.filter(r=>r.date===selDay));
+  return `<div class="sec"><div class="sec-h"><h2>일별 매출</h2><span class="note">최근 2주</span></div>
+    <div class="readout" id="dReadout"><span class="d">${selDay===t?"오늘":dayLabel(selDay)} (${weekday(selDay)})</span><span class="v">${won(selVal)}원</span></div>
     <div class="colchart" id="dChart">${cols}</div><div class="xlabels">${labels}</div></div>`;
 }
 
@@ -363,20 +367,21 @@ function monthlySec(rows){
 /* per-machine — respects the current period, always shows all 5 */
 function machineSec(){
   const mon=scopeMonth();
-  const inScope=(r)=> period==="today"? r.date===todayStr() : r.date.startsWith(mon);
+  const inScope=(r)=> period==="day"? r.date===selDay : r.date.startsWith(mon);
   const data=MACHINES.map(m=>({m, v:sum(TX.filter(r=>r.machine===m && inScope(r))), c:TX.filter(r=>r.machine===m && inScope(r)).length}));
   const max=Math.max(1,...data.map(d=>d.v));
   const rows=data.map(d=>`<div class="hrow">
       <div class="name">${d.m}</div>
       <div class="track"><div class="fill" style="width:${Math.round(d.v/max*100)}%"></div></div>
       <div class="amt">${won(d.v)}원<em>${d.c}건</em></div></div>`).join("");
-  return `<div class="sec"><div class="sec-h"><h2>기계별 매출</h2><span class="note">${period==="today"?"오늘":monthLabel(mon)}</span></div>${rows}</div>`;
+  const note = period==="day" ? (selDay===todayStr()?"오늘":dayLabel(selDay)) : monthLabel(mon);
+  return `<div class="sec"><div class="sec-h"><h2>기계별 매출</h2><span class="note">${note}</span></div>${rows}</div>`;
 }
 
 /* top products — 그룹 탭(슬림·라면·냉장·냉동)으로 구분 */
 function productSec(rows){
   const mon=scopeMonth();
-  const inScope=(r)=> period==="today"? r.date===todayStr() : r.date.startsWith(mon);
+  const inScope=(r)=> r.date.startsWith(mon);
   const grp=PGROUPS.find(g=>g[0]===prodGroup)||PGROUPS[0];
   const scoped=TX.filter(r=>inScope(r) && grp[1].indexOf(r.machine)>=0);
   const map={};
@@ -388,19 +393,15 @@ function productSec(rows){
         <div class="rk ${i===0?'top':''}">${i+1}</div>
         <div class="pn">${p.name}<em>${p.c}개 판매</em></div>
         <div class="pa">${won(p.v)}원</div></div>`).join("")
-    : `<div class="gempty">${period==="today"?"오늘":monthLabel(mon)} 판매 내역이 없어요</div>`;
-  return `<div class="sec"><div class="sec-h"><h2>잘 나가는 상품</h2><span class="note">${period==="today"?"오늘":monthLabel(mon)}</span></div>
+    : `<div class="gempty">${monthLabel(mon)} 판매 내역이 없어요</div>`;
+  return `<div class="sec"><div class="sec-h"><h2>잘 나가는 상품</h2><span class="note">${monthLabel(mon)}</span></div>
     <div class="gtabs">${tabs}</div>${body}</div>`;
 }
 
 function wireCharts(rows){
   const dc=document.getElementById("dChart");
   if(dc){ dc.querySelectorAll(".col").forEach(c=>c.onclick=()=>{
-    dc.querySelectorAll(".col").forEach(x=>x.classList.remove("sel")); c.classList.add("sel");
-    const r=document.getElementById("dReadout");
-    const dt=c.dataset.date; const v=+c.dataset.val;
-    r.querySelector(".d").textContent=dt.slice(5).replace("-",".")+" ("+weekday(dt)+")";
-    r.querySelector(".v").textContent=won(v)+"원";
+    selDay=c.dataset.date; render();
   });}
   const mc=document.getElementById("mChart");
   if(mc){ mc.querySelectorAll(".col").forEach(c=>c.onclick=()=>{
@@ -462,7 +463,7 @@ function initEntry(){
 }
 document.getElementById("seg").querySelectorAll("button").forEach(b=>{
   b.onclick=()=>{ document.querySelectorAll("#seg button").forEach(x=>x.classList.remove("on"));
-    b.classList.add("on"); period=b.dataset.p; selCol=null; render(); };
+    b.classList.add("on"); period=b.dataset.p; if(period==="day") selDay=todayStr(); selCol=null; render(); };
 });
 
 (async function(){ await load(); initEntry(); render(); })();
