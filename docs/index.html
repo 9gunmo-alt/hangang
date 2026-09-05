@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#16181D">
 <title>한강라면 천안단대로드점 매출</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <style>
   :root{
     --bg:#F3F4F6; --surface:#FFFFFF; --ink:#16181D; --muted:#6A7180;
@@ -15,8 +16,8 @@
   html,body{margin:0;}
   body{
     background:var(--bg); color:var(--ink);
-    font-family:'Pretendard','Apple SD Gothic Neo','Malgun Gothic',system-ui,-apple-system,'Segoe UI',sans-serif;
-    font-size:15px; line-height:1.45;
+    font-family:'Pretendard','Pretendard Variable','Apple SD Gothic Neo','Malgun Gothic',system-ui,-apple-system,'Segoe UI',sans-serif;
+    font-size:17px; line-height:1.5;
     -webkit-font-smoothing:antialiased;
     font-variant-numeric:tabular-nums;
   }
@@ -24,22 +25,22 @@
 
   /* header */
   .top{display:flex; align-items:baseline; justify-content:space-between; margin:6px 2px 16px;}
-  .store{font-size:18px; font-weight:800; letter-spacing:-0.02em;}
-  .store small{display:block; font-size:12px; font-weight:600; color:var(--muted); letter-spacing:0; margin-top:2px;}
+  .store{font-size:20px; font-weight:800; letter-spacing:-0.02em;}
+  .store small{display:block; font-size:13.5px; font-weight:600; color:var(--muted); letter-spacing:0; margin-top:2px;}
   .live{font-size:11px; font-weight:700; color:var(--muted);}
 
   /* segmented */
   .seg{display:flex; background:#E9EBEF; border-radius:11px; padding:3px; gap:3px; margin-bottom:14px;}
-  .seg button{flex:1; border:0; background:transparent; padding:9px 0; font-size:14px; font-weight:700;
+  .seg button{flex:1; border:0; background:transparent; padding:9px 0; font-size:15.5px; font-weight:700;
     color:var(--muted); border-radius:8px; cursor:pointer; transition:background .15s,color .15s; font-family:inherit;}
   .seg button.on{background:var(--surface); color:var(--ink); box-shadow:0 1px 2px rgba(20,24,33,.12);}
 
   /* hero */
   .hero{background:var(--ink); color:#fff; border-radius:18px; padding:20px 20px 18px; margin-bottom:8px;}
-  .hero .lab{font-size:13px; font-weight:600; color:#B9BEC9;}
-  .hero .big{font-size:40px; font-weight:800; letter-spacing:-0.03em; line-height:1.05; margin:6px 0 2px;}
-  .hero .big span{font-size:22px; font-weight:700; margin-left:2px; color:#D6DAE2;}
-  .hero .sub{display:flex; align-items:center; gap:10px; font-size:13px; color:#B9BEC9; margin-top:8px;}
+  .hero .lab{font-size:14.5px; font-weight:600; color:#B9BEC9;}
+  .hero .big{font-size:46px; font-weight:800; letter-spacing:-0.03em; line-height:1.05; margin:6px 0 2px;}
+  .hero .big span{font-size:24px; font-weight:700; margin-left:2px; color:#D6DAE2;}
+  .hero .sub{display:flex; align-items:center; gap:10px; font-size:14.5px; color:#B9BEC9; margin-top:8px;}
   .delta{display:inline-flex; align-items:center; gap:3px; font-weight:800; padding:2px 8px; border-radius:20px; font-size:12px;}
   .delta.up{background:rgba(15,157,88,.18); color:#5FE0A3;}
   .delta.down{background:rgba(232,69,44,.20); color:#FF9A8A;}
@@ -49,14 +50,14 @@
   .chips{display:flex; gap:8px; overflow-x:auto; padding:14px 2px 4px; margin:0 -2px 2px; scrollbar-width:none;}
   .chips::-webkit-scrollbar{display:none;}
   .chip{flex:0 0 auto; border:1px solid var(--line); background:var(--surface); color:var(--muted);
-    padding:7px 14px; border-radius:20px; font-size:13px; font-weight:700; cursor:pointer; font-family:inherit;}
+    padding:7px 14px; border-radius:20px; font-size:15px; font-weight:700; cursor:pointer; font-family:inherit;}
   .chip.on{background:var(--accent-soft); border-color:var(--accent); color:var(--accent);}
 
   /* section */
   .sec{margin-top:26px;}
   .sec-h{display:flex; align-items:baseline; justify-content:space-between; margin:0 2px 12px;}
-  .sec-h h2{font-size:15px; font-weight:800; margin:0; letter-spacing:-0.01em;}
-  .sec-h .note{font-size:12px; color:var(--muted); font-weight:600;}
+  .sec-h h2{font-size:17.5px; font-weight:800; margin:0; letter-spacing:-0.01em;}
+  .sec-h .note{font-size:13px; color:var(--muted); font-weight:600;}
 
   /* column chart */
   .colchart{display:flex; align-items:flex-end; gap:5px; height:132px; padding:0 2px;}
@@ -66,43 +67,48 @@
   .col.today .bar{background:#F6A99C;}
   .col.today.sel .bar{background:var(--accent);}
   .xlabels{display:flex; gap:5px; margin-top:7px; padding:0 2px;}
-  .xlabels span{flex:1; text-align:center; font-size:10px; color:var(--muted); font-weight:600; white-space:nowrap;}
+  .xlabels span{flex:1; text-align:center; font-size:11.5px; color:var(--muted); font-weight:600; white-space:nowrap;}
   .readout{display:flex; align-items:baseline; justify-content:space-between; margin:2px 2px 12px; min-height:20px;}
-  .readout .d{font-size:12px; color:var(--muted); font-weight:600;}
-  .readout .v{font-size:15px; font-weight:800;}
+  .readout .d{font-size:13.5px; color:var(--muted); font-weight:600;}
+  .readout .v{font-size:16.5px; font-weight:800;}
 
   /* horizontal bars */
   .hrow{display:grid; grid-template-columns:52px 1fr auto; align-items:center; gap:10px; padding:9px 2px;}
   .hrow + .hrow{border-top:1px solid var(--line);}
-  .hrow .name{font-size:13.5px; font-weight:700;}
+  .hrow .name{font-size:15.5px; font-weight:700;}
   .hrow .track{height:9px; background:var(--track); border-radius:6px; overflow:hidden;}
   .hrow .fill{height:100%; background:var(--accent); border-radius:6px;}
-  .hrow .amt{font-size:13.5px; font-weight:800; white-space:nowrap; text-align:right;}
-  .hrow .amt em{display:block; font-style:normal; font-size:11px; color:var(--muted); font-weight:600;}
+  .hrow .amt{font-size:15.5px; font-weight:800; white-space:nowrap; text-align:right;}
+  .hrow .amt em{display:block; font-style:normal; font-size:12.5px; color:var(--muted); font-weight:600;}
 
   /* product list */
   .prow{display:grid; grid-template-columns:22px 1fr auto; align-items:center; gap:10px; padding:10px 2px;}
   .prow + .prow{border-top:1px solid var(--line);}
-  .prow .rk{font-size:14px; font-weight:800; color:var(--muted); text-align:center;}
+  .prow .rk{font-size:16px; font-weight:800; color:var(--muted); text-align:center;}
   .prow .rk.top{color:var(--accent);}
-  .prow .pn{font-size:14px; font-weight:700;}
-  .prow .pn em{display:block; font-style:normal; font-size:11.5px; color:var(--muted); font-weight:600; margin-top:1px;}
-  .prow .pa{font-size:14px; font-weight:800; white-space:nowrap;}
+  .prow .pn{font-size:16px; font-weight:700;}
+  .prow .pn em{display:block; font-style:normal; font-size:13px; color:var(--muted); font-weight:600; margin-top:1px;}
+  .prow .pa{font-size:16px; font-weight:800; white-space:nowrap;}
+  .gtabs{display:flex; gap:6px; margin:0 0 12px; overflow-x:auto; scrollbar-width:none;}
+  .gtabs::-webkit-scrollbar{display:none;}
+  .gtab{flex:1 0 auto; border:1px solid var(--line); background:var(--surface); color:var(--muted); padding:8px 14px; border-radius:9px; font-size:14.5px; font-weight:700; cursor:pointer; font-family:inherit; white-space:nowrap;}
+  .gtab.on{background:var(--ink); border-color:var(--ink); color:#fff;}
+  .gempty{text-align:center; color:var(--muted); font-size:14.5px; padding:24px 0;}
 
   /* data entry */
   details.entry{margin-top:30px; border-top:1px solid var(--line); padding-top:16px;}
-  details.entry summary{list-style:none; cursor:pointer; font-size:14px; font-weight:800; display:flex; align-items:center; gap:6px;}
+  details.entry summary{list-style:none; cursor:pointer; font-size:15.5px; font-weight:800; display:flex; align-items:center; gap:6px;}
   details.entry summary::-webkit-details-marker{display:none;}
   details.entry summary .plus{color:var(--accent); font-size:18px; line-height:1;}
   .entry-body{margin-top:14px;}
-  .entry-body p{font-size:12.5px; color:var(--muted); margin:0 0 12px; line-height:1.5;}
+  .entry-body p{font-size:13.5px; color:var(--muted); margin:0 0 12px; line-height:1.5;}
   .field{margin-bottom:10px;}
-  .field label{display:block; font-size:12px; font-weight:700; color:var(--muted); margin-bottom:5px;}
-  select, textarea{width:100%; font-family:inherit; font-size:14px; border:1px solid var(--line); border-radius:10px; padding:11px 12px; background:var(--surface); color:var(--ink);}
+  .field label{display:block; font-size:13px; font-weight:700; color:var(--muted); margin-bottom:5px;}
+  select, textarea{width:100%; font-family:inherit; font-size:15.5px; border:1px solid var(--line); border-radius:10px; padding:11px 12px; background:var(--surface); color:var(--ink);}
   textarea{min-height:110px; resize:vertical; line-height:1.5;}
   select:focus, textarea:focus{outline:2px solid var(--accent); outline-offset:-1px; border-color:var(--accent);}
   .btns{display:flex; gap:8px; margin-top:4px;}
-  .btn{flex:1; border:0; border-radius:11px; padding:12px 0; font-size:14px; font-weight:800; cursor:pointer; font-family:inherit;}
+  .btn{flex:1; border:0; border-radius:11px; padding:12px 0; font-size:15.5px; font-weight:800; cursor:pointer; font-family:inherit;}
   .btn.primary{background:var(--accent); color:#fff;}
   .btn.ghost{background:#EEF0F3; color:var(--ink); flex:0 0 auto; padding:12px 16px;}
   .msg{font-size:12.5px; font-weight:700; margin-top:10px; min-height:16px;}
@@ -124,7 +130,7 @@
     <button data-p="today" class="on">오늘</button>
     <button data-p="month">월별</button>
   </div>
-  <select id="monthSel" style="display:none; width:100%; margin:-4px 0 14px; font-family:inherit; font-size:14px; font-weight:700; border:1px solid var(--line); border-radius:11px; padding:10px 12px; background:var(--surface); color:var(--ink);"></select>
+  <select id="monthSel" style="display:none; width:100%; margin:-4px 0 14px; font-family:inherit; font-size:15.5px; font-weight:700; border:1px solid var(--line); border-radius:11px; padding:10px 12px; background:var(--surface); color:var(--ink);"></select>
 
   <div class="hero">
     <div class="lab" id="heroLab">오늘 매출</div>
@@ -176,6 +182,8 @@ const MENU = [
 let TX = [];            // {machine, product, amount, date:"YYYY-MM-DD", time:"HH:MM"}
 let period = "today";   // today | month
 let selMonth = "";      // "YYYY-MM" when viewing a specific month
+let prodGroup = "전체";  // 잘나가는 상품 그룹 탭
+const PGROUPS = [["전체",["슬림","라면1","라면2","냉장","냉동"]],["슬림",["슬림"]],["라면",["라면1","라면2"]],["냉장",["냉장"]],["냉동",["냉동"]]];
 let machFilter = "전체";
 let selCol = null;
 
@@ -348,7 +356,7 @@ function monthlySec(rows){
   }).join("");
   const labels=months.map(m=>`<span>${parseInt(m.slice(5))}월</span>`).join("");
   return `<div class="sec"><div class="sec-h"><h2>월별 매출</h2><span class="note">최근 6개월</span></div>
-    <div class="readout" id="mReadout"><span class="d">막대를 누르면 그 달로 봐요</span><span class="v"></span></div>
+    <div class="readout" id="mReadout"><span class="d">${period==="month"?"막대를 누르면 그 달로 이동":"막대를 누르면 그 달 매출이 보여요"}</span><span class="v"></span></div>
     <div class="colchart" id="mChart">${cols}</div><div class="xlabels">${labels}</div></div>`;
 }
 
@@ -365,20 +373,24 @@ function machineSec(){
   return `<div class="sec"><div class="sec-h"><h2>기계별 매출</h2><span class="note">${period==="today"?"오늘":monthLabel(mon)}</span></div>${rows}</div>`;
 }
 
-/* top products */
+/* top products — 그룹 탭(슬림·라면·냉장·냉동)으로 구분 */
 function productSec(rows){
   const mon=scopeMonth();
   const inScope=(r)=> period==="today"? r.date===todayStr() : r.date.startsWith(mon);
-  const scoped=rows.filter(inScope);
+  const grp=PGROUPS.find(g=>g[0]===prodGroup)||PGROUPS[0];
+  const scoped=TX.filter(r=>inScope(r) && grp[1].indexOf(r.machine)>=0);
   const map={};
   scoped.forEach(r=>{ if(!map[r.product]) map[r.product]={c:0,v:0}; map[r.product].c++; map[r.product].v+=r.amount; });
-  const arr=Object.entries(map).map(([k,v])=>({name:k,...v})).sort((a,b)=>b.c-a.c).slice(0,6);
-  if(arr.length===0) return "";
-  const rowsH=arr.map((p,i)=>`<div class="prow">
-      <div class="rk ${i===0?'top':''}">${i+1}</div>
-      <div class="pn">${p.name}<em>${p.c}개 판매</em></div>
-      <div class="pa">${won(p.v)}원</div></div>`).join("");
-  return `<div class="sec"><div class="sec-h"><h2>잘 나가는 상품</h2><span class="note">${period==="today"?"오늘":monthLabel(mon)}</span></div>${rowsH}</div>`;
+  const arr=Object.entries(map).map(([k,v])=>({name:k,...v})).sort((a,b)=>b.c-a.c).slice(0,8);
+  const tabs=PGROUPS.map(g=>`<button class="gtab ${g[0]===prodGroup?'on':''}" data-g="${g[0]}">${g[0]}</button>`).join("");
+  const body=arr.length
+    ? arr.map((p,i)=>`<div class="prow">
+        <div class="rk ${i===0?'top':''}">${i+1}</div>
+        <div class="pn">${p.name}<em>${p.c}개 판매</em></div>
+        <div class="pa">${won(p.v)}원</div></div>`).join("")
+    : `<div class="gempty">${period==="today"?"오늘":monthLabel(mon)} 판매 내역이 없어요</div>`;
+  return `<div class="sec"><div class="sec-h"><h2>잘 나가는 상품</h2><span class="note">${period==="today"?"오늘":monthLabel(mon)}</span></div>
+    <div class="gtabs">${tabs}</div>${body}</div>`;
 }
 
 function wireCharts(rows){
@@ -392,10 +404,16 @@ function wireCharts(rows){
   });}
   const mc=document.getElementById("mChart");
   if(mc){ mc.querySelectorAll(".col").forEach(c=>c.onclick=()=>{
-    period="month"; selMonth=c.dataset.mon; selCol=null;
-    document.querySelectorAll("#seg button").forEach(x=>x.classList.toggle("on", x.dataset.p==="month"));
-    render();
+    if(period==="month"){
+      selMonth=c.dataset.mon; selCol=null; render();
+    } else {
+      mc.querySelectorAll(".col").forEach(x=>x.classList.remove("sel")); c.classList.add("sel");
+      const r=document.getElementById("mReadout");
+      r.querySelector(".d").textContent=parseInt(c.dataset.mon.slice(5))+"월";
+      r.querySelector(".v").textContent=won(+c.dataset.val)+"원";
+    }
   });}
+  document.querySelectorAll(".gtab").forEach(b=>b.onclick=()=>{ prodGroup=b.dataset.g; render(); });
 }
 function weekday(dt){return ["일","월","화","수","목","금","토"][new Date(dt).getDay()];}
 
