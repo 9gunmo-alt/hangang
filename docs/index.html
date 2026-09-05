@@ -186,7 +186,7 @@ async function load(){
       const j = await res.json();
       if(Array.isArray(j.machines) && j.machines.length) MACHINES = j.machines;
       TX = (j.transactions||[]).map(function(t){
-        return {machine:t.machine, product:t.product, amount:t.amount,
+        return {machine:t.machine, product:cleanName(t.product), amount:t.amount,
                 date:(t.datetime||"").slice(0,10), time:(t.datetime||"").slice(11,16)};
       });
       window.__auto = true; window.__updated = j.generated_at || null;
@@ -236,6 +236,7 @@ function weighted(list){
 function fmtD(dt){return dt.getFullYear()+"-"+String(dt.getMonth()+1).padStart(2,"0")+"-"+String(dt.getDate()).padStart(2,"0");}
 function won(n){return n.toLocaleString("ko-KR");}
 function fmtUpdated(iso){try{var d=new Date(iso);var p=function(x){return String(x).padStart(2,"0");};return p(d.getMonth()+1)+"/"+p(d.getDate())+" "+p(d.getHours())+":"+p(d.getMinutes());}catch(e){return "";}}
+function cleanName(s){return (s||"").replace(/외\s*\d+\s*개\s*$/,"").trim()||"(상품)";}
 function todayStr(){const t=new Date();return fmtD(t);}
 function thisMonth(){const t=new Date();return t.getFullYear()+"-"+String(t.getMonth()+1).padStart(2,"0");}
 function filtered(){return machFilter==="전체"?TX:TX.filter(t=>t.machine===machFilter);}
@@ -391,7 +392,7 @@ function parsePaste(text, machine){
     const am=before.match(/([\d,]{2,})\s*원?\s*$/); if(!am) return;
     const amount=parseInt(am[1].replace(/,/g,""),10); if(!amount) return;
     let product=before.slice(0,am.index).replace(/^(거래승인|승인|거래취소|취소)\s*/,"").trim();
-    if(!product) product="(상품)";
+    product=cleanName(product);
     out.push({machine, product, amount, date, time});
   });
   return out;
