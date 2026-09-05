@@ -1,23 +1,28 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-한강라면 무인매장 매출 수집기 (로그인 불필요 · 세부내역 정확 버전)
+한강라면 무인매장 매출 수집기 (로그인 불필요 · 3개월 · 세부내역 정확)
 
-- 기계 링크는 로그인 없이 열린다. 페이지가 JavaScript로 그려지므로 진짜 브라우저
-  (Playwright)로 실제 페이지를 열어서 읽는다.
-- 각 기계의 영수증 목록(receipt_prev.do)을 읽고,
-  * 단품 거래('외0개')는 그대로 한 줄로 담고,
-  * 여러 개 담긴 거래('외1개' 등)는 그 영수증 상세(receipt.do)를 열어
-    품목별(품명/수량/금액)로 쪼개서 담는다 → '잘나가는 상품'이 정확해진다.
-- 결과는 docs/data.json 으로 저장. 아이디/비번/Secrets 전혀 필요 없음.
+수집 방식
+- 거래 목록: 두 시스템의 JSON 주소를 HTTP로 직접 호출 (로그인/쿠키 불필요).
+  * vendingpay:  .../api/sales_res_td.do?id=코드&ym=시작일&tm=종료일
+  * bangsopener: .../appadmin/tsres.do?id=코드&datetime=년-월
+  최근 3개월치를 각각 가져온다.
+- 여러 품목 묶음거래('외1개' 등)만: 진짜 브라우저(Playwright)로 그 영수증 상세를
+  열어 품명/수량/금액으로 쪼갠다. (상세는 세션 방식이라 브라우저가 필요)
+- 저장은 상품·금액·시간만. 카드번호 등 다른 정보는 절대 저장하지 않는다.
+
+결과: docs/data.json
 """
 
-import os, re, json, sys
+import os, re, json, sys, calendar, datetime as dt
 from datetime import datetime, timezone, timedelta
+import requests
 from bs4 import BeautifulSoup
 from playwright.sync_api import sync_playwright
 
 KST = timezone(timedelta(hours=9))
+MONTHS_BACK = 3   # 최근 몇 개월치
 
 # ── 매장 구성: (표시이름, 기계코드, 플랫폼) ──────────────────────────────
 MACHINES = [
@@ -28,21 +33,31 @@ MACHINES = [
     ("냉장",  "hgdandae5", "bangsopener"),
 ]
 
-# ── 플랫폼별 주소 (로그인 없음) ─────────────────────────────────────────
 PLATFORMS = {
     "vendingpay": {
+        "list":    "https://vendingpay.kr/dongseo/tech/app/api/sales_res_td.do",
         "machine": "https://vendingpay.kr/dongseo/tech/app/{code}",
         "receipt": "https://vendingpay.kr/dongseo/tech/app/receipt_prev.do",
+        "f_product": "product", "f_amount": "price", "f_dt": "datetime", "f_id": "orderno",
+        "list_params": lambda code, y, m: {
+            "id": code,
+            "ym": f"{y}-{m:02d}-01",
+            "tm": f"{y}-{m:02d}-{calendar.monthrange(y, m)[1]:02d}",
+        },
     },
     "bangsopener": {
+        "list":    "http://bangsopener.co.kr/opener/appadmin/tsres.do",
         "machine": "http://bangsopener.co.kr/opener/kiosk/adminapp/{code}",
         "receipt": "http://bangsopener.co.kr/opener/kiosk/appadmin/receipt_prev.do",
+        "f_product": "product", "f_amount": "amount", "f_dt": "datetime", "f_id": "ordern",
+        "list_params": lambda code, y, m: {"id": code, "datetime": f"{y}-{m:02d}"},
     },
 }
 
-DT_RE = re.compile(r"(\d{2})-(\d{2})-(\d{2})\s+(\d{1,2}):(\d{2})")
-MULTI_RE = re.compile(r"외\s*[1-9]")           # '외1개' 이상 = 여러 품목
-SUFFIX_RE = re.compile(r"외\s*\d+\s*개\s*$")     # 이름 꼬리표 제거용
+DT_RE = re.compile(r"(\d{2,4})-(\d{1,2})-(\d{1,2})\s+(\d{1,2}):(\d{2})")
+MULTI_RE = re.compile(r"외\s*[1-9]")
+SUFFIX_RE = re.compile(r"외\s*\d+\s*개\s*$")
+UA = {"User-Agent": "Mozilla/5.0 (sales-collector)"}
 
 
 def log(*a):
@@ -53,50 +68,47 @@ def clean_name(s):
     return SUFFIX_RE.sub("", (s or "").strip()).strip() or "(상품)"
 
 
-# 목록 페이지에서 각 행을 뽑아온다: {id, product_raw, amount, datetime, multi}
-JS_EXTRACT = r"""
-() => {
-  const rows = [];
-  document.querySelectorAll('tr').forEach(tr => {
-    let id = null;
-    const clickable = tr.querySelector('[onclick]');
-    if (clickable) {
-      const m = (clickable.getAttribute('onclick') || '').match(/receipt\('([^']+)'\)/);
-      if (m) id = m[1];
-    }
-    const cells = [...tr.querySelectorAll('td,th')].map(c => c.textContent.replace(/\s+/g,' ').trim());
-    rows.push({ id, cells });
-  });
-  return rows;
-}
-"""
+def to_int(v):
+    d = re.sub(r"\D", "", str(v or ""))
+    return int(d) if d else 0
 
 
-def extract_rows(page):
+def norm_dt(v):
+    m = DT_RE.search(str(v or ""))
+    if not m:
+        return None
+    y, mo, d, hh, mm = m.groups()
+    if len(y) == 2:
+        y = "20" + y
+    return f"{y}-{int(mo):02d}-{int(d):02d}T{int(hh):02d}:{mm}"
+
+
+def recent_months(n):
     out = []
-    for r in page.evaluate(JS_EXTRACT):
-        cells = r.get("cells") or []
-        dt_idx = next((i for i, c in enumerate(cells) if DT_RE.search(c)), None)
-        if dt_idx is None or dt_idx < 2:
-            continue
-        m = DT_RE.search(cells[dt_idx])
-        dt = f"20{m.group(1)}-{m.group(2)}-{m.group(3)}T{int(m.group(4)):02d}:{m.group(5)}"
-        am = re.search(r"\d+", cells[dt_idx - 1].replace(",", ""))
-        if not am:
-            continue
-        product_raw = cells[dt_idx - 2].strip()
-        out.append({
-            "id": r.get("id"),
-            "product_raw": product_raw,
-            "amount": int(am.group()),
-            "datetime": dt,
-            "multi": bool(MULTI_RE.search(product_raw)),
-        })
+    today = datetime.now(KST)
+    y, m = today.year, today.month
+    for _ in range(n):
+        out.append((y, m))
+        m -= 1
+        if m == 0:
+            m = 12; y -= 1
     return out
 
 
+def fetch_list(plat, code, y, m):
+    params = plat["list_params"](code, y, m)
+    r = requests.get(plat["list"], params=params, headers=UA, timeout=30, verify=True)
+    r.raise_for_status()
+    j = r.json()
+    if isinstance(j, dict):
+        for k in ("list", "data", "rows"):
+            if isinstance(j.get(k), list):
+                return j[k]
+        return []
+    return j if isinstance(j, list) else []
+
+
 def parse_detail(html):
-    """영수증 상세(receipt.do)의 품명/수량/금액 표 → [{product, qty, amount(line total)}]"""
     soup = BeautifulSoup(html, "html.parser")
     items = []
     for tr in soup.select("tr"):
@@ -114,74 +126,78 @@ def parse_detail(html):
     return items
 
 
-def expand_detail(items, machine, dt):
-    """품목별 라인 → 수량만큼 단위 레코드로 (개수·금액 둘 다 정확하게)"""
+def expand_detail(items, machine, when):
     out = []
     for it in items:
-        q = max(1, it["qty"])
-        unit = it["amount"] // q
-        rem = it["amount"] - unit * q  # 나누어 떨어지지 않으면 첫 개에 몰아줌
+        q = max(1, it["qty"]); unit = it["amount"] // q; rem = it["amount"] - unit * q
         for k in range(q):
             out.append({"machine": machine, "product": it["product"],
-                        "amount": unit + (rem if k == 0 else 0), "datetime": dt})
+                        "amount": unit + (rem if k == 0 else 0), "datetime": when})
     return out
 
 
-def collect_machine(page, plat, name, code):
-    receipt_url = plat["receipt"]
-    # 1) 기계 선택 → 2) 목록 열기 → 표가 그려질 때까지 대기
-    page.goto(plat["machine"].format(code=code), wait_until="networkidle", timeout=45000)
-    page.wait_for_timeout(1000)
-    page.goto(receipt_url, wait_until="networkidle", timeout=45000)
-    try:
-        page.wait_for_function("document.querySelectorAll('[onclick]').length > 0", timeout=8000)
-    except Exception:
-        page.wait_for_timeout(1500)
-
-    rows = extract_rows(page)
-    singles = [r for r in rows if not r["multi"]]
-    multis = [r for r in rows if r["multi"] and r["id"]]
-
-    line_items = []
-    # 단품: 그대로
-    for r in singles:
-        line_items.append({"machine": name, "product": clean_name(r["product_raw"]),
-                           "amount": r["amount"], "datetime": r["datetime"]})
-    # 여러 품목: 영수증 상세를 열어 품목별로 분해
-    for r in multis:
-        try:
-            page.goto(receipt_url, wait_until="networkidle", timeout=45000)
-            page.wait_for_function("typeof receipt === 'function'", timeout=8000)
-            page.evaluate(f"receipt('{r['id']}')")
-            page.wait_for_url("**/receipt.do", timeout=15000)
-            page.wait_for_timeout(400)
-            detail = parse_detail(page.content())
-            if detail:
-                line_items.extend(expand_detail(detail, name, r["datetime"]))
-            else:  # 상세 못 읽으면 대표상품으로 대체(총액은 유지)
-                line_items.append({"machine": name, "product": clean_name(r["product_raw"]),
-                                   "amount": r["amount"], "datetime": r["datetime"]})
-        except Exception as e:
-            log(f"    상세 실패({r['id']}): {e} → 대표상품으로 대체")
-            line_items.append({"machine": name, "product": clean_name(r["product_raw"]),
-                               "amount": r["amount"], "datetime": r["datetime"]})
-
-    log(f"[{name}] 거래 {len(rows)}건(여러품목 {len(multis)}) → 품목 {len(line_items)}건")
-    return line_items
-
-
 def main():
+    months = recent_months(MONTHS_BACK)
     all_tx = []
+
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True)
         ctx = browser.new_context(ignore_https_errors=True)
         page = ctx.new_page()
         try:
             for name, code, plat_key in MACHINES:
-                try:
-                    all_tx.extend(collect_machine(page, PLATFORMS[plat_key], name, code))
-                except Exception as e:
-                    log(f"[{name}] 실패: {e}")
+                plat = PLATFORMS[plat_key]
+                singles, bundles = [], []   # bundles: list of (order_id, datetime)
+                for (y, m) in months:
+                    try:
+                        rows = fetch_list(plat, code, y, m)
+                    except Exception as e:
+                        log(f"[{name} {y}-{m:02d}] 목록 실패: {e}")
+                        continue
+                    for row in rows:
+                        stat = str(row.get("stat", ""))
+                        if "취소" in stat or "실패" in stat:
+                            continue  # 취소/실패 거래 제외
+                        product_raw = str(row.get(plat["f_product"], "")).strip()
+                        when = norm_dt(row.get(plat["f_dt"]))
+                        if not when:
+                            continue
+                        if MULTI_RE.search(product_raw):
+                            oid = str(row.get(plat["f_id"], "")).strip()
+                            if oid:
+                                bundles.append((oid, when))
+                            else:
+                                singles.append({"machine": name, "product": clean_name(product_raw),
+                                                "amount": to_int(row.get(plat["f_amount"])), "datetime": when})
+                        else:
+                            singles.append({"machine": name, "product": clean_name(product_raw),
+                                            "amount": to_int(row.get(plat["f_amount"])), "datetime": when})
+
+                all_tx.extend(singles)
+
+                # 묶음거래: 브라우저로 상세를 열어 품목별로 분해
+                if bundles:
+                    try:
+                        page.goto(plat["machine"].format(code=code), wait_until="networkidle", timeout=45000)
+                        page.wait_for_timeout(800)
+                    except Exception as e:
+                        log(f"[{name}] 기계 열기 실패: {e}")
+                    for oid, when in bundles:
+                        try:
+                            page.goto(plat["receipt"], wait_until="networkidle", timeout=45000)
+                            page.wait_for_function("typeof receipt === 'function'", timeout=8000)
+                            page.evaluate(f"receipt('{oid}')")
+                            page.wait_for_url("**/receipt.do", timeout=15000)
+                            page.wait_for_timeout(300)
+                            detail = parse_detail(page.content())
+                            if detail:
+                                all_tx.extend(expand_detail(detail, name, when))
+                            else:
+                                log(f"[{name}] 상세 비어있음 {oid}")
+                        except Exception as e:
+                            log(f"[{name}] 상세 실패 {oid}: {e}")
+
+                log(f"[{name}] 단품 {len(singles)} + 묶음 {len(bundles)} 처리")
         finally:
             browser.close()
 
@@ -194,7 +210,7 @@ def main():
     out_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "docs", "data.json"))
     with open(out_path, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=1)
-    log(f"저장 완료: {out_path} (품목 {len(all_tx)}건)")
+    log(f"저장 완료: {out_path} (품목 {len(all_tx)}건, 최근 {MONTHS_BACK}개월)")
 
 
 if __name__ == "__main__":

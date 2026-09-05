@@ -122,8 +122,9 @@
 
   <div class="seg" id="seg">
     <button data-p="today" class="on">오늘</button>
-    <button data-p="month">이번 달</button>
+    <button data-p="month">월별</button>
   </div>
+  <select id="monthSel" style="display:none; width:100%; margin:-4px 0 14px; font-family:inherit; font-size:14px; font-weight:700; border:1px solid var(--line); border-radius:11px; padding:10px 12px; background:var(--surface); color:var(--ink);"></select>
 
   <div class="hero">
     <div class="lab" id="heroLab">오늘 매출</div>
@@ -174,6 +175,7 @@ const MENU = [
 ];
 let TX = [];            // {machine, product, amount, date:"YYYY-MM-DD", time:"HH:MM"}
 let period = "today";   // today | month
+let selMonth = "";      // "YYYY-MM" when viewing a specific month
 let machFilter = "전체";
 let selCol = null;
 
@@ -240,6 +242,11 @@ function cleanName(s){return (s||"").replace(/외\s*\d+\s*개\s*$/,"").trim()||"
 function todayStr(){const t=new Date();return fmtD(t);}
 function thisMonth(){const t=new Date();return t.getFullYear()+"-"+String(t.getMonth()+1).padStart(2,"0");}
 function filtered(){return machFilter==="전체"?TX:TX.filter(t=>t.machine===machFilter);}
+function prevMonth(ym){var y=+ym.slice(0,4),m=+ym.slice(5,7)-1;if(m===0){m=12;y--;}return y+"-"+String(m).padStart(2,"0");}
+function monthLabel(ym){return (+ym.slice(5,7))+"월";}
+function scopeMonth(){return selMonth||thisMonth();}
+function availableMonths(){var set={};TX.forEach(function(r){if(r.date)set[r.date.slice(0,7)]=1;});set[thisMonth()]=1;return Object.keys(set).sort().reverse();}
+function monthDayList(ym){var y=+ym.slice(0,4),m=+ym.slice(5,7);var last=new Date(y,m,0).getDate();var out=[];for(var d=1;d<=last;d++){out.push(ym+"-"+String(d).padStart(2,"0"));}return out;}
 
 /* ---------- render ---------- */
 function render(){
@@ -247,6 +254,7 @@ function render(){
   var liveEl=document.querySelector(".live");
   if(liveEl && window.__auto){ liveEl.textContent = window.__updated ? ("업데이트 "+fmtUpdated(window.__updated)) : "자동 수집"; }
   renderChips();
+  renderMonthSel();
   if(TX.length===0){ renderEmpty(); renderHero(0,0,null); return; }
   const rows=filtered();
 
@@ -258,10 +266,10 @@ function render(){
     cur=sum(c); curCnt=c.length; prev=sum(p);
     document.getElementById("heroLab").textContent="오늘 매출";
   }else{
-    const cm=thisMonth(); const lm=lastMonthStr();
+    const cm=scopeMonth(); const lm=prevMonth(cm);
     const c=rows.filter(r=>r.date.startsWith(cm)); const p=rows.filter(r=>r.date.startsWith(lm));
     cur=sum(c); curCnt=c.length; prev=sum(p);
-    document.getElementById("heroLab").textContent="이번 달 매출";
+    document.getElementById("heroLab").textContent=cm.slice(0,4)+"년 "+monthLabel(cm)+" 매출";
   }
   renderHero(cur,curCnt,prev);
 
@@ -271,7 +279,15 @@ function render(){
   wireCharts(rows);
 }
 function sum(a){return a.reduce((s,r)=>s+r.amount,0);}
-function lastMonthStr(){const t=new Date(); t.setDate(1); t.setMonth(t.getMonth()-1); return t.getFullYear()+"-"+String(t.getMonth()+1).padStart(2,"0");}
+function renderMonthSel(){
+  var sel=document.getElementById("monthSel"); if(!sel) return;
+  sel.style.display=(period==="month")?"block":"none";
+  if(period!=="month") return;
+  var months=availableMonths();
+  if(!selMonth || months.indexOf(selMonth)<0) selMonth=months[0]||thisMonth();
+  sel.innerHTML=months.map(function(m){return '<option value="'+m+'"'+(m===selMonth?' selected':'')+'>'+m.slice(0,4)+'년 '+monthLabel(m)+'</option>';}).join("");
+  sel.onchange=function(){ selMonth=sel.value; selCol=null; render(); };
+}
 
 function renderHero(cur,cnt,prev){
   document.getElementById("heroTotal").innerHTML=won(cur)+"<span>원</span>";
@@ -297,21 +313,23 @@ function renderEmpty(){
     `<div class="empty"><b>아직 매출 데이터가 없어요</b>아래 ‘데이터 넣기’에서 거래 목록을 붙여넣거나<br>‘샘플’ 버튼으로 예시를 채워보세요.</div>`;
 }
 
-/* daily column chart — last 14 days */
+/* daily column chart — 오늘 보기: 최근 2주 / 월별 보기: 그 달 전체 */
 function dailySec(rows){
-  const days=[]; const base=new Date(); base.setHours(0,0,0,0);
-  for(let i=13;i>=0;i--){const d=new Date(base); d.setDate(base.getDate()-i); days.push(fmtD(d));}
+  let days, note;
+  if(period==="month"){ const mon=scopeMonth(); days=monthDayList(mon); note=mon.slice(0,4)+"년 "+monthLabel(mon); }
+  else{ days=[]; const base=new Date(); base.setHours(0,0,0,0);
+        for(let i=13;i>=0;i--){const d=new Date(base); d.setDate(base.getDate()-i); days.push(fmtD(d));} note="최근 2주"; }
   const vals=days.map(dt=>sum(rows.filter(r=>r.date===dt)));
   const max=Math.max(1,...vals);
   const t=todayStr();
   const cols=days.map((dt,i)=>{
-    const h=Math.round(vals[i]/max*100);
-    const wd=new Date(dt).getDay(); const isToday=dt===t;
+    const h=Math.round(vals[i]/max*100); const isToday=dt===t;
     return `<div class="col ${isToday?'today':''}" data-i="${i}" data-date="${dt}" data-val="${vals[i]}">
       <div class="bar" style="height:${h}%"></div></div>`;
   }).join("");
-  const labels=days.map((dt,i)=> (i%2===0)? `<span>${dt.slice(5).replace('-','.')}</span>`:`<span></span>`).join("");
-  return `<div class="sec"><div class="sec-h"><h2>일별 매출</h2><span class="note">최근 2주</span></div>
+  const step=days.length>20?4:2;
+  const labels=days.map((dt,i)=> (i%step===0)? `<span>${(+dt.slice(8,10))}</span>`:`<span></span>`).join("");
+  return `<div class="sec"><div class="sec-h"><h2>일별 매출</h2><span class="note">${note}</span></div>
     <div class="readout" id="dReadout"><span class="d">막대를 누르면 그 날 매출이 보여요</span><span class="v"></span></div>
     <div class="colchart" id="dChart">${cols}</div><div class="xlabels">${labels}</div></div>`;
 }
@@ -322,7 +340,7 @@ function monthlySec(rows){
   for(let i=5;i>=0;i--){const d=new Date(b); d.setMonth(b.getMonth()-i); months.push(d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0"));}
   const vals=months.map(m=>sum(rows.filter(r=>r.date.startsWith(m))));
   const max=Math.max(1,...vals);
-  const cm=thisMonth();
+  const cm=(period==="month")?scopeMonth():thisMonth();
   const cols=months.map((m,i)=>{
     const h=Math.round(vals[i]/max*100);
     return `<div class="col ${m===cm?'today':''}" data-i="${i}" data-mon="${m}" data-val="${vals[i]}">
@@ -330,25 +348,27 @@ function monthlySec(rows){
   }).join("");
   const labels=months.map(m=>`<span>${parseInt(m.slice(5))}월</span>`).join("");
   return `<div class="sec"><div class="sec-h"><h2>월별 매출</h2><span class="note">최근 6개월</span></div>
-    <div class="readout" id="mReadout"><span class="d">막대를 누르면 그 달 매출이 보여요</span><span class="v"></span></div>
+    <div class="readout" id="mReadout"><span class="d">막대를 누르면 그 달로 봐요</span><span class="v"></span></div>
     <div class="colchart" id="mChart">${cols}</div><div class="xlabels">${labels}</div></div>`;
 }
 
 /* per-machine — respects the current period, always shows all 5 */
 function machineSec(){
-  const inScope=(r)=> period==="today"? r.date===todayStr() : r.date.startsWith(thisMonth());
+  const mon=scopeMonth();
+  const inScope=(r)=> period==="today"? r.date===todayStr() : r.date.startsWith(mon);
   const data=MACHINES.map(m=>({m, v:sum(TX.filter(r=>r.machine===m && inScope(r))), c:TX.filter(r=>r.machine===m && inScope(r)).length}));
   const max=Math.max(1,...data.map(d=>d.v));
   const rows=data.map(d=>`<div class="hrow">
       <div class="name">${d.m}</div>
       <div class="track"><div class="fill" style="width:${Math.round(d.v/max*100)}%"></div></div>
       <div class="amt">${won(d.v)}원<em>${d.c}건</em></div></div>`).join("");
-  return `<div class="sec"><div class="sec-h"><h2>기계별 매출</h2><span class="note">${period==="today"?"오늘":"이번 달"}</span></div>${rows}</div>`;
+  return `<div class="sec"><div class="sec-h"><h2>기계별 매출</h2><span class="note">${period==="today"?"오늘":monthLabel(mon)}</span></div>${rows}</div>`;
 }
 
 /* top products */
 function productSec(rows){
-  const inScope=(r)=> period==="today"? r.date===todayStr() : r.date.startsWith(thisMonth());
+  const mon=scopeMonth();
+  const inScope=(r)=> period==="today"? r.date===todayStr() : r.date.startsWith(mon);
   const scoped=rows.filter(inScope);
   const map={};
   scoped.forEach(r=>{ if(!map[r.product]) map[r.product]={c:0,v:0}; map[r.product].c++; map[r.product].v+=r.amount; });
@@ -358,7 +378,7 @@ function productSec(rows){
       <div class="rk ${i===0?'top':''}">${i+1}</div>
       <div class="pn">${p.name}<em>${p.c}개 판매</em></div>
       <div class="pa">${won(p.v)}원</div></div>`).join("");
-  return `<div class="sec"><div class="sec-h"><h2>잘 나가는 상품</h2><span class="note">${period==="today"?"오늘":"이번 달"}</span></div>${rowsH}</div>`;
+  return `<div class="sec"><div class="sec-h"><h2>잘 나가는 상품</h2><span class="note">${period==="today"?"오늘":monthLabel(mon)}</span></div>${rowsH}</div>`;
 }
 
 function wireCharts(rows){
@@ -372,10 +392,9 @@ function wireCharts(rows){
   });}
   const mc=document.getElementById("mChart");
   if(mc){ mc.querySelectorAll(".col").forEach(c=>c.onclick=()=>{
-    mc.querySelectorAll(".col").forEach(x=>x.classList.remove("sel")); c.classList.add("sel");
-    const r=document.getElementById("mReadout");
-    r.querySelector(".d").textContent=parseInt(c.dataset.mon.slice(5))+"월";
-    r.querySelector(".v").textContent=won(+c.dataset.val)+"원";
+    period="month"; selMonth=c.dataset.mon; selCol=null;
+    document.querySelectorAll("#seg button").forEach(x=>x.classList.toggle("on", x.dataset.p==="month"));
+    render();
   });}
 }
 function weekday(dt){return ["일","월","화","수","목","금","토"][new Date(dt).getDay()];}
