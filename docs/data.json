@@ -1,0 +1,27 @@
+{
+ "generated_at": "2026-09-05T21:40+09:00",
+ "machines": ["슬림", "라면1", "라면2", "냉동", "냉장"],
+ "transactions": [
+  {"machine": "냉동", "product": "고기만두외1개", "amount": 7000, "datetime": "2026-09-05T09:34"},
+  {"machine": "냉동", "product": "로제떡볶이외1개", "amount": 9500, "datetime": "2026-09-04T17:31"},
+  {"machine": "냉동", "product": "참치김밥외0개", "amount": 4500, "datetime": "2026-09-04T17:01"},
+  {"machine": "냉동", "product": "고기만두외0개", "amount": 2500, "datetime": "2026-09-04T12:39"},
+  {"machine": "냉동", "product": "김치제육덮밥외0개", "amount": 5000, "datetime": "2026-09-04T07:37"},
+  {"machine": "냉동", "product": "오꾸밥(참치마요)외0개", "amount": 2000, "datetime": "2026-09-04T06:52"},
+  {"machine": "냉동", "product": "고기만두외1개", "amount": 5000, "datetime": "2026-09-04T00:05"},
+  {"machine": "냉동", "product": "김치만두외0개", "amount": 2500, "datetime": "2026-09-03T20:52"},
+  {"machine": "냉동", "product": "한맥 더블버거외0개", "amount": 3500, "datetime": "2026-09-03T14:26"},
+  {"machine": "냉동", "product": "야채김밥외0개", "amount": 4500, "datetime": "2026-09-03T07:38"},
+  {"machine": "냉동", "product": "오꾸밥(참치마요)외0개", "amount": 2000, "datetime": "2026-09-03T07:36"},
+  {"machine": "냉동", "product": "매콤제육김밥외0개", "amount": 4500, "datetime": "2026-09-02T12:58"},
+  {"machine": "냉동", "product": "로제떡볶이외0개", "amount": 5000, "datetime": "2026-09-02T12:57"},
+  {"machine": "냉동", "product": "김치제육덮밥외0개", "amount": 5000, "datetime": "2026-09-02T12:01"},
+  {"machine": "냉동", "product": "야채김밥외0개", "amount": 4500, "datetime": "2026-09-01T22:42"},
+  {"machine": "냉동", "product": "한맥 더블버거외0개", "amount": 3500, "datetime": "2026-09-01T15:49"},
+  {"machine": "냉동", "product": "김치만두외0개", "amount": 2500, "datetime": "2026-09-01T12:54"},
+  {"machine": "슬림", "product": "햇반", "amount": 1000, "datetime": "2026-08-31T13:59"},
+  {"machine": "슬림", "product": "햇반", "amount": 1000, "datetime": "2026-08-29T22:27"},
+  {"machine": "슬림", "product": "라면톡(황태)", "amount": 1500, "datetime": "2026-08-29T21:26"},
+  {"machine": "슬림", "product": "슬림", "amount": 10, "datetime": "2026-08-28T14:53"}
+ ]
+}
