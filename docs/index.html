@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#16181D">
-<title>무인매장 통합 매출</title>
+<title>한강라면 천안단대로드점 매출</title>
 <style>
   :root{
     --bg:#F3F4F6; --surface:#FFFFFF; --ink:#16181D; --muted:#6A7180;
@@ -61,7 +61,7 @@
   /* column chart */
   .colchart{display:flex; align-items:flex-end; gap:5px; height:132px; padding:0 2px;}
   .col{flex:1; display:flex; flex-direction:column; justify-content:flex-end; align-items:center; height:100%; cursor:pointer;}
-  .col .bar{width:100%; max-width:22px; background:var(--track); border-radius:5px 5px 3px 3px; transition:background .15s; min-height:3px;}
+  .col .bar{width:100%; max-width:22px; background:#BFC7D1; border-radius:5px 5px 3px 3px; transition:background .15s; min-height:4px;}
   .col.sel .bar, .col:active .bar{background:var(--accent);}
   .col.today .bar{background:#F6A99C;}
   .col.today.sel .bar{background:var(--accent);}
@@ -121,12 +121,12 @@
   </div>
 
   <div class="seg" id="seg">
-    <button data-p="today">오늘</button>
-    <button data-p="month" class="on">이번 달</button>
+    <button data-p="today" class="on">오늘</button>
+    <button data-p="month">이번 달</button>
   </div>
 
   <div class="hero">
-    <div class="lab" id="heroLab">이번 달 매출</div>
+    <div class="lab" id="heroLab">오늘 매출</div>
     <div class="big" id="heroTotal">0<span>원</span></div>
     <div class="sub">
       <span id="heroCount">0건</span>
@@ -173,7 +173,7 @@ const MENU = [
   ["불닭볶음면",4000,1.2],["무파마",4000,0.7],["멸치칼국수",4000,0.6],["진쫄뽕",4000,0.7]
 ];
 let TX = [];            // {machine, product, amount, date:"YYYY-MM-DD", time:"HH:MM"}
-let period = "month";   // today | month
+let period = "today";   // today | month
 let machFilter = "전체";
 let selCol = null;
 
