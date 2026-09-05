@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#16181D">
+<title>한강라면 천안단대로드점 매출</title>
+<style>
+  :root{
+    --bg:#F3F4F6; --surface:#FFFFFF; --ink:#16181D; --muted:#6A7180;
+    --line:#E6E8EC; --accent:#E8452C; --accent-soft:#FCEAE7;
+    --pos:#0F9D58; --neg:#E8452C; --track:#EEF0F3;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
+  html,body{margin:0;}
+  body{
+    background:var(--bg); color:var(--ink);
+    font-family:'Pretendard','Apple SD Gothic Neo','Malgun Gothic',system-ui,-apple-system,'Segoe UI',sans-serif;
+    font-size:15px; line-height:1.45;
+    -webkit-font-smoothing:antialiased;
+    font-variant-numeric:tabular-nums;
+  }
+  .wrap{max-width:460px; margin:0 auto; padding:14px 16px 40px; padding-bottom:calc(40px + env(safe-area-inset-bottom));}
+
+  /* header */
+  .top{display:flex; align-items:baseline; justify-content:space-between; margin:6px 2px 16px;}
+  .store{font-size:18px; font-weight:800; letter-spacing:-0.02em;}
+  .store small{display:block; font-size:12px; font-weight:600; color:var(--muted); letter-spacing:0; margin-top:2px;}
+  .live{font-size:11px; font-weight:700; color:var(--muted);}
+
+  /* segmented */
+  .seg{display:flex; background:#E9EBEF; border-radius:11px; padding:3px; gap:3px; margin-bottom:14px;}
+  .seg button{flex:1; border:0; background:transparent; padding:9px 0; font-size:14px; font-weight:700;
+    color:var(--muted); border-radius:8px; cursor:pointer; transition:background .15s,color .15s; font-family:inherit;}
+  .seg button.on{background:var(--surface); color:var(--ink); box-shadow:0 1px 2px rgba(20,24,33,.12);}
+
+  /* hero */
+  .hero{background:var(--ink); color:#fff; border-radius:18px; padding:20px 20px 18px; margin-bottom:8px;}
+  .hero .lab{font-size:13px; font-weight:600; color:#B9BEC9;}
+  .hero .big{font-size:40px; font-weight:800; letter-spacing:-0.03em; line-height:1.05; margin:6px 0 2px;}
+  .hero .big span{font-size:22px; font-weight:700; margin-left:2px; color:#D6DAE2;}
+  .hero .sub{display:flex; align-items:center; gap:10px; font-size:13px; color:#B9BEC9; margin-top:8px;}
+  .delta{display:inline-flex; align-items:center; gap:3px; font-weight:800; padding:2px 8px; border-radius:20px; font-size:12px;}
+  .delta.up{background:rgba(15,157,88,.18); color:#5FE0A3;}
+  .delta.down{background:rgba(232,69,44,.20); color:#FF9A8A;}
+  .delta.flat{background:rgba(255,255,255,.12); color:#C7CCD5;}
+
+  /* chips */
+  .chips{display:flex; gap:8px; overflow-x:auto; padding:14px 2px 4px; margin:0 -2px 2px; scrollbar-width:none;}
+  .chips::-webkit-scrollbar{display:none;}
+  .chip{flex:0 0 auto; border:1px solid var(--line); background:var(--surface); color:var(--muted);
+    padding:7px 14px; border-radius:20px; font-size:13px; font-weight:700; cursor:pointer; font-family:inherit;}
+  .chip.on{background:var(--accent-soft); border-color:var(--accent); color:var(--accent);}
+
+  /* section */
+  .sec{margin-top:26px;}
+  .sec-h{display:flex; align-items:baseline; justify-content:space-between; margin:0 2px 12px;}
+  .sec-h h2{font-size:15px; font-weight:800; margin:0; letter-spacing:-0.01em;}
+  .sec-h .note{font-size:12px; color:var(--muted); font-weight:600;}
+
+  /* column chart */
+  .colchart{display:flex; align-items:flex-end; gap:5px; height:132px; padding:0 2px;}
+  .col{flex:1; display:flex; flex-direction:column; justify-content:flex-end; align-items:center; height:100%; cursor:pointer;}
+  .col .bar{width:100%; max-width:22px; background:#BFC7D1; border-radius:5px 5px 3px 3px; transition:background .15s; min-height:4px;}
+  .col.sel .bar, .col:active .bar{background:var(--accent);}
+  .col.today .bar{background:#F6A99C;}
+  .col.today.sel .bar{background:var(--accent);}
+  .xlabels{display:flex; gap:5px; margin-top:7px; padding:0 2px;}
+  .xlabels span{flex:1; text-align:center; font-size:10px; color:var(--muted); font-weight:600; white-space:nowrap;}
+  .readout{display:flex; align-items:baseline; justify-content:space-between; margin:2px 2px 12px; min-height:20px;}
+  .readout .d{font-size:12px; color:var(--muted); font-weight:600;}
+  .readout .v{font-size:15px; font-weight:800;}
+
+  /* horizontal bars */
+  .hrow{display:grid; grid-template-columns:52px 1fr auto; align-items:center; gap:10px; padding:9px 2px;}
+  .hrow + .hrow{border-top:1px solid var(--line);}
+  .hrow .name{font-size:13.5px; font-weight:700;}
+  .hrow .track{height:9px; background:var(--track); border-radius:6px; overflow:hidden;}
+  .hrow .fill{height:100%; background:var(--accent); border-radius:6px;}
+  .hrow .amt{font-size:13.5px; font-weight:800; white-space:nowrap; text-align:right;}
+  .hrow .amt em{display:block; font-style:normal; font-size:11px; color:var(--muted); font-weight:600;}
+
+  /* product list */
+  .prow{display:grid; grid-template-columns:22px 1fr auto; align-items:center; gap:10px; padding:10px 2px;}
+  .prow + .prow{border-top:1px solid var(--line);}
+  .prow .rk{font-size:14px; font-weight:800; color:var(--muted); text-align:center;}
+  .prow .rk.top{color:var(--accent);}
+  .prow .pn{font-size:14px; font-weight:700;}
+  .prow .pn em{display:block; font-style:normal; font-size:11.5px; color:var(--muted); font-weight:600; margin-top:1px;}
+  .prow .pa{font-size:14px; font-weight:800; white-space:nowrap;}
+
+  /* data entry */
+  details.entry{margin-top:30px; border-top:1px solid var(--line); padding-top:16px;}
+  details.entry summary{list-style:none; cursor:pointer; font-size:14px; font-weight:800; display:flex; align-items:center; gap:6px;}
+  details.entry summary::-webkit-details-marker{display:none;}
+  details.entry summary .plus{color:var(--accent); font-size:18px; line-height:1;}
+  .entry-body{margin-top:14px;}
+  .entry-body p{font-size:12.5px; color:var(--muted); margin:0 0 12px; line-height:1.5;}
+  .field{margin-bottom:10px;}
+  .field label{display:block; font-size:12px; font-weight:700; color:var(--muted); margin-bottom:5px;}
+  select, textarea{width:100%; font-family:inherit; font-size:14px; border:1px solid var(--line); border-radius:10px; padding:11px 12px; background:var(--surface); color:var(--ink);}
+  textarea{min-height:110px; resize:vertical; line-height:1.5;}
+  select:focus, textarea:focus{outline:2px solid var(--accent); outline-offset:-1px; border-color:var(--accent);}
+  .btns{display:flex; gap:8px; margin-top:4px;}
+  .btn{flex:1; border:0; border-radius:11px; padding:12px 0; font-size:14px; font-weight:800; cursor:pointer; font-family:inherit;}
+  .btn.primary{background:var(--accent); color:#fff;}
+  .btn.ghost{background:#EEF0F3; color:var(--ink); flex:0 0 auto; padding:12px 16px;}
+  .msg{font-size:12.5px; font-weight:700; margin-top:10px; min-height:16px;}
+  .msg.ok{color:var(--pos);} .msg.err{color:var(--neg);}
+
+  .empty{text-align:center; padding:38px 12px; color:var(--muted);}
+  .empty b{display:block; color:var(--ink); font-size:15px; margin-bottom:4px;}
+  .foot{text-align:center; font-size:11px; color:var(--muted); margin-top:28px; line-height:1.5;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <div class="store">한강라면<small id="mcount">천안단대로드점</small></div>
+    <div class="live">샘플 데이터</div>
+  </div>
+
+  <div class="seg" id="seg">
+    <button data-p="today" class="on">오늘</button>
+    <button data-p="month">이번 달</button>
+  </div>
+
+  <div class="hero">
+    <div class="lab" id="heroLab">오늘 매출</div>
+    <div class="big" id="heroTotal">0<span>원</span></div>
+    <div class="sub">
+      <span id="heroCount">0건</span>
+      <span id="heroDelta" class="delta flat">–</span>
+    </div>
+  </div>
+
+  <div class="chips" id="chips"></div>
+
+  <div id="content"></div>
+
+  <details class="entry">
+    <summary><span class="plus">＋</span> 데이터 넣기</summary>
+    <div class="entry-body">
+      <p>vendingpay 영수증발급 화면의 거래 목록을 그대로 복사해서 붙여넣으면 돼요. (거래승인 / 상품명 / 금액 / 결제시간 순서면 인식해요.) 나중엔 이 과정을 자동으로 바꿀 거예요.</p>
+      <div class="field">
+        <label>어느 기계 거예요?</label>
+        <select id="machSel"></select>
+      </div>
+      <div class="field">
+        <label>거래 목록 붙여넣기</label>
+        <textarea id="paste" placeholder="거래승인   신라면   4,000   26-09-05 10:50&#10;거래승인   참깨라면  4,000   26-09-05 10:12"></textarea>
+      </div>
+      <div class="btns">
+        <button class="btn primary" id="addBtn">추가하기</button>
+        <button class="btn ghost" id="sampleBtn">샘플</button>
+        <button class="btn ghost" id="clearBtn">전체삭제</button>
+      </div>
+      <div class="msg" id="msg"></div>
+    </div>
+  </details>
+
+  <div class="foot">
+    이건 미리보기 시제품이에요. 실제 매출을 자동으로 불러오게 연결하는 게 다음 단계.<br>
+    핸드폰 브라우저에서 열고 <b>홈 화면에 추가</b>하면 앱처럼 쓸 수 있어요.
+  </div>
+</div>
+
+<script>
+let MACHINES = ["슬림","라면1","라면2","냉동","냉장"];
+const MENU = [
+  ["신라면",4000,1.6],["진라면(매운맛)",4000,1.3],["참깨라면",4000,1.4],["삼양라면",3500,1.2],
+  ["너구리",4000,1.0],["짜파게티",4000,1.1],["진짬뽕",4000,0.9],["오징어짬뽕",4000,0.8],
+  ["불닭볶음면",4000,1.2],["무파마",4000,0.7],["멸치칼국수",4000,0.6],["진쫄뽕",4000,0.7]
+];
+let TX = [];            // {machine, product, amount, date:"YYYY-MM-DD", time:"HH:MM"}
+let period = "today";   // today | month
+let machFilter = "전체";
+let selCol = null;
+
+/* ---------- storage (persist across sessions when available) ---------- */
+async function load(){
+  // 1) 자동 수집된 실데이터 우선 (GitHub Action이 만든 data.json)
+  try{
+    const res = await fetch("./data.json?ts="+Date.now(), {cache:"no-store"});
+    if(res.ok){
+      const j = await res.json();
+      if(Array.isArray(j.machines) && j.machines.length) MACHINES = j.machines;
+      TX = (j.transactions||[]).map(function(t){
+        return {machine:t.machine, product:t.product, amount:t.amount,
+                date:(t.datetime||"").slice(0,10), time:(t.datetime||"").slice(11,16)};
+      });
+      window.__auto = true; window.__updated = j.generated_at || null;
+      return;
+    }
+  }catch(e){}
+  // 2) 파일로 직접 열었거나 아직 수집 전 → 저장된/샘플 데이터
+  try{
+    if(window.storage){
+      const r = await window.storage.get("txns");
+      if(r && r.value){ TX = JSON.parse(r.value); return; }
+    }
+  }catch(e){}
+  TX = seed();
+  save();
+}
+async function save(){
+  try{ if(window.storage) await window.storage.set("txns", JSON.stringify(TX)); }catch(e){}
+}
+
+/* ---------- sample data ---------- */
+function seed(){
+  const out=[]; const today=new Date(); today.setHours(0,0,0,0);
+  const popular=[1.5,1.1,0.9,1.3,0.7]; // per-machine traffic
+  for(let d=59; d>=0; d--){
+    const day=new Date(today); day.setDate(today.getDate()-d);
+    const wknd=(day.getDay()===0||day.getDay()===6)?1.35:1;
+    MACHINES.forEach((m,mi)=>{
+      let n=Math.round((6+Math.random()*10)*popular[mi]*wknd);
+      if(d===0) n=Math.round(n*0.6); // partial today
+      for(let i=0;i<n;i++){
+        const item=weighted(MENU);
+        const hh=String(Math.floor(Math.random()*24)).padStart(2,"0");
+        const mm=String(Math.floor(Math.random()*60)).padStart(2,"0");
+        out.push({machine:m, product:item[0], amount:item[1], date:fmtD(day), time:hh+":"+mm});
+      }
+    });
+  }
+  return out;
+}
+function weighted(list){
+  const tot=list.reduce((s,x)=>s+x[2],0); let r=Math.random()*tot;
+  for(const x of list){ r-=x[2]; if(r<=0) return x; } return list[0];
+}
+
+/* ---------- helpers ---------- */
+function fmtD(dt){return dt.getFullYear()+"-"+String(dt.getMonth()+1).padStart(2,"0")+"-"+String(dt.getDate()).padStart(2,"0");}
+function won(n){return n.toLocaleString("ko-KR");}
+function fmtUpdated(iso){try{var d=new Date(iso);var p=function(x){return String(x).padStart(2,"0");};return p(d.getMonth()+1)+"/"+p(d.getDate())+" "+p(d.getHours())+":"+p(d.getMinutes());}catch(e){return "";}}
+function todayStr(){const t=new Date();return fmtD(t);}
+function thisMonth(){const t=new Date();return t.getFullYear()+"-"+String(t.getMonth()+1).padStart(2,"0");}
+function filtered(){return machFilter==="전체"?TX:TX.filter(t=>t.machine===machFilter);}
+
+/* ---------- render ---------- */
+function render(){
+  document.getElementById("mcount").textContent="천안단대로드점";
+  var liveEl=document.querySelector(".live");
+  if(liveEl && window.__auto){ liveEl.textContent = window.__updated ? ("업데이트 "+fmtUpdated(window.__updated)) : "자동 수집"; }
+  renderChips();
+  if(TX.length===0){ renderEmpty(); renderHero(0,0,null); return; }
+  const rows=filtered();
+
+  // hero
+  let cur,prev,curCnt;
+  if(period==="today"){
+    const t=todayStr(); const y=fmtD(new Date(Date.now()-864e5));
+    const c=rows.filter(r=>r.date===t); const p=rows.filter(r=>r.date===y);
+    cur=sum(c); curCnt=c.length; prev=sum(p);
+    document.getElementById("heroLab").textContent="오늘 매출";
+  }else{
+    const cm=thisMonth(); const lm=lastMonthStr();
+    const c=rows.filter(r=>r.date.startsWith(cm)); const p=rows.filter(r=>r.date.startsWith(lm));
+    cur=sum(c); curCnt=c.length; prev=sum(p);
+    document.getElementById("heroLab").textContent="이번 달 매출";
+  }
+  renderHero(cur,curCnt,prev);
+
+  // sections
+  const html = dailySec(rows) + monthlySec(rows) + machineSec() + productSec(rows);
+  document.getElementById("content").innerHTML = html;
+  wireCharts(rows);
+}
+function sum(a){return a.reduce((s,r)=>s+r.amount,0);}
+function lastMonthStr(){const t=new Date(); t.setDate(1); t.setMonth(t.getMonth()-1); return t.getFullYear()+"-"+String(t.getMonth()+1).padStart(2,"0");}
+
+function renderHero(cur,cnt,prev){
+  document.getElementById("heroTotal").innerHTML=won(cur)+"<span>원</span>";
+  document.getElementById("heroCount").textContent=cnt.toLocaleString("ko-KR")+"건 · "+(machFilter==="전체"?MACHINES.length+"대":machFilter);
+  const el=document.getElementById("heroDelta");
+  if(prev==null||prev===0){ el.className="delta flat"; el.textContent=period==="today"?"어제 기록 없음":"지난달 기록 없음"; return; }
+  const pct=Math.round((cur-prev)/prev*100);
+  const lab=period==="today"?"어제":"지난달";
+  if(pct>0){el.className="delta up"; el.textContent="▲ "+pct+"% "+lab;}
+  else if(pct<0){el.className="delta down"; el.textContent="▼ "+Math.abs(pct)+"% "+lab;}
+  else{el.className="delta flat"; el.textContent="0% "+lab;}
+}
+
+function renderChips(){
+  const c=document.getElementById("chips");
+  const list=["전체",...MACHINES];
+  c.innerHTML=list.map(m=>`<button class="chip ${m===machFilter?'on':''}" data-m="${m}">${m}</button>`).join("");
+  c.querySelectorAll(".chip").forEach(b=>b.onclick=()=>{machFilter=b.dataset.m; selCol=null; render();});
+}
+
+function renderEmpty(){
+  document.getElementById("content").innerHTML=
+    `<div class="empty"><b>아직 매출 데이터가 없어요</b>아래 ‘데이터 넣기’에서 거래 목록을 붙여넣거나<br>‘샘플’ 버튼으로 예시를 채워보세요.</div>`;
+}
+
+/* daily column chart — last 14 days */
+function dailySec(rows){
+  const days=[]; const base=new Date(); base.setHours(0,0,0,0);
+  for(let i=13;i>=0;i--){const d=new Date(base); d.setDate(base.getDate()-i); days.push(fmtD(d));}
+  const vals=days.map(dt=>sum(rows.filter(r=>r.date===dt)));
+  const max=Math.max(1,...vals);
+  const t=todayStr();
+  const cols=days.map((dt,i)=>{
+    const h=Math.round(vals[i]/max*100);
+    const wd=new Date(dt).getDay(); const isToday=dt===t;
+    return `<div class="col ${isToday?'today':''}" data-i="${i}" data-date="${dt}" data-val="${vals[i]}">
+      <div class="bar" style="height:${h}%"></div></div>`;
+  }).join("");
+  const labels=days.map((dt,i)=> (i%2===0)? `<span>${dt.slice(5).replace('-','.')}</span>`:`<span></span>`).join("");
+  return `<div class="sec"><div class="sec-h"><h2>일별 매출</h2><span class="note">최근 2주</span></div>
+    <div class="readout" id="dReadout"><span class="d">막대를 누르면 그 날 매출이 보여요</span><span class="v"></span></div>
+    <div class="colchart" id="dChart">${cols}</div><div class="xlabels">${labels}</div></div>`;
+}
+
+/* monthly column chart — last 6 months */
+function monthlySec(rows){
+  const months=[]; const b=new Date(); b.setDate(1);
+  for(let i=5;i>=0;i--){const d=new Date(b); d.setMonth(b.getMonth()-i); months.push(d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0"));}
+  const vals=months.map(m=>sum(rows.filter(r=>r.date.startsWith(m))));
+  const max=Math.max(1,...vals);
+  const cm=thisMonth();
+  const cols=months.map((m,i)=>{
+    const h=Math.round(vals[i]/max*100);
+    return `<div class="col ${m===cm?'today':''}" data-i="${i}" data-mon="${m}" data-val="${vals[i]}">
+      <div class="bar" style="height:${h}%"></div></div>`;
+  }).join("");
+  const labels=months.map(m=>`<span>${parseInt(m.slice(5))}월</span>`).join("");
+  return `<div class="sec"><div class="sec-h"><h2>월별 매출</h2><span class="note">최근 6개월</span></div>
+    <div class="readout" id="mReadout"><span class="d">막대를 누르면 그 달 매출이 보여요</span><span class="v"></span></div>
+    <div class="colchart" id="mChart">${cols}</div><div class="xlabels">${labels}</div></div>`;
+}
+
+/* per-machine — respects the current period, always shows all 5 */
+function machineSec(){
+  const inScope=(r)=> period==="today"? r.date===todayStr() : r.date.startsWith(thisMonth());
+  const data=MACHINES.map(m=>({m, v:sum(TX.filter(r=>r.machine===m && inScope(r))), c:TX.filter(r=>r.machine===m && inScope(r)).length}));
+  const max=Math.max(1,...data.map(d=>d.v));
+  const rows=data.map(d=>`<div class="hrow">
+      <div class="name">${d.m}</div>
+      <div class="track"><div class="fill" style="width:${Math.round(d.v/max*100)}%"></div></div>
+      <div class="amt">${won(d.v)}원<em>${d.c}건</em></div></div>`).join("");
+  return `<div class="sec"><div class="sec-h"><h2>기계별 매출</h2><span class="note">${period==="today"?"오늘":"이번 달"}</span></div>${rows}</div>`;
+}
+
+/* top products */
+function productSec(rows){
+  const inScope=(r)=> period==="today"? r.date===todayStr() : r.date.startsWith(thisMonth());
+  const scoped=rows.filter(inScope);
+  const map={};
+  scoped.forEach(r=>{ if(!map[r.product]) map[r.product]={c:0,v:0}; map[r.product].c++; map[r.product].v+=r.amount; });
+  const arr=Object.entries(map).map(([k,v])=>({name:k,...v})).sort((a,b)=>b.c-a.c).slice(0,6);
+  if(arr.length===0) return "";
+  const rowsH=arr.map((p,i)=>`<div class="prow">
+      <div class="rk ${i===0?'top':''}">${i+1}</div>
+      <div class="pn">${p.name}<em>${p.c}개 판매</em></div>
+      <div class="pa">${won(p.v)}원</div></div>`).join("");
+  return `<div class="sec"><div class="sec-h"><h2>잘 나가는 상품</h2><span class="note">${period==="today"?"오늘":"이번 달"}</span></div>${rowsH}</div>`;
+}
+
+function wireCharts(rows){
+  const dc=document.getElementById("dChart");
+  if(dc){ dc.querySelectorAll(".col").forEach(c=>c.onclick=()=>{
+    dc.querySelectorAll(".col").forEach(x=>x.classList.remove("sel")); c.classList.add("sel");
+    const r=document.getElementById("dReadout");
+    const dt=c.dataset.date; const v=+c.dataset.val;
+    r.querySelector(".d").textContent=dt.slice(5).replace("-",".")+" ("+weekday(dt)+")";
+    r.querySelector(".v").textContent=won(v)+"원";
+  });}
+  const mc=document.getElementById("mChart");
+  if(mc){ mc.querySelectorAll(".col").forEach(c=>c.onclick=()=>{
+    mc.querySelectorAll(".col").forEach(x=>x.classList.remove("sel")); c.classList.add("sel");
+    const r=document.getElementById("mReadout");
+    r.querySelector(".d").textContent=parseInt(c.dataset.mon.slice(5))+"월";
+    r.querySelector(".v").textContent=won(+c.dataset.val)+"원";
+  });}
+}
+function weekday(dt){return ["일","월","화","수","목","금","토"][new Date(dt).getDay()];}
+
+/* ---------- data entry ---------- */
+function parsePaste(text, machine){
+  const dtRe=/(\d{2})-(\d{2})-(\d{2})\s+(\d{1,2}):(\d{2})/;
+  const out=[];
+  text.split(/\r?\n/).forEach(line=>{
+    const m=line.match(dtRe); if(!m) return;
+    const date="20"+m[1]+"-"+m[2]+"-"+m[3];
+    const time=String(m[4]).padStart(2,"0")+":"+m[5];
+    const before=line.slice(0,m.index).trim();
+    const am=before.match(/([\d,]{2,})\s*원?\s*$/); if(!am) return;
+    const amount=parseInt(am[1].replace(/,/g,""),10); if(!amount) return;
+    let product=before.slice(0,am.index).replace(/^(거래승인|승인|거래취소|취소)\s*/,"").trim();
+    if(!product) product="(상품)";
+    out.push({machine, product, amount, date, time});
+  });
+  return out;
+}
+
+/* ---------- init & events ---------- */
+function initEntry(){
+  const sel=document.getElementById("machSel");
+  sel.innerHTML=MACHINES.map(m=>`<option>${m}</option>`).join("");
+  document.getElementById("addBtn").onclick=async()=>{
+    const txt=document.getElementById("paste").value;
+    const mach=sel.value;
+    const parsed=parsePaste(txt,mach);
+    const msg=document.getElementById("msg");
+    if(parsed.length===0){ msg.className="msg err"; msg.textContent="인식된 거래가 없어요. 결제시간(예: 26-09-05 10:50)이 포함된 목록인지 확인해줘요."; return; }
+    TX=TX.concat(parsed); await save();
+    document.getElementById("paste").value="";
+    msg.className="msg ok"; msg.textContent=mach+"에 "+parsed.length+"건 추가했어요.";
+    render();
+  };
+  document.getElementById("sampleBtn").onclick=async()=>{
+    TX=seed(); await save(); document.getElementById("msg").textContent="";
+    document.querySelector('.live').textContent="샘플 데이터"; render();
+  };
+  document.getElementById("clearBtn").onclick=async()=>{
+    TX=[]; await save(); document.getElementById("msg").className="msg ok";
+    document.getElementById("msg").textContent="전부 삭제했어요.";
+    document.querySelector('.live').textContent="비어 있음"; render();
+  };
+}
+document.getElementById("seg").querySelectorAll("button").forEach(b=>{
+  b.onclick=()=>{ document.querySelectorAll("#seg button").forEach(x=>x.classList.remove("on"));
+    b.classList.add("on"); period=b.dataset.p; selCol=null; render(); };
+});
+
+(async function(){ await load(); initEntry(); render(); })();
+</script>
+</body>
+</html>
