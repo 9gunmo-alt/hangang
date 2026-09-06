@@ -11,7 +11,7 @@ if errorlevel 1 (
 )
 echo.
 echo Installing libraries...
-python -m pip install pywebview playwright beautifulsoup4 requests pystray pillow
+python -m pip install pywebview playwright beautifulsoup4 requests
 echo.
 echo Installing browser (Chromium, one time, 1-2 min)...
 python -m playwright install chromium
