@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>한강라면 매출 봇</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+  :root{
+    --bg:#161616; --panel:#1E1E1E; --chip:#26262C; --hover:#3C3C48;
+    --text:#ECECEC; --muted:#8A8A95; --line:#2C2C30;
+    --ok:#3FBF6A; --stop:#E0685E; --acc:#5BA8F0;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{font-family:'Pretendard',system-ui,sans-serif;background:var(--bg);color:var(--text);
+    font-size:13px;-webkit-user-select:none;user-select:none;overflow:hidden}
+  .wrap{display:flex;flex-direction:column;height:100vh;padding:16px 18px;gap:12px}
+
+  header{display:flex;align-items:center;justify-content:space-between}
+  .title{font-size:16px;font-weight:600;color:var(--acc)}
+  .botstate{font-size:12px;color:var(--muted);display:flex;align-items:center;gap:6px}
+  .dot{width:8px;height:8px;border-radius:50%;background:var(--muted)}
+  .dot.on{background:var(--ok)}
+
+  .botbar{display:flex;gap:8px}
+  .bigbtn{flex:1;padding:10px;border:none;border-radius:6px;background:var(--chip);
+    color:var(--text);font-size:13px;font-family:inherit;cursor:pointer;transition:background .12s}
+  .bigbtn:hover{background:var(--hover)}
+  .bigbtn:disabled{color:var(--muted);cursor:default;background:var(--chip)}
+  .bigbtn.go{color:var(--ok)}
+  .bigbtn.stop{color:var(--stop)}
+
+  .logbox{flex:1;min-height:0;overflow-y:auto;background:var(--panel);border-radius:8px;
+    padding:12px 14px;font-family:'D2Coding','Consolas',monospace;font-size:12px;line-height:1.7;white-space:pre-wrap}
+  .logbox::-webkit-scrollbar{width:8px}
+  .logbox::-webkit-scrollbar-thumb{background:var(--hover);border-radius:4px}
+  .hint{font-size:10px;color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <span class="title">한강라면 매출 봇</span>
+    <span class="botstate"><span class="dot" id="dot"></span><span id="botstate">정지</span></span>
+  </header>
+
+  <div class="botbar">
+    <button class="bigbtn go" id="btnStart" onclick="botStart()">▶ 시작</button>
+    <button class="bigbtn stop" id="btnStop" onclick="botStop()" disabled>■ 정지</button>
+    <button class="bigbtn" id="btnNow" onclick="runNow()">⟳ 지금 수집</button>
+  </div>
+
+  <div class="logbox" id="logbox"></div>
+  <div class="hint">매출은 폰에서 봐요 · 창 닫기(X)=트레이로 숨겨 계속 실행 · 최소화(_)=작업표시줄</div>
+</div>
+
+<script>
+async function botStart(){ try{ await pywebview.api.bot_start(); }catch(e){} }
+async function botStop(){ try{ await pywebview.api.bot_stop(); }catch(e){} }
+async function runNow(){
+  const b=document.getElementById('btnNow'); b.disabled=true; b.textContent='수집 중…';
+  try{ await pywebview.api.run_now(); }catch(e){}
+  setTimeout(()=>{ b.disabled=false; b.textContent='⟳ 지금 수집'; }, 1500);
+}
+function pushLog(line){
+  const box=document.getElementById('logbox');
+  box.textContent += line + "\n"; box.scrollTop = box.scrollHeight;
+}
+function setBotState(on){
+  document.getElementById('dot').classList.toggle('on', on);
+  document.getElementById('botstate').textContent = on?'수집 중':'정지';
+  document.getElementById('btnStart').disabled = on;
+  document.getElementById('btnStop').disabled = !on;
+}
+function setStatus(s){}
+</script>
+</body>
+</html>
