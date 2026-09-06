@@ -145,30 +145,8 @@
 
   <div id="content"></div>
 
-  <details class="entry">
-    <summary><span class="plus">＋</span> 데이터 넣기</summary>
-    <div class="entry-body">
-      <p>vendingpay 영수증발급 화면의 거래 목록을 그대로 복사해서 붙여넣으면 돼요. (거래승인 / 상품명 / 금액 / 결제시간 순서면 인식해요.) 나중엔 이 과정을 자동으로 바꿀 거예요.</p>
-      <div class="field">
-        <label>어느 기계 거예요?</label>
-        <select id="machSel"></select>
-      </div>
-      <div class="field">
-        <label>거래 목록 붙여넣기</label>
-        <textarea id="paste" placeholder="거래승인   신라면   4,000   26-09-05 10:50&#10;거래승인   참깨라면  4,000   26-09-05 10:12"></textarea>
-      </div>
-      <div class="btns">
-        <button class="btn primary" id="addBtn">추가하기</button>
-        <button class="btn ghost" id="sampleBtn">샘플</button>
-        <button class="btn ghost" id="clearBtn">전체삭제</button>
-      </div>
-      <div class="msg" id="msg"></div>
-    </div>
-  </details>
-
   <div class="foot">
-    이건 미리보기 시제품이에요. 실제 매출을 자동으로 불러오게 연결하는 게 다음 단계.<br>
-    핸드폰 브라우저에서 열고 <b>홈 화면에 추가</b>하면 앱처럼 쓸 수 있어요.
+    매시간 자동으로 갱신돼요 · 홈 화면에 추가하면 앱처럼 쓸 수 있어요
   </div>
 </div>
 
@@ -323,7 +301,7 @@ function renderChips(){
 
 function renderEmpty(){
   document.getElementById("content").innerHTML=
-    `<div class="empty"><b>아직 매출 데이터가 없어요</b>아래 ‘데이터 넣기’에서 거래 목록을 붙여넣거나<br>‘샘플’ 버튼으로 예시를 채워보세요.</div>`;
+    `<div class="empty"><b>아직 매출 데이터가 없어요</b>곧 자동으로 채워져요. 잠시 뒤 새로고침 해보세요.</div>`;
 }
 
 /* daily column chart — 오늘 보기: 최근 2주 / 월별 보기: 그 달 전체 */
@@ -437,36 +415,12 @@ function parsePaste(text, machine){
 }
 
 /* ---------- init & events ---------- */
-function initEntry(){
-  const sel=document.getElementById("machSel");
-  sel.innerHTML=MACHINES.map(m=>`<option>${m}</option>`).join("");
-  document.getElementById("addBtn").onclick=async()=>{
-    const txt=document.getElementById("paste").value;
-    const mach=sel.value;
-    const parsed=parsePaste(txt,mach);
-    const msg=document.getElementById("msg");
-    if(parsed.length===0){ msg.className="msg err"; msg.textContent="인식된 거래가 없어요. 결제시간(예: 26-09-05 10:50)이 포함된 목록인지 확인해줘요."; return; }
-    TX=TX.concat(parsed); await save();
-    document.getElementById("paste").value="";
-    msg.className="msg ok"; msg.textContent=mach+"에 "+parsed.length+"건 추가했어요.";
-    render();
-  };
-  document.getElementById("sampleBtn").onclick=async()=>{
-    TX=seed(); await save(); document.getElementById("msg").textContent="";
-    document.querySelector('.live').textContent="샘플 데이터"; render();
-  };
-  document.getElementById("clearBtn").onclick=async()=>{
-    TX=[]; await save(); document.getElementById("msg").className="msg ok";
-    document.getElementById("msg").textContent="전부 삭제했어요.";
-    document.querySelector('.live').textContent="비어 있음"; render();
-  };
-}
 document.getElementById("seg").querySelectorAll("button").forEach(b=>{
   b.onclick=()=>{ document.querySelectorAll("#seg button").forEach(x=>x.classList.remove("on"));
     b.classList.add("on"); period=b.dataset.p; if(period==="day") selDay=todayStr(); selCol=null; render(); };
 });
 
-(async function(){ await load(); initEntry(); render(); })();
+(async function(){ await load(); render(); })();
 </script>
 </body>
 </html>
