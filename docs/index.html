@@ -28,6 +28,11 @@
   .store{font-size:20px; font-weight:800; letter-spacing:-0.02em;}
   .store small{display:block; font-size:13.5px; font-weight:600; color:var(--muted); letter-spacing:0; margin-top:2px;}
   .live{font-size:11px; font-weight:700; color:var(--muted);}
+  .topright{display:flex; align-items:center; gap:8px;}
+  .refresh{border:1px solid var(--line); background:var(--surface); color:var(--muted); width:32px; height:32px; border-radius:9px; font-size:17px; line-height:1; cursor:pointer; font-family:inherit; padding:0;}
+  .refresh:active{background:var(--accent-soft); color:var(--accent);}
+  .refresh.spin{animation:spin .7s linear infinite;}
+  @keyframes spin{to{transform:rotate(360deg);}}
 
   /* segmented */
   .seg{display:flex; background:#E9EBEF; border-radius:11px; padding:3px; gap:3px; margin-bottom:14px;}
@@ -123,7 +128,10 @@
 <div class="wrap">
   <div class="top">
     <div class="store">한강라면<small id="mcount">천안단대로드점</small></div>
-    <div class="live">샘플 데이터</div>
+    <div class="topright">
+      <div class="live">샘플 데이터</div>
+      <button id="refreshBtn" class="refresh" title="새로고침">↻</button>
+    </div>
   </div>
 
   <div class="seg" id="seg">
@@ -167,8 +175,8 @@ let machFilter = "전체";
 let selCol = null;
 
 /* ---------- storage (persist across sessions when available) ---------- */
-async function load(){
-  // 1) 자동 수집된 실데이터 우선 (GitHub Action이 만든 data.json)
+async function pullData(){
+  // 자동 수집된 실데이터(data.json)를 다시 불러온다
   try{
     const res = await fetch("./data.json?ts="+Date.now(), {cache:"no-store"});
     if(res.ok){
@@ -179,10 +187,14 @@ async function load(){
                 date:(t.datetime||"").slice(0,10), time:(t.datetime||"").slice(11,16)};
       });
       window.__auto = true; window.__updated = j.generated_at || null;
-      return;
+      return true;
     }
   }catch(e){}
-  // 2) 파일로 직접 열었거나 아직 수집 전 → 저장된/샘플 데이터
+  return false;
+}
+async function load(){
+  if(await pullData()) return;
+  // 파일로 직접 열었거나 아직 수집 전 → 저장된/샘플 데이터
   try{
     if(window.storage){
       const r = await window.storage.get("txns");
@@ -419,6 +431,20 @@ document.getElementById("seg").querySelectorAll("button").forEach(b=>{
   b.onclick=()=>{ document.querySelectorAll("#seg button").forEach(x=>x.classList.remove("on"));
     b.classList.add("on"); period=b.dataset.p; if(period==="day") selDay=todayStr(); selCol=null; render(); };
 });
+
+/* 새로고침: 버튼 · 앱 다시 볼 때 · 주기적으로 */
+let __refreshing=false;
+async function doRefresh(){
+  if(__refreshing) return; __refreshing=true;
+  const b=document.getElementById("refreshBtn"); if(b) b.classList.add("spin");
+  await pullData(); render();
+  if(b) setTimeout(()=>b.classList.remove("spin"),400);
+  __refreshing=false;
+}
+document.getElementById("refreshBtn").onclick=doRefresh;
+document.addEventListener("visibilitychange",()=>{ if(!document.hidden) doRefresh(); });
+window.addEventListener("focus",doRefresh);
+setInterval(()=>{ if(!document.hidden) doRefresh(); }, 180000); // 3분마다
 
 (async function(){ await load(); render(); })();
 </script>
