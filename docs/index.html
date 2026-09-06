@@ -175,21 +175,27 @@ let machFilter = "전체";
 let selCol = null;
 
 /* ---------- storage (persist across sessions when available) ---------- */
+const DATA_URLS = [
+  "https://raw.githubusercontent.com/9gunmo-alt/hangang/main/docs/data.json",
+  "./data.json"
+];
 async function pullData(){
-  // 자동 수집된 실데이터(data.json)를 다시 불러온다
-  try{
-    const res = await fetch("./data.json?ts="+Date.now(), {cache:"no-store"});
-    if(res.ok){
-      const j = await res.json();
-      if(Array.isArray(j.machines) && j.machines.length) MACHINES = j.machines;
-      TX = (j.transactions||[]).map(function(t){
-        return {machine:t.machine, product:cleanName(t.product), amount:t.amount,
-                date:(t.datetime||"").slice(0,10), time:(t.datetime||"").slice(11,16)};
-      });
-      window.__auto = true; window.__updated = j.generated_at || null;
-      return true;
-    }
-  }catch(e){}
+  // 노트북 봇이 올린 최신을 raw 주소에서 먼저(즉시 반영), 실패하면 Pages 사본에서
+  for(const base of DATA_URLS){
+    try{
+      const res = await fetch(base+"?ts="+Date.now(), {cache:"no-store"});
+      if(res.ok){
+        const j = await res.json();
+        if(Array.isArray(j.machines) && j.machines.length) MACHINES = j.machines;
+        TX = (j.transactions||[]).map(function(t){
+          return {machine:t.machine, product:cleanName(t.product), amount:t.amount,
+                  date:(t.datetime||"").slice(0,10), time:(t.datetime||"").slice(11,16)};
+        });
+        window.__auto = true; window.__updated = j.generated_at || null;
+        return true;
+      }
+    }catch(e){}
+  }
   return false;
 }
 async function load(){

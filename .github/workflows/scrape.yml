@@ -1,9 +1,7 @@
 name: 매출 수집
 
 on:
-  schedule:
-    - cron: "*/10 * * * *"    # 10분마다 (GitHub 스케줄은 다소 지연될 수 있음)
-  workflow_dispatch:            # 버튼으로 수동 실행도 가능
+  workflow_dispatch:            # 노트북 봇이 주 수집원. 이건 노트북 껐을 때 수동 백업용.
 
 # data.json 을 커밋해서 GitHub Pages 로 올리기 위한 권한
 permissions:
