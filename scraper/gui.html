@@ -6,36 +6,45 @@
 <title>한강라면 매출 봇</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <style>
-  :root{
-    --bg:#161616; --panel:#1E1E1E; --chip:#26262C; --hover:#3C3C48;
-    --text:#ECECEC; --muted:#8A8A95; --line:#2C2C30;
-    --ok:#3FBF6A; --stop:#E0685E; --acc:#5BA8F0;
-  }
+  :root{--bg:#161616;--panel:#1E1E1E;--card:#242427;--chip:#26262C;--hover:#3C3C48;
+    --text:#ECECEC;--muted:#8A8A95;--line:#2C2C30;--ok:#3FBF6A;--stop:#E0685E;--acc:#5BA8F0;--accent:#E8452C;}
   *{box-sizing:border-box;margin:0;padding:0}
   html,body{height:100%}
-  body{font-family:'Pretendard',system-ui,sans-serif;background:var(--bg);color:var(--text);
-    font-size:13px;-webkit-user-select:none;user-select:none;overflow:hidden}
-  .wrap{display:flex;flex-direction:column;height:100vh;padding:16px 18px;gap:12px}
-
+  body{font-family:'Pretendard',system-ui,sans-serif;background:var(--bg);color:var(--text);font-size:13px;overflow:hidden}
+  .wrap{display:flex;flex-direction:column;height:100vh;padding:14px 16px;gap:10px}
   header{display:flex;align-items:center;justify-content:space-between}
   .title{font-size:16px;font-weight:600;color:var(--acc)}
   .botstate{font-size:12px;color:var(--muted);display:flex;align-items:center;gap:6px}
   .dot{width:8px;height:8px;border-radius:50%;background:var(--muted)}
   .dot.on{background:var(--ok)}
-
   .botbar{display:flex;gap:8px}
-  .bigbtn{flex:1;padding:10px;border:none;border-radius:6px;background:var(--chip);
-    color:var(--text);font-size:13px;font-family:inherit;cursor:pointer;transition:background .12s}
+  .bigbtn{flex:1;padding:9px;border:none;border-radius:6px;background:var(--chip);color:var(--text);font-size:13px;font-family:inherit;cursor:pointer}
   .bigbtn:hover{background:var(--hover)}
-  .bigbtn:disabled{color:var(--muted);cursor:default;background:var(--chip)}
-  .bigbtn.go{color:var(--ok)}
-  .bigbtn.stop{color:var(--stop)}
-
-  .logbox{flex:1;min-height:0;overflow-y:auto;background:var(--panel);border-radius:8px;
-    padding:12px 14px;font-family:'D2Coding','Consolas',monospace;font-size:12px;line-height:1.7;white-space:pre-wrap}
-  .logbox::-webkit-scrollbar{width:8px}
-  .logbox::-webkit-scrollbar-thumb{background:var(--hover);border-radius:4px}
+  .bigbtn:disabled{color:var(--muted);background:var(--chip)}
+  .bigbtn.go{color:var(--ok)} .bigbtn.stop{color:var(--stop)}
+  .tabs{display:flex;gap:6px;border-bottom:1px solid var(--line)}
+  .tab{padding:8px 14px;font-size:12px;color:var(--muted);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px}
+  .tab.on{color:var(--text);border-bottom-color:var(--acc)}
+  .page{flex:1;min-height:0;display:flex;flex-direction:column;gap:8px}
+  .hidden{display:none!important}
+  .logbox{flex:1;min-height:0;overflow-y:auto;background:var(--panel);border-radius:8px;padding:10px 12px;font-family:'Consolas',monospace;font-size:12px;line-height:1.7;white-space:pre-wrap}
+  .logbox::-webkit-scrollbar,.slist::-webkit-scrollbar{width:8px}
+  .logbox::-webkit-scrollbar-thumb,.slist::-webkit-scrollbar-thumb{background:var(--hover);border-radius:4px}
   .hint{font-size:10px;color:var(--muted)}
+  .srow{display:flex;gap:8px;align-items:center}
+  select,input[type=number]{font-family:inherit;background:var(--card);color:var(--text);border:1px solid var(--line);border-radius:7px;padding:8px 10px;font-size:13px}
+  select{flex:1}
+  .slist{flex:1;min-height:0;overflow-y:auto;background:var(--panel);border-radius:8px;padding:4px 10px}
+  .prow{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:8px 2px;border-top:.5px solid var(--card)}
+  .prow:first-child{border-top:none}
+  .pn{font-size:13.5px}
+  .qty{width:74px;text-align:center}
+  .qty.changed{border-color:var(--accent);color:var(--accent);font-weight:700}
+  .savebar{display:flex;gap:8px;align-items:center}
+  .savebar .cnt{flex:1;font-size:12px;color:var(--muted)}
+  .save{background:var(--accent);color:#fff;border:none;border-radius:8px;padding:11px 18px;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit}
+  .save:disabled{background:#3A3F4A;color:var(--muted)}
+  .warn{background:#3A2A20;color:#F0A93B;border-radius:8px;padding:8px 10px;font-size:11.5px;line-height:1.5}
 </style>
 </head>
 <body>
@@ -44,36 +53,92 @@
     <span class="title">한강라면 매출 봇</span>
     <span class="botstate"><span class="dot" id="dot"></span><span id="botstate">정지</span></span>
   </header>
-
   <div class="botbar">
     <button class="bigbtn go" id="btnStart" onclick="botStart()">▶ 시작</button>
     <button class="bigbtn stop" id="btnStop" onclick="botStop()" disabled>■ 정지</button>
     <button class="bigbtn" id="btnNow" onclick="runNow()">⟳ 지금 수집</button>
   </div>
+  <div class="tabs">
+    <div class="tab on" data-t="log" onclick="switchTab('log')">수집 로그</div>
+    <div class="tab" data-t="stock" onclick="switchTab('stock')">재고 수정</div>
+  </div>
 
-  <div class="logbox" id="logbox"></div>
-  <div class="hint">매출은 폰에서 봐요 · 창을 닫으면(X) 봇도 종료 · 최소화(_)는 작업표시줄</div>
+  <div class="page" id="page-log">
+    <div class="logbox" id="logbox"></div>
+    <div class="hint">매출은 폰에서 봐요 · 창 닫으면(X) 봇 종료 · 최소화(_)는 작업표시줄</div>
+  </div>
+
+  <div class="page hidden" id="page-stock">
+    <div class="srow">
+      <select id="machSel" onchange="renderStock()"></select>
+      <button class="bigbtn" style="flex:0 0 auto" onclick="loadStock(true)">불러오기</button>
+    </div>
+    <div class="warn">숫자를 바꾸고 저장하면 <b>실제 기계 재고</b>에 반영돼요. 저장한 값이 게이지 최대치가 됩니다. 처음엔 1개만 바꿔서 확인해보세요.</div>
+    <div class="slist" id="slist"><div style="padding:20px;text-align:center;color:var(--muted)">불러오기를 누르세요</div></div>
+    <div class="savebar">
+      <span class="cnt" id="scnt">바뀐 항목 0개</span>
+      <button class="save" id="saveBtn" disabled onclick="saveStock()">저장</button>
+    </div>
+  </div>
 </div>
 
 <script>
-async function botStart(){ try{ await pywebview.api.bot_start(); }catch(e){} }
-async function botStop(){ try{ await pywebview.api.bot_stop(); }catch(e){} }
-async function runNow(){
-  const b=document.getElementById('btnNow'); b.disabled=true; b.textContent='수집 중…';
-  try{ await pywebview.api.run_now(); }catch(e){}
-  setTimeout(()=>{ b.disabled=false; b.textContent='⟳ 지금 수집'; }, 1500);
+let STOCK={}, ORIG={};
+function switchTab(t){
+  document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('on',x.dataset.t===t));
+  document.getElementById('page-log').classList.toggle('hidden',t!=='log');
+  document.getElementById('page-stock').classList.toggle('hidden',t!=='stock');
+  if(t==='stock' && Object.keys(STOCK).length===0) loadStock(false);
 }
-function pushLog(line){
-  const box=document.getElementById('logbox');
-  box.textContent += line + "\n"; box.scrollTop = box.scrollHeight;
-}
-function setBotState(on){
-  document.getElementById('dot').classList.toggle('on', on);
-  document.getElementById('botstate').textContent = on?'수집 중':'정지';
-  document.getElementById('btnStart').disabled = on;
-  document.getElementById('btnStop').disabled = !on;
-}
+async function botStart(){try{await pywebview.api.bot_start();}catch(e){}}
+async function botStop(){try{await pywebview.api.bot_stop();}catch(e){}}
+async function runNow(){const b=document.getElementById('btnNow');b.disabled=true;b.textContent='수집 중…';try{await pywebview.api.run_now();}catch(e){}setTimeout(()=>{b.disabled=false;b.textContent='⟳ 지금 수집';},1500);}
+function pushLog(line){const box=document.getElementById('logbox');box.textContent+=line+"\n";box.scrollTop=box.scrollHeight;}
+function setBotState(on){document.getElementById('dot').classList.toggle('on',on);document.getElementById('botstate').textContent=on?'수집 중':'정지';document.getElementById('btnStart').disabled=on;document.getElementById('btnStop').disabled=!on;}
 function setStatus(s){}
+
+async function loadStock(fresh){
+  const list=document.getElementById('slist');
+  list.innerHTML='<div style="padding:20px;text-align:center;color:var(--muted)">'+(fresh?'기계에서 읽는 중… (십여 초)':'불러오는 중…')+'</div>';
+  try{ STOCK = fresh ? await pywebview.api.refresh_stock() : await pywebview.api.get_stock(); }catch(e){ STOCK={}; }
+  ORIG={};
+  Object.keys(STOCK).forEach(m=>{ORIG[m]={};(STOCK[m]||[]).forEach(it=>ORIG[m][it.product]=it.qty);});
+  buildMachSel(); renderStock();
+}
+function buildMachSel(){
+  const sel=document.getElementById('machSel');
+  const ms=Object.keys(STOCK);
+  if(!sel.dataset.filled && ms.length){ sel.innerHTML=ms.map(m=>`<option>${m}</option>`).join(''); sel.dataset.filled='1'; }
+  if(!ms.length) sel.innerHTML='<option>기계 없음</option>';
+}
+function renderStock(){
+  const m=document.getElementById('machSel').value;
+  const items=(STOCK[m]||[]);
+  const list=document.getElementById('slist');
+  if(!items.length){ list.innerHTML='<div style="padding:20px;text-align:center;color:var(--muted)">재고 데이터가 없어요. 불러오기를 눌러보세요.</div>'; updateCnt(); return; }
+  list.innerHTML=items.map(it=>`<div class="prow"><span class="pn">${it.product}</span>
+    <input type="number" class="qty" min="0" value="${it.qty}" data-m="${m}" data-p="${it.product}" data-orig="${it.qty}" oninput="onQty(this)"></div>`).join('');
+  updateCnt();
+}
+function onQty(inp){ inp.classList.toggle('changed', String(inp.value)!==String(inp.dataset.orig)); updateCnt(); }
+function collectChanges(){
+  const out=[];
+  document.querySelectorAll('.qty').forEach(inp=>{
+    if(inp.value!=='' && String(inp.value)!==String(inp.dataset.orig))
+      out.push({machine:inp.dataset.m, product:inp.dataset.p, qty:parseInt(inp.value,10)});
+  });
+  return out;
+}
+function updateCnt(){ const n=collectChanges().length; document.getElementById('scnt').textContent='바뀐 항목 '+n+'개'; document.getElementById('saveBtn').disabled=n===0; }
+async function saveStock(){
+  const ch=collectChanges();
+  if(!ch.length) return;
+  if(!confirm(ch.length+'개 항목을 실제 기계에 반영합니다. 계속할까요?')) return;
+  const b=document.getElementById('saveBtn'); b.disabled=true; b.textContent='저장 중…';
+  try{ await pywebview.api.save_stock(ch); }catch(e){}
+  b.textContent='저장';
+  await loadStock(true);   // 저장 후 실제 값 다시 읽기
+  switchTab('log');        // 결과 로그 보여주기
+}
 </script>
-</body>
-</html>
+</body></html>
