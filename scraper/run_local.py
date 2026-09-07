@@ -25,11 +25,11 @@ DATA_PATH = os.path.join(REPO, "docs", "data.json")
 CACHE_PATH = os.path.join(HERE, "bundle_cache.json")
 
 MACHINES = [
-    ("슬림",  "hgdandae1", "vendingpay"),
     ("라면1", "hgdandae2", "vendingpay"),
     ("라면2", "hgdandae3", "vendingpay"),
     ("냉동",  "hgdandae4", "bangsopener"),
     ("냉장",  "hgdandae5", "bangsopener"),
+    ("슬림",  "hgdandae1", "vendingpay"),
 ]
 PLATFORMS = {
     "vendingpay": {
