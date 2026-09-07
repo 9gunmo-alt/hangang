@@ -37,6 +37,7 @@ PLATFORMS = {
         "machine": "https://vendingpay.kr/dongseo/tech/app/{code}",
         "receipt": "https://vendingpay.kr/dongseo/tech/app/receipt_prev.do",
         "f_product": "product", "f_amount": "price", "f_dt": "datetime", "f_id": "orderno",
+        "stock": "https://vendingpay.kr/dongseo/tech/app/ipgo.do",
         "params": lambda code, y, m: {"id": code, "ym": f"{y}-{m:02d}-01",
                                       "tm": f"{y}-{m:02d}-{calendar.monthrange(y, m)[1]:02d}"},
     },
@@ -45,6 +46,7 @@ PLATFORMS = {
         "machine": "http://bangsopener.co.kr/opener/kiosk/adminapp/{code}",
         "receipt": "http://bangsopener.co.kr/opener/kiosk/appadmin/receipt_prev.do",
         "f_product": "product", "f_amount": "amount", "f_dt": "datetime", "f_id": "ordern",
+        "stock": "http://bangsopener.co.kr/opener/kiosk/appadmin/proup.do",
         "params": lambda code, y, m: {"id": code, "datetime": f"{y}-{m:02d}"},
     },
 }
@@ -53,6 +55,58 @@ DT_RE = re.compile(r"(\d{2,4})-(\d{1,2})-(\d{1,2})\s+(\d{1,2}):(\d{2})")
 MULTI_RE = re.compile(r"외\s*[1-9]")
 SUFFIX_RE = re.compile(r"외\s*\d+\s*개\s*$")
 UA = {"User-Agent": "Mozilla/5.0 (hanriver-local-bot)"}
+
+# ── 재고(읽기) ─────────────────────────────────────────────
+STOCK = {}          # {기계이름: [{product, qty}]}
+LAST_STOCK = 0.0
+STOCK_EVERY = 900   # 재고는 자주 안 바뀌므로 15분마다만 읽음
+
+STOCK_JS = r"""
+() => {
+  const out = [];
+  document.querySelectorAll('tr').forEach(tr => {
+    const cells = [...tr.querySelectorAll('td,th')].map(c => {
+      const i = c.querySelector('input,select');
+      return ((i ? i.value : c.textContent) || '').trim();
+    });
+    let pi = cells.findIndex(v => /[가-힣]/.test(v) && v.length < 30 && v !== '상품명');
+    if (pi < 0) return;
+    const product = cells[pi];
+    let qty = null;
+    for (let j = pi + 1; j < cells.length; j++) {
+      if (/^\d+$/.test(cells[j])) { qty = parseInt(cells[j], 10); break; }
+    }
+    if (product && qty !== null) out.push({ product: product, qty: qty });
+  });
+  return out;
+}
+"""
+
+
+def read_all_stock():
+    """각 기계의 '재고 및 수정' 페이지를 열어 상품·수량을 읽는다(읽기 전용)."""
+    try:
+        from playwright.sync_api import sync_playwright
+    except Exception:
+        return None
+    out = {}
+    with sync_playwright() as p:
+        b = p.chromium.launch(headless=True)
+        pg = b.new_context(ignore_https_errors=True).new_page()
+        try:
+            for name, code, plat_key in MACHINES:
+                plat = PLATFORMS[plat_key]
+                try:
+                    pg.goto(plat["machine"].format(code=code), wait_until="networkidle", timeout=45000)
+                    pg.wait_for_timeout(600)
+                    pg.goto(plat["stock"], wait_until="networkidle", timeout=45000)
+                    pg.wait_for_timeout(800)
+                    out[name] = pg.evaluate(STOCK_JS)
+                except Exception as e:
+                    log(f"[{name}] 재고 읽기 실패: {e}")
+        finally:
+            b.close()
+    return out
 
 
 def log(*a): print(datetime.now(KST).strftime("%H:%M:%S"), *a, flush=True)
@@ -181,12 +235,24 @@ def build():
                 tx.append({"machine": name, "product": clean_name(r["praw"]),
                            "amount": r["amt"], "datetime": r["when"]})
     tx.sort(key=lambda t: t["datetime"], reverse=True)
+
+    # 재고는 15분마다만 갱신 (읽기 실패해도 매출엔 영향 없음)
+    global STOCK, LAST_STOCK
+    if time.time() - LAST_STOCK >= STOCK_EVERY:
+        try:
+            s = read_all_stock()
+            if s is not None:
+                STOCK = s; LAST_STOCK = time.time()
+                log("재고 갱신")
+        except Exception as e:
+            log("재고 갱신 실패:", e)
+
     return tx
 
 
-def current_tx():
+def current_data():
     try:
-        with open(DATA_PATH, encoding="utf-8") as f: return json.load(f).get("transactions", [])
+        with open(DATA_PATH, encoding="utf-8") as f: return json.load(f)
     except Exception: return None
 
 
@@ -195,15 +261,15 @@ def git(*args):
 
 
 def push_if_changed(tx):
-    prev = current_tx()
-    if prev == tx:
-        return False  # 변화 없음 → 커밋 안 함
+    prev = current_data()
+    if prev and prev.get("transactions") == tx and prev.get("stock") == STOCK:
+        return False  # 매출·재고 둘 다 변화 없음 → 커밋 안 함
     data = {"generated_at": datetime.now(KST).isoformat(timespec="minutes"),
-            "machines": [m[0] for m in MACHINES], "transactions": tx}
+            "machines": [m[0] for m in MACHINES], "transactions": tx, "stock": STOCK}
     with open(DATA_PATH, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=1)
     git("add", "docs/data.json")
-    c = git("commit", "-m", "매출 갱신 [skip ci]")
+    c = git("commit", "-m", "매출/재고 갱신 [skip ci]")
     if "nothing to commit" in (c.stdout + c.stderr): return False
     git("pull", "--rebase", "--autostash")
     pr = git("push")
