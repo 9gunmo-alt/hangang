@@ -279,7 +279,7 @@ function stockView(){
   const data = window.__stockData || {};
   const machines = (machFilter==="전체") ? MACHINES : [machFilter];
   let low=[];
-  machines.forEach(m=>{(data[m]||[]).forEach(it=>{ const mx=it.max||it.qty||1; if(it.qty<=Math.max(1,Math.round(mx*0.2))) low.push(it.product+" ("+m+")"); });});
+  machines.forEach(m=>{(data[m]||[]).forEach(it=>{ const mx=it.max||it.qty||1; if((it.qty/mx) < 0.4) low.push(it.product+" ("+m+")"); });});
   let html="";
   if(low.length){
     html += `<div class="lowalert"><div class="la-h">⚠ 곧 떨어질 상품 ${low.length}개</div><div class="la-b">${low.join(" · ")}</div></div>`;
@@ -290,12 +290,12 @@ function stockView(){
     html += `<div class="sec"><div class="sec-h"><h2>${m}</h2><span class="note">${items.length}개 상품</span></div>`;
     html += items.map(it=>{
       const mx=it.max||it.qty||1;
-      const lo=(mx>0)&&(it.qty<=Math.max(1,Math.round(mx*0.2)));
+      const lo=(it.qty/mx) < 0.4;
       const pct=Math.max(3,Math.round(it.qty/mx*100));
       return `<div class="strow">
         <div class="sp">${it.product}</div>
         <div class="strack"><div class="sfill" style="width:${pct}%; background:${lo?'var(--neg)':'var(--accent)'}"></div></div>
-        <div class="sq" style="${lo?'color:var(--neg)':''}">${it.qty}<span style="font-size:12px;color:var(--muted);font-weight:400"> / ${mx}</span></div>
+        <div class="sq" style="${lo?'color:var(--neg)':''}">${it.qty}</div>
       </div>`;
     }).join("");
     html += `</div>`;

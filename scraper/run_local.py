@@ -59,7 +59,7 @@ UA = {"User-Agent": "Mozilla/5.0 (hanriver-local-bot)"}
 # ── 재고(읽기) ─────────────────────────────────────────────
 STOCK = {}          # {기계이름: [{product, qty}]}
 LAST_STOCK = 0.0
-STOCK_EVERY = 900   # 재고는 자주 안 바뀌므로 15분마다만 읽음
+STOCK_EVERY = 300   # 재고 읽기 주기(초). 재고 페이지는 브라우저로 읽어서 무거워 5분 간격
 MAX_PATH = os.path.join(HERE, "stock_max.json")   # 상품별 역대/설정 최대치(게이지 기준)
 
 def load_max():
@@ -71,40 +71,7 @@ def save_max(m):
         with open(MAX_PATH, "w", encoding="utf-8") as f: json.dump(m, f, ensure_ascii=False)
     except Exception: pass
 
-STOCK_MAX = {}   # {"기계\x01상품": 최대수량}
-
-# 한 행(상품)을 찾아 수량을 바꾸고 그 행의 '수정' 버튼을 눌러 저장한다.
-SET_SAVE_JS = r"""
-(arg) => {
-  const rows = [...document.querySelectorAll('tr')];
-  for (const tr of rows) {
-    const ins = tr.querySelectorAll('input');
-    if (ins.length < 3) continue;
-    if ((ins[1].value || '').trim() === arg.product) {
-      ins[2].value = String(arg.qty);
-      ins[2].dispatchEvent(new Event('input', {bubbles:true}));
-      ins[2].dispatchEvent(new Event('change', {bubbles:true}));
-      const btns = [...tr.querySelectorAll('button,a,[onclick]')];
-      const edit = btns.find(b => (b.textContent || '').trim().indexOf('수정') >= 0);
-      if (edit) { edit.click(); return true; }
-      return false;
-    }
-  }
-  return false;
-}
-"""
-# 저장 후 그 상품의 현재 수량을 다시 읽어 확인
-READ_ONE_JS = r"""
-(product) => {
-  const rows = [...document.querySelectorAll('tr')];
-  for (const tr of rows) {
-    const ins = tr.querySelectorAll('input');
-    if (ins.length < 3) continue;
-    if ((ins[1].value || '').trim() === product) return parseInt(ins[2].value, 10);
-  }
-  return null;
-}
-"""
+STOCK_MAX = {}   # {"기계\x01상품": 최대수량(게이지 기준)}
 
 STOCK_JS = r"""
 () => {
@@ -152,59 +119,6 @@ def read_all_stock():
         finally:
             b.close()
     return out
-
-
-def write_stock(updates):
-    """updates: [{'machine','product','qty'}]. 각 상품 행의 수량을 바꾸고 '수정'을 눌러 저장.
-    저장 후 다시 읽어 값이 맞는지 확인한다. 결과 리스트를 돌려준다."""
-    try:
-        from playwright.sync_api import sync_playwright
-    except Exception:
-        return [{"machine": u.get("machine"), "product": u.get("product"),
-                 "ok": False, "msg": "Playwright 없음"} for u in updates]
-    minfo = {name: (code, plat_key) for name, code, plat_key in MACHINES}
-    by_m = {}
-    for u in updates:
-        by_m.setdefault(u["machine"], []).append(u)
-    results = []
-    with sync_playwright() as p:
-        b = p.chromium.launch(headless=True)
-        pg = b.new_context(ignore_https_errors=True).new_page()
-        pg.on("dialog", lambda d: d.accept())   # 저장 확인창 자동 승인
-        try:
-            for mname, ups in by_m.items():
-                if mname not in minfo:
-                    for u in ups: results.append({**u, "ok": False, "msg": "기계 없음"})
-                    continue
-                code, plat_key = minfo[mname]; plat = PLATFORMS[plat_key]
-                try:
-                    pg.goto(plat["machine"].format(code=code), wait_until="networkidle", timeout=45000)
-                    pg.wait_for_timeout(500)
-                except Exception as e:
-                    for u in ups: results.append({**u, "ok": False, "msg": f"기계 열기 실패: {e}"})
-                    continue
-                for u in ups:
-                    try:
-                        pg.goto(plat["stock"], wait_until="networkidle", timeout=45000)
-                        pg.wait_for_timeout(700)
-                        found = pg.evaluate(SET_SAVE_JS, {"product": u["product"], "qty": int(u["qty"])})
-                        if not found:
-                            results.append({**u, "ok": False, "msg": "상품 못 찾음"}); continue
-                        pg.wait_for_timeout(1500)  # 저장(ajax/새로고침) 대기
-                        # 확인: 다시 읽어 값 비교
-                        pg.goto(plat["stock"], wait_until="networkidle", timeout=45000)
-                        pg.wait_for_timeout(600)
-                        now = pg.evaluate(READ_ONE_JS, u["product"])
-                        ok = (now == int(u["qty"]))
-                        results.append({**u, "ok": ok, "msg": "저장됨" if ok else f"확인 실패(현재 {now})"})
-                        if ok:
-                            STOCK_MAX[mname + "\x01" + u["product"]] = int(u["qty"])  # 저장값=최대치
-                    except Exception as e:
-                        results.append({**u, "ok": False, "msg": str(e)})
-        finally:
-            b.close()
-    save_max(STOCK_MAX)
-    return results
 
 
 def log(*a): print(datetime.now(KST).strftime("%H:%M:%S"), *a, flush=True)
