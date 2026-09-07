@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-08T02:54+09:00",
+ "generated_at": "2026-09-08T02:57+09:00",
  "machines": [
   "라면1",
   "라면2",
@@ -941,13 +941,7 @@
   {
    "machine": "냉장",
    "product": "펩시제로",
-   "amount": 1500,
-   "datetime": "2026-09-01T19:21"
-  },
-  {
-   "machine": "냉장",
-   "product": "포카리스웨트",
-   "amount": 2000,
+   "amount": 3500,
    "datetime": "2026-09-01T19:21"
   },
   {
@@ -977,37 +971,7 @@
   {
    "machine": "냉장",
    "product": "스트링 치즈",
-   "amount": 1000,
-   "datetime": "2026-09-01T12:55"
-  },
-  {
-   "machine": "냉장",
-   "product": "날계란",
-   "amount": 250,
-   "datetime": "2026-09-01T12:55"
-  },
-  {
-   "machine": "냉장",
-   "product": "날계란",
-   "amount": 250,
-   "datetime": "2026-09-01T12:55"
-  },
-  {
-   "machine": "냉장",
-   "product": "포카리스웨트",
-   "amount": 2000,
-   "datetime": "2026-09-01T12:55"
-  },
-  {
-   "machine": "냉장",
-   "product": "칠성사이다",
-   "amount": 750,
-   "datetime": "2026-09-01T12:55"
-  },
-  {
-   "machine": "냉장",
-   "product": "칠성사이다",
-   "amount": 750,
+   "amount": 7000,
    "datetime": "2026-09-01T12:55"
   },
   {
@@ -1073,25 +1037,7 @@
   {
    "machine": "냉장",
    "product": "맛김치",
-   "amount": 1500,
-   "datetime": "2026-09-01T11:28"
-  },
-  {
-   "machine": "냉장",
-   "product": "날계란",
-   "amount": 168,
-   "datetime": "2026-09-01T11:28"
-  },
-  {
-   "machine": "냉장",
-   "product": "날계란",
-   "amount": 166,
-   "datetime": "2026-09-01T11:28"
-  },
-  {
-   "machine": "냉장",
-   "product": "날계란",
-   "amount": 166,
+   "amount": 3000,
    "datetime": "2026-09-01T11:28"
   },
   {
@@ -1241,13 +1187,7 @@
   {
    "machine": "냉장",
    "product": "칠성사이다",
-   "amount": 1500,
-   "datetime": "2026-08-31T12:57"
-  },
-  {
-   "machine": "냉장",
-   "product": "포카리스웨트",
-   "amount": 2000,
+   "amount": 3500,
    "datetime": "2026-08-31T12:57"
   },
   {
@@ -1259,19 +1199,7 @@
   {
    "machine": "냉장",
    "product": "볶음김치",
-   "amount": 1500,
-   "datetime": "2026-08-31T12:43"
-  },
-  {
-   "machine": "냉장",
-   "product": "체다치즈",
-   "amount": 500,
-   "datetime": "2026-08-31T12:43"
-  },
-  {
-   "machine": "냉장",
-   "product": "단무지",
-   "amount": 500,
+   "amount": 2500,
    "datetime": "2026-08-31T12:43"
   },
   {
@@ -1325,13 +1253,7 @@
   {
    "machine": "냉장",
    "product": "코카콜라",
-   "amount": 1500,
-   "datetime": "2026-08-30T18:00"
-  },
-  {
-   "machine": "냉장",
-   "product": "단무지",
-   "amount": 500,
+   "amount": 2000,
    "datetime": "2026-08-30T18:00"
   },
   {
@@ -1373,19 +1295,7 @@
   {
    "machine": "냉장",
    "product": "날계란",
-   "amount": 250,
-   "datetime": "2026-08-30T14:12"
-  },
-  {
-   "machine": "냉장",
-   "product": "날계란",
-   "amount": 250,
-   "datetime": "2026-08-30T14:12"
-  },
-  {
-   "machine": "냉장",
-   "product": "맛김치",
-   "amount": 1500,
+   "amount": 2500,
    "datetime": "2026-08-30T14:12"
   },
   {
@@ -1451,25 +1361,7 @@
   {
    "machine": "냉장",
    "product": "맛김치",
-   "amount": 1500,
-   "datetime": "2026-08-30T08:51"
-  },
-  {
-   "machine": "냉장",
-   "product": "의성마늘 소세지",
-   "amount": 2000,
-   "datetime": "2026-08-30T08:51"
-  },
-  {
-   "machine": "냉장",
-   "product": "펩시제로",
-   "amount": 750,
-   "datetime": "2026-08-30T08:51"
-  },
-  {
-   "machine": "냉장",
-   "product": "펩시제로",
-   "amount": 750,
+   "amount": 6500,
    "datetime": "2026-08-30T08:51"
   },
   {
@@ -1553,13 +1445,7 @@
   {
    "machine": "냉장",
    "product": "펩시제로",
-   "amount": 1500,
-   "datetime": "2026-08-29T21:27"
-  },
-  {
-   "machine": "냉장",
-   "product": "포카리스웨트",
-   "amount": 2000,
+   "amount": 3500,
    "datetime": "2026-08-29T21:27"
   },
   {
@@ -1571,25 +1457,7 @@
   {
    "machine": "냉장",
    "product": "스트링 치즈",
-   "amount": 1000,
-   "datetime": "2026-08-29T21:25"
-  },
-  {
-   "machine": "냉장",
-   "product": "몬스터",
-   "amount": 2000,
-   "datetime": "2026-08-29T21:25"
-  },
-  {
-   "machine": "냉장",
-   "product": "맛김치",
-   "amount": 1500,
-   "datetime": "2026-08-29T21:25"
-  },
-  {
-   "machine": "냉장",
-   "product": "볶음김치",
-   "amount": 1500,
+   "amount": 6000,
    "datetime": "2026-08-29T21:25"
   },
   {
@@ -1691,13 +1559,7 @@
   {
    "machine": "냉장",
    "product": "펩시제로",
-   "amount": 1500,
-   "datetime": "2026-08-29T01:37"
-  },
-  {
-   "machine": "냉장",
-   "product": "맛김치",
-   "amount": 1500,
+   "amount": 3000,
    "datetime": "2026-08-29T01:37"
   },
   {
@@ -2030,8 +1892,8 @@
    },
    {
     "product": "고기만두",
-    "qty": 10,
-    "max": 10
+    "qty": 9,
+    "max": 9
    },
    {
     "product": "매콤떡볶이",
@@ -2077,8 +1939,8 @@
   "냉장": [
    {
     "product": "날계란",
-    "qty": 10,
-    "max": 10
+    "qty": 9,
+    "max": 9
    },
    {
     "product": "맛김치",
