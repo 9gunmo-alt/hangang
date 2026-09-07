@@ -39,6 +39,9 @@
   .seg button{flex:1; border:0; background:transparent; padding:9px 0; font-size:15.5px; font-weight:700;
     color:var(--muted); border-radius:8px; cursor:pointer; transition:background .15s,color .15s; font-family:inherit;}
   .seg button.on{background:var(--surface); color:var(--ink); box-shadow:0 1px 2px rgba(20,24,33,.12);}
+  .seg.underline{background:transparent; padding:0; border-bottom:1px solid var(--line); border-radius:0; gap:0; margin-bottom:14px;}
+  .seg.underline button{flex:1; padding:9px 0; background:transparent; color:var(--muted); font-weight:500; border-radius:0; box-shadow:none; border-bottom:2px solid transparent; margin-bottom:-1px;}
+  .seg.underline button.on{background:transparent; color:var(--accent); box-shadow:none; border-bottom-color:var(--accent); font-weight:800;}
 
   /* hero */
   .hero{background:var(--ink); color:#fff; border-radius:18px; padding:20px 20px 18px; margin-bottom:8px;}
@@ -121,6 +124,15 @@
 
   .empty{text-align:center; padding:38px 12px; color:var(--muted);}
   .empty b{display:block; color:var(--ink); font-size:15px; margin-bottom:4px;}
+  .lowalert{background:#FDECEA; border-radius:12px; padding:12px 14px; margin-bottom:16px;}
+  .lowalert .la-h{font-size:13.5px; font-weight:800; color:var(--accent); margin-bottom:6px;}
+  .lowalert .la-b{font-size:13px; color:#B23A28; line-height:1.6;}
+  .strow{display:grid; grid-template-columns:1fr 90px 56px; align-items:center; gap:10px; padding:9px 2px;}
+  .strow + .strow{border-top:0.5px solid var(--line);}
+  .strow .sp{font-size:15px; font-weight:500;}
+  .strow .strack{height:8px; background:var(--track); border-radius:5px; overflow:hidden;}
+  .strow .sfill{height:100%; border-radius:5px;}
+  .strow .sq{font-size:15px; font-weight:800; text-align:right; white-space:nowrap;}
   .foot{text-align:center; font-size:11px; color:var(--muted); margin-top:28px; line-height:1.5;}
 </style>
 </head>
@@ -134,7 +146,12 @@
     </div>
   </div>
 
-  <div class="seg" id="seg">
+  <div class="seg" id="topseg" style="margin-bottom:10px;">
+    <button data-v="sales" class="on">매출</button>
+    <button data-v="stock">재고</button>
+  </div>
+
+  <div class="seg underline" id="seg">
     <button data-p="day" class="on">일별</button>
     <button data-p="month">월별</button>
   </div>
@@ -173,6 +190,8 @@ let prodGroup = "전체";  // 잘나가는 상품 그룹 탭
 const PGROUPS = [["전체",["슬림","라면1","라면2","냉장","냉동"]],["슬림",["슬림"]],["라면",["라면1","라면2"]],["냉장",["냉장"]],["냉동",["냉동"]]];
 let machFilter = "전체";
 let selCol = null;
+let view = "sales";     // sales | stock
+const LOW = 5;          // 재고 이하면 '곧 떨어짐' 경고
 
 /* ---------- storage (persist across sessions when available) ---------- */
 const DATA_URLS = [
@@ -192,6 +211,7 @@ async function pullData(){
                   date:(t.datetime||"").slice(0,10), time:(t.datetime||"").slice(11,16)};
         });
         window.__auto = true; window.__updated = j.generated_at || null;
+        window.__stockData = j.stock || {};
         return true;
       }
     }catch(e){}
@@ -254,13 +274,54 @@ function scopeMonth(){return selMonth||thisMonth();}
 function availableMonths(){var set={};TX.forEach(function(r){if(r.date)set[r.date.slice(0,7)]=1;});set[thisMonth()]=1;return Object.keys(set).sort().reverse();}
 function monthDayList(ym){var y=+ym.slice(0,4),m=+ym.slice(5,7);var last=new Date(y,m,0).getDate();var out=[];for(var d=1;d<=last;d++){out.push(ym+"-"+String(d).padStart(2,"0"));}return out;}
 
+/* ---------- 재고 보기 ---------- */
+function stockView(){
+  const data = window.__stockData || {};
+  const machines = (machFilter==="전체") ? MACHINES : [machFilter];
+  let low=[];
+  machines.forEach(m=>{(data[m]||[]).forEach(it=>{ if(it.qty<=LOW) low.push(it.product+" ("+m+")"); });});
+  let html="";
+  if(low.length){
+    html += `<div class="lowalert"><div class="la-h">⚠ 곧 떨어질 상품 ${low.length}개</div><div class="la-b">${low.join(" · ")}</div></div>`;
+  }
+  machines.forEach(m=>{
+    const items=(data[m]||[]).slice().sort((a,b)=>a.qty-b.qty);
+    if(!items.length) return;
+    const max=Math.max(1,...items.map(i=>i.qty));
+    html += `<div class="sec"><div class="sec-h"><h2>${m}</h2><span class="note">${items.length}개 상품</span></div>`;
+    html += items.map(it=>{
+      const lo=it.qty<=LOW;
+      return `<div class="strow">
+        <div class="sp">${it.product}</div>
+        <div class="strack"><div class="sfill" style="width:${Math.round(it.qty/max*100)}%; background:${lo?'var(--neg)':'var(--accent)'}"></div></div>
+        <div class="sq" style="${lo?'color:var(--neg)':''}">${it.qty}개</div>
+      </div>`;
+    }).join("");
+    html += `</div>`;
+  });
+  if(!html) html = `<div class="empty"><b>재고 데이터가 아직 없어요</b>로봇이 재고를 읽으면 채워져요 (최대 15분). 잠시 뒤 새로고침 해보세요.</div>`;
+  return html;
+}
+
 /* ---------- render ---------- */
 function render(){
   document.getElementById("mcount").textContent="천안단대로드점";
   var liveEl=document.querySelector(".live");
   if(liveEl && window.__auto){ liveEl.textContent = window.__updated ? ("업데이트 "+fmtUpdated(window.__updated)) : "자동 수집"; }
+
+  var isStock=(view==="stock");
+  document.getElementById("seg").style.display=isStock?"none":"flex";
+  document.querySelector(".hero").style.display=isStock?"none":"block";
+  document.querySelectorAll("#topseg button").forEach(function(x){x.classList.toggle("on",x.dataset.v===view);});
+
   renderChips();
   renderMonthSel();
+
+  if(isStock){
+    document.getElementById("content").innerHTML = stockView();
+    return;
+  }
+
   if(TX.length===0){ renderEmpty(); renderHero(0,0,null); return; }
   const rows=filtered();
 
@@ -290,8 +351,8 @@ function render(){
 function sum(a){return a.reduce((s,r)=>s+r.amount,0);}
 function renderMonthSel(){
   var sel=document.getElementById("monthSel"); if(!sel) return;
-  sel.style.display=(period==="month")?"block":"none";
-  if(period!=="month") return;
+  sel.style.display=(period==="month" && view!=="stock")?"block":"none";
+  if(period!=="month" || view==="stock") return;
   var months=availableMonths();
   if(!selMonth || months.indexOf(selMonth)<0) selMonth=months[0]||thisMonth();
   sel.innerHTML=months.map(function(m){return '<option value="'+m+'"'+(m===selMonth?' selected':'')+'>'+m.slice(0,4)+'년 '+monthLabel(m)+'</option>';}).join("");
@@ -436,6 +497,9 @@ function parsePaste(text, machine){
 document.getElementById("seg").querySelectorAll("button").forEach(b=>{
   b.onclick=()=>{ document.querySelectorAll("#seg button").forEach(x=>x.classList.remove("on"));
     b.classList.add("on"); period=b.dataset.p; if(period==="day") selDay=todayStr(); selCol=null; render(); };
+});
+document.getElementById("topseg").querySelectorAll("button").forEach(b=>{
+  b.onclick=()=>{ view=b.dataset.v; selCol=null; render(); };
 });
 
 /* 새로고침: 버튼 · 앱 다시 볼 때 · 주기적으로 */
