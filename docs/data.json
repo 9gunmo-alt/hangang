@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-08T00:05+09:00",
+ "generated_at": "2026-09-08T02:12+09:00",
  "machines": [
   "슬림",
   "라면1",
@@ -923,7 +923,13 @@
   {
    "machine": "냉장",
    "product": "펩시제로",
-   "amount": 3500,
+   "amount": 1500,
+   "datetime": "2026-09-01T19:21"
+  },
+  {
+   "machine": "냉장",
+   "product": "포카리스웨트",
+   "amount": 2000,
    "datetime": "2026-09-01T19:21"
   },
   {
@@ -953,7 +959,37 @@
   {
    "machine": "냉장",
    "product": "스트링 치즈",
-   "amount": 7000,
+   "amount": 1000,
+   "datetime": "2026-09-01T12:55"
+  },
+  {
+   "machine": "냉장",
+   "product": "날계란",
+   "amount": 250,
+   "datetime": "2026-09-01T12:55"
+  },
+  {
+   "machine": "냉장",
+   "product": "날계란",
+   "amount": 250,
+   "datetime": "2026-09-01T12:55"
+  },
+  {
+   "machine": "냉장",
+   "product": "포카리스웨트",
+   "amount": 2000,
+   "datetime": "2026-09-01T12:55"
+  },
+  {
+   "machine": "냉장",
+   "product": "칠성사이다",
+   "amount": 750,
+   "datetime": "2026-09-01T12:55"
+  },
+  {
+   "machine": "냉장",
+   "product": "칠성사이다",
+   "amount": 750,
    "datetime": "2026-09-01T12:55"
   },
   {
@@ -1019,7 +1055,25 @@
   {
    "machine": "냉장",
    "product": "맛김치",
-   "amount": 3000,
+   "amount": 1500,
+   "datetime": "2026-09-01T11:28"
+  },
+  {
+   "machine": "냉장",
+   "product": "날계란",
+   "amount": 168,
+   "datetime": "2026-09-01T11:28"
+  },
+  {
+   "machine": "냉장",
+   "product": "날계란",
+   "amount": 166,
+   "datetime": "2026-09-01T11:28"
+  },
+  {
+   "machine": "냉장",
+   "product": "날계란",
+   "amount": 166,
    "datetime": "2026-09-01T11:28"
   },
   {
@@ -1169,7 +1223,13 @@
   {
    "machine": "냉장",
    "product": "칠성사이다",
-   "amount": 3500,
+   "amount": 1500,
+   "datetime": "2026-08-31T12:57"
+  },
+  {
+   "machine": "냉장",
+   "product": "포카리스웨트",
+   "amount": 2000,
    "datetime": "2026-08-31T12:57"
   },
   {
@@ -1181,7 +1241,19 @@
   {
    "machine": "냉장",
    "product": "볶음김치",
-   "amount": 2500,
+   "amount": 1500,
+   "datetime": "2026-08-31T12:43"
+  },
+  {
+   "machine": "냉장",
+   "product": "체다치즈",
+   "amount": 500,
+   "datetime": "2026-08-31T12:43"
+  },
+  {
+   "machine": "냉장",
+   "product": "단무지",
+   "amount": 500,
    "datetime": "2026-08-31T12:43"
   },
   {
@@ -1235,7 +1307,13 @@
   {
    "machine": "냉장",
    "product": "코카콜라",
-   "amount": 2000,
+   "amount": 1500,
+   "datetime": "2026-08-30T18:00"
+  },
+  {
+   "machine": "냉장",
+   "product": "단무지",
+   "amount": 500,
    "datetime": "2026-08-30T18:00"
   },
   {
@@ -1277,7 +1355,19 @@
   {
    "machine": "냉장",
    "product": "날계란",
-   "amount": 2500,
+   "amount": 250,
+   "datetime": "2026-08-30T14:12"
+  },
+  {
+   "machine": "냉장",
+   "product": "날계란",
+   "amount": 250,
+   "datetime": "2026-08-30T14:12"
+  },
+  {
+   "machine": "냉장",
+   "product": "맛김치",
+   "amount": 1500,
    "datetime": "2026-08-30T14:12"
   },
   {
@@ -1343,7 +1433,25 @@
   {
    "machine": "냉장",
    "product": "맛김치",
-   "amount": 6500,
+   "amount": 1500,
+   "datetime": "2026-08-30T08:51"
+  },
+  {
+   "machine": "냉장",
+   "product": "의성마늘 소세지",
+   "amount": 2000,
+   "datetime": "2026-08-30T08:51"
+  },
+  {
+   "machine": "냉장",
+   "product": "펩시제로",
+   "amount": 750,
+   "datetime": "2026-08-30T08:51"
+  },
+  {
+   "machine": "냉장",
+   "product": "펩시제로",
+   "amount": 750,
    "datetime": "2026-08-30T08:51"
   },
   {
@@ -1427,7 +1535,13 @@
   {
    "machine": "냉장",
    "product": "펩시제로",
-   "amount": 3500,
+   "amount": 1500,
+   "datetime": "2026-08-29T21:27"
+  },
+  {
+   "machine": "냉장",
+   "product": "포카리스웨트",
+   "amount": 2000,
    "datetime": "2026-08-29T21:27"
   },
   {
@@ -1439,7 +1553,25 @@
   {
    "machine": "냉장",
    "product": "스트링 치즈",
-   "amount": 6000,
+   "amount": 1000,
+   "datetime": "2026-08-29T21:25"
+  },
+  {
+   "machine": "냉장",
+   "product": "몬스터",
+   "amount": 2000,
+   "datetime": "2026-08-29T21:25"
+  },
+  {
+   "machine": "냉장",
+   "product": "맛김치",
+   "amount": 1500,
+   "datetime": "2026-08-29T21:25"
+  },
+  {
+   "machine": "냉장",
+   "product": "볶음김치",
+   "amount": 1500,
    "datetime": "2026-08-29T21:25"
   },
   {
@@ -1541,7 +1673,13 @@
   {
    "machine": "냉장",
    "product": "펩시제로",
-   "amount": 3000,
+   "amount": 1500,
+   "datetime": "2026-08-29T01:37"
+  },
+  {
+   "machine": "냉장",
+   "product": "맛김치",
+   "amount": 1500,
    "datetime": "2026-08-29T01:37"
   },
   {
@@ -1640,5 +1778,377 @@
    "amount": 10,
    "datetime": "2026-08-28T14:53"
   }
- ]
+ ],
+ "stock": {
+  "슬림": [
+   {
+    "product": "햇반",
+    "qty": 7
+   },
+   {
+    "product": "햇반",
+    "qty": 7
+   },
+   {
+    "product": "햇반",
+    "qty": 8
+   },
+   {
+    "product": "불닭볶음면",
+    "qty": 0
+   },
+   {
+    "product": "불닭볶음면",
+    "qty": 0
+   },
+   {
+    "product": "까르보불닭",
+    "qty": 0
+   },
+   {
+    "product": "튀김우동",
+    "qty": 0
+   },
+   {
+    "product": "튀김우동",
+    "qty": 0
+   },
+   {
+    "product": "라면볶이",
+    "qty": 0
+   },
+   {
+    "product": "짜파게티",
+    "qty": 0
+   },
+   {
+    "product": "짜파게티",
+    "qty": 0
+   },
+   {
+    "product": "육개장",
+    "qty": 0
+   },
+   {
+    "product": "라면톡(황태)",
+    "qty": 10
+   },
+   {
+    "product": "라면톡(황태)",
+    "qty": 10
+   },
+   {
+    "product": "라면톡(황태)",
+    "qty": 9
+   }
+  ],
+  "라면1": [
+   {
+    "product": "신라면",
+    "qty": 7
+   },
+   {
+    "product": "진라면(매운맛)",
+    "qty": 8
+   },
+   {
+    "product": "진라면(순한맛)",
+    "qty": 7
+   },
+   {
+    "product": "안성탕면",
+    "qty": 7
+   },
+   {
+    "product": "삼양라면",
+    "qty": 8
+   },
+   {
+    "product": "참깨라면",
+    "qty": 8
+   },
+   {
+    "product": "무파마",
+    "qty": 7
+   },
+   {
+    "product": "너구리",
+    "qty": 8
+   },
+   {
+    "product": "열라면",
+    "qty": 7
+   },
+   {
+    "product": "짜파게티",
+    "qty": 8
+   },
+   {
+    "product": "까르보불닭",
+    "qty": 8
+   },
+   {
+    "product": "불닭볶음면",
+    "qty": 8
+   },
+   {
+    "product": "오징어짬뽕",
+    "qty": 8
+   },
+   {
+    "product": "진짬뽕",
+    "qty": 8
+   },
+   {
+    "product": "멸치칼국수",
+    "qty": 8
+   },
+   {
+    "product": "용기1",
+    "qty": 11
+   },
+   {
+    "product": "용기2",
+    "qty": 30
+   }
+  ],
+  "라면2": [
+   {
+    "product": "신라면",
+    "qty": 7
+   },
+   {
+    "product": "진라면(매운맛)",
+    "qty": 7
+   },
+   {
+    "product": "진라면(순한맛)",
+    "qty": 7
+   },
+   {
+    "product": "안성탕면",
+    "qty": 7
+   },
+   {
+    "product": "삼양라면",
+    "qty": 4
+   },
+   {
+    "product": "참깨라면",
+    "qty": 6
+   },
+   {
+    "product": "무파마",
+    "qty": 8
+   },
+   {
+    "product": "너구리",
+    "qty": 7
+   },
+   {
+    "product": "열라면",
+    "qty": 6
+   },
+   {
+    "product": "짜파게티",
+    "qty": 8
+   },
+   {
+    "product": "까르보불닭",
+    "qty": 8
+   },
+   {
+    "product": "불닭볶음면",
+    "qty": 7
+   },
+   {
+    "product": "오징어짬뽕",
+    "qty": 8
+   },
+   {
+    "product": "진짬뽕",
+    "qty": 8
+   },
+   {
+    "product": "멸치칼국수",
+    "qty": 8
+   },
+   {
+    "product": "용기1",
+    "qty": 36
+   },
+   {
+    "product": "용기2",
+    "qty": 30
+   }
+  ],
+  "냉동": [
+   {
+    "product": "오꾸밥(참치마요)",
+    "qty": 4
+   },
+   {
+    "product": "오꾸밥(소불고기)",
+    "qty": 6
+   },
+   {
+    "product": "오꾸밥(김치치즈)",
+    "qty": 7
+   },
+   {
+    "product": "오뚜기UNO피자(콤비)",
+    "qty": 6
+   },
+   {
+    "product": "오뚜기UNO피자(불고기)",
+    "qty": 6
+   },
+   {
+    "product": "한맥 불벅",
+    "qty": 14
+   },
+   {
+    "product": "한맥 더블버거",
+    "qty": 8
+   },
+   {
+    "product": "매콤제육김밥",
+    "qty": 10
+   },
+   {
+    "product": "야채김밥",
+    "qty": 10
+   },
+   {
+    "product": "참치김밥",
+    "qty": 10
+   },
+   {
+    "product": "김치만두",
+    "qty": 10
+   },
+   {
+    "product": "고기만두",
+    "qty": 10
+   },
+   {
+    "product": "매콤떡볶이",
+    "qty": 7
+   },
+   {
+    "product": "통모짜볼로네제",
+    "qty": 6
+   },
+   {
+    "product": "뽀모도로스파게티",
+    "qty": 6
+   },
+   {
+    "product": "베이컨크림스파게티",
+    "qty": 8
+   },
+   {
+    "product": "마시뜨랑건강식",
+    "qty": 9
+   },
+   {
+    "product": "로제떡볶이",
+    "qty": 10
+   },
+   {
+    "product": "김치제육덮밥",
+    "qty": 9
+   },
+   {
+    "product": "치즈토핑",
+    "qty": 8
+   }
+  ],
+  "냉장": [
+   {
+    "product": "날계란",
+    "qty": 10
+   },
+   {
+    "product": "맛김치",
+    "qty": 4
+   },
+   {
+    "product": "볶음김치",
+    "qty": 15
+   },
+   {
+    "product": "체다치즈",
+    "qty": 17
+   },
+   {
+    "product": "단무지",
+    "qty": 9
+   },
+   {
+    "product": "스트링 치즈",
+    "qty": 55
+   },
+   {
+    "product": "의성마늘 소세지",
+    "qty": 7
+   },
+   {
+    "product": "숯불구이 후랑크",
+    "qty": 3
+   },
+   {
+    "product": "몬스터",
+    "qty": 19
+   },
+   {
+    "product": "아리",
+    "qty": 24
+   },
+   {
+    "product": "나랑드사이다",
+    "qty": 14
+   },
+   {
+    "product": "조지아",
+    "qty": 9
+   },
+   {
+    "product": "조지아(아아)",
+    "qty": 9
+   },
+   {
+    "product": "레쓰비",
+    "qty": 9
+   },
+   {
+    "product": "코카콜라",
+    "qty": 10
+   },
+   {
+    "product": "펩시",
+    "qty": 10
+   },
+   {
+    "product": "펩시제로",
+    "qty": 9
+   },
+   {
+    "product": "칠성사이다",
+    "qty": 8
+   },
+   {
+    "product": "포카리스웨트",
+    "qty": 5
+   },
+   {
+    "product": "옥수수수염차",
+    "qty": 7
+   },
+   {
+    "product": "생수",
+    "qty": 4
+   }
+  ]
+ }
 }
