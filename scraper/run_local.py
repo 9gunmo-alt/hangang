@@ -257,7 +257,8 @@ def current_data():
 
 
 def git(*args):
-    return subprocess.run(["git", *args], cwd=REPO, capture_output=True, text=True)
+    return subprocess.run(["git", *args], cwd=REPO, capture_output=True,
+                          encoding="utf-8", errors="replace")
 
 
 def push_if_changed(tx):
@@ -270,11 +271,11 @@ def push_if_changed(tx):
         json.dump(data, f, ensure_ascii=False, indent=1)
     git("add", "docs/data.json")
     c = git("commit", "-m", "매출/재고 갱신 [skip ci]")
-    if "nothing to commit" in (c.stdout + c.stderr): return False
+    if "nothing to commit" in ((c.stdout or "") + (c.stderr or "")): return False
     git("pull", "--rebase", "--autostash")
     pr = git("push")
     if pr.returncode != 0:
-        log("push 실패:", (pr.stderr or pr.stdout).strip()[:200])
+        log("push 실패:", ((pr.stderr or "") or (pr.stdout or "")).strip()[:200])
     return True
 
 

@@ -118,3 +118,15 @@ Traceback (most recent call last):
                              ^^^^^^^^^^^^
 FileNotFoundError: [WinError 2] 지정된 파일을 찾을 수 없습니다
 
+2026-09-08 02:12:00 수집 오류:
+Traceback (most recent call last):
+  File "C:\Users\Administrator\Downloads\자료\hangang\scraper\app_gui.py", line 65, in run
+    self._cycle()
+    ~~~~~~~~~~~^^
+  File "C:\Users\Administrator\Downloads\자료\hangang\scraper\app_gui.py", line 59, in _cycle
+    changed = bot.push_if_changed(tx)
+  File "C:\Users\Administrator\Downloads\자료\hangang\scraper\run_local.py", line 273, in push_if_changed
+    if "nothing to commit" in (c.stdout + c.stderr): return False
+                               ~~~~~~~~~^~~~~~~~~~
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'str'
+
