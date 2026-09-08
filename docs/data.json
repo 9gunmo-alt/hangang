@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-08T23:03+09:00",
+ "generated_at": "2026-09-08T23:06+09:00",
  "machines": [
   "라면1",
   "라면2",
@@ -1765,14 +1765,14 @@
    },
    {
     "product": "무파마",
-    "qty": 8,
+    "qty": 7,
     "price": 4000,
     "order": "7",
     "max": 8
    },
    {
     "product": "너구리",
-    "qty": 8,
+    "qty": 7,
     "price": 4000,
     "order": "8",
     "max": 8
@@ -1828,7 +1828,7 @@
    },
    {
     "product": "용기1",
-    "qty": 10,
+    "qty": 8,
     "price": 10,
     "order": "18",
     "max": 50
@@ -2049,7 +2049,7 @@
    },
    {
     "product": "고기만두",
-    "qty": 9,
+    "qty": 8,
     "price": 2500,
     "order": "13",
     "max": 9
@@ -2240,14 +2240,14 @@
    },
    {
     "product": "포카리스웨트",
-    "qty": 5,
+    "qty": 4,
     "price": 2000,
     "order": "0",
     "max": 5
    },
    {
     "product": "옥수수수염차",
-    "qty": 6,
+    "qty": 5,
     "price": 2000,
     "order": "0",
     "max": 6
@@ -2266,14 +2266,14 @@
     "qty": 6,
     "price": 1000,
     "order": "1",
-    "max": 6
+    "max": 8
    },
    {
     "product": "햇반",
     "qty": 7,
     "price": 1000,
     "order": "2",
-    "max": 7
+    "max": 8
    },
    {
     "product": "햇반",
