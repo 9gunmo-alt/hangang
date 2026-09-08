@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-09T00:37+09:00",
+ "generated_at": "2026-09-09T05:28+09:00",
  "machines": [
   "라면1",
   "라면2",
@@ -8,6 +8,72 @@
   "슬림"
  ],
  "transactions": [
+  {
+   "machine": "냉동",
+   "product": "매콤제육김밥",
+   "amount": 4500,
+   "datetime": "2026-09-09T05:27"
+  },
+  {
+   "machine": "냉동",
+   "product": "매콤떡볶이",
+   "amount": 4500,
+   "datetime": "2026-09-09T05:27"
+  },
+  {
+   "machine": "냉동",
+   "product": "참치김밥",
+   "amount": 4500,
+   "datetime": "2026-09-09T05:27"
+  },
+  {
+   "machine": "냉동",
+   "product": "참치김밥",
+   "amount": 4500,
+   "datetime": "2026-09-09T05:27"
+  },
+  {
+   "machine": "냉동",
+   "product": "고기만두",
+   "amount": 2500,
+   "datetime": "2026-09-09T05:27"
+  },
+  {
+   "machine": "냉동",
+   "product": "매콤제육김밥",
+   "amount": 4500,
+   "datetime": "2026-09-09T05:27"
+  },
+  {
+   "machine": "냉장",
+   "product": "생수",
+   "amount": 1000,
+   "datetime": "2026-09-09T05:27"
+  },
+  {
+   "machine": "냉장",
+   "product": "날계란",
+   "amount": 500,
+   "datetime": "2026-09-09T05:27"
+  },
+  {
+   "machine": "냉장",
+   "product": "날계란",
+   "amount": 500,
+   "datetime": "2026-09-09T05:27"
+  },
+  {
+   "machine": "냉장",
+   "product": "체다치즈",
+   "amount": 500,
+   "datetime": "2026-09-09T05:27"
+  },
+  {
+   "machine": "냉장",
+   "product": "날계란",
+   "amount": 500,
+   "datetime": "2026-09-09T05:27"
+  },
   {
    "machine": "라면2",
    "product": "너구리",
