@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-09T08:12+09:00",
+ "generated_at": "2026-09-09T08:15+09:00",
  "machines": [
   "라면1",
   "라면2",
@@ -2240,17 +2240,17 @@
   "냉장": [
    {
     "product": "날계란",
-    "qty": 7,
+    "qty": 10,
     "price": 600,
     "order": "1",
-    "max": 7
+    "max": 10
    },
    {
     "product": "맛김치",
-    "qty": 4,
+    "qty": 10,
     "price": 1500,
     "order": "2",
-    "max": 4
+    "max": 10
    },
    {
     "product": "볶음김치",
@@ -2366,10 +2366,10 @@
    },
    {
     "product": "포카리스웨트",
-    "qty": 4,
+    "qty": 10,
     "price": 2000,
     "order": "0",
-    "max": 4
+    "max": 10
    },
    {
     "product": "옥수수수염차",
@@ -2392,14 +2392,14 @@
     "qty": 6,
     "price": 1000,
     "order": "1",
-    "max": 6
+    "max": 8
    },
    {
     "product": "햇반",
     "qty": 7,
     "price": 1000,
     "order": "2",
-    "max": 7
+    "max": 8
    },
    {
     "product": "햇반",
