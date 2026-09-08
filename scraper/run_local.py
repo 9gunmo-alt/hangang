@@ -246,8 +246,14 @@ def write_stock(machine, changes):
                 except Exception as e:
                     ops.append((ch, False)); log(f"[{machine}] {act} 오류: {e}")
             try:
-                pg.goto(ed["edit_url"], wait_until="networkidle", timeout=45000); pg.wait_for_timeout(900)
-                cur = {r["product"]: r for r in pg.evaluate(STOCK_JS, ed["cols"])}
+                pg.goto(ed["edit_url"], wait_until="networkidle", timeout=45000)
+                try: pg.wait_for_function("document.querySelectorAll('input').length > 3", timeout=8000)
+                except Exception: pass
+                pg.wait_for_timeout(1200)
+                rows_read = pg.evaluate(STOCK_JS, ed["cols"])
+                if not rows_read:
+                    pg.wait_for_timeout(1500); rows_read = pg.evaluate(STOCK_JS, ed["cols"])
+                cur = {(r["product"] or "").strip(): r for r in rows_read}
             except Exception:
                 cur = {}
         finally:
@@ -258,9 +264,9 @@ def write_stock(machine, changes):
         act = ch.get("action"); nm = ch.get("name") or ch.get("oldName")
         if not clicked:
             results.append({"action": act, "name": nm, "ok": False, "msg": "행/버튼 못 찾음"}); continue
-        row = cur.get(ch.get("name") or "")
+        row = cur.get((ch.get("name") or "").strip())
         if act == "delete":
-            ok = ch["oldName"] not in cur
+            ok = (ch["oldName"].strip() not in cur)
             results.append({"action": act, "name": ch["oldName"], "ok": ok, "msg": "삭제됨" if ok else "실패(아직 남음)"})
         else:
             ok = row is not None and str(row.get("qty")) == str(ch["qty"])
