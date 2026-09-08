@@ -85,21 +85,16 @@ def fixed_max(machine, product):
     return None
 
 STOCK_JS = r"""
-() => {
+(cols) => {
   const out = [];
   document.querySelectorAll('tr').forEach(tr => {
-    const cells = [...tr.querySelectorAll('td,th')].map(c => {
-      const i = c.querySelector('input,select');
-      return ((i ? i.value : c.textContent) || '').trim();
-    });
-    let pi = cells.findIndex(v => /[가-힣]/.test(v) && v.length < 30 && v !== '상품명');
-    if (pi < 0) return;
-    const product = cells[pi];
-    let qty = null;
-    for (let j = pi + 1; j < cells.length; j++) {
-      if (/^\d+$/.test(cells[j])) { qty = parseInt(cells[j], 10); break; }
-    }
-    if (product && qty !== null) out.push({ product: product, qty: qty });
+    const cs = [...tr.querySelectorAll('td,th')];
+    const val = i => { const c = cs[i]; if (!c) return ''; const inp = c.querySelector('input,select'); return ((inp ? inp.value : c.textContent) || '').trim(); };
+    const name = val(cols.name);
+    if (!name || name === '상품명' || !/[가-힣]/.test(name)) return;
+    const q = val(cols.qty); if (!/^\d+$/.test(q)) return;
+    const p = val(cols.price); const o = val(cols.order);
+    out.push({ product: name, qty: parseInt(q, 10), price: /^\d+$/.test(p) ? parseInt(p, 10) : null, order: o });
   });
   return out;
 }
@@ -124,7 +119,7 @@ def read_all_stock():
                     pg.wait_for_timeout(600)
                     pg.goto(plat["stock"], wait_until="networkidle", timeout=45000)
                     pg.wait_for_timeout(800)
-                    out[name] = pg.evaluate(STOCK_JS)
+                    out[name] = pg.evaluate(STOCK_JS, EDIT[plat_key]["cols"])
                 except Exception as e:
                     log(f"[{name}] 재고 읽기 실패: {e}")
         finally:
@@ -133,6 +128,152 @@ def read_all_stock():
 
 
 def log(*a): print(datetime.now(KST).strftime("%H:%M:%S"), *a, flush=True)
+
+
+# ── 재고 쓰기(수정·삭제·추가) ─────────────────────────────
+# 각 플랫폼의 편집 페이지와 열(입력칸) 위치
+EDIT = {
+    "vendingpay": {
+        "edit_url": "https://vendingpay.kr/dongseo/tech/app/ipgo.do",
+        "cols": {"order": 0, "name": 1, "qty": 2, "price": 3},
+        "add_url": "https://vendingpay.kr/dongseo/tech/app/ipgo.do",
+        "add_cols": {"order": 0, "name": 1, "qty": 2, "price": 3},
+        "add_btn": "입고",
+    },
+    "bangsopener": {
+        "edit_url": "http://bangsopener.co.kr/opener/kiosk/appadmin/proup.do",
+        "cols": {"order": 0, "name": 1, "qty": 2, "price": 4},   # 유통기한이 3번
+        "add_url": "http://bangsopener.co.kr/opener/kiosk/appadmin/ipgo.do",
+        "add_cols": {"name": 0, "qty": 1, "price": 2},
+        "add_btn": "저장",
+    },
+}
+
+# 한 행을 찾아(이름 또는 추가버튼 기준) 입력칸을 채우고 버튼을 누른다.
+JS_CONFIRM_YES = r"""
+() => {
+  const btns = [...document.querySelectorAll('button,a,input[type=button],input[type=submit],[onclick]')];
+  const yes = btns.filter(b => { const t=(b.textContent||b.value||'').trim(); return t==='예'||t==='확인'; });
+  for (let i = yes.length - 1; i >= 0; i--) {
+    const b = yes[i], r = b.getBoundingClientRect();
+    if (r.width > 0 && r.height > 0) { b.click(); return true; }
+  }
+  return false;
+}
+"""
+
+JS_FIND_ROW = r"""
+(a) => {
+  const rows = [...document.querySelectorAll('tr')];
+  for (let i = 0; i < rows.length; i++) {
+    const ins = rows[i].querySelectorAll('input');
+    if (a.findBy === 'name') {
+      if (ins.length > a.nameIdx && (ins[a.nameIdx].value||'').trim() === a.oldName) return i;
+    } else {
+      const b = [...rows[i].querySelectorAll('button,a,[onclick]')].find(x=>(x.textContent||'').trim().indexOf(a.btnText)>=0);
+      if (b && ins.length >= a.minInputs) return i;
+    }
+  }
+  return -1;
+}
+"""
+
+
+def _sets_for_update(cols, ch):
+    s = [{"idx": cols["name"], "val": ch["name"]},
+         {"idx": cols["qty"], "val": int(ch["qty"])},
+         {"idx": cols["price"], "val": int(ch["price"])}]
+    if "order" in cols and ch.get("order") not in (None, ""):
+        s.append({"idx": cols["order"], "val": ch["order"]})
+    return s
+
+def _sets_for_add(add_cols, ch):
+    s = [{"idx": add_cols["name"], "val": ch["name"]},
+         {"idx": add_cols["qty"], "val": int(ch["qty"])},
+         {"idx": add_cols["price"], "val": int(ch["price"])}]
+    if "order" in add_cols and ch.get("order") not in (None, ""):
+        s.append({"idx": add_cols["order"], "val": ch["order"]})
+    return s
+
+
+def write_stock(machine, changes):
+    """changes: [{action:'update'|'delete'|'add', oldName, order,name,qty,price}]
+    실제 편집 페이지에서 행을 찾아 수정/삭제/추가한다. 마지막에 다시 읽어 확인."""
+    try:
+        from playwright.sync_api import sync_playwright
+    except Exception:
+        return [{"action": c.get("action"), "name": c.get("name"), "ok": False, "msg": "Playwright 없음"} for c in changes]
+    minfo = {name: (code, plat_key) for name, code, plat_key in MACHINES}
+    if machine not in minfo:
+        return [{"action": c.get("action"), "name": c.get("name"), "ok": False, "msg": "기계 없음"} for c in changes]
+    code, plat_key = minfo[machine]; plat = PLATFORMS[plat_key]; ed = EDIT[plat_key]
+    ops = []
+    with sync_playwright() as p:
+        b = p.chromium.launch(headless=True)
+        pg = b.new_context(ignore_https_errors=True).new_page()
+        pg.on("dialog", lambda d: d.accept())
+        try:
+            pg.goto(plat["machine"].format(code=code), wait_until="networkidle", timeout=45000)
+            pg.wait_for_timeout(500)
+            for ch in changes:
+                act = ch.get("action")
+                try:
+                    if act == "add":
+                        pg.goto(ed["add_url"], wait_until="networkidle", timeout=45000); pg.wait_for_timeout(800)
+                        find = {"findBy": "addbtn", "btnText": ed["add_btn"], "minInputs": len(ed["add_cols"])}
+                        sets = _sets_for_add(ed["add_cols"], ch); btn = ed["add_btn"]
+                    elif act == "delete":
+                        pg.goto(ed["edit_url"], wait_until="networkidle", timeout=45000); pg.wait_for_timeout(800)
+                        find = {"findBy": "name", "nameIdx": ed["cols"]["name"], "oldName": ch["oldName"]}
+                        sets = []; btn = "삭제"
+                    else:
+                        pg.goto(ed["edit_url"], wait_until="networkidle", timeout=45000); pg.wait_for_timeout(800)
+                        find = {"findBy": "name", "nameIdx": ed["cols"]["name"], "oldName": ch.get("oldName", ch["name"])}
+                        sets = _sets_for_update(ed["cols"], ch); btn = "수정"
+                    idx = pg.evaluate(JS_FIND_ROW, find)
+                    if idx < 0:
+                        ops.append((ch, False)); log(f"[{machine}] {act} 행 못 찾음: {ch.get('name') or ch.get('oldName')}"); continue
+                    row = pg.locator("tr").nth(idx)
+                    for s in sets:                       # 실제 타이핑처럼 입력
+                        inp = row.locator("input").nth(s["idx"])
+                        inp.click(); inp.fill(str(s["val"]))
+                    row.get_by_text(btn, exact=False).first.click()   # 수정/삭제/입고 버튼
+                    pg.wait_for_timeout(700)
+                    try: pg.evaluate(JS_CONFIRM_YES)                    # '예' 확인 팝업 승인
+                    except Exception: pass
+                    pg.wait_for_timeout(1800)
+                    ops.append((ch, True))
+                except Exception as e:
+                    ops.append((ch, False)); log(f"[{machine}] {act} 오류: {e}")
+            try:
+                pg.goto(ed["edit_url"], wait_until="networkidle", timeout=45000); pg.wait_for_timeout(900)
+                cur = {r["product"]: r for r in pg.evaluate(STOCK_JS, ed["cols"])}
+            except Exception:
+                cur = {}
+        finally:
+            b.close()
+
+    results = []
+    for ch, clicked in ops:
+        act = ch.get("action"); nm = ch.get("name") or ch.get("oldName")
+        if not clicked:
+            results.append({"action": act, "name": nm, "ok": False, "msg": "행/버튼 못 찾음"}); continue
+        row = cur.get(ch.get("name") or "")
+        if act == "delete":
+            ok = ch["oldName"] not in cur
+            results.append({"action": act, "name": ch["oldName"], "ok": ok, "msg": "삭제됨" if ok else "실패(아직 남음)"})
+        else:
+            ok = row is not None and str(row.get("qty")) == str(ch["qty"])
+            results.append({"action": act, "name": nm, "ok": ok,
+                            "msg": ("추가됨" if act == "add" else "반영됨") if ok else f"실패(현재 {row.get('qty') if row else '없음'})"})
+    # 저장 뒤 재고 다시 읽어서 폰에도 반영되게
+    LAST_STOCK_RESET()
+    return results
+
+
+def LAST_STOCK_RESET():
+    global LAST_STOCK
+    LAST_STOCK = 0.0
 def clean_name(s): return SUFFIX_RE.sub("", (s or "").strip()).strip() or "(상품)"
 def to_int(v):
     d = re.sub(r"\D", "", str(v or "")); return int(d) if d else 0

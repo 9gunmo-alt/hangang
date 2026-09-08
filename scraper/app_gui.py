@@ -86,6 +86,40 @@ class Api:
         else: threading.Thread(target=lambda: BotThread()._cycle(), daemon=True).start()
         return True
 
+    # ===== 재고 수정 =====
+    def get_stock(self):
+        try:
+            s = bot.STOCK or {}
+            _gui_log(f"재고(저장본) 요청 — {sum(len(v) for v in s.values())}개")
+            return s
+        except Exception as e:
+            _gui_log("get_stock 오류:", e); return {}
+    def refresh_stock(self):
+        try:
+            _gui_log("재고 새로 읽는 중…")
+            s = bot.read_all_stock()
+            if s is None:
+                _gui_log("재고 읽기 불가 (Playwright 없음)"); return bot.STOCK or {}
+            for m, items in s.items():
+                for it in items:
+                    cap = bot.fixed_max(m, it["product"])
+                    if cap is not None: it["max"] = cap
+                    else:
+                        k = m + "\x01" + it["product"]
+                        bot.STOCK_MAX[k] = max(bot.STOCK_MAX.get(k, 0), it["qty"]); it["max"] = bot.STOCK_MAX[k]
+            bot.STOCK = s; bot.save_max(bot.STOCK_MAX)
+            _gui_log(f"재고 새로 읽음 — {sum(len(v) for v in s.values())}개")
+            return s
+        except Exception as e:
+            import traceback; _gui_log("refresh_stock 오류:", e); _fatal(traceback.format_exc()); return bot.STOCK or {}
+    def save_stock(self, machine, changes):
+        _gui_log(f"[{machine}] 재고 저장 시작 — {len(changes)}건 (실제 기계에 반영)…")
+        res = bot.write_stock(machine, changes)
+        for r in res:
+            _gui_log(("  ✔ " if r.get("ok") else "  ✗ ") + f"{r.get('action')} · {r.get('name')}" + ("" if r.get("ok") else f" ({r.get('msg')})"))
+        if _thread and _thread.is_alive(): _thread.wake()   # 곧 재고 다시 읽어 폰 반영
+        return res
+
 
 def main():
     global _window
