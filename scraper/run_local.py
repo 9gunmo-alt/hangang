@@ -73,6 +73,17 @@ def save_max(m):
 
 STOCK_MAX = {}   # {"기계\x01상품": 최대수량(게이지 기준)}
 
+# 고정 최대치 규칙: 라면1·라면2 기계는 상품별 최대가 정해져 있음
+CAP_MACHINES = {"라면1", "라면2"}
+CAP_SPECIAL = {"용기1": 50, "용기2": 30}   # 특정 상품
+CAP_DEFAULT = 8                             # 그 외(라면류)
+
+def fixed_max(machine, product):
+    """정해진 최대치가 있으면 반환, 없으면 None(=자동 최고수량 방식)."""
+    if machine in CAP_MACHINES:
+        return CAP_SPECIAL.get(product, CAP_DEFAULT)
+    return None
+
 STOCK_JS = r"""
 () => {
   const out = [];
@@ -256,9 +267,13 @@ def build():
             if s is not None:
                 for mname, items in s.items():
                     for it in items:
-                        k = mname + "\x01" + it["product"]
-                        STOCK_MAX[k] = max(STOCK_MAX.get(k, 0), it["qty"])  # 역대 최고=최대치
-                        it["max"] = STOCK_MAX[k]
+                        cap = fixed_max(mname, it["product"])
+                        if cap is not None:
+                            it["max"] = cap                     # 정해진 최대치
+                        else:
+                            k = mname + "\x01" + it["product"]
+                            STOCK_MAX[k] = max(STOCK_MAX.get(k, 0), it["qty"])  # 역대 최고
+                            it["max"] = STOCK_MAX[k]
                 STOCK = s; LAST_STOCK = time.time(); save_max(STOCK_MAX)
                 log("재고 갱신")
         except Exception as e:
