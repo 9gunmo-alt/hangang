@@ -102,6 +102,10 @@
   .gtab{flex:1 0 auto; border:1px solid var(--line); background:var(--surface); color:var(--muted); padding:8px 14px; border-radius:9px; font-size:14.5px; font-weight:700; cursor:pointer; font-family:inherit; white-space:nowrap;}
   .gtab.on{background:var(--ink); border-color:var(--ink); color:#fff;}
   .gempty{text-align:center; color:var(--muted); font-size:14.5px; padding:24px 0;}
+  .hxrow{display:flex; align-items:center; gap:10px; padding:9px 2px; border-top:0.5px solid var(--line);}
+  .hxt{font-size:12.5px; color:var(--muted); width:42px; font-variant-numeric:tabular-nums;}
+  .hxp{flex:1; font-size:15px;}
+  .hxa{font-size:15px; font-weight:800; font-variant-numeric:tabular-nums; white-space:nowrap;}
 
   /* data entry */
   details.entry{margin-top:30px; border-top:1px solid var(--line); padding-top:16px;}
@@ -148,6 +152,7 @@
 
   <div class="seg" id="topseg" style="margin-bottom:10px;">
     <button data-v="sales" class="on">매출</button>
+    <button data-v="history">내역</button>
     <button data-v="stock">재고</button>
   </div>
 
@@ -190,7 +195,8 @@ let prodGroup = "전체";  // 잘나가는 상품 그룹 탭
 const PGROUPS = [["전체",["라면1","라면2","냉동","냉장","슬림"]],["라면",["라면1","라면2"]],["냉동",["냉동"]],["냉장",["냉장"]],["슬림",["슬림"]]];
 let machFilter = "전체";
 let selCol = null;
-let view = "sales";     // sales | stock
+let view = "sales";     // sales | history | stock
+let histDay = "";       // 내역 날짜 필터 ("" = 전체)
 const LOW = 5;          // 재고 이하면 '곧 떨어짐' 경고
 
 /* ---------- storage (persist across sessions when available) ---------- */
@@ -274,6 +280,33 @@ function scopeMonth(){return selMonth||thisMonth();}
 function availableMonths(){var set={};TX.forEach(function(r){if(r.date)set[r.date.slice(0,7)]=1;});set[thisMonth()]=1;return Object.keys(set).sort().reverse();}
 function monthDayList(ym){var y=+ym.slice(0,4),m=+ym.slice(5,7);var last=new Date(y,m,0).getDate();var out=[];for(var d=1;d<=last;d++){out.push(ym+"-"+String(d).padStart(2,"0"));}return out;}
 
+/* ---------- 결제 내역 ---------- */
+function availDates(){var s={};TX.forEach(function(r){if(r.date)s[r.date]=1;});return Object.keys(s).sort().reverse();}
+function historyView(){
+  const groups={};
+  TX.forEach(function(r){var k=r.date+"T"+r.time+"|"+r.machine; if(!groups[k])groups[k]={date:r.date,time:r.time,items:[],amt:0}; groups[k].items.push(r.product); groups[k].amt+=r.amount;});
+  let arr=Object.keys(groups).map(function(k){return groups[k];});
+  if(histDay) arr=arr.filter(function(g){return g.date===histDay;});
+  arr.sort(function(a,b){return (b.date+b.time).localeCompare(a.date+a.time);});
+  const dates=availDates();
+  const opts='<option value="">날짜 선택…</option>'+dates.map(function(d){return '<option value="'+d+'"'+(d===histDay?' selected':'')+'>'+d+(d===todayStr()?' (오늘)':'')+'</option>';}).join('');
+  const filter='<div style="display:flex;gap:8px;margin-bottom:12px;">'
+    +'<button id="histAll" class="chip '+(histDay?'':'on')+'" style="flex:0 0 auto;">전체</button>'
+    +'<select id="histSel" style="flex:1;font-family:inherit;font-size:14px;font-weight:600;border:1px solid var(--line);border-radius:11px;padding:8px 10px;background:var(--surface);color:var(--ink);">'+opts+'</select></div>';
+  if(!arr.length) return filter+'<div class="empty"><b>결제 내역이 없어요</b>잠시 뒤 새로고침 해보세요.</div>';
+  let html=filter, lastDate=null;
+  arr.forEach(function(g){
+    if(g.date!==lastDate){ html+='<div style="font-size:12px;color:var(--muted);font-weight:700;margin:14px 2px 6px;">'+(g.date===todayStr()?"오늘":dayLabel(g.date))+'</div>'; lastDate=g.date; }
+    const n=g.items.length; const label=n>1?(g.items[0]+" 외"+(n-1)+"개"):g.items[0];
+    html+='<div class="hxrow"><span class="hxt">'+g.time+'</span><span class="hxp">'+label+'</span><span class="hxa">'+won(g.amt)+'원</span></div>';
+  });
+  return html;
+}
+function wireHistory(){
+  var a=document.getElementById("histAll"); if(a)a.onclick=function(){histDay="";render();};
+  var s=document.getElementById("histSel"); if(s)s.onchange=function(){histDay=s.value;render();};
+}
+
 /* ---------- 재고 보기 ---------- */
 function stockView(){
   const data = window.__stockData || {};
@@ -310,14 +343,20 @@ function render(){
   var liveEl=document.querySelector(".live");
   if(liveEl && window.__auto){ liveEl.textContent = window.__updated ? ("업데이트 "+fmtUpdated(window.__updated)) : "자동 수집"; }
 
-  var isStock=(view==="stock");
-  document.getElementById("seg").style.display=isStock?"none":"flex";
-  document.querySelector(".hero").style.display=isStock?"none":"block";
+  var isStock=(view==="stock"), isHist=(view==="history");
+  document.getElementById("seg").style.display=(isStock||isHist)?"none":"flex";
+  document.querySelector(".hero").style.display=(isStock||isHist)?"none":"block";
+  document.querySelector(".chips").style.display=isHist?"none":"flex";
   document.querySelectorAll("#topseg button").forEach(function(x){x.classList.toggle("on",x.dataset.v===view);});
 
   renderChips();
   renderMonthSel();
 
+  if(isHist){
+    document.getElementById("content").innerHTML = historyView();
+    wireHistory();
+    return;
+  }
   if(isStock){
     document.getElementById("content").innerHTML = stockView();
     return;
