@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-08T22:55+09:00",
+ "generated_at": "2026-09-08T22:56+09:00",
  "machines": [
   "라면1",
   "라면2",
@@ -1802,7 +1802,7 @@
    },
    {
     "product": "진짬뽕",
-    "qty": 8,
+    "qty": 7,
     "price": 4000,
     "order": "14",
     "max": 8
@@ -2254,14 +2254,14 @@
     "qty": 6,
     "price": 1000,
     "order": "1",
-    "max": 6
+    "max": 8
    },
    {
     "product": "햇반",
     "qty": 7,
     "price": 1000,
     "order": "2",
-    "max": 7
+    "max": 8
    },
    {
     "product": "햇반",
