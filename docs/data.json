@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-09T08:20+09:00",
+ "generated_at": "2026-09-09T08:21+09:00",
  "machines": [
   "라면1",
   "라면2",
@@ -2352,17 +2352,17 @@
    },
    {
     "product": "펩시제로",
-    "qty": 9,
+    "qty": 10,
     "price": 2000,
     "order": "0",
-    "max": 9
+    "max": 10
    },
    {
     "product": "칠성사이다",
-    "qty": 8,
+    "qty": 10,
     "price": 2000,
     "order": "0",
-    "max": 8
+    "max": 10
    },
    {
     "product": "포카리스웨트",
@@ -2373,10 +2373,10 @@
    },
    {
     "product": "옥수수수염차",
-    "qty": 4,
+    "qty": 10,
     "price": 2000,
     "order": "0",
-    "max": 4
+    "max": 10
    },
    {
     "product": "생수",
@@ -2392,14 +2392,14 @@
     "qty": 6,
     "price": 1000,
     "order": "1",
-    "max": 6
+    "max": 8
    },
    {
     "product": "햇반",
     "qty": 7,
     "price": 1000,
     "order": "2",
-    "max": 7
+    "max": 8
    },
    {
     "product": "햇반",
