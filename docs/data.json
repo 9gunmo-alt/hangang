@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-08T22:10+09:00",
+ "generated_at": "2026-09-08T22:12+09:00",
  "machines": [
   "라면1",
   "라면2",
@@ -2242,14 +2242,14 @@
     "qty": 7,
     "price": 1000,
     "order": "1",
-    "max": 7
+    "max": 8
    },
    {
     "product": "햇반",
     "qty": 7,
     "price": 1000,
     "order": "2",
-    "max": 7
+    "max": 8
    },
    {
     "product": "햇반",
