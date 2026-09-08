@@ -219,30 +219,41 @@ def write_stock(machine, changes):
                 act = ch.get("action")
                 try:
                     if act == "add":
-                        pg.goto(ed["add_url"], wait_until="networkidle", timeout=45000); pg.wait_for_timeout(800)
+                        target_url = ed["add_url"]
                         find = {"findBy": "addbtn", "btnText": ed["add_btn"], "minInputs": len(ed["add_cols"])}
                         sets = _sets_for_add(ed["add_cols"], ch); btn = ed["add_btn"]
                     elif act == "delete":
-                        pg.goto(ed["edit_url"], wait_until="networkidle", timeout=45000); pg.wait_for_timeout(800)
+                        target_url = ed["edit_url"]
                         find = {"findBy": "name", "nameIdx": ed["cols"]["name"], "oldName": ch["oldName"]}
                         sets = []; btn = "삭제"
                     else:
-                        pg.goto(ed["edit_url"], wait_until="networkidle", timeout=45000); pg.wait_for_timeout(800)
+                        target_url = ed["edit_url"]
                         find = {"findBy": "name", "nameIdx": ed["cols"]["name"], "oldName": ch.get("oldName", ch["name"])}
                         sets = _sets_for_update(ed["cols"], ch); btn = "수정"
-                    idx = pg.evaluate(JS_FIND_ROW, find)
-                    if idx < 0:
-                        ops.append((ch, False)); log(f"[{machine}] {act} 행 못 찾음: {ch.get('name') or ch.get('oldName')}"); continue
-                    row = pg.locator("tr").nth(idx)
-                    for s in sets:                       # 실제 타이핑처럼 입력
-                        inp = row.locator("input").nth(s["idx"])
-                        inp.click(); inp.fill(str(s["val"]))
-                    row.get_by_text(btn, exact=False).first.click()   # 수정/삭제/입고 버튼
-                    pg.wait_for_timeout(700)
-                    try: pg.evaluate(JS_CONFIRM_YES)                    # '예' 확인 팝업 승인
-                    except Exception: pass
-                    pg.wait_for_timeout(1800)
-                    ops.append((ch, True))
+
+                    done = False
+                    for attempt in range(2):   # 밀리면 한 번 재시도
+                        pg.goto(target_url, wait_until="networkidle", timeout=45000)
+                        try: pg.wait_for_function("document.querySelectorAll('input').length > 3", timeout=8000)
+                        except Exception: pass
+                        pg.wait_for_timeout(700)
+                        idx = pg.evaluate(JS_FIND_ROW, find)
+                        if idx < 0:
+                            pg.wait_for_timeout(1000); continue
+                        row = pg.locator("tr").nth(idx)
+                        for s in sets:
+                            inp = row.locator("input").nth(s["idx"]); inp.click(); inp.fill(str(s["val"]))
+                        row.get_by_text(btn, exact=False).first.click()
+                        pg.wait_for_timeout(800)
+                        try: pg.evaluate(JS_CONFIRM_YES)                    # '예' 팝업 승인
+                        except Exception: pass
+                        # 저장 반영(새로고침/ajax)이 끝날 때까지 대기 → 다음 항목과 충돌 방지
+                        try: pg.wait_for_load_state("networkidle", timeout=15000)
+                        except Exception: pass
+                        pg.wait_for_timeout(1500)
+                        done = True; break
+                    ops.append((ch, done))
+                    if not done: log(f"[{machine}] {act} 행 못 찾음: {ch.get('name') or ch.get('oldName')}")
                 except Exception as e:
                     ops.append((ch, False)); log(f"[{machine}] {act} 오류: {e}")
             try:
