@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-08T22:56+09:00",
+ "generated_at": "2026-09-09T08:07+09:00",
  "machines": [
   "라면1",
   "라면2",
@@ -8,6 +8,144 @@
   "슬림"
  ],
  "transactions": [
+  {
+   "machine": "냉동",
+   "product": "고기만두",
+   "amount": 2500,
+   "datetime": "2026-09-09T05:28"
+  },
+  {
+   "machine": "냉동",
+   "product": "오꾸밥(김치치즈)",
+   "amount": 4000,
+   "datetime": "2026-09-09T05:28"
+  },
+  {
+   "machine": "냉장",
+   "product": "나랑드사이다",
+   "amount": 1500,
+   "datetime": "2026-09-09T05:28"
+  },
+  {
+   "machine": "냉장",
+   "product": "포카리스웨트",
+   "amount": 4000,
+   "datetime": "2026-09-09T05:28"
+  },
+  {
+   "machine": "냉장",
+   "product": "옥수수수염차",
+   "amount": 2000,
+   "datetime": "2026-09-09T05:28"
+  },
+  {
+   "machine": "냉장",
+   "product": "날계란",
+   "amount": 500,
+   "datetime": "2026-09-09T05:28"
+  },
+  {
+   "machine": "냉장",
+   "product": "옥수수수염차",
+   "amount": 2000,
+   "datetime": "2026-09-09T05:28"
+  },
+  {
+   "machine": "냉동",
+   "product": "매콤제육김밥",
+   "amount": 4500,
+   "datetime": "2026-09-09T05:27"
+  },
+  {
+   "machine": "냉동",
+   "product": "매콤떡볶이",
+   "amount": 4500,
+   "datetime": "2026-09-09T05:27"
+  },
+  {
+   "machine": "냉동",
+   "product": "참치김밥",
+   "amount": 4500,
+   "datetime": "2026-09-09T05:27"
+  },
+  {
+   "machine": "냉동",
+   "product": "참치김밥",
+   "amount": 4500,
+   "datetime": "2026-09-09T05:27"
+  },
+  {
+   "machine": "냉동",
+   "product": "고기만두",
+   "amount": 2500,
+   "datetime": "2026-09-09T05:27"
+  },
+  {
+   "machine": "냉동",
+   "product": "매콤제육김밥",
+   "amount": 4500,
+   "datetime": "2026-09-09T05:27"
+  },
+  {
+   "machine": "냉장",
+   "product": "생수",
+   "amount": 1000,
+   "datetime": "2026-09-09T05:27"
+  },
+  {
+   "machine": "냉장",
+   "product": "날계란",
+   "amount": 500,
+   "datetime": "2026-09-09T05:27"
+  },
+  {
+   "machine": "냉장",
+   "product": "날계란",
+   "amount": 500,
+   "datetime": "2026-09-09T05:27"
+  },
+  {
+   "machine": "냉장",
+   "product": "체다치즈",
+   "amount": 500,
+   "datetime": "2026-09-09T05:27"
+  },
+  {
+   "machine": "냉장",
+   "product": "날계란",
+   "amount": 500,
+   "datetime": "2026-09-09T05:27"
+  },
+  {
+   "machine": "라면2",
+   "product": "너구리",
+   "amount": 4000,
+   "datetime": "2026-09-09T00:15"
+  },
+  {
+   "machine": "라면2",
+   "product": "삼양라면",
+   "amount": 3500,
+   "datetime": "2026-09-09T00:14"
+  },
+  {
+   "machine": "라면2",
+   "product": "너구리",
+   "amount": 4000,
+   "datetime": "2026-09-08T23:12"
+  },
+  {
+   "machine": "라면1",
+   "product": "너구리",
+   "amount": 4000,
+   "datetime": "2026-09-08T23:03"
+  },
+  {
+   "machine": "라면1",
+   "product": "무파마",
+   "amount": 4000,
+   "datetime": "2026-09-08T23:03"
+  },
   {
    "machine": "슬림",
    "product": "햇반",
@@ -1712,28 +1850,28 @@
    {
     "product": "신라면",
     "qty": 8,
-    "price": 4000,
+    "price": 3800,
     "order": "1",
     "max": 8
    },
    {
     "product": "진라면(매운맛)",
     "qty": 8,
-    "price": 4000,
+    "price": 3500,
     "order": "2",
     "max": 8
    },
    {
     "product": "진라면(순한맛)",
     "qty": 8,
-    "price": 4000,
+    "price": 3500,
     "order": "3",
     "max": 8
    },
    {
     "product": "안성탕면",
     "qty": 8,
-    "price": 4000,
+    "price": 3500,
     "order": "4",
     "max": 8
    },
@@ -1753,22 +1891,22 @@
    },
    {
     "product": "무파마",
-    "qty": 8,
-    "price": 4000,
+    "qty": 7,
+    "price": 3800,
     "order": "7",
     "max": 8
    },
    {
     "product": "너구리",
-    "qty": 8,
-    "price": 4000,
+    "qty": 7,
+    "price": 3800,
     "order": "8",
     "max": 8
    },
    {
     "product": "열라면",
     "qty": 8,
-    "price": 4000,
+    "price": 3500,
     "order": "9",
     "max": 8
    },
@@ -1782,7 +1920,7 @@
    {
     "product": "까르보불닭",
     "qty": 8,
-    "price": 4500,
+    "price": 4200,
     "order": "11",
     "max": 8
    },
@@ -1796,7 +1934,7 @@
    {
     "product": "오징어짬뽕",
     "qty": 8,
-    "price": 4000,
+    "price": 3800,
     "order": "13",
     "max": 8
    },
@@ -1810,13 +1948,13 @@
    {
     "product": "멸치칼국수",
     "qty": 8,
-    "price": 4000,
+    "price": 3800,
     "order": "15",
     "max": 8
    },
    {
     "product": "용기1",
-    "qty": 10,
+    "qty": 8,
     "price": 10,
     "order": "18",
     "max": 50
@@ -1833,34 +1971,34 @@
    {
     "product": "신라면",
     "qty": 8,
-    "price": 4000,
+    "price": 3800,
     "order": "1",
     "max": 8
    },
    {
     "product": "진라면(매운맛)",
     "qty": 8,
-    "price": 4000,
+    "price": 3500,
     "order": "2",
     "max": 8
    },
    {
     "product": "진라면(순한맛)",
     "qty": 8,
-    "price": 4000,
+    "price": 3500,
     "order": "3",
     "max": 8
    },
    {
     "product": "안성탕면",
     "qty": 8,
-    "price": 4000,
+    "price": 3500,
     "order": "4",
     "max": 8
    },
    {
     "product": "삼양라면",
-    "qty": 8,
+    "qty": 7,
     "price": 3500,
     "order": "5",
     "max": 8
@@ -1875,21 +2013,21 @@
    {
     "product": "무파마",
     "qty": 8,
-    "price": 4000,
+    "price": 3800,
     "order": "7",
     "max": 8
    },
    {
     "product": "너구리",
-    "qty": 8,
-    "price": 4000,
+    "qty": 6,
+    "price": 3800,
     "order": "8",
     "max": 8
    },
    {
     "product": "열라면",
     "qty": 8,
-    "price": 4000,
+    "price": 3500,
     "order": "9",
     "max": 8
    },
@@ -1903,7 +2041,7 @@
    {
     "product": "까르보불닭",
     "qty": 8,
-    "price": 4500,
+    "price": 4200,
     "order": "11",
     "max": 8
    },
@@ -1917,7 +2055,7 @@
    {
     "product": "오징어짬뽕",
     "qty": 8,
-    "price": 4000,
+    "price": 3800,
     "order": "13",
     "max": 8
    },
@@ -1931,13 +2069,13 @@
    {
     "product": "멸치칼국수",
     "qty": 8,
-    "price": 4000,
+    "price": 3800,
     "order": "15",
     "max": 8
    },
    {
     "product": "용기1",
-    "qty": 27,
+    "qty": 24,
     "price": 10,
     "order": "18",
     "max": 50
@@ -2037,7 +2175,7 @@
    },
    {
     "product": "고기만두",
-    "qty": 9,
+    "qty": 8,
     "price": 2500,
     "order": "13",
     "max": 9
@@ -2103,7 +2241,7 @@
    {
     "product": "날계란",
     "qty": 7,
-    "price": 500,
+    "price": 600,
     "order": "1",
     "max": 7
    },
@@ -2172,7 +2310,7 @@
    },
    {
     "product": "나랑드사이다",
-    "qty": 14,
+    "qty": 13,
     "price": 1500,
     "order": "0",
     "max": 14
@@ -2228,14 +2366,14 @@
    },
    {
     "product": "포카리스웨트",
-    "qty": 5,
+    "qty": 4,
     "price": 2000,
     "order": "0",
     "max": 5
    },
    {
     "product": "옥수수수염차",
-    "qty": 6,
+    "qty": 4,
     "price": 2000,
     "order": "0",
     "max": 6
