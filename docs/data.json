@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-09T05:28+09:00",
+ "generated_at": "2026-09-09T05:29+09:00",
  "machines": [
   "라면1",
   "라면2",
@@ -8,6 +8,48 @@
   "슬림"
  ],
  "transactions": [
+  {
+   "machine": "냉동",
+   "product": "고기만두",
+   "amount": 2500,
+   "datetime": "2026-09-09T05:28"
+  },
+  {
+   "machine": "냉동",
+   "product": "오꾸밥(김치치즈)",
+   "amount": 4000,
+   "datetime": "2026-09-09T05:28"
+  },
+  {
+   "machine": "냉장",
+   "product": "나랑드사이다",
+   "amount": 1500,
+   "datetime": "2026-09-09T05:28"
+  },
+  {
+   "machine": "냉장",
+   "product": "포카리스웨트",
+   "amount": 4000,
+   "datetime": "2026-09-09T05:28"
+  },
+  {
+   "machine": "냉장",
+   "product": "옥수수수염차",
+   "amount": 2000,
+   "datetime": "2026-09-09T05:28"
+  },
+  {
+   "machine": "냉장",
+   "product": "날계란",
+   "amount": 500,
+   "datetime": "2026-09-09T05:28"
+  },
+  {
+   "machine": "냉장",
+   "product": "옥수수수염차",
+   "amount": 2000,
+   "datetime": "2026-09-09T05:28"
+  },
   {
    "machine": "냉동",
    "product": "매콤제육김밥",
