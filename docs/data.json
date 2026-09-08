@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-09T08:04+09:00",
+ "generated_at": "2026-09-09T08:05+09:00",
  "machines": [
   "라면1",
   "라면2",
@@ -1992,7 +1992,7 @@
    {
     "product": "안성탕면",
     "qty": 8,
-    "price": 4000,
+    "price": 3500,
     "order": "4",
     "max": 8
    },
@@ -2013,21 +2013,21 @@
    {
     "product": "무파마",
     "qty": 8,
-    "price": 4000,
+    "price": 3800,
     "order": "7",
     "max": 8
    },
    {
     "product": "너구리",
     "qty": 6,
-    "price": 4000,
+    "price": 3800,
     "order": "8",
     "max": 8
    },
    {
     "product": "열라면",
     "qty": 8,
-    "price": 4000,
+    "price": 3500,
     "order": "9",
     "max": 8
    },
@@ -2041,7 +2041,7 @@
    {
     "product": "까르보불닭",
     "qty": 8,
-    "price": 4500,
+    "price": 4200,
     "order": "11",
     "max": 8
    },
@@ -2055,7 +2055,7 @@
    {
     "product": "오징어짬뽕",
     "qty": 8,
-    "price": 4000,
+    "price": 3800,
     "order": "13",
     "max": 8
    },
@@ -2069,7 +2069,7 @@
    {
     "product": "멸치칼국수",
     "qty": 8,
-    "price": 4000,
+    "price": 3800,
     "order": "15",
     "max": 8
    },
