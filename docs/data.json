@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-09T13:49+09:00",
+ "generated_at": "2026-09-09T13:51+09:00",
  "machines": [
   "라면1",
   "라면2",
@@ -8,6 +8,12 @@
   "슬림"
  ],
  "transactions": [
+  {
+   "machine": "냉동",
+   "product": "오뚜기UNO피자(콤비)",
+   "amount": 3500,
+   "datetime": "2026-09-09T13:51"
+  },
   {
    "machine": "냉장",
    "product": "생수",
