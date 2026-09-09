@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-09T22:41+09:00",
+ "generated_at": "2026-09-10T01:14+09:00",
  "machines": [
   "라면1",
   "라면2",
@@ -8,6 +8,12 @@
   "슬림"
  ],
  "transactions": [
+  {
+   "machine": "냉동",
+   "product": "한맥 불벅",
+   "amount": 3000,
+   "datetime": "2026-09-10T01:13"
+  },
   {
    "machine": "라면1",
    "product": "짜파게티",
