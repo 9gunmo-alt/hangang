@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-10T18:55+09:00",
+ "generated_at": "2026-09-10T18:56+09:00",
  "machines": [
   "라면1",
   "라면2",
@@ -12,6 +12,12 @@
    "machine": "라면1",
    "product": "신라면",
    "amount": 3800,
+   "datetime": "2026-09-10T18:55"
+  },
+  {
+   "machine": "라면2",
+   "product": "참깨라면",
+   "amount": 4000,
    "datetime": "2026-09-10T18:55"
   },
   {
