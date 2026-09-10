@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-10T14:53+09:00",
+ "generated_at": "2026-09-10T14:55+09:00",
  "machines": [
   "라면1",
   "라면2",
@@ -2596,7 +2596,7 @@
    },
    {
     "product": "생수",
-    "qty": 9,
+    "qty": 8,
     "price": 1000,
     "order": "0",
     "max": 10
@@ -2605,24 +2605,24 @@
   "슬림": [
    {
     "product": "햇반",
-    "qty": 6,
+    "qty": 10,
     "price": 1200,
     "order": "1",
-    "max": 8
+    "max": 10
    },
    {
     "product": "햇반",
-    "qty": 7,
+    "qty": 10,
     "price": 1200,
     "order": "2",
-    "max": 8
+    "max": 10
    },
    {
     "product": "햇반",
     "qty": 7,
     "price": 1200,
     "order": "3",
-    "max": 8
+    "max": 10
    },
    {
     "product": "불닭볶음면",
