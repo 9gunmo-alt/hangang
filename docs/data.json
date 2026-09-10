@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-10T21:32+09:00",
+ "generated_at": "2026-09-10T21:59+09:00",
  "machines": [
   "라면1",
   "라면2",
@@ -8,6 +8,18 @@
   "슬림"
  ],
  "transactions": [
+  {
+   "machine": "냉장",
+   "product": "옥수수수염차",
+   "amount": 6000,
+   "datetime": "2026-09-10T21:59"
+  },
+  {
+   "machine": "라면2",
+   "product": "불닭볶음면",
+   "amount": 4000,
+   "datetime": "2026-09-10T21:58"
+  },
   {
    "machine": "냉장",
    "product": "단무지",
@@ -2341,7 +2353,7 @@
    },
    {
     "product": "불닭볶음면",
-    "qty": 8,
+    "qty": 7,
     "price": 4000,
     "order": "12",
     "max": 8
@@ -2369,7 +2381,7 @@
    },
    {
     "product": "용기1",
-    "qty": 11,
+    "qty": 10,
     "price": 10,
     "order": "18",
     "max": 50
@@ -2667,7 +2679,7 @@
    },
    {
     "product": "옥수수수염차",
-    "qty": 10,
+    "qty": 7,
     "price": 2000,
     "order": "0",
     "max": 10
