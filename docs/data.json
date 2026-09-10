@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-10T21:20+09:00",
+ "generated_at": "2026-09-10T21:21+09:00",
  "machines": [
   "라면1",
   "라면2",
@@ -8,6 +8,12 @@
   "슬림"
  ],
  "transactions": [
+  {
+   "machine": "라면2",
+   "product": "까르보불닭",
+   "amount": 4200,
+   "datetime": "2026-09-10T21:20"
+  },
   {
    "machine": "라면1",
    "product": "진짬뽕",
@@ -2222,7 +2228,7 @@
    },
    {
     "product": "진짬뽕",
-    "qty": 7,
+    "qty": 6,
     "price": 4000,
     "order": "14",
     "max": 8
@@ -2243,7 +2249,7 @@
    },
    {
     "product": "용기2",
-    "qty": 27,
+    "qty": 26,
     "price": 10,
     "order": "19",
     "max": 30
@@ -2322,7 +2328,7 @@
    },
    {
     "product": "까르보불닭",
-    "qty": 8,
+    "qty": 7,
     "price": 4200,
     "order": "11",
     "max": 8
@@ -2357,7 +2363,7 @@
    },
    {
     "product": "용기1",
-    "qty": 12,
+    "qty": 11,
     "price": 10,
     "order": "18",
     "max": 50
