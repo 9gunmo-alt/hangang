@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-10T13:13+09:00",
+ "generated_at": "2026-09-10T13:17+09:00",
  "machines": [
   "라면1",
   "라면2",
@@ -8,6 +8,18 @@
   "슬림"
  ],
  "transactions": [
+  {
+   "machine": "냉장",
+   "product": "체다치즈",
+   "amount": 500,
+   "datetime": "2026-09-10T13:17"
+  },
+  {
+   "machine": "냉장",
+   "product": "체다치즈",
+   "amount": 500,
+   "datetime": "2026-09-10T13:16"
+  },
   {
    "machine": "라면1",
    "product": "삼양라면",
