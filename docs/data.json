@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-10T18:59+09:00",
+ "generated_at": "2026-09-10T19:21+09:00",
  "machines": [
   "라면1",
   "라면2",
@@ -8,6 +8,12 @@
   "슬림"
  ],
  "transactions": [
+  {
+   "machine": "냉동",
+   "product": "참치김밥",
+   "amount": 4500,
+   "datetime": "2026-09-10T19:20"
+  },
   {
    "machine": "냉동",
    "product": "고기만두",
@@ -2395,7 +2401,7 @@
    },
    {
     "product": "참치김밥",
-    "qty": 7,
+    "qty": 6,
     "price": 4500,
     "order": "11",
     "max": 8
