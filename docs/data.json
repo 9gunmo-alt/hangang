@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T12:15+09:00",
+ "generated_at": "2026-09-11T12:16+09:00",
  "machines": [
   "라면1",
   "라면2",
@@ -8,6 +8,12 @@
   "슬림"
  ],
  "transactions": [
+  {
+   "machine": "냉동",
+   "product": "김치만두",
+   "amount": 5000,
+   "datetime": "2026-09-11T12:15"
+  },
   {
    "machine": "냉장",
    "product": "의성마늘 소세지",
