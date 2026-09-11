@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T16:52+09:00",
+ "generated_at": "2026-09-11T16:54+09:00",
  "machines": [
   "라면1",
   "라면2",
@@ -8,6 +8,12 @@
   "슬림"
  ],
  "transactions": [
+  {
+   "machine": "냉장",
+   "product": "나랑드사이다",
+   "amount": 1500,
+   "datetime": "2026-09-11T16:54"
+  },
   {
    "machine": "라면2",
    "product": "멸치칼국수",
@@ -2668,14 +2674,14 @@
    },
    {
     "product": "멸치칼국수",
-    "qty": 8,
+    "qty": 7,
     "price": 3800,
     "order": "15",
     "max": 8
    },
    {
     "product": "용기1",
-    "qty": 24,
+    "qty": 23,
     "price": 10,
     "order": "18",
     "max": 50
@@ -2910,7 +2916,7 @@
    },
    {
     "product": "나랑드사이다",
-    "qty": 11,
+    "qty": 10,
     "price": 1500,
     "order": "0",
     "max": 13
