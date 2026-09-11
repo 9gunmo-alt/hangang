@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T13:28+09:00",
+ "generated_at": "2026-09-11T13:33+09:00",
  "machines": [
   "라면1",
   "라면2",
@@ -8,6 +8,12 @@
   "슬림"
  ],
  "transactions": [
+  {
+   "machine": "라면2",
+   "product": "열라면",
+   "amount": 3500,
+   "datetime": "2026-09-11T13:33"
+  },
   {
    "machine": "라면2",
    "product": "너구리",
@@ -2467,21 +2473,21 @@
    },
    {
     "product": "무파마",
-    "qty": 7,
+    "qty": 8,
     "price": 3800,
     "order": "7",
     "max": 8
    },
    {
     "product": "너구리",
-    "qty": 7,
+    "qty": 8,
     "price": 3800,
     "order": "8",
     "max": 8
    },
    {
     "product": "열라면",
-    "qty": 7,
+    "qty": 8,
     "price": 3500,
     "order": "9",
     "max": 8
@@ -2523,7 +2529,7 @@
    },
    {
     "product": "멸치칼국수",
-    "qty": 7,
+    "qty": 8,
     "price": 3800,
     "order": "15",
     "max": 8
@@ -2602,7 +2608,7 @@
    },
    {
     "product": "열라면",
-    "qty": 8,
+    "qty": 7,
     "price": 3500,
     "order": "9",
     "max": 8
@@ -2651,7 +2657,7 @@
    },
    {
     "product": "용기1",
-    "qty": 25,
+    "qty": 24,
     "price": 10,
     "order": "18",
     "max": 50
