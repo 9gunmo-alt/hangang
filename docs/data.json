@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T11:54+09:00",
+ "generated_at": "2026-09-11T11:55+09:00",
  "machines": [
   "라면1",
   "라면2",
@@ -8,6 +8,12 @@
   "슬림"
  ],
  "transactions": [
+  {
+   "machine": "냉장",
+   "product": "볶음김치",
+   "amount": 1500,
+   "datetime": "2026-09-11T11:55"
+  },
   {
    "machine": "라면1",
    "product": "신라면",
@@ -2341,7 +2347,7 @@
   "라면1": [
    {
     "product": "신라면",
-    "qty": 8,
+    "qty": 7,
     "price": 3800,
     "order": "1",
     "max": 8
@@ -2446,7 +2452,7 @@
    },
    {
     "product": "용기1",
-    "qty": 47,
+    "qty": 46,
     "price": 10,
     "order": "18",
     "max": 50
@@ -2483,7 +2489,7 @@
    },
    {
     "product": "안성탕면",
-    "qty": 8,
+    "qty": 7,
     "price": 3500,
     "order": "4",
     "max": 8
@@ -2567,7 +2573,7 @@
    },
    {
     "product": "용기1",
-    "qty": 30,
+    "qty": 29,
     "price": 10,
     "order": "18",
     "max": 50
@@ -2746,7 +2752,7 @@
    },
    {
     "product": "볶음김치",
-    "qty": 15,
+    "qty": 14,
     "price": 1500,
     "order": "3",
     "max": 15
