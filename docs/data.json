@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T08:45+09:00",
+ "generated_at": "2026-09-11T10:48+09:00",
  "machines": [
   "라면1",
   "라면2",
@@ -8,6 +8,12 @@
   "슬림"
  ],
  "transactions": [
+  {
+   "machine": "냉장",
+   "product": "옥수수수염차",
+   "amount": 2000,
+   "datetime": "2026-09-11T10:47"
+  },
   {
    "machine": "냉동",
    "product": "참치김밥",
