@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-12T07:09+09:00",
+ "generated_at": "2026-09-12T07:41+09:00",
  "machines": [
   "라면1",
   "라면2",
@@ -8,6 +8,12 @@
   "슬림"
  ],
  "transactions": [
+  {
+   "machine": "냉장",
+   "product": "옥수수수염차",
+   "amount": 2000,
+   "datetime": "2026-09-12T07:41"
+  },
   {
    "machine": "냉동",
    "product": "오꾸밥(참치마요)",
@@ -3051,7 +3057,7 @@
    },
    {
     "product": "옥수수수염차",
-    "qty": 8,
+    "qty": 7,
     "price": 2000,
     "order": "0",
     "max": 10
