@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T13:06+09:00",
+ "generated_at": "2026-09-11T13:28+09:00",
  "machines": [
   "라면1",
   "라면2",
@@ -2425,7 +2425,7 @@
   "라면1": [
    {
     "product": "신라면",
-    "qty": 7,
+    "qty": 8,
     "price": 3800,
     "order": "1",
     "max": 8
@@ -2453,7 +2453,7 @@
    },
    {
     "product": "삼양라면",
-    "qty": 7,
+    "qty": 8,
     "price": 3500,
     "order": "5",
     "max": 8
@@ -2546,7 +2546,7 @@
   "라면2": [
    {
     "product": "신라면",
-    "qty": 6,
+    "qty": 8,
     "price": 3800,
     "order": "1",
     "max": 8
@@ -2560,14 +2560,14 @@
    },
    {
     "product": "진라면(순한맛)",
-    "qty": 6,
+    "qty": 8,
     "price": 3500,
     "order": "3",
     "max": 8
    },
    {
     "product": "안성탕면",
-    "qty": 7,
+    "qty": 8,
     "price": 3500,
     "order": "4",
     "max": 8
@@ -2581,42 +2581,42 @@
    },
    {
     "product": "참깨라면",
-    "qty": 7,
+    "qty": 8,
     "price": 4000,
     "order": "6",
     "max": 8
    },
    {
     "product": "무파마",
-    "qty": 6,
+    "qty": 8,
     "price": 3800,
     "order": "7",
     "max": 8
    },
    {
     "product": "너구리",
-    "qty": 5,
+    "qty": 8,
     "price": 3800,
     "order": "8",
     "max": 8
    },
    {
     "product": "열라면",
-    "qty": 6,
+    "qty": 8,
     "price": 3500,
     "order": "9",
     "max": 8
    },
    {
     "product": "짜파게티",
-    "qty": 7,
+    "qty": 8,
     "price": 4000,
     "order": "10",
     "max": 8
    },
    {
     "product": "까르보불닭",
-    "qty": 7,
+    "qty": 8,
     "price": 4200,
     "order": "11",
     "max": 8
@@ -2637,7 +2637,7 @@
    },
    {
     "product": "진짬뽕",
-    "qty": 5,
+    "qty": 8,
     "price": 4000,
     "order": "14",
     "max": 8
