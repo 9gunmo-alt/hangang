@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-13T23:34+09:00",
+ "generated_at": "2026-09-13T23:43+09:00",
  "machines": [
   "라면1",
   "라면2",
@@ -8,6 +8,12 @@
   "슬림"
  ],
  "transactions": [
+  {
+   "machine": "냉동",
+   "product": "참치김밥",
+   "amount": 4500,
+   "datetime": "2026-09-13T23:42"
+  },
   {
    "machine": "냉장",
    "product": "펩시제로",
