@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-13T20:40+09:00",
+ "generated_at": "2026-09-13T21:02+09:00",
  "machines": [
   "라면1",
   "라면2",
@@ -3153,28 +3153,28 @@
   "냉동": [
    {
     "product": "오꾸밥(참치마요)",
-    "qty": 4,
+    "qty": 10,
     "price": 2000,
     "order": "1",
     "max": 10
    },
    {
     "product": "오꾸밥(소불고기)",
-    "qty": 5,
+    "qty": 9,
     "price": 2000,
     "order": "2",
     "max": 9
    },
    {
     "product": "오꾸밥(김치치즈)",
-    "qty": 7,
+    "qty": 9,
     "price": 2000,
     "order": "3",
     "max": 9
    },
    {
     "product": "오꾸밥(불닭치즈)",
-    "qty": 10,
+    "qty": 8,
     "price": 2000,
     "order": "4",
     "max": 10
