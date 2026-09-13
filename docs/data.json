@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-13T19:29+09:00",
+ "generated_at": "2026-09-13T20:07+09:00",
  "machines": [
   "라면1",
   "라면2",
@@ -8,6 +8,12 @@
   "슬림"
  ],
  "transactions": [
+  {
+   "machine": "라면1",
+   "product": "진짬뽕",
+   "amount": 4000,
+   "datetime": "2026-09-13T20:07"
+  },
   {
    "machine": "냉장",
    "product": "숯불구이 후랑크",
@@ -2996,7 +3002,7 @@
    },
    {
     "product": "진짬뽕",
-    "qty": 8,
+    "qty": 7,
     "price": 4000,
     "order": "14",
     "max": 8
@@ -3010,7 +3016,7 @@
    },
    {
     "product": "용기1",
-    "qty": 35,
+    "qty": 34,
     "price": 10,
     "order": "18",
     "max": 50
