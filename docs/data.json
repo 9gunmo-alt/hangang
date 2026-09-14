@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-15T04:14+09:00",
+ "generated_at": "2026-09-15T04:24+09:00",
  "machines": [
   "라면1",
   "라면2",
@@ -3753,21 +3753,21 @@
    },
    {
     "product": "포카리스웨트",
-    "qty": 3,
+    "qty": 5,
     "price": 2500,
     "order": "0",
     "max": 10
    },
    {
     "product": "옥수수수염차",
-    "qty": 4,
+    "qty": 5,
     "price": 2000,
     "order": "0",
     "max": 10
    },
    {
     "product": "생수",
-    "qty": 4,
+    "qty": 6,
     "price": 1000,
     "order": "0",
     "max": 10
