@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-14T17:44+09:00",
+ "generated_at": "2026-09-14T19:05+09:00",
  "machines": [
   "라면1",
   "라면2",
@@ -8,6 +8,24 @@
   "슬림"
  ],
  "transactions": [
+  {
+   "machine": "냉장",
+   "product": "스트링 치즈",
+   "amount": 1500,
+   "datetime": "2026-09-14T19:05"
+  },
+  {
+   "machine": "라면1",
+   "product": "열라면",
+   "amount": 3500,
+   "datetime": "2026-09-14T19:04"
+  },
+  {
+   "machine": "라면2",
+   "product": "불닭볶음면",
+   "amount": 4000,
+   "datetime": "2026-09-14T19:04"
+  },
   {
    "machine": "라면1",
    "product": "진라면(매운맛)",
