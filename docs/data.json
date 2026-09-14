@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-14T20:38+09:00",
+ "generated_at": "2026-09-14T20:39+09:00",
  "machines": [
   "라면1",
   "라면2",
@@ -8,6 +8,18 @@
   "슬림"
  ],
  "transactions": [
+  {
+   "machine": "냉장",
+   "product": "날계란",
+   "amount": 3100,
+   "datetime": "2026-09-14T20:39"
+  },
+  {
+   "machine": "라면2",
+   "product": "짜파게티",
+   "amount": 4000,
+   "datetime": "2026-09-14T20:38"
+  },
   {
    "machine": "라면1",
    "product": "신라면",
@@ -3109,7 +3121,7 @@
   "라면1": [
    {
     "product": "신라면",
-    "qty": 8,
+    "qty": 7,
     "price": 3800,
     "order": "1",
     "max": 8
@@ -3214,7 +3226,7 @@
    },
    {
     "product": "용기1",
-    "qty": 28,
+    "qty": 27,
     "price": 10,
     "order": "18",
     "max": 50
@@ -3293,7 +3305,7 @@
    },
    {
     "product": "짜파게티",
-    "qty": 7,
+    "qty": 6,
     "price": 4000,
     "order": "10",
     "max": 8
@@ -3335,7 +3347,7 @@
    },
    {
     "product": "용기1",
-    "qty": 42,
+    "qty": 41,
     "price": 10,
     "order": "18",
     "max": 50
@@ -3500,7 +3512,7 @@
   "냉장": [
    {
     "product": "날계란",
-    "qty": 27,
+    "qty": 26,
     "price": 600,
     "order": "1",
     "max": 30
@@ -3633,7 +3645,7 @@
    },
    {
     "product": "포카리스웨트",
-    "qty": 6,
+    "qty": 4,
     "price": 2500,
     "order": "0",
     "max": 10
