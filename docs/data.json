@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-16T17:46+09:00",
+ "generated_at": "2026-09-16T17:47+09:00",
  "machines": [
   "라면1",
   "라면2",
@@ -8,6 +8,12 @@
   "슬림"
  ],
  "transactions": [
+  {
+   "machine": "냉장",
+   "product": "스트링 치즈",
+   "amount": 1000,
+   "datetime": "2026-09-16T17:46"
+  },
   {
    "machine": "냉장",
    "product": "옥수수수염차",
@@ -3956,7 +3962,7 @@
    },
    {
     "product": "스트링 치즈",
-    "qty": 40,
+    "qty": 39,
     "price": 1000,
     "order": "6",
     "max": 55
@@ -4054,7 +4060,7 @@
    },
    {
     "product": "옥수수수염차",
-    "qty": 2,
+    "qty": 1,
     "price": 2000,
     "order": "0",
     "max": 10
