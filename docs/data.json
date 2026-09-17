@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-17T20:13+09:00",
+ "generated_at": "2026-09-17T21:57+09:00",
  "machines": [
   "라면1",
   "라면2",
@@ -8,6 +8,12 @@
   "슬림"
  ],
  "transactions": [
+  {
+   "machine": "라면2",
+   "product": "신라면",
+   "amount": 3800,
+   "datetime": "2026-09-17T21:56"
+  },
   {
    "machine": "라면2",
    "product": "진라면(순한맛)",
@@ -3872,7 +3878,7 @@
   "라면2": [
    {
     "product": "신라면",
-    "qty": 7,
+    "qty": 6,
     "price": 3800,
     "order": "1",
     "max": 8
