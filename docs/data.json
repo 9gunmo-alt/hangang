@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-17T23:02+09:00",
+ "generated_at": "2026-09-17T23:18+09:00",
  "machines": [
   "라면1",
   "라면2",
@@ -8,6 +8,12 @@
   "슬림"
  ],
  "transactions": [
+  {
+   "machine": "라면2",
+   "product": "무파마",
+   "amount": 3800,
+   "datetime": "2026-09-17T23:18"
+  },
   {
    "machine": "라면1",
    "product": "오징어짬뽕",
@@ -3944,7 +3950,7 @@
    },
    {
     "product": "무파마",
-    "qty": 8,
+    "qty": 7,
     "price": 3800,
     "order": "7",
     "max": 8
@@ -4007,7 +4013,7 @@
    },
    {
     "product": "용기1",
-    "qty": 3,
+    "qty": 2,
     "price": 10,
     "order": "18",
     "max": 50
