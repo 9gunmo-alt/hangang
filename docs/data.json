@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-17T12:35+09:00",
+ "generated_at": "2026-09-17T12:40+09:00",
  "machines": [
   "라면1",
   "라면2",
@@ -8,6 +8,12 @@
   "슬림"
  ],
  "transactions": [
+  {
+   "machine": "냉장",
+   "product": "단무지",
+   "amount": 800,
+   "datetime": "2026-09-17T12:40"
+  },
   {
    "machine": "라면1",
    "product": "오징어짬뽕",
@@ -4122,7 +4128,7 @@
    },
    {
     "product": "단무지",
-    "qty": 8,
+    "qty": 7,
     "price": 800,
     "order": "5",
     "max": 10
