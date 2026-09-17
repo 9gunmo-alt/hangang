@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-17T12:40+09:00",
+ "generated_at": "2026-09-17T12:54+09:00",
  "machines": [
   "라면1",
   "라면2",
@@ -8,6 +8,12 @@
   "슬림"
  ],
  "transactions": [
+  {
+   "machine": "냉장",
+   "product": "숯불구이 후랑크",
+   "amount": 4000,
+   "datetime": "2026-09-17T12:53"
+  },
   {
    "machine": "냉장",
    "product": "단무지",
