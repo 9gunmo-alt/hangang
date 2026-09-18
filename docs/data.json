@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-18T13:30+09:00",
+ "generated_at": "2026-09-18T13:35+09:00",
  "machines": [
   "라면1",
   "라면2",
@@ -8,6 +8,12 @@
   "슬림"
  ],
  "transactions": [
+  {
+   "machine": "냉동",
+   "product": "야채김밥",
+   "amount": 4500,
+   "datetime": "2026-09-18T13:34"
+  },
   {
    "machine": "라면2",
    "product": "진짬뽕",
@@ -4197,7 +4203,7 @@
    },
    {
     "product": "진짬뽕",
-    "qty": 8,
+    "qty": 7,
     "price": 4000,
     "order": "14",
     "max": 8
@@ -4211,7 +4217,7 @@
    },
    {
     "product": "용기1",
-    "qty": 35,
+    "qty": 34,
     "price": 10,
     "order": "18",
     "max": 50
@@ -4290,7 +4296,7 @@
    },
    {
     "product": "야채김밥",
-    "qty": 9,
+    "qty": 8,
     "price": 4500,
     "order": "10",
     "max": 10
@@ -4383,7 +4389,7 @@
    },
    {
     "product": "맛김치",
-    "qty": 9,
+    "qty": 8,
     "price": 1500,
     "order": "2",
     "max": 10
@@ -4397,14 +4403,14 @@
    },
    {
     "product": "체다치즈",
-    "qty": 7,
+    "qty": 4,
     "price": 500,
     "order": "4",
     "max": 16
    },
    {
     "product": "단무지",
-    "qty": 6,
+    "qty": 5,
     "price": 800,
     "order": "5",
     "max": 10
