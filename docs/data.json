@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-18T13:29+09:00",
+ "generated_at": "2026-09-18T13:30+09:00",
  "machines": [
   "라면1",
   "라면2",
@@ -8,6 +8,12 @@
   "슬림"
  ],
  "transactions": [
+  {
+   "machine": "라면2",
+   "product": "진짬뽕",
+   "amount": 4000,
+   "datetime": "2026-09-18T13:30"
+  },
   {
    "machine": "라면1",
    "product": "참깨라면",
@@ -18,6 +24,12 @@
    "machine": "라면1",
    "product": "안성탕면",
    "amount": 3500,
+   "datetime": "2026-09-18T13:29"
+  },
+  {
+   "machine": "냉장",
+   "product": "맛김치",
+   "amount": 3800,
    "datetime": "2026-09-18T13:29"
   },
   {
