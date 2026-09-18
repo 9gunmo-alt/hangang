@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-18T20:09+09:00",
+ "generated_at": "2026-09-18T20:13+09:00",
  "machines": [
   "라면1",
   "라면2",
@@ -8,6 +8,12 @@
   "슬림"
  ],
  "transactions": [
+  {
+   "machine": "냉장",
+   "product": "맛김치",
+   "amount": 1500,
+   "datetime": "2026-09-18T20:12"
+  },
   {
    "machine": "냉동",
    "product": "고기만두",
@@ -4359,7 +4365,7 @@
    },
    {
     "product": "고기만두",
-    "qty": 3,
+    "qty": 2,
     "price": 2500,
     "order": "13",
     "max": 10
@@ -4431,7 +4437,7 @@
    },
    {
     "product": "맛김치",
-    "qty": 7,
+    "qty": 6,
     "price": 1500,
     "order": "2",
     "max": 10
