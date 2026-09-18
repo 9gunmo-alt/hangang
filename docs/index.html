@@ -292,10 +292,9 @@ function availableMonths(){var s={},X=D();for(var dt in X)s[dt.slice(0,7)]=1;s[t
 function monthDayList(ym){var y=+ym.slice(0,4),m=+ym.slice(5,7);var last=new Date(y,m,0).getDate();var out=[];for(var d=1;d<=last;d++){out.push(ym+"-"+String(d).padStart(2,"0"));}return out;}
 
 /* ---------- 결제 내역 (최근 7일, 날짜 선택 + 품목 펼치기) ---------- */
-function histDates(){var s={};TX.forEach(function(r){if(r.date)s[r.date]=1;});return Object.keys(s).sort().reverse();}
+function histDates(){var s={};s[todayStr()]=1;TX.forEach(function(r){if(r.date)s[r.date]=1;});return Object.keys(s).sort().reverse();}
 function historyView(){
-  const dates=histDates();
-  if(!dates.length) return '<div class="empty"><b>결제 내역이 없어요</b>결제가 들어오면 여기 표시돼요.</div>';
+  const dates=histDates();   // 오늘은 결제가 없어도 항상 맨 위에 포함
   if(!histDay || dates.indexOf(histDay)<0) histDay=dates[0];
   const opts=dates.map(function(d){return '<option value="'+d+'"'+(d===histDay?' selected':'')+'>'+d+(d===todayStr()?' (오늘)':'')+'</option>';}).join('');
   let html='<select id="histSel" style="width:100%;margin-bottom:10px;font-family:inherit;font-size:14px;font-weight:600;border:1px solid var(--line);border-radius:11px;padding:9px 11px;background:var(--surface);color:var(--ink);">'+opts+'</select>'
@@ -306,7 +305,7 @@ function historyView(){
   });
   let arr=Object.keys(groups).map(function(k){return {key:k,time:groups[k].time,items:groups[k].items};});
   arr.sort(function(a,b){return b.time.localeCompare(a.time);});
-  if(!arr.length) return html+'<div class="empty" style="padding:24px 12px;">이 날은 결제 내역이 없어요</div>';
+  if(!arr.length) return html+'<div class="empty" style="padding:24px 12px;">거래 내역이 없습니다</div>';
   arr.forEach(function(g){
     const tot=g.items.reduce(function(s,x){return s+x.a;},0);
     const bundle=g.items.length>1;
