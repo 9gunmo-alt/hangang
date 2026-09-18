@@ -417,7 +417,24 @@ def build():
                            "amount": r["amt"], "datetime": r["when"]})
     tx.sort(key=lambda t: t["datetime"], reverse=True)
 
-    # 재고는 15분마다만 갱신 (읽기 실패해도 매출엔 영향 없음)
+    # 내역(거래 원본)은 최근 7일치만 유지 (그 이전은 요약 백업으로만 남음)
+    cutoff = (datetime.now(KST) - timedelta(days=6)).strftime("%Y-%m-%d")
+    tx_today = [t for t in tx if t["datetime"][:10] >= cutoff]
+
+    # 날짜별 매출 요약 누적 (기계별 c=건수 v=금액, p=상품별) — 영구 백업
+    newdays = {}
+    for t in tx:
+        d = t["datetime"][:10]; m = t["machine"]; pr = t["product"]; v = t["amount"]
+        dd = newdays.setdefault(d, {})
+        mm = dd.setdefault(m, {"c": 0, "v": 0, "p": {}})
+        mm["c"] += 1; mm["v"] += v
+        pp = mm["p"].setdefault(pr, {"c": 0, "v": 0}); pp["c"] += 1; pp["v"] += v
+    prev = current_data() or {}
+    daily = dict(prev.get("daily") or {})
+    for d, val in newdays.items():   # 최근 3개월치는 새로 덮어씀, 그 이전 날은 그대로 보존
+        daily[d] = val
+
+    # 재고 갱신
     global STOCK, LAST_STOCK, STOCK_MAX
     if time.time() - LAST_STOCK >= STOCK_EVERY:
         try:
@@ -437,7 +454,7 @@ def build():
         except Exception as e:
             log("재고 갱신 실패:", e)
 
-    return tx
+    return tx_today, daily
 
 
 def current_data():
@@ -451,12 +468,12 @@ def git(*args):
                           encoding="utf-8", errors="replace")
 
 
-def push_if_changed(tx):
+def push_if_changed(tx, daily):
     prev = current_data()
-    if prev and prev.get("transactions") == tx and prev.get("stock") == STOCK:
-        return False  # 매출·재고 둘 다 변화 없음 → 커밋 안 함
+    if prev and prev.get("transactions") == tx and prev.get("stock") == STOCK and prev.get("daily") == daily:
+        return False  # 매출·재고·백업 모두 변화 없음 → 커밋 안 함
     data = {"generated_at": datetime.now(KST).isoformat(timespec="minutes"),
-            "machines": [m[0] for m in MACHINES], "transactions": tx, "stock": STOCK}
+            "machines": [m[0] for m in MACHINES], "transactions": tx, "stock": STOCK, "daily": daily}
     with open(DATA_PATH, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=1)
     git("add", "docs/data.json")
@@ -476,9 +493,9 @@ def main():
     while True:
         t0 = time.time()
         try:
-            tx = build()
-            changed = push_if_changed(tx)
-            log(f"거래 {len(tx)}건" + (" · 갱신 push" if changed else " · 변화 없음"))
+            tx, daily = build()
+            changed = push_if_changed(tx, daily)
+            log(f"오늘 거래 {len(tx)}건" + (" · 갱신 push" if changed else " · 변화 없음"))
         except Exception as e:
             log("사이클 오류:", e)
         time.sleep(max(1, INTERVAL - (time.time() - t0)))

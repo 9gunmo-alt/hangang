@@ -55,9 +55,9 @@ class BotThread(threading.Thread):
     def stop(self): self._stop.set(); self._wake.set()
     def wake(self): self._wake.set()
     def _cycle(self):
-        tx = bot.build()
-        changed = bot.push_if_changed(tx)
-        _gui_log(f"거래 {len(tx)}건" + (" · 갱신 push" if changed else " · 변화 없음"))
+        tx, daily = bot.build()
+        changed = bot.push_if_changed(tx, daily)
+        _gui_log(f"오늘 거래 {len(tx)}건" + (" · 갱신 push" if changed else " · 변화 없음"))
     def run(self):
         _gui_log(f"봇 시작 — {bot.INTERVAL}초마다 수집")
         while not self._stop.is_set():

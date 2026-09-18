@@ -106,6 +106,11 @@
   .hxt{font-size:12.5px; color:var(--muted); width:42px; font-variant-numeric:tabular-nums;}
   .hxp{flex:1; font-size:15px;}
   .hxa{font-size:15px; font-weight:800; font-variant-numeric:tabular-nums; white-space:nowrap;}
+  .hxclick{cursor:pointer;}
+  .hxcaret{font-size:11px; color:var(--accent); margin-left:2px;}
+  .hxsub{display:flex; align-items:center; gap:10px; padding:6px 2px 6px 52px; background:var(--track);}
+  .hxsp{flex:1; font-size:13.5px; color:var(--muted);}
+  .hxsa{font-size:13.5px; color:var(--muted); font-variant-numeric:tabular-nums; white-space:nowrap;}
 
   /* data entry */
   details.entry{margin-top:30px; border-top:1px solid var(--line); padding-top:16px;}
@@ -196,7 +201,8 @@ const PGROUPS = [["전체",["라면1","라면2","냉동","냉장","슬림"]],["�
 let machFilter = "전체";
 let selCol = null;
 let view = "sales";     // sales | history | stock
-let histDay = "";       // 내역 날짜 필터 ("" = 전체)
+let histDay = "";       // 내역 선택 날짜
+let histOpen = null;    // 펼쳐진 묶음거래 key
 const LOW = 5;          // 재고 이하면 '곧 떨어짐' 경고
 
 /* ---------- storage (persist across sessions when available) ---------- */
@@ -218,6 +224,7 @@ async function pullData(){
         });
         window.__auto = true; window.__updated = j.generated_at || null;
         window.__stockData = j.stock || {};
+        window.__daily = j.daily || {};
         return true;
       }
     }catch(e){}
@@ -277,34 +284,48 @@ function prevMonth(ym){var y=+ym.slice(0,4),m=+ym.slice(5,7)-1;if(m===0){m=12;y-
 function monthLabel(ym){return (+ym.slice(5,7))+"월";}
 function dayLabel(d){return (+d.slice(5,7))+"월 "+(+d.slice(8,10))+"일";}
 function scopeMonth(){return selMonth||thisMonth();}
-function availableMonths(){var set={};TX.forEach(function(r){if(r.date)set[r.date.slice(0,7)]=1;});set[thisMonth()]=1;return Object.keys(set).sort().reverse();}
+function D(){return window.__daily||{};}
+function dayAgg(date){var d=D()[date],v=0,c=0;if(d)for(var m in d){if(machFilter==="전체"||m===machFilter){v+=d[m].v;c+=d[m].c;}}return {v:v,c:c};}
+function monthAgg(ym){var v=0,c=0,X=D();for(var dt in X){if(dt.slice(0,7)===ym){var a=dayAgg(dt);v+=a.v;c+=a.c;}}return {v:v,c:c};}
+function machineAgg(m,day,mon){var v=0,c=0,X=D();for(var dt in X){var ok=day?dt===day:dt.slice(0,7)===mon;if(ok&&X[dt]&&X[dt][m]){v+=X[dt][m].v;c+=X[dt][m].c;}}return {v:v,c:c};}
+function availableMonths(){var s={},X=D();for(var dt in X)s[dt.slice(0,7)]=1;s[thisMonth()]=1;return Object.keys(s).sort().reverse();}
 function monthDayList(ym){var y=+ym.slice(0,4),m=+ym.slice(5,7);var last=new Date(y,m,0).getDate();var out=[];for(var d=1;d<=last;d++){out.push(ym+"-"+String(d).padStart(2,"0"));}return out;}
 
-/* ---------- 결제 내역 ---------- */
-function availDates(){var s={};TX.forEach(function(r){if(r.date)s[r.date]=1;});return Object.keys(s).sort().reverse();}
+/* ---------- 결제 내역 (최근 7일, 날짜 선택 + 품목 펼치기) ---------- */
+function histDates(){var s={};TX.forEach(function(r){if(r.date)s[r.date]=1;});return Object.keys(s).sort().reverse();}
 function historyView(){
+  const dates=histDates();
+  if(!dates.length) return '<div class="empty"><b>결제 내역이 없어요</b>결제가 들어오면 여기 표시돼요.</div>';
+  if(!histDay || dates.indexOf(histDay)<0) histDay=dates[0];
+  const opts=dates.map(function(d){return '<option value="'+d+'"'+(d===histDay?' selected':'')+'>'+d+(d===todayStr()?' (오늘)':'')+'</option>';}).join('');
+  let html='<select id="histSel" style="width:100%;margin-bottom:10px;font-family:inherit;font-size:14px;font-weight:600;border:1px solid var(--line);border-radius:11px;padding:9px 11px;background:var(--surface);color:var(--ink);">'+opts+'</select>'
+    +'<div style="font-size:11.5px;color:var(--muted);margin:0 2px 8px;">묶음거래(외1개)는 눌러서 품목을 펼쳐볼 수 있어요</div>';
   const groups={};
-  TX.forEach(function(r){var k=r.date+"T"+r.time+"|"+r.machine; if(!groups[k])groups[k]={date:r.date,time:r.time,items:[],amt:0}; groups[k].items.push(r.product); groups[k].amt+=r.amount;});
-  let arr=Object.keys(groups).map(function(k){return groups[k];});
-  if(histDay) arr=arr.filter(function(g){return g.date===histDay;});
-  arr.sort(function(a,b){return (b.date+b.time).localeCompare(a.date+a.time);});
-  const dates=availDates();
-  const opts='<option value="">날짜 선택…</option>'+dates.map(function(d){return '<option value="'+d+'"'+(d===histDay?' selected':'')+'>'+d+(d===todayStr()?' (오늘)':'')+'</option>';}).join('');
-  const filter='<div style="display:flex;gap:8px;margin-bottom:12px;">'
-    +'<button id="histAll" class="chip '+(histDay?'':'on')+'" style="flex:0 0 auto;">전체</button>'
-    +'<select id="histSel" style="flex:1;font-family:inherit;font-size:14px;font-weight:600;border:1px solid var(--line);border-radius:11px;padding:8px 10px;background:var(--surface);color:var(--ink);">'+opts+'</select></div>';
-  if(!arr.length) return filter+'<div class="empty"><b>결제 내역이 없어요</b>잠시 뒤 새로고침 해보세요.</div>';
-  let html=filter, lastDate=null;
+  TX.filter(function(r){return r.date===histDay;}).forEach(function(r){
+    var k=r.time+"|"+r.machine; if(!groups[k])groups[k]={time:r.time,items:[]}; groups[k].items.push({p:r.product,a:r.amount});
+  });
+  let arr=Object.keys(groups).map(function(k){return {key:k,time:groups[k].time,items:groups[k].items};});
+  arr.sort(function(a,b){return b.time.localeCompare(a.time);});
+  if(!arr.length) return html+'<div class="empty" style="padding:24px 12px;">이 날은 결제 내역이 없어요</div>';
   arr.forEach(function(g){
-    if(g.date!==lastDate){ html+='<div style="font-size:12px;color:var(--muted);font-weight:700;margin:14px 2px 6px;">'+(g.date===todayStr()?"오늘":dayLabel(g.date))+'</div>'; lastDate=g.date; }
-    const n=g.items.length; const label=n>1?(g.items[0]+" 외"+(n-1)+"개"):g.items[0];
-    html+='<div class="hxrow"><span class="hxt">'+g.time+'</span><span class="hxp">'+label+'</span><span class="hxa">'+won(g.amt)+'원</span></div>';
+    const tot=g.items.reduce(function(s,x){return s+x.a;},0);
+    const bundle=g.items.length>1;
+    const label=bundle?(g.items[0].p+" 외"+(g.items.length-1)+"개"):g.items[0].p;
+    const open=histOpen===g.key;
+    html+='<div class="hxrow'+(bundle?' hxclick':'')+'" data-k="'+g.key+'"><span class="hxt">'+g.time+'</span>'
+      +'<span class="hxp">'+label+(bundle?' <span class="hxcaret">'+(open?'▲':'▼')+'</span>':'')+'</span>'
+      +'<span class="hxa">'+won(tot)+'원</span></div>';
+    if(bundle&&open){
+      g.items.forEach(function(it){
+        html+='<div class="hxsub"><span class="hxsp">'+it.p+'</span><span class="hxsa">'+won(it.a)+'원</span></div>';
+      });
+    }
   });
   return html;
 }
 function wireHistory(){
-  var a=document.getElementById("histAll"); if(a)a.onclick=function(){histDay="";render();};
-  var s=document.getElementById("histSel"); if(s)s.onchange=function(){histDay=s.value;render();};
+  var s=document.getElementById("histSel"); if(s)s.onchange=function(){histDay=s.value;histOpen=null;render();};
+  document.querySelectorAll(".hxclick").forEach(function(r){r.onclick=function(){var k=r.dataset.k;histOpen=(histOpen===k)?null:k;render();};});
 }
 
 /* ---------- 재고 보기 ---------- */
@@ -362,31 +383,30 @@ function render(){
     return;
   }
 
-  if(TX.length===0){ renderEmpty(); renderHero(0,0,null); return; }
-  const rows=filtered();
+  if(Object.keys(D()).length===0 && TX.length===0){ renderEmpty(); renderHero(0,0,null); return; }
 
-  // hero
+  // hero (매출 = 날짜별 요약에서)
   let cur,prev,curCnt;
   if(period==="day"){
     if(!selDay) selDay=todayStr();
     const d=selDay; const y=fmtD(new Date(new Date(d+"T00:00").getTime()-864e5));
-    const c=rows.filter(r=>r.date===d); const p=rows.filter(r=>r.date===y);
-    cur=sum(c); curCnt=c.length; prev=sum(p);
+    const a=dayAgg(d), p=dayAgg(y);
+    cur=a.v; curCnt=a.c; prev=p.v;
     document.getElementById("heroLab").textContent=(d===todayStr()?"오늘":dayLabel(d))+" 매출";
   }else{
     const cm=scopeMonth(); const lm=prevMonth(cm);
-    const c=rows.filter(r=>r.date.startsWith(cm)); const p=rows.filter(r=>r.date.startsWith(lm));
-    cur=sum(c); curCnt=c.length; prev=sum(p);
+    const a=monthAgg(cm), p=monthAgg(lm);
+    cur=a.v; curCnt=a.c; prev=p.v;
     document.getElementById("heroLab").textContent=cm.slice(0,4)+"년 "+monthLabel(cm)+" 매출";
   }
   renderHero(cur,curCnt,prev);
 
   // sections — 일별: 일별그래프+기계별 / 월별: 월별그래프+기계별+상품
   const html = (period==="day")
-    ? dailySec(rows) + machineSec()
-    : monthlySec(rows) + machineSec() + productSec(rows);
+    ? dailySec() + machineSec()
+    : monthlySec() + machineSec() + productSec();
   document.getElementById("content").innerHTML = html;
-  wireCharts(rows);
+  wireCharts();
 }
 function sum(a){return a.reduce((s,r)=>s+r.amount,0);}
 function renderMonthSel(){
@@ -424,10 +444,10 @@ function renderEmpty(){
 }
 
 /* daily column chart — 오늘 보기: 최근 2주 / 월별 보기: 그 달 전체 */
-function dailySec(rows){
+function dailySec(){
   const days=[]; const base=new Date(); base.setHours(0,0,0,0);
   for(let i=13;i>=0;i--){const d=new Date(base); d.setDate(base.getDate()-i); days.push(fmtD(d));}
-  const vals=days.map(dt=>sum(rows.filter(r=>r.date===dt)));
+  const vals=days.map(dt=>dayAgg(dt).v);
   const max=Math.max(1,...vals);
   const t=todayStr();
   const cols=days.map((dt,i)=>{
@@ -437,17 +457,17 @@ function dailySec(rows){
       <div class="bar" style="height:${h}%"></div></div>`;
   }).join("");
   const labels=days.map((dt,i)=> (i%2===0)? `<span>${(+dt.slice(8,10))}</span>`:`<span></span>`).join("");
-  const selVal=sum(rows.filter(r=>r.date===selDay));
+  const selVal=dayAgg(selDay).v;
   return `<div class="sec"><div class="sec-h"><h2>일별 매출</h2><span class="note">최근 2주</span></div>
     <div class="readout" id="dReadout"><span class="d">${selDay===t?"오늘":dayLabel(selDay)} (${weekday(selDay)})</span><span class="v">${won(selVal)}원</span></div>
     <div class="colchart" id="dChart">${cols}</div><div class="xlabels">${labels}</div></div>`;
 }
 
-/* monthly column chart — last 6 months */
-function monthlySec(rows){
+/* monthly column chart — 최근 6개월 */
+function monthlySec(){
   const months=[]; const b=new Date(); b.setDate(1);
   for(let i=5;i>=0;i--){const d=new Date(b); d.setMonth(b.getMonth()-i); months.push(d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0"));}
-  const vals=months.map(m=>sum(rows.filter(r=>r.date.startsWith(m))));
+  const vals=months.map(m=>monthAgg(m).v);
   const max=Math.max(1,...vals);
   const cm=(period==="month")?scopeMonth():thisMonth();
   const cols=months.map((m,i)=>{
@@ -461,11 +481,10 @@ function monthlySec(rows){
     <div class="colchart" id="mChart">${cols}</div><div class="xlabels">${labels}</div></div>`;
 }
 
-/* per-machine — respects the current period, always shows all 5 */
+/* per-machine */
 function machineSec(){
   const mon=scopeMonth();
-  const inScope=(r)=> period==="day"? r.date===selDay : r.date.startsWith(mon);
-  const data=MACHINES.map(m=>({m, v:sum(TX.filter(r=>r.machine===m && inScope(r))), c:TX.filter(r=>r.machine===m && inScope(r)).length}));
+  const data=MACHINES.map(m=>{ const a=(period==="day")?machineAgg(m,selDay,null):machineAgg(m,null,mon); return {m:m, v:a.v, c:a.c}; });
   const max=Math.max(1,...data.map(d=>d.v));
   const rows=data.map(d=>`<div class="hrow">
       <div class="name">${d.m}</div>
@@ -475,27 +494,30 @@ function machineSec(){
   return `<div class="sec"><div class="sec-h"><h2>기계별 매출</h2><span class="note">${note}</span></div>${rows}</div>`;
 }
 
-/* top products — 그룹 탭(슬림·라면·냉장·냉동)으로 구분 */
-function productSec(rows){
+/* top products — 그룹 탭 */
+function productSec(){
   const mon=scopeMonth();
-  const inScope=(r)=> r.date.startsWith(mon);
   const grp=PGROUPS.find(g=>g[0]===prodGroup)||PGROUPS[0];
-  const scoped=TX.filter(r=>inScope(r) && grp[1].indexOf(r.machine)>=0);
-  const map={};
-  scoped.forEach(r=>{ if(!map[r.product]) map[r.product]={c:0,v:0}; map[r.product].c++; map[r.product].v+=r.amount; });
-  const arr=Object.entries(map).map(([k,v])=>({name:k,...v})).sort((a,b)=>b.c-a.c).slice(0,8);
+  const map={}; const X=D();
+  for(var dt in X){
+    const inScope = period==="day"? dt===selDay : dt.slice(0,7)===mon;
+    if(!inScope) continue;
+    grp[1].forEach(function(m){ var mm=X[dt][m]; if(mm&&mm.p){ for(var name in mm.p){ if(!map[name])map[name]={c:0,v:0}; map[name].c+=mm.p[name].c; map[name].v+=mm.p[name].v; } } });
+  }
+  const arr=Object.entries(map).map(([k,v])=>({name:k,c:v.c,v:v.v})).sort((a,b)=>b.c-a.c).slice(0,8);
   const tabs=PGROUPS.map(g=>`<button class="gtab ${g[0]===prodGroup?'on':''}" data-g="${g[0]}">${g[0]}</button>`).join("");
+  const scopeLabel = period==="day" ? (selDay===todayStr()?"오늘":dayLabel(selDay)) : monthLabel(mon);
   const body=arr.length
     ? arr.map((p,i)=>`<div class="prow">
         <div class="rk ${i===0?'top':''}">${i+1}</div>
         <div class="pn">${p.name}<em>${p.c}개 판매</em></div>
         <div class="pa">${won(p.v)}원</div></div>`).join("")
-    : `<div class="gempty">${monthLabel(mon)} 판매 내역이 없어요</div>`;
-  return `<div class="sec"><div class="sec-h"><h2>잘 나가는 상품</h2><span class="note">${monthLabel(mon)}</span></div>
+    : `<div class="gempty">${scopeLabel} 판매 내역이 없어요</div>`;
+  return `<div class="sec"><div class="sec-h"><h2>잘 나가는 상품</h2><span class="note">${scopeLabel}</span></div>
     <div class="gtabs">${tabs}</div>${body}</div>`;
 }
 
-function wireCharts(rows){
+function wireCharts(){
   const dc=document.getElementById("dChart");
   if(dc){ dc.querySelectorAll(".col").forEach(c=>c.onclick=()=>{
     selDay=c.dataset.date; render();
