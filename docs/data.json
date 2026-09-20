@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-20T20:21+09:00",
+ "generated_at": "2026-09-20T21:21+09:00",
  "machines": [
   "라면1",
   "라면2",
@@ -2081,17 +2081,10 @@
    },
    {
     "product": "몬스터",
-    "qty": 19,
+    "qty": 10,
     "price": 2000,
     "order": "9",
     "max": 19
-   },
-   {
-    "product": "아리",
-    "qty": 24,
-    "price": 2000,
-    "order": "10",
-    "max": 24
    },
    {
     "product": "나랑드사이다",
@@ -2151,24 +2144,24 @@
    },
    {
     "product": "포카리스웨트",
-    "qty": 3,
+    "qty": 5,
     "price": 2500,
     "order": "0",
     "max": 5
    },
    {
     "product": "옥수수수염차",
-    "qty": 2,
+    "qty": 5,
     "price": 2000,
     "order": "0",
     "max": 6
    },
    {
     "product": "생수",
-    "qty": 0,
+    "qty": 12,
     "price": 1000,
     "order": "0",
-    "max": 6
+    "max": 12
    }
   ],
   "슬림": [
