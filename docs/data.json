@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-20T21:21+09:00",
+ "generated_at": "2026-09-20T21:27+09:00",
  "machines": [
   "라면1",
   "라면2",
@@ -2095,35 +2095,21 @@
    },
    {
     "product": "조지아",
-    "qty": 8,
-    "price": 1200,
-    "order": "0",
+    "qty": 5,
+    "price": 2000,
+    "order": "12",
     "max": 8
-   },
-   {
-    "product": "조지아(아아)",
-    "qty": 8,
-    "price": 1500,
-    "order": "0",
-    "max": 8
-   },
-   {
-    "product": "레쓰비",
-    "qty": 9,
-    "price": 1000,
-    "order": "0",
-    "max": 9
    },
    {
     "product": "코카콜라",
-    "qty": 4,
+    "qty": 3,
     "price": 2000,
     "order": "0",
     "max": 4
    },
    {
     "product": "펩시",
-    "qty": 9,
+    "qty": 6,
     "price": 2000,
     "order": "0",
     "max": 9
