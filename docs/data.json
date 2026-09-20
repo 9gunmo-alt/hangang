@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-20T21:27+09:00",
+ "generated_at": "2026-09-20T21:43+09:00",
  "machines": [
   "라면1",
   "라면2",
@@ -2173,32 +2173,32 @@
     "max": 8
    },
    {
-    "product": "불닭볶음면",
-    "qty": 0,
-    "price": 2000,
+    "product": "스팸마요컵밥",
+    "qty": 3,
+    "price": 4500,
     "order": "4",
-    "max": 0
+    "max": 3
    },
    {
-    "product": "불닭볶음면",
-    "qty": 0,
-    "price": 2000,
+    "product": "스팸김치덮밥",
+    "qty": 3,
+    "price": 4500,
     "order": "5",
-    "max": 0
+    "max": 3
    },
    {
-    "product": "까르보불닭",
-    "qty": 0,
-    "price": 2000,
+    "product": "치킨마요덮밥",
+    "qty": 3,
+    "price": 4500,
     "order": "6",
-    "max": 0
+    "max": 3
    },
    {
-    "product": "튀김우동",
-    "qty": 0,
-    "price": 2000,
+    "product": "김치날치알밥",
+    "qty": 3,
+    "price": 4500,
     "order": "7",
-    "max": 0
+    "max": 3
    },
    {
     "product": "튀김우동",
