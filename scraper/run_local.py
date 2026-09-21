@@ -48,9 +48,12 @@ PLATFORMS = {
         "f_product": "product", "f_amount": "amount", "f_dt": "datetime", "f_id": "ordern",
         "stock": "http://bangsopener.co.kr/opener/kiosk/appadmin/proup.do",
         "params": lambda code, y, m: {"id": code, "datetime": f"{y}-{m:02d}"},
-        # 사이트가 바뀌며 "외N개" 표시가 사라짐 → 주문마다 영수증 상세를 열어 품목을 정확히 나눔.
-        # (한 번 연 주문은 캐시에 저장돼 다시 열지 않음)
+        # 사이트가 바뀌며 "외N개" 표시가 사라짐 → 주문마다 상세를 확인해 품목을 정확히 나눔.
+        # 영수증 표는 화면에서 JS로 그려져서(HTML엔 없음) 표 대신 원본 JSON API를 바로 부른다.
+        # (한 번 확인한 주문은 캐시에 저장돼 다시 부르지 않음)
         "always_detail": True,
+        "detail_json": True,
+        "detail_path": "/opener/kiosk/store_name.do",   # id=Store_Nm & ordern=주문번호 → 품목 JSON
     },
 }
 
@@ -359,8 +362,32 @@ def parse_detail(html):
     return items
 
 
+def parse_json_detail(res):
+    """store_name.do 응답(JSON 배열)에서 품목을 뽑는다.
+    res[0]=가게정보, res[1:]=품목({product, quan, price(단가)})."""
+    items = []
+    if not isinstance(res, list):
+        return items
+    for row in res[1:]:
+        if not isinstance(row, dict):
+            continue
+        prod = str(row.get("product", "")).strip()
+        try:
+            quan = int(row.get("quan") or 1)
+            price = int(re.sub(r"[^\d-]", "", str(row.get("price", "0"))) or "0")
+        except Exception:
+            continue
+        if not prod or quan <= 0:
+            continue
+        amount = price * quan                         # 줄 합계 = 단가 × 수량
+        if amount <= 0:
+            continue
+        items.append({"product": prod, "qty": quan, "amount": amount})
+    return items
+
+
 MAX_DETAIL_PER_CYCLE = 60   # 한 주기에 새로 여는 영수증 상세 최대 건수(첫 실행 폭주 방지)
-PARSE_VER = 2               # 영수증 파서 버전. 올리면 '미해결(None)' 주문만 자동 재조회.
+PARSE_VER = 3               # 상세 파서 버전. 올리면 '미해결(None)' 주문만 자동 재조회.
 _DEBUG_DUMPS = 0            # 파싱 실패 영수증 HTML 저장 횟수(진단용, 최대 3개)
 
 def resolve_bundles(need):
@@ -372,8 +399,14 @@ def resolve_bundles(need):
         for k in [k for k, v in cache.items() if k != "_ver" and v is None]:
             cache.pop(k, None)
         cache["_ver"] = PARSE_VER; save_cache(cache)
-    todo = {k: [o for o in v if o not in cache] for k, v in need.items()}
-    todo = {k: v for k, v in todo.items() if v}
+    # 최근 거래부터 먼저 상세를 확인(오늘/어제 내역이 바로 갈라지도록). 중복 제거.
+    todo = {}
+    for k, v in need.items():
+        seen = set(); lst = []
+        for oid, when in sorted(v, key=lambda x: x[1] or "", reverse=True):
+            if not oid or oid in cache or oid in seen: continue
+            seen.add(oid); lst.append(oid)
+        if lst: todo[k] = lst
     if not todo: return cache
     remaining = sum(len(v) for v in todo.values())
     try:
@@ -397,6 +430,52 @@ def resolve_bundles(need):
                     page.goto(plat["machine"].format(code=code), wait_until="networkidle", timeout=45000)
                 except Exception as e:
                     log("기계 열기 실패", code, e)
+
+                # ── 방식 A: 원본 JSON API 직접 호출(오프너 냉장/냉동) ──
+                if plat.get("detail_json"):
+                    # 가게 식별자(Store_Nm). 기계 페이지가 localStorage에 넣어둠. 없으면 코드로 대체.
+                    try:
+                        store = page.evaluate("() => localStorage.getItem('Store_Nm')") or code
+                    except Exception:
+                        store = code
+                    dpath = plat["detail_path"]
+                    for oid in ids:
+                        if budget <= 0: break
+                        budget -= 1
+                        try:
+                            # 한 번 실패하면 잠깐 쉬고 다시 시도(일시적 응답 지연 자동 복구).
+                            res = page.evaluate(
+                                """async (a) => {
+                                    const [path, store, oid] = a;
+                                    let last = null;
+                                    for (let k = 0; k < 2; k++) {
+                                        try {
+                                            const u = path + '?id=' + encodeURIComponent(store)
+                                                      + '&ordern=' + encodeURIComponent(oid);
+                                            const r = await fetch(u, {headers:{'X-Requested-With':'XMLHttpRequest'}});
+                                            if (r.ok) {
+                                                const j = await r.json();
+                                                if (Array.isArray(j) && j.length > 1) return j;
+                                                last = j;
+                                            } else { last = {__err: r.status}; }
+                                        } catch (e) { last = {__err: String(e)}; }
+                                        await new Promise(res => setTimeout(res, 400));
+                                    }
+                                    return last;
+                                }""",
+                                [dpath, store, oid])
+                            items = parse_json_detail(res)
+                            if items:
+                                cache[oid] = items; ok_cnt += 1
+                            else:
+                                # 상품 항목이 없는 주문(옛날/취소/환불) → 대표상품으로 처리(합계는 정상).
+                                # 응답에 로그인 정보가 섞여 오므로 파일로 저장하지 않는다.
+                                cache[oid] = None; fail_cnt += 1
+                        except Exception as e:
+                            log("상세 실패", oid, e); cache[oid] = None; fail_cnt += 1
+                    continue
+
+                # ── 방식 B: 영수증 화면을 열어 표를 읽음(벤딩페이 라면) ──
                 for oid in ids:
                     if budget <= 0: break
                     budget -= 1
@@ -405,7 +484,11 @@ def resolve_bundles(need):
                         page.wait_for_function("typeof receipt === 'function'", timeout=8000)
                         page.evaluate(f"receipt('{oid}')")
                         page.wait_for_url("**/receipt.do", timeout=15000)
-                        page.wait_for_timeout(250)
+                        try:
+                            page.wait_for_selector("#rece table tbody tr, table tbody tr", timeout=8000)
+                        except Exception:
+                            pass
+                        page.wait_for_timeout(200)
                         html = page.content()
                         items = parse_detail(html)
                         if items:
@@ -426,7 +509,7 @@ def resolve_bundles(need):
             browser.close()
     if ok_cnt or fail_cnt:
         left = max(0, remaining - ok_cnt - fail_cnt)
-        log(f"영수증 상세 {ok_cnt}건 확인" + (f", 파싱실패 {fail_cnt}건" if fail_cnt else "")
+        log(f"영수증 상세 {ok_cnt}건 확인" + (f", 상세없음 {fail_cnt}건" if fail_cnt else "")
             + (f", {left}건 다음 주기에 계속" if left else ""))
     save_cache(cache); return cache
 
@@ -452,7 +535,7 @@ def build():
                 bundle = bool(plat.get("always_detail")) or bool(MULTI_RE.search(praw))
                 rows.append({"praw": praw, "when": when, "oid": oid, "amt": amt, "bundle": bundle})
                 if bundle and oid:
-                    need.setdefault((plat_key, code), []).append(oid)
+                    need.setdefault((plat_key, code), []).append((oid, when))
         rows_by_machine.append((name, rows))
 
     cache = resolve_bundles(need)
