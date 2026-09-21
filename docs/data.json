@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-21T21:43+09:00",
+ "generated_at": "2026-09-21T22:58+09:00",
  "machines": [
   "라면1",
   "라면2",
@@ -8,6 +8,12 @@
   "슬림"
  ],
  "transactions": [
+  {
+   "machine": "냉동",
+   "product": "참치김밥",
+   "amount": 4500,
+   "datetime": "2026-09-21T22:55"
+  },
   {
    "machine": "냉장",
    "product": "날계란",
@@ -1866,7 +1872,7 @@
     "qty": 8,
     "price": 2000,
     "order": "1",
-    "max": 9
+    "max": 8
    },
    {
     "product": "오꾸밥(소불고기)",
@@ -1887,7 +1893,7 @@
     "qty": 6,
     "price": 2000,
     "order": "4",
-    "max": 7
+    "max": 6
    },
    {
     "product": "오뚜기UNO피자(콤비)",
@@ -1908,14 +1914,14 @@
     "qty": 6,
     "price": 3000,
     "order": "7",
-    "max": 8
+    "max": 6
    },
    {
     "product": "한맥 더블버거",
     "qty": 6,
     "price": 3500,
     "order": "8",
-    "max": 7
+    "max": 6
    },
    {
     "product": "매콤제육김밥",
@@ -1929,28 +1935,28 @@
     "qty": 7,
     "price": 4500,
     "order": "10",
-    "max": 8
+    "max": 7
    },
    {
     "product": "참치김밥",
-    "qty": 3,
+    "qty": 2,
     "price": 4500,
     "order": "11",
-    "max": 7
+    "max": 2
    },
    {
     "product": "김치만두",
     "qty": 8,
     "price": 2500,
     "order": "12",
-    "max": 10
+    "max": 8
    },
    {
     "product": "고기만두",
     "qty": 9,
     "price": 2500,
     "order": "13",
-    "max": 11
+    "max": 9
    },
    {
     "product": "매콤떡볶이",
@@ -2015,56 +2021,56 @@
     "qty": 7,
     "price": 600,
     "order": "1",
-    "max": 17
+    "max": 7
    },
    {
     "product": "맛김치",
     "qty": 8,
     "price": 1500,
     "order": "2",
-    "max": 13
+    "max": 8
    },
    {
     "product": "볶음김치",
     "qty": 3,
     "price": 1500,
     "order": "3",
-    "max": 7
+    "max": 3
    },
    {
     "product": "체다치즈",
     "qty": 6,
     "price": 500,
     "order": "4",
-    "max": 15
+    "max": 6
    },
    {
     "product": "단무지",
     "qty": 11,
     "price": 800,
     "order": "5",
-    "max": 14
+    "max": 11
    },
    {
     "product": "김",
     "qty": 11,
     "price": 1000,
     "order": "6",
-    "max": 12
+    "max": 11
    },
    {
     "product": "스트링 치즈",
     "qty": 23,
     "price": 1000,
     "order": "6",
-    "max": 37
+    "max": 23
    },
    {
     "product": "의성마늘 소세지",
     "qty": 7,
     "price": 2000,
     "order": "7",
-    "max": 13
+    "max": 7
    },
    {
     "product": "숯불구이 후랑크",
@@ -2078,56 +2084,56 @@
     "qty": 9,
     "price": 2000,
     "order": "9",
-    "max": 19
+    "max": 9
    },
    {
     "product": "조지아",
     "qty": 5,
     "price": 2000,
     "order": "12",
-    "max": 8
+    "max": 5
    },
    {
     "product": "코카콜라",
     "qty": 1,
     "price": 2000,
     "order": "0",
-    "max": 4
+    "max": 1
    },
    {
     "product": "펩시",
     "qty": 6,
     "price": 2000,
     "order": "0",
-    "max": 9
+    "max": 6
    },
    {
     "product": "펩시제로",
     "qty": 3,
     "price": 2000,
     "order": "0",
-    "max": 5
+    "max": 3
    },
    {
     "product": "칠성사이다",
     "qty": 6,
     "price": 2000,
     "order": "0",
-    "max": 7
+    "max": 6
    },
    {
     "product": "포카리스웨트",
     "qty": 4,
     "price": 2500,
     "order": "0",
-    "max": 5
+    "max": 4
    },
    {
     "product": "옥수수수염차",
     "qty": 4,
     "price": 2000,
     "order": "0",
-    "max": 6
+    "max": 4
    },
    {
     "product": "생수",
@@ -2143,7 +2149,7 @@
     "qty": 7,
     "price": 1200,
     "order": "1",
-    "max": 8
+    "max": 7
    },
    {
     "product": "햇반",
@@ -2227,21 +2233,21 @@
     "qty": 9,
     "price": 1500,
     "order": "13",
-    "max": 10
+    "max": 9
    },
    {
     "product": "라면톡(황태)",
     "qty": 9,
     "price": 1500,
     "order": "14",
-    "max": 10
+    "max": 9
    },
    {
     "product": "라면톡(황태)",
     "qty": 7,
     "price": 1500,
     "order": "15",
-    "max": 10
+    "max": 9
    }
   ]
  },
@@ -5147,6 +5153,24 @@
    }
   },
   "2026-09-21": {
+   "냉동": {
+    "c": 4,
+    "v": 15500,
+    "p": {
+     "참치김밥": {
+      "c": 2,
+      "v": 9000
+     },
+     "야채김밥": {
+      "c": 1,
+      "v": 4500
+     },
+     "오꾸밥(참치마요)": {
+      "c": 1,
+      "v": 2000
+     }
+    }
+   },
    "냉장": {
     "c": 17,
     "v": 23900,
@@ -5246,24 +5270,6 @@
      "진라면(매운맛)": {
       "c": 1,
       "v": 3500
-     }
-    }
-   },
-   "냉동": {
-    "c": 3,
-    "v": 11000,
-    "p": {
-     "야채김밥": {
-      "c": 1,
-      "v": 4500
-     },
-     "오꾸밥(참치마요)": {
-      "c": 1,
-      "v": 2000
-     },
-     "참치김밥": {
-      "c": 1,
-      "v": 4500
      }
     }
    }
