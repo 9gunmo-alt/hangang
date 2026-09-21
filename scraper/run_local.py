@@ -48,6 +48,9 @@ PLATFORMS = {
         "f_product": "product", "f_amount": "amount", "f_dt": "datetime", "f_id": "ordern",
         "stock": "http://bangsopener.co.kr/opener/kiosk/appadmin/proup.do",
         "params": lambda code, y, m: {"id": code, "datetime": f"{y}-{m:02d}"},
+        # 사이트가 바뀌며 "외N개" 표시가 사라짐 → 주문마다 영수증 상세를 열어 품목을 정확히 나눔.
+        # (한 번 연 주문은 캐시에 저장돼 다시 열지 않음)
+        "always_detail": True,
     },
 }
 
@@ -326,27 +329,53 @@ def save_cache(c):
     except Exception as e: log("캐시 저장 실패:", e)
 
 
+_HDR_NAMES = {"품명", "상품명", "상품", "수량", "금액", "합계", "소계", "총액",
+              "할인", "결제금액", "공급가액", "부가세", "단가", "판매금액"}
+
 def parse_detail(html):
+    """영수증 상세 표에서 품목을 뽑는다. 열 순서가 달라도(name/qty/amount,
+    name/amount, name/qty/단가/합계 등) 견디도록 숫자 셀을 해석한다."""
     from bs4 import BeautifulSoup
     soup = BeautifulSoup(html, "html.parser"); items = []
     for tr in soup.select("tr"):
         cells = [c.get_text(" ", strip=True) for c in tr.find_all(["td", "th"])]
-        if len(cells) < 3: continue
+        if len(cells) < 2: continue
         name = cells[0].strip()
-        if not name or "품명" in name or "합계" in name: continue
-        qty = re.fullmatch(r"\d+", cells[1].replace(",", "").strip())
-        amt = re.search(r"\d+", cells[2].replace(",", ""))
-        if not qty or not amt: continue
-        items.append({"product": name, "qty": int(qty.group()), "amount": int(amt.group())})
+        if not name or name in _HDR_NAMES: continue
+        if any(k in name for k in ("합계", "소계", "총액", "할인")): continue
+        nums = []
+        for c in cells[1:]:
+            cc = c.replace(",", "").replace("원", "").strip()
+            if re.fullmatch(r"-?\d+", cc): nums.append(int(cc))
+        if not nums: continue
+        if len(nums) == 1:
+            qty, amount = 1, nums[0]
+        else:
+            amount = max(nums)                                   # 합계 금액 = 가장 큰 수
+            small = [n for n in nums if 0 < n < 100 and n != amount]
+            qty = small[0] if small else 1                       # 수량 = 100 미만의 작은 수
+        if amount <= 0: continue
+        items.append({"product": name, "qty": qty, "amount": amount})
     return items
 
 
+MAX_DETAIL_PER_CYCLE = 60   # 한 주기에 새로 여는 영수증 상세 최대 건수(첫 실행 폭주 방지)
+PARSE_VER = 2               # 영수증 파서 버전. 올리면 '미해결(None)' 주문만 자동 재조회.
+_DEBUG_DUMPS = 0            # 파싱 실패 영수증 HTML 저장 횟수(진단용, 최대 3개)
+
 def resolve_bundles(need):
-    """need: {(platform,code): [oid,...]}. 새 묶음거래만 브라우저로 상세를 열어 캐시에 저장."""
+    """need: {(platform,code): [oid,...]}. 새 주문만 영수증 상세를 열어 품목을 캐시에 저장."""
+    global _DEBUG_DUMPS
     cache = load_cache()
+    # 파서 버전이 바뀌면, 예전에 못 나눈(None) 주문만 지워서 다시 시도. 잘 나뉜 건 그대로 보존.
+    if cache.get("_ver") != PARSE_VER:
+        for k in [k for k, v in cache.items() if k != "_ver" and v is None]:
+            cache.pop(k, None)
+        cache["_ver"] = PARSE_VER; save_cache(cache)
     todo = {k: [o for o in v if o not in cache] for k, v in need.items()}
     todo = {k: v for k, v in todo.items() if v}
     if not todo: return cache
+    remaining = sum(len(v) for v in todo.values())
     try:
         from playwright.sync_api import sync_playwright
     except Exception:
@@ -354,28 +383,51 @@ def resolve_bundles(need):
         for k, ids in todo.items():
             for o in ids: cache[o] = None   # None = 미해결(대표상품 사용)
         save_cache(cache); return cache
+
+    budget = MAX_DETAIL_PER_CYCLE
+    ok_cnt = fail_cnt = 0
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True)
         page = browser.new_context(ignore_https_errors=True).new_page()
         try:
             for (plat_key, code), ids in todo.items():
+                if budget <= 0: break
                 plat = PLATFORMS[plat_key]
                 try:
                     page.goto(plat["machine"].format(code=code), wait_until="networkidle", timeout=45000)
                 except Exception as e:
                     log("기계 열기 실패", code, e)
                 for oid in ids:
+                    if budget <= 0: break
+                    budget -= 1
                     try:
                         page.goto(plat["receipt"], wait_until="networkidle", timeout=45000)
                         page.wait_for_function("typeof receipt === 'function'", timeout=8000)
                         page.evaluate(f"receipt('{oid}')")
                         page.wait_for_url("**/receipt.do", timeout=15000)
                         page.wait_for_timeout(250)
-                        cache[oid] = parse_detail(page.content()) or None
+                        html = page.content()
+                        items = parse_detail(html)
+                        if items:
+                            cache[oid] = items; ok_cnt += 1
+                        else:
+                            cache[oid] = None; fail_cnt += 1
+                            # 처음 몇 건은 원본 HTML을 남겨 레이아웃을 확인할 수 있게 함
+                            if _DEBUG_DUMPS < 3:
+                                try:
+                                    dp = os.path.join(HERE, f"receipt_debug_{oid}.html")
+                                    with open(dp, "w", encoding="utf-8") as f: f.write(html)
+                                    _DEBUG_DUMPS += 1
+                                    log(f"  상세 파싱 0건 → 원본 저장: {os.path.basename(dp)}")
+                                except Exception: pass
                     except Exception as e:
-                        log("상세 실패", oid, e); cache[oid] = None
+                        log("상세 실패", oid, e); cache[oid] = None; fail_cnt += 1
         finally:
             browser.close()
+    if ok_cnt or fail_cnt:
+        left = max(0, remaining - ok_cnt - fail_cnt)
+        log(f"영수증 상세 {ok_cnt}건 확인" + (f", 파싱실패 {fail_cnt}건" if fail_cnt else "")
+            + (f", {left}건 다음 주기에 계속" if left else ""))
     save_cache(cache); return cache
 
 
@@ -395,7 +447,9 @@ def build():
                 if not when: continue
                 oid = str(row.get(plat["f_id"], "")).strip()
                 amt = to_int(row.get(plat["f_amount"]))
-                bundle = bool(MULTI_RE.search(praw))
+                # 묶음 판정: vendingpay는 "외N개" 표시로, bangsopener는 표시가 없어져서
+                # 주문마다 영수증 상세를 열어 확인(always_detail).
+                bundle = bool(plat.get("always_detail")) or bool(MULTI_RE.search(praw))
                 rows.append({"praw": praw, "when": when, "oid": oid, "amt": amt, "bundle": bundle})
                 if bundle and oid:
                     need.setdefault((plat_key, code), []).append(oid)
