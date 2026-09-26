@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-26T15:36+09:00",
+ "generated_at": "2026-09-26T17:25+09:00",
  "machines": [
   "라면1",
   "라면2",
@@ -2238,7 +2238,7 @@
    },
    {
     "product": "야채김밥",
-    "qty": 4,
+    "qty": 7,
     "price": 4500,
     "order": "10",
     "max": 7
@@ -2252,24 +2252,17 @@
    },
    {
     "product": "김치만두",
-    "qty": 5,
+    "qty": 7,
     "price": 2500,
     "order": "12",
     "max": 8
    },
    {
     "product": "고기만두",
-    "qty": 3,
+    "qty": 8,
     "price": 2500,
     "order": "13",
     "max": 9
-   },
-   {
-    "product": "매콤떡볶이",
-    "qty": 1,
-    "price": 4500,
-    "order": "0",
-    "max": 5
    },
    {
     "product": "통모짜볼로네제",
@@ -2300,6 +2293,13 @@
     "max": 9
    },
    {
+    "product": "매콤떡볶이",
+    "qty": 2,
+    "price": 4500,
+    "order": "0",
+    "max": 5
+   },
+   {
     "product": "로제떡볶이",
     "qty": 5,
     "price": 5000,
@@ -2324,21 +2324,21 @@
   "냉장": [
    {
     "product": "날계란",
-    "qty": 3,
+    "qty": 10,
     "price": 600,
     "order": "1",
     "max": 10
    },
    {
     "product": "맛김치",
-    "qty": 7,
+    "qty": 16,
     "price": 1500,
     "order": "2",
-    "max": 10
+    "max": 16
    },
    {
     "product": "볶음김치",
-    "qty": 3,
+    "qty": 5,
     "price": 1500,
     "order": "3",
     "max": 10
@@ -2401,14 +2401,14 @@
    },
    {
     "product": "포카리스웨트",
-    "qty": 2,
+    "qty": 6,
     "price": 2300,
     "order": "10",
     "max": 6
    },
    {
     "product": "파워에이드",
-    "qty": 3,
+    "qty": 5,
     "price": 2300,
     "order": "11",
     "max": 5
