@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-02T20:19+09:00",
+ "generated_at": "2026-10-02T20:30+09:00",
  "machines": [
   "라면1",
   "라면2",
@@ -2069,7 +2069,7 @@
    },
    {
     "product": "오꾸밥(김치치즈)",
-    "qty": 3,
+    "qty": 5,
     "price": 2000,
     "order": "3",
     "max": 9
@@ -2225,10 +2225,10 @@
    },
    {
     "product": "볶음김치",
-    "qty": 3,
+    "qty": 20,
     "price": 1500,
     "order": "3",
-    "max": 10
+    "max": 20
    },
    {
     "product": "체다치즈",
@@ -2239,10 +2239,10 @@
    },
    {
     "product": "단무지",
-    "qty": 6,
+    "qty": 20,
     "price": 800,
     "order": "5",
-    "max": 14
+    "max": 20
    },
    {
     "product": "김",
@@ -2281,21 +2281,21 @@
    },
    {
     "product": "옥수수수염차",
-    "qty": 4,
+    "qty": 6,
     "price": 2000,
     "order": "9",
     "max": 8
    },
    {
     "product": "포카리스웨트",
-    "qty": 5,
+    "qty": 8,
     "price": 2300,
     "order": "10",
-    "max": 6
+    "max": 8
    },
    {
     "product": "파워에이드",
-    "qty": 3,
+    "qty": 5,
     "price": 2300,
     "order": "11",
     "max": 5
@@ -2344,7 +2344,7 @@
    },
    {
     "product": "생수",
-    "qty": 3,
+    "qty": 10,
     "price": 1000,
     "order": "0",
     "max": 12
