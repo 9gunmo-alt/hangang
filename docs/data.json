@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-06T19:12+09:00",
+ "generated_at": "2026-10-06T21:29+09:00",
  "machines": [
   "라면1",
   "라면2",
@@ -2556,18 +2556,18 @@
     "max": 0
    },
    {
-    "product": "라면톡(황태)",
-    "qty": 9,
-    "price": 1500,
+    "product": "에낙",
+    "qty": 13,
+    "price": 1000,
     "order": "13",
-    "max": 9
+    "max": 13
    },
    {
-    "product": "라면톡(황태)",
-    "qty": 9,
-    "price": 1500,
+    "product": "에낙스파이시",
+    "qty": 13,
+    "price": 1200,
     "order": "14",
-    "max": 9
+    "max": 13
    },
    {
     "product": "라면톡(황태)",
