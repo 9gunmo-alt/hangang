@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-13T22:27+09:00",
+ "generated_at": "2026-10-13T23:49+09:00",
  "machines": [
   "라면1",
   "라면2",
@@ -1680,28 +1680,28 @@
     "qty": 5,
     "price": 2000,
     "order": "1",
-    "max": 6
+    "max": 5
    },
    {
     "product": "오꾸밥(소불고기)",
     "qty": 4,
     "price": 2000,
     "order": "2",
-    "max": 7
+    "max": 4
    },
    {
     "product": "오꾸밥(김치치즈)",
     "qty": 9,
     "price": 2000,
     "order": "3",
-    "max": 10
+    "max": 9
    },
    {
     "product": "오꾸밥(불닭치즈)",
     "qty": 4,
     "price": 2000,
     "order": "4",
-    "max": 6
+    "max": 4
    },
    {
     "product": "오뚜기UNO피자(콤비)",
@@ -1722,21 +1722,21 @@
     "qty": 10,
     "price": 3000,
     "order": "7",
-    "max": 12
+    "max": 10
    },
    {
     "product": "한맥 더블버거",
     "qty": 11,
     "price": 3500,
     "order": "8",
-    "max": 12
+    "max": 11
    },
    {
     "product": "매콤제육김밥",
     "qty": 11,
     "price": 4500,
     "order": "9",
-    "max": 12
+    "max": 11
    },
    {
     "product": "야채김밥",
@@ -1750,7 +1750,7 @@
     "qty": 8,
     "price": 4500,
     "order": "11",
-    "max": 10
+    "max": 8
    },
    {
     "product": "소세지김밥",
@@ -1771,28 +1771,28 @@
     "qty": 8,
     "price": 2500,
     "order": "13",
-    "max": 13
+    "max": 8
    },
    {
     "product": "매콤떡볶이",
     "qty": 5,
     "price": 4500,
     "order": "14",
-    "max": 7
+    "max": 5
    },
    {
     "product": "로제떡볶이",
     "qty": 5,
     "price": 5000,
     "order": "15",
-    "max": 6
+    "max": 5
    },
    {
     "product": "국물떡볶이",
     "qty": 4,
     "price": 4500,
     "order": "16",
-    "max": 5
+    "max": 4
    },
    {
     "product": "마시뜨랑건강식",
@@ -1806,28 +1806,28 @@
     "qty": 0,
     "price": 6000,
     "order": "0",
-    "max": 2
+    "max": 0
    },
    {
     "product": "뽀모도로스파게티",
     "qty": 0,
     "price": 4500,
     "order": "0",
-    "max": 6
+    "max": 0
    },
    {
     "product": "김치제육덮밥",
     "qty": 0,
     "price": 6000,
     "order": "0",
-    "max": 6
+    "max": 0
    },
    {
     "product": "베이컨크림스파게티",
     "qty": 0,
     "price": 4500,
     "order": "0",
-    "max": 7
+    "max": 0
    },
    {
     "product": "피자치즈",
@@ -1843,56 +1843,56 @@
     "qty": 49,
     "price": 600,
     "order": "1",
-    "max": 81
+    "max": 49
    },
    {
     "product": "맛김치",
     "qty": 12,
     "price": 1500,
     "order": "2",
-    "max": 16
+    "max": 12
    },
    {
     "product": "볶음김치",
     "qty": 17,
     "price": 1500,
     "order": "3",
-    "max": 20
+    "max": 17
    },
    {
     "product": "체다치즈",
     "qty": 7,
     "price": 500,
     "order": "4",
-    "max": 20
+    "max": 7
    },
    {
     "product": "단무지",
     "qty": 12,
     "price": 800,
     "order": "5",
-    "max": 16
+    "max": 12
    },
    {
     "product": "김",
     "qty": 7,
     "price": 1000,
     "order": "6",
-    "max": 8
+    "max": 7
    },
    {
     "product": "스트링 치즈",
     "qty": 11,
     "price": 1000,
     "order": "6",
-    "max": 24
+    "max": 11
    },
    {
     "product": "의성마늘 소세지",
     "qty": 17,
     "price": 2000,
     "order": "7",
-    "max": 20
+    "max": 17
    },
    {
     "product": "숯불구이 후랑크",
@@ -1906,21 +1906,21 @@
     "qty": 8,
     "price": 4000,
     "order": "9",
-    "max": 9
+    "max": 8
    },
    {
     "product": "옥수수수염차",
     "qty": 6,
     "price": 2000,
     "order": "9",
-    "max": 20
+    "max": 6
    },
    {
     "product": "포카리스웨트",
     "qty": 7,
     "price": 2300,
     "order": "10",
-    "max": 8
+    "max": 7
    },
    {
     "product": "파워에이드",
@@ -1934,7 +1934,7 @@
     "qty": 4,
     "price": 2300,
     "order": "12",
-    "max": 5
+    "max": 4
    },
    {
     "product": "조지아",
@@ -1985,14 +1985,14 @@
     "qty": 7,
     "price": 1200,
     "order": "1",
-    "max": 8
+    "max": 7
    },
    {
     "product": "햇반",
     "qty": 6,
     "price": 1200,
     "order": "2",
-    "max": 8
+    "max": 7
    },
    {
     "product": "햇반",
@@ -2006,7 +2006,7 @@
     "qty": 1,
     "price": 4500,
     "order": "4",
-    "max": 2
+    "max": 1
    },
    {
     "product": "스팸김치덮밥",
@@ -2083,7 +2083,7 @@
     "qty": 5,
     "price": 1500,
     "order": "15",
-    "max": 9
+    "max": 5
    }
   ]
  },
