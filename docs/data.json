@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-14T23:25+09:00",
+ "generated_at": "2026-10-15T00:00+09:00",
  "machines": [
   "라면1",
   "라면2",
@@ -1387,114 +1387,6 @@
    "product": "날계란",
    "amount": 600,
    "datetime": "2026-10-09T01:35"
-  },
-  {
-   "machine": "냉장",
-   "product": "숯불구이 후랑크",
-   "amount": 2000,
-   "datetime": "2026-10-08T23:51"
-  },
-  {
-   "machine": "라면1",
-   "product": "안성탕면",
-   "amount": 3500,
-   "datetime": "2026-10-08T23:50"
-  },
-  {
-   "machine": "라면1",
-   "product": "짜파게티",
-   "amount": 4000,
-   "datetime": "2026-10-08T23:49"
-  },
-  {
-   "machine": "냉장",
-   "product": "옥수수수염차",
-   "amount": 2000,
-   "datetime": "2026-10-08T22:04"
-  },
-  {
-   "machine": "라면1",
-   "product": "진라면(매운맛)",
-   "amount": 3500,
-   "datetime": "2026-10-08T21:30"
-  },
-  {
-   "machine": "라면1",
-   "product": "짜파게티",
-   "amount": 4000,
-   "datetime": "2026-10-08T20:45"
-  },
-  {
-   "machine": "라면2",
-   "product": "짜파게티",
-   "amount": 4000,
-   "datetime": "2026-10-08T20:45"
-  },
-  {
-   "machine": "라면2",
-   "product": "진짬뽕",
-   "amount": 4000,
-   "datetime": "2026-10-08T20:44"
-  },
-  {
-   "machine": "라면1",
-   "product": "안성탕면",
-   "amount": 3500,
-   "datetime": "2026-10-08T20:43"
-  },
-  {
-   "machine": "냉동",
-   "product": "오꾸밥(김치치즈)",
-   "amount": 2000,
-   "datetime": "2026-10-08T12:04"
-  },
-  {
-   "machine": "라면2",
-   "product": "너구리",
-   "amount": 3800,
-   "datetime": "2026-10-08T12:03"
-  },
-  {
-   "machine": "냉장",
-   "product": "옥수수수염차",
-   "amount": 2000,
-   "datetime": "2026-10-08T07:02"
-  },
-  {
-   "machine": "냉장",
-   "product": "갈아만든배",
-   "amount": 2300,
-   "datetime": "2026-10-08T05:24"
-  },
-  {
-   "machine": "냉장",
-   "product": "날계란",
-   "amount": 600,
-   "datetime": "2026-10-08T05:22"
-  },
-  {
-   "machine": "냉장",
-   "product": "날계란",
-   "amount": 600,
-   "datetime": "2026-10-08T05:22"
-  },
-  {
-   "machine": "라면1",
-   "product": "신라면",
-   "amount": 3800,
-   "datetime": "2026-10-08T05:21"
-  },
-  {
-   "machine": "라면2",
-   "product": "신라면",
-   "amount": 3800,
-   "datetime": "2026-10-08T05:21"
-  },
-  {
-   "machine": "라면1",
-   "product": "안성탕면",
-   "amount": 3500,
-   "datetime": "2026-10-08T03:29"
   }
  ],
  "stock": {
