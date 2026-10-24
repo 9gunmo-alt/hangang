@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-24T23:18+09:00",
+ "generated_at": "2026-10-25T00:00+09:00",
  "machines": [
   "라면1",
   "라면2",
@@ -1303,114 +1303,6 @@
    "product": "오징어짬뽕",
    "amount": 3800,
    "datetime": "2026-10-19T02:23"
-  },
-  {
-   "machine": "라면2",
-   "product": "열라면",
-   "amount": 3500,
-   "datetime": "2026-10-18T21:54"
-  },
-  {
-   "machine": "라면2",
-   "product": "무파마",
-   "amount": 3800,
-   "datetime": "2026-10-18T21:53"
-  },
-  {
-   "machine": "라면2",
-   "product": "진라면(순한맛)",
-   "amount": 3500,
-   "datetime": "2026-10-18T21:26"
-  },
-  {
-   "machine": "냉장",
-   "product": "날계란",
-   "amount": 600,
-   "datetime": "2026-10-18T21:25"
-  },
-  {
-   "machine": "냉장",
-   "product": "체다치즈",
-   "amount": 500,
-   "datetime": "2026-10-18T21:25"
-  },
-  {
-   "machine": "라면2",
-   "product": "짜파게티",
-   "amount": 4000,
-   "datetime": "2026-10-18T21:22"
-  },
-  {
-   "machine": "냉동",
-   "product": "김치만두",
-   "amount": 2500,
-   "datetime": "2026-10-18T20:51"
-  },
-  {
-   "machine": "라면1",
-   "product": "짜파게티",
-   "amount": 4000,
-   "datetime": "2026-10-18T20:44"
-  },
-  {
-   "machine": "라면2",
-   "product": "짜파게티",
-   "amount": 4000,
-   "datetime": "2026-10-18T20:44"
-  },
-  {
-   "machine": "냉동",
-   "product": "로제떡볶이",
-   "amount": 5000,
-   "datetime": "2026-10-18T17:22"
-  },
-  {
-   "machine": "냉장",
-   "product": "옥수수수염차",
-   "amount": 2000,
-   "datetime": "2026-10-18T12:54"
-  },
-  {
-   "machine": "냉장",
-   "product": "스트링 치즈",
-   "amount": 1000,
-   "datetime": "2026-10-18T12:41"
-  },
-  {
-   "machine": "냉장",
-   "product": "스트링 치즈",
-   "amount": 1000,
-   "datetime": "2026-10-18T12:41"
-  },
-  {
-   "machine": "냉장",
-   "product": "스트링 치즈",
-   "amount": 1000,
-   "datetime": "2026-10-18T12:41"
-  },
-  {
-   "machine": "라면2",
-   "product": "진라면(순한맛)",
-   "amount": 3500,
-   "datetime": "2026-10-18T12:04"
-  },
-  {
-   "machine": "라면1",
-   "product": "무파마",
-   "amount": 3800,
-   "datetime": "2026-10-18T09:44"
-  },
-  {
-   "machine": "라면2",
-   "product": "신라면",
-   "amount": 3800,
-   "datetime": "2026-10-18T07:56"
-  },
-  {
-   "machine": "냉장",
-   "product": "날계란",
-   "amount": 600,
-   "datetime": "2026-10-18T07:56"
   }
  ],
  "stock": {
