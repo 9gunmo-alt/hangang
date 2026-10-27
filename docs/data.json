@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-27T21:56+09:00",
+ "generated_at": "2026-10-27T21:58+09:00",
  "machines": [
   "라면1",
   "라면2",
@@ -1757,28 +1757,28 @@
    },
    {
     "product": "안성탕면",
-    "qty": 4,
+    "qty": 3,
     "price": 3500,
     "order": "4",
     "max": 8
    },
    {
     "product": "삼양라면",
-    "qty": 8,
+    "qty": 7,
     "price": 3500,
     "order": "5",
     "max": 8
    },
    {
     "product": "참깨라면",
-    "qty": 5,
+    "qty": 4,
     "price": 4000,
     "order": "6",
     "max": 8
    },
    {
     "product": "무파마",
-    "qty": 8,
+    "qty": 7,
     "price": 3800,
     "order": "7",
     "max": 8
@@ -1841,7 +1841,7 @@
    },
    {
     "product": "용기1",
-    "qty": 16,
+    "qty": 12,
     "price": 10,
     "order": "18",
     "max": 50
@@ -2027,14 +2027,14 @@
   "냉장": [
    {
     "product": "날계란",
-    "qty": 71,
+    "qty": 70,
     "price": 600,
     "order": "1",
     "max": 99
    },
    {
     "product": "맛김치",
-    "qty": 21,
+    "qty": 19,
     "price": 1500,
     "order": "2",
     "max": 40
