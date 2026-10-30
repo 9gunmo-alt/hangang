@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-30T22:56+09:00",
+ "generated_at": "2026-10-30T22:59+09:00",
  "machines": [
   "라면1",
   "라면2",
@@ -1936,7 +1936,7 @@
    },
    {
     "product": "용기1",
-    "qty": 43,
+    "qty": 42,
     "price": 10,
     "order": "18",
     "max": 50
@@ -2250,21 +2250,21 @@
   "냉장": [
    {
     "product": "날계란",
-    "qty": 53,
+    "qty": 52,
     "price": 100,
     "order": "1",
     "max": 99
    },
    {
     "product": "햇반",
-    "qty": 8,
+    "qty": 7,
     "price": 1200,
     "order": "1",
     "max": 8
    },
    {
     "product": "맛김치",
-    "qty": 13,
+    "qty": 12,
     "price": 1500,
     "order": "2",
     "max": 40
