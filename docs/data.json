@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-30T14:40+09:00",
+ "generated_at": "2026-10-30T15:12+09:00",
  "machines": [
   "라면1",
   "라면2",
@@ -2087,23 +2087,30 @@
     "max": 20
    },
    {
+    "product": "치즈 핫도그",
+    "qty": 10,
+    "price": 2000,
+    "order": "14",
+    "max": 10
+   },
+   {
     "product": "매콤떡볶이",
     "qty": 5,
     "price": 4500,
-    "order": "14",
-    "max": 5
-   },
-   {
-    "product": "로제떡볶이",
-    "qty": 18,
-    "price": 5000,
     "order": "15",
-    "max": 20
+    "max": 5
    },
    {
     "product": "국물떡볶이",
     "qty": 20,
     "price": 4500,
+    "order": "16",
+    "max": 20
+   },
+   {
+    "product": "로제떡볶이",
+    "qty": 18,
+    "price": 5000,
     "order": "16",
     "max": 20
    },
