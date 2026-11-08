@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-08T22:05+09:00",
+ "generated_at": "2026-11-09T00:00+09:00",
  "machines": [
   "라면1",
   "라면2",
@@ -1033,78 +1033,6 @@
    "product": "김치만두",
    "amount": 2500,
    "datetime": "2026-11-03T11:57"
-  },
-  {
-   "machine": "냉동",
-   "product": "로제떡볶이",
-   "amount": 5000,
-   "datetime": "2026-11-02T22:16"
-  },
-  {
-   "machine": "냉장",
-   "product": "날계란",
-   "amount": 600,
-   "datetime": "2026-11-02T22:02"
-  },
-  {
-   "machine": "냉동",
-   "product": "참치김밥",
-   "amount": 4500,
-   "datetime": "2026-11-02T22:00"
-  },
-  {
-   "machine": "냉장",
-   "product": "숯불구이 후랑크",
-   "amount": 2000,
-   "datetime": "2026-11-02T17:09"
-  },
-  {
-   "machine": "냉동",
-   "product": "참치김밥",
-   "amount": 4500,
-   "datetime": "2026-11-02T11:59"
-  },
-  {
-   "machine": "냉동",
-   "product": "야채김밥",
-   "amount": 4500,
-   "datetime": "2026-11-02T11:58"
-  },
-  {
-   "machine": "냉동",
-   "product": "고기만두",
-   "amount": 2500,
-   "datetime": "2026-11-02T11:58"
-  },
-  {
-   "machine": "냉장",
-   "product": "생수",
-   "amount": 1000,
-   "datetime": "2026-11-02T09:04"
-  },
-  {
-   "machine": "냉장",
-   "product": "날계란",
-   "amount": 600,
-   "datetime": "2026-11-02T03:19"
-  },
-  {
-   "machine": "냉동",
-   "product": "김치만두",
-   "amount": 2500,
-   "datetime": "2026-11-02T00:45"
-  },
-  {
-   "machine": "냉장",
-   "product": "날계란",
-   "amount": 600,
-   "datetime": "2026-11-02T00:45"
-  },
-  {
-   "machine": "냉장",
-   "product": "맛김치",
-   "amount": 1500,
-   "datetime": "2026-11-02T00:45"
   }
  ],
  "stock": {
