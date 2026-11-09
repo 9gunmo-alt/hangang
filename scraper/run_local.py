@@ -29,7 +29,7 @@ MACHINES = [
     ("라면2", "hgdandae3", "vendingpay"),
     ("냉동",  "hgdandae4", "bangsopener"),
     ("냉장",  "hgdandae5", "bangsopener"),
-    ("슬림",  "hgdandae1", "vendingpay"),
+    # 슬림(hgdandae1)은 매장에서 철거되어 수집 중단.
 ]
 PLATFORMS = {
     "vendingpay": {
@@ -312,8 +312,24 @@ def recent_months(n):
         out.append((y, m)); m -= 1
         if m == 0: m = 12; y -= 1
     return out
+_SSL_FALLBACK = False   # 벤딩페이 인증서 체인 깨짐 → 검증 끄고 재시도한 적 있음(1회만 알림)
+
 def fetch_list(plat, code, y, m):
-    r = requests.get(plat["list"], params=plat["params"](code, y, m), headers=UA, timeout=25)
+    global _SSL_FALLBACK
+    params = plat["params"](code, y, m)
+    try:
+        r = requests.get(plat["list"], params=params, headers=UA, timeout=25)
+    except requests.exceptions.SSLError:
+        # 사이트가 중간 인증서를 빠뜨리고 보냄(브라우저는 자동 보완, 파이썬은 실패).
+        # 읽기 전용 조회라 인증서 검증을 끄고 한 번 더 시도한다.
+        if not _SSL_FALLBACK:
+            log("⚠ 벤딩페이 SSL 인증서 체인 문제 감지 → 검증 생략하고 수집 계속 (사이트 쪽 변경)")
+            _SSL_FALLBACK = True
+        try:
+            requests.packages.urllib3.disable_warnings()
+        except Exception:
+            pass
+        r = requests.get(plat["list"], params=params, headers=UA, timeout=25, verify=False)
     r.raise_for_status(); j = r.json()
     if isinstance(j, dict):
         for k in ("list", "data", "rows"):
