@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-21T23:17+09:00",
+ "generated_at": "2026-11-09T14:27+09:00",
  "machines": [
   "라면1",
   "라면2",
@@ -10,1930 +10,1186 @@
  "transactions": [
   {
    "machine": "냉장",
+   "product": "체다치즈",
+   "amount": 500,
+   "datetime": "2026-11-09T14:25"
+  },
+  {
+   "machine": "냉장",
    "product": "생수",
    "amount": 1000,
-   "datetime": "2026-09-21T23:00"
+   "datetime": "2026-11-09T14:25"
   },
   {
    "machine": "냉동",
    "product": "참치김밥",
    "amount": 4500,
-   "datetime": "2026-09-21T22:55"
+   "datetime": "2026-11-09T13:10"
   },
   {
-   "machine": "냉장",
-   "product": "날계란",
-   "amount": 600,
-   "datetime": "2026-09-21T21:39"
-  },
-  {
-   "machine": "라면2",
-   "product": "진라면(매운맛)",
-   "amount": 3500,
-   "datetime": "2026-09-21T21:37"
-  },
-  {
-   "machine": "라면2",
-   "product": "진라면(매운맛)",
-   "amount": 3500,
-   "datetime": "2026-09-21T20:51"
-  },
-  {
-   "machine": "냉장",
-   "product": "포카리스웨트",
+   "machine": "냉동",
+   "product": "고기만두",
    "amount": 2500,
-   "datetime": "2026-09-21T20:50"
+   "datetime": "2026-11-09T11:58"
   },
   {
    "machine": "냉장",
-   "product": "날계란",
-   "amount": 600,
-   "datetime": "2026-09-21T20:03"
-  },
-  {
-   "machine": "냉장",
-   "product": "체다치즈",
-   "amount": 500,
-   "datetime": "2026-09-21T20:03"
+   "product": "숯불구이 후랑크",
+   "amount": 2000,
+   "datetime": "2026-11-09T11:56"
   },
   {
    "machine": "냉장",
    "product": "의성마늘 소세지",
    "amount": 2000,
-   "datetime": "2026-09-21T20:03"
+   "datetime": "2026-11-09T11:56"
   },
   {
-   "machine": "라면1",
-   "product": "무파마",
-   "amount": 3800,
-   "datetime": "2026-09-21T20:00"
+   "machine": "냉동",
+   "product": "매콤제육김밥",
+   "amount": 4500,
+   "datetime": "2026-11-09T11:02"
   },
   {
-   "machine": "냉장",
-   "product": "체다치즈",
-   "amount": 500,
-   "datetime": "2026-09-21T19:26"
+   "machine": "냉동",
+   "product": "매콤제육김밥",
+   "amount": 4500,
+   "datetime": "2026-11-09T08:23"
   },
   {
-   "machine": "냉장",
-   "product": "체다치즈",
-   "amount": 500,
-   "datetime": "2026-09-21T19:26"
-  },
-  {
-   "machine": "냉장",
-   "product": "스트링 치즈",
-   "amount": 1000,
-   "datetime": "2026-09-21T19:24"
-  },
-  {
-   "machine": "라면2",
-   "product": "열라면",
-   "amount": 3500,
-   "datetime": "2026-09-21T18:57"
-  },
-  {
-   "machine": "냉장",
-   "product": "코카콜라",
-   "amount": 2000,
-   "datetime": "2026-09-21T16:37"
-  },
-  {
-   "machine": "라면2",
-   "product": "안성탕면",
-   "amount": 3500,
-   "datetime": "2026-09-21T16:34"
-  },
-  {
-   "machine": "라면2",
-   "product": "무파마",
-   "amount": 3800,
-   "datetime": "2026-09-21T16:02"
-  },
-  {
-   "machine": "라면2",
-   "product": "참깨라면",
-   "amount": 4000,
-   "datetime": "2026-09-21T16:01"
-  },
-  {
-   "machine": "냉장",
-   "product": "펩시제로",
-   "amount": 2000,
-   "datetime": "2026-09-21T12:36"
-  },
-  {
-   "machine": "냉장",
-   "product": "체다치즈",
-   "amount": 500,
-   "datetime": "2026-09-21T12:33"
-  },
-  {
-   "machine": "라면2",
-   "product": "까르보불닭",
-   "amount": 4200,
-   "datetime": "2026-09-21T12:31"
-  },
-  {
-   "machine": "냉장",
-   "product": "체다치즈",
-   "amount": 500,
-   "datetime": "2026-09-21T12:29"
-  },
-  {
-   "machine": "라면1",
-   "product": "까르보불닭",
-   "amount": 4200,
-   "datetime": "2026-09-21T12:23"
-  },
-  {
-   "machine": "냉장",
-   "product": "날계란",
-   "amount": 600,
-   "datetime": "2026-09-21T11:58"
-  },
-  {
-   "machine": "라면1",
-   "product": "진라면(매운맛)",
-   "amount": 3500,
-   "datetime": "2026-09-21T11:57"
+   "machine": "냉동",
+   "product": "소세지김밥",
+   "amount": 4500,
+   "datetime": "2026-11-09T08:23"
   },
   {
    "machine": "냉동",
    "product": "야채김밥",
    "amount": 4500,
-   "datetime": "2026-09-21T11:56"
-  },
-  {
-   "machine": "냉장",
-   "product": "몬스터",
-   "amount": 2000,
-   "datetime": "2026-09-21T11:53"
+   "datetime": "2026-11-09T08:23"
   },
   {
    "machine": "냉동",
-   "product": "오꾸밥(참치마요)",
+   "product": "참치김밥",
+   "amount": 4500,
+   "datetime": "2026-11-09T08:23"
+  },
+  {
+   "machine": "냉동",
+   "product": "오꾸밥(소불고기)",
    "amount": 2000,
-   "datetime": "2026-09-21T11:50"
-  },
-  {
-   "machine": "라면2",
-   "product": "오징어짬뽕",
-   "amount": 3800,
-   "datetime": "2026-09-21T11:48"
+   "datetime": "2026-11-09T08:23"
   },
   {
    "machine": "냉장",
-   "product": "체다치즈",
-   "amount": 500,
-   "datetime": "2026-09-21T11:26"
-  },
-  {
-   "machine": "라면2",
-   "product": "삼양라면",
-   "amount": 3500,
-   "datetime": "2026-09-21T11:25"
+   "product": "의성마늘 소세지",
+   "amount": 2000,
+   "datetime": "2026-11-09T08:20"
   },
   {
    "machine": "냉장",
-   "product": "스트링 치즈",
-   "amount": 1000,
-   "datetime": "2026-09-21T10:52"
+   "product": "의성마늘 소세지",
+   "amount": 2000,
+   "datetime": "2026-11-09T08:20"
   },
   {
-   "machine": "라면2",
-   "product": "무파마",
-   "amount": 3800,
-   "datetime": "2026-09-21T08:59"
+   "machine": "냉장",
+   "product": "의성마늘 소세지",
+   "amount": 2000,
+   "datetime": "2026-11-09T08:20"
+  },
+  {
+   "machine": "냉장",
+   "product": "숯불구이 후랑크",
+   "amount": 2000,
+   "datetime": "2026-11-09T08:20"
+  },
+  {
+   "machine": "냉장",
+   "product": "숯불구이 후랑크",
+   "amount": 2000,
+   "datetime": "2026-11-09T08:20"
   },
   {
    "machine": "냉장",
    "product": "옥수수수염차",
    "amount": 2000,
-   "datetime": "2026-09-21T07:30"
-  },
-  {
-   "machine": "냉동",
-   "product": "참치김밥",
-   "amount": 4500,
-   "datetime": "2026-09-21T07:02"
+   "datetime": "2026-11-09T08:19"
   },
   {
    "machine": "냉장",
-   "product": "코카콜라",
+   "product": "옥수수수염차",
    "amount": 2000,
-   "datetime": "2026-09-21T04:11"
+   "datetime": "2026-11-09T08:19"
   },
   {
    "machine": "냉장",
-   "product": "날계란",
-   "amount": 600,
-   "datetime": "2026-09-21T04:05"
+   "product": "스트링 치즈",
+   "amount": 1000,
+   "datetime": "2026-11-09T08:19"
   },
   {
    "machine": "냉장",
-   "product": "체다치즈",
-   "amount": 500,
-   "datetime": "2026-09-21T04:05"
-  },
-  {
-   "machine": "라면2",
-   "product": "안성탕면",
-   "amount": 3500,
-   "datetime": "2026-09-21T04:04"
+   "product": "생수",
+   "amount": 1000,
+   "datetime": "2026-11-09T08:19"
   },
   {
    "machine": "냉장",
-   "product": "맛김치",
-   "amount": 1500,
-   "datetime": "2026-09-21T00:13"
-  },
-  {
-   "machine": "라면2",
-   "product": "짜파게티",
-   "amount": 4000,
-   "datetime": "2026-09-21T00:04"
-  },
-  {
-   "machine": "라면2",
-   "product": "안성탕면",
-   "amount": 3500,
-   "datetime": "2026-09-20T22:03"
-  },
-  {
-   "machine": "라면2",
-   "product": "열라면",
-   "amount": 3500,
-   "datetime": "2026-09-20T22:02"
-  },
-  {
-   "machine": "라면2",
-   "product": "오징어짬뽕",
-   "amount": 3800,
-   "datetime": "2026-09-20T20:18"
+   "product": "생수",
+   "amount": 1000,
+   "datetime": "2026-11-09T08:19"
   },
   {
    "machine": "냉장",
-   "product": "볶음김치",
-   "amount": 1500,
-   "datetime": "2026-09-20T20:18"
-  },
-  {
-   "machine": "냉동",
-   "product": "참치김밥",
-   "amount": 4500,
-   "datetime": "2026-09-20T20:08"
+   "product": "생수",
+   "amount": 1000,
+   "datetime": "2026-11-09T08:19"
   },
   {
    "machine": "냉장",
-   "product": "단무지",
-   "amount": 800,
-   "datetime": "2026-09-20T20:06"
+   "product": "생수",
+   "amount": 1000,
+   "datetime": "2026-11-09T08:19"
   },
   {
-   "machine": "슬림",
+   "machine": "냉장",
+   "product": "생수",
+   "amount": 1000,
+   "datetime": "2026-11-09T08:19"
+  },
+  {
+   "machine": "냉장",
    "product": "햇반",
    "amount": 1200,
-   "datetime": "2026-09-20T20:05"
+   "datetime": "2026-11-08T22:00"
   },
   {
-   "machine": "라면1",
-   "product": "참깨라면",
-   "amount": 4000,
-   "datetime": "2026-09-20T19:52"
-  },
-  {
-   "machine": "냉동",
-   "product": "한맥 불벅",
-   "amount": 3000,
-   "datetime": "2026-09-20T19:48"
-  },
-  {
-   "machine": "냉동",
-   "product": "고기만두",
-   "amount": 2500,
-   "datetime": "2026-09-20T19:48"
+   "machine": "냉장",
+   "product": "날계란",
+   "amount": 600,
+   "datetime": "2026-11-08T19:02"
   },
   {
    "machine": "냉장",
    "product": "옥수수수염차",
    "amount": 2000,
-   "datetime": "2026-09-20T19:47"
-  },
-  {
-   "machine": "냉장",
-   "product": "날계란",
-   "amount": 600,
-   "datetime": "2026-09-20T19:46"
-  },
-  {
-   "machine": "라면1",
-   "product": "진라면(순한맛)",
-   "amount": 3500,
-   "datetime": "2026-09-20T19:45"
-  },
-  {
-   "machine": "라면1",
-   "product": "안성탕면",
-   "amount": 3500,
-   "datetime": "2026-09-20T19:44"
-  },
-  {
-   "machine": "냉장",
-   "product": "생수",
-   "amount": 1000,
-   "datetime": "2026-09-20T18:29"
-  },
-  {
-   "machine": "라면2",
-   "product": "참깨라면",
-   "amount": 4000,
-   "datetime": "2026-09-20T18:26"
-  },
-  {
-   "machine": "냉장",
-   "product": "단무지",
-   "amount": 800,
-   "datetime": "2026-09-20T16:15"
-  },
-  {
-   "machine": "라면1",
-   "product": "무파마",
-   "amount": 3800,
-   "datetime": "2026-09-20T16:05"
-  },
-  {
-   "machine": "라면1",
-   "product": "까르보불닭",
-   "amount": 4200,
-   "datetime": "2026-09-20T16:04"
-  },
-  {
-   "machine": "라면1",
-   "product": "불닭볶음면",
-   "amount": 4000,
-   "datetime": "2026-09-20T16:04"
-  },
-  {
-   "machine": "냉장",
-   "product": "날계란",
-   "amount": 600,
-   "datetime": "2026-09-20T16:03"
-  },
-  {
-   "machine": "냉장",
-   "product": "의성마늘 소세지",
-   "amount": 2000,
-   "datetime": "2026-09-20T16:02"
-  },
-  {
-   "machine": "냉장",
-   "product": "생수",
-   "amount": 1000,
-   "datetime": "2026-09-20T16:02"
-  },
-  {
-   "machine": "냉장",
-   "product": "스트링 치즈",
-   "amount": 1000,
-   "datetime": "2026-09-20T16:02"
-  },
-  {
-   "machine": "냉장",
-   "product": "스트링 치즈",
-   "amount": 1000,
-   "datetime": "2026-09-20T15:55"
-  },
-  {
-   "machine": "냉장",
-   "product": "스트링 치즈",
-   "amount": 1000,
-   "datetime": "2026-09-20T15:55"
-  },
-  {
-   "machine": "냉장",
-   "product": "스트링 치즈",
-   "amount": 1000,
-   "datetime": "2026-09-20T15:55"
-  },
-  {
-   "machine": "냉장",
-   "product": "스트링 치즈",
-   "amount": 1000,
-   "datetime": "2026-09-20T15:55"
-  },
-  {
-   "machine": "냉장",
-   "product": "스트링 치즈",
-   "amount": 1000,
-   "datetime": "2026-09-20T15:55"
-  },
-  {
-   "machine": "냉장",
-   "product": "스트링 치즈",
-   "amount": 1000,
-   "datetime": "2026-09-20T15:49"
-  },
-  {
-   "machine": "냉장",
-   "product": "스트링 치즈",
-   "amount": 1000,
-   "datetime": "2026-09-20T15:49"
-  },
-  {
-   "machine": "라면1",
-   "product": "멸치칼국수",
-   "amount": 3800,
-   "datetime": "2026-09-20T14:59"
-  },
-  {
-   "machine": "슬림",
-   "product": "라면톡(황태)",
-   "amount": 1500,
-   "datetime": "2026-09-20T14:58"
-  },
-  {
-   "machine": "냉장",
-   "product": "맛김치",
-   "amount": 1500,
-   "datetime": "2026-09-20T14:46"
-  },
-  {
-   "machine": "냉장",
-   "product": "날계란",
-   "amount": 600,
-   "datetime": "2026-09-20T14:46"
-  },
-  {
-   "machine": "라면2",
-   "product": "너구리",
-   "amount": 3800,
-   "datetime": "2026-09-20T14:44"
-  },
-  {
-   "machine": "냉장",
-   "product": "의성마늘 소세지",
-   "amount": 2000,
-   "datetime": "2026-09-20T14:16"
-  },
-  {
-   "machine": "냉장",
-   "product": "펩시제로",
-   "amount": 2000,
-   "datetime": "2026-09-20T14:02"
-  },
-  {
-   "machine": "냉장",
-   "product": "칠성사이다",
-   "amount": 2000,
-   "datetime": "2026-09-20T14:02"
-  },
-  {
-   "machine": "라면2",
-   "product": "안성탕면",
-   "amount": 3500,
-   "datetime": "2026-09-20T14:00"
-  },
-  {
-   "machine": "라면2",
-   "product": "참깨라면",
-   "amount": 4000,
-   "datetime": "2026-09-20T13:58"
+   "datetime": "2026-11-08T19:02"
   },
   {
    "machine": "냉동",
-   "product": "참치김밥",
+   "product": "치즈 핫도그",
+   "amount": 2000,
+   "datetime": "2026-11-08T15:26"
+  },
+  {
+   "machine": "냉장",
+   "product": "생수",
+   "amount": 1000,
+   "datetime": "2026-11-08T15:23"
+  },
+  {
+   "machine": "냉동",
+   "product": "매콤떡볶이",
    "amount": 4500,
-   "datetime": "2026-09-20T13:57"
+   "datetime": "2026-11-08T15:22"
   },
   {
-   "machine": "냉장",
-   "product": "의성마늘 소세지",
-   "amount": 2000,
-   "datetime": "2026-09-20T13:57"
-  },
-  {
-   "machine": "냉장",
-   "product": "볶음김치",
-   "amount": 1500,
-   "datetime": "2026-09-20T13:57"
-  },
-  {
-   "machine": "냉장",
-   "product": "스트링 치즈",
-   "amount": 1000,
-   "datetime": "2026-09-20T13:53"
-  },
-  {
-   "machine": "라면1",
-   "product": "까르보불닭",
-   "amount": 4200,
-   "datetime": "2026-09-20T13:43"
-  },
-  {
-   "machine": "라면1",
-   "product": "진짬뽕",
-   "amount": 4000,
-   "datetime": "2026-09-20T13:42"
-  },
-  {
-   "machine": "라면1",
-   "product": "짜파게티",
-   "amount": 4000,
-   "datetime": "2026-09-20T13:42"
-  },
-  {
-   "machine": "냉장",
-   "product": "스트링 치즈",
-   "amount": 1000,
-   "datetime": "2026-09-20T10:15"
-  },
-  {
-   "machine": "냉장",
-   "product": "스트링 치즈",
-   "amount": 1000,
-   "datetime": "2026-09-20T10:15"
+   "machine": "냉동",
+   "product": "국물떡볶이",
+   "amount": 4500,
+   "datetime": "2026-11-08T15:22"
   },
   {
    "machine": "냉장",
    "product": "생수",
    "amount": 1000,
-   "datetime": "2026-09-20T09:57"
+   "datetime": "2026-11-08T15:22"
   },
   {
    "machine": "냉장",
    "product": "생수",
    "amount": 1000,
-   "datetime": "2026-09-20T09:57"
-  },
-  {
-   "machine": "라면1",
-   "product": "멸치칼국수",
-   "amount": 3800,
-   "datetime": "2026-09-20T09:54"
-  },
-  {
-   "machine": "냉동",
-   "product": "한맥 더블버거",
-   "amount": 3500,
-   "datetime": "2026-09-20T09:53"
-  },
-  {
-   "machine": "라면1",
-   "product": "오징어짬뽕",
-   "amount": 3800,
-   "datetime": "2026-09-20T08:47"
-  },
-  {
-   "machine": "라면1",
-   "product": "너구리",
-   "amount": 3800,
-   "datetime": "2026-09-20T08:47"
-  },
-  {
-   "machine": "냉동",
-   "product": "고기만두",
-   "amount": 2500,
-   "datetime": "2026-09-20T06:43"
-  },
-  {
-   "machine": "냉동",
-   "product": "김치만두",
-   "amount": 2500,
-   "datetime": "2026-09-20T06:42"
-  },
-  {
-   "machine": "냉장",
-   "product": "옥수수수염차",
-   "amount": 2000,
-   "datetime": "2026-09-20T06:03"
-  },
-  {
-   "machine": "라면1",
-   "product": "오징어짬뽕",
-   "amount": 3800,
-   "datetime": "2026-09-19T23:02"
-  },
-  {
-   "machine": "라면2",
-   "product": "너구리",
-   "amount": 3800,
-   "datetime": "2026-09-19T23:02"
-  },
-  {
-   "machine": "냉동",
-   "product": "김치만두",
-   "amount": 2500,
-   "datetime": "2026-09-19T22:31"
-  },
-  {
-   "machine": "냉장",
-   "product": "볶음김치",
-   "amount": 1500,
-   "datetime": "2026-09-19T22:28"
-  },
-  {
-   "machine": "냉장",
-   "product": "포카리스웨트",
-   "amount": 2500,
-   "datetime": "2026-09-19T22:28"
-  },
-  {
-   "machine": "라면1",
-   "product": "안성탕면",
-   "amount": 3500,
-   "datetime": "2026-09-19T22:26"
-  },
-  {
-   "machine": "라면2",
-   "product": "신라면",
-   "amount": 3800,
-   "datetime": "2026-09-19T22:26"
-  },
-  {
-   "machine": "냉장",
-   "product": "맛김치",
-   "amount": 1500,
-   "datetime": "2026-09-19T20:27"
-  },
-  {
-   "machine": "냉장",
-   "product": "체다치즈",
-   "amount": 500,
-   "datetime": "2026-09-19T20:27"
-  },
-  {
-   "machine": "라면1",
-   "product": "오징어짬뽕",
-   "amount": 3800,
-   "datetime": "2026-09-19T20:26"
-  },
-  {
-   "machine": "라면1",
-   "product": "너구리",
-   "amount": 3800,
-   "datetime": "2026-09-19T20:25"
-  },
-  {
-   "machine": "슬림",
-   "product": "햇반",
-   "amount": 1200,
-   "datetime": "2026-09-19T16:25"
-  },
-  {
-   "machine": "냉장",
-   "product": "볶음김치",
-   "amount": 1500,
-   "datetime": "2026-09-19T16:19"
-  },
-  {
-   "machine": "라면1",
-   "product": "참깨라면",
-   "amount": 4000,
-   "datetime": "2026-09-19T16:16"
-  },
-  {
-   "machine": "라면1",
-   "product": "진짬뽕",
-   "amount": 4000,
-   "datetime": "2026-09-19T16:16"
-  },
-  {
-   "machine": "냉동",
-   "product": "오꾸밥(불닭치즈)",
-   "amount": 2000,
-   "datetime": "2026-09-19T13:37"
-  },
-  {
-   "machine": "냉장",
-   "product": "의성마늘 소세지",
-   "amount": 2000,
-   "datetime": "2026-09-19T13:36"
-  },
-  {
-   "machine": "냉장",
-   "product": "체다치즈",
-   "amount": 500,
-   "datetime": "2026-09-19T13:28"
-  },
-  {
-   "machine": "냉장",
-   "product": "날계란",
-   "amount": 600,
-   "datetime": "2026-09-19T13:28"
-  },
-  {
-   "machine": "라면2",
-   "product": "오징어짬뽕",
-   "amount": 3800,
-   "datetime": "2026-09-19T13:27"
-  },
-  {
-   "machine": "라면1",
-   "product": "진짬뽕",
-   "amount": 4000,
-   "datetime": "2026-09-19T13:26"
-  },
-  {
-   "machine": "라면2",
-   "product": "너구리",
-   "amount": 3800,
-   "datetime": "2026-09-19T13:26"
-  },
-  {
-   "machine": "냉장",
-   "product": "나랑드사이다",
-   "amount": 1500,
-   "datetime": "2026-09-19T12:31"
-  },
-  {
-   "machine": "슬림",
-   "product": "라면톡(황태)",
-   "amount": 1500,
-   "datetime": "2026-09-19T12:27"
-  },
-  {
-   "machine": "라면1",
-   "product": "신라면",
-   "amount": 3800,
-   "datetime": "2026-09-19T12:26"
+   "datetime": "2026-11-08T15:22"
   },
   {
    "machine": "냉장",
    "product": "생수",
    "amount": 1000,
-   "datetime": "2026-09-19T12:08"
+   "datetime": "2026-11-08T15:22"
+  },
+  {
+   "machine": "냉장",
+   "product": "생수",
+   "amount": 1000,
+   "datetime": "2026-11-08T15:22"
   },
   {
    "machine": "냉장",
    "product": "김",
    "amount": 1000,
-   "datetime": "2026-09-19T12:07"
+   "datetime": "2026-11-08T15:22"
+  },
+  {
+   "machine": "냉장",
+   "product": "김",
+   "amount": 1000,
+   "datetime": "2026-11-08T15:22"
+  },
+  {
+   "machine": "냉장",
+   "product": "숯불구이 후랑크",
+   "amount": 2000,
+   "datetime": "2026-11-08T15:22"
+  },
+  {
+   "machine": "냉장",
+   "product": "옥수수수염차",
+   "amount": 2000,
+   "datetime": "2026-11-08T15:22"
   },
   {
    "machine": "냉장",
    "product": "맛김치",
    "amount": 1500,
-   "datetime": "2026-09-19T12:07"
-  },
-  {
-   "machine": "라면2",
-   "product": "안성탕면",
-   "amount": 3500,
-   "datetime": "2026-09-19T12:04"
-  },
-  {
-   "machine": "라면2",
-   "product": "까르보불닭",
-   "amount": 4200,
-   "datetime": "2026-09-19T12:04"
+   "datetime": "2026-11-08T14:10"
   },
   {
    "machine": "냉장",
    "product": "의성마늘 소세지",
    "amount": 2000,
-   "datetime": "2026-09-19T11:59"
-  },
-  {
-   "machine": "냉장",
-   "product": "단무지",
-   "amount": 800,
-   "datetime": "2026-09-19T11:59"
-  },
-  {
-   "machine": "라면2",
-   "product": "삼양라면",
-   "amount": 3500,
-   "datetime": "2026-09-19T11:58"
-  },
-  {
-   "machine": "냉장",
-   "product": "날계란",
-   "amount": 600,
-   "datetime": "2026-09-19T11:35"
-  },
-  {
-   "machine": "라면1",
-   "product": "진라면(매운맛)",
-   "amount": 3500,
-   "datetime": "2026-09-19T11:31"
-  },
-  {
-   "machine": "냉장",
-   "product": "스트링 치즈",
-   "amount": 1000,
-   "datetime": "2026-09-19T10:43"
-  },
-  {
-   "machine": "냉장",
-   "product": "스트링 치즈",
-   "amount": 1000,
-   "datetime": "2026-09-19T10:43"
-  },
-  {
-   "machine": "냉장",
-   "product": "옥수수수염차",
-   "amount": 2000,
-   "datetime": "2026-09-19T10:41"
+   "datetime": "2026-11-08T14:10"
   },
   {
    "machine": "냉동",
-   "product": "한맥 불벅",
-   "amount": 3000,
-   "datetime": "2026-09-19T09:55"
-  },
-  {
-   "machine": "라면2",
-   "product": "불닭볶음면",
-   "amount": 4000,
-   "datetime": "2026-09-19T09:54"
-  },
-  {
-   "machine": "냉장",
-   "product": "옥수수수염차",
-   "amount": 2000,
-   "datetime": "2026-09-19T07:46"
-  },
-  {
-   "machine": "냉동",
-   "product": "참치김밥",
+   "product": "야채김밥",
    "amount": 4500,
-   "datetime": "2026-09-19T07:45"
+   "datetime": "2026-11-08T08:39"
   },
   {
-   "machine": "라면2",
-   "product": "멸치칼국수",
-   "amount": 3800,
-   "datetime": "2026-09-19T07:43"
+   "machine": "냉동",
+   "product": "진미채김밥",
+   "amount": 4500,
+   "datetime": "2026-11-08T08:32"
   },
   {
-   "machine": "라면2",
-   "product": "오징어짬뽕",
-   "amount": 3800,
-   "datetime": "2026-09-19T05:16"
-  },
-  {
-   "machine": "라면2",
-   "product": "진짬뽕",
-   "amount": 4000,
-   "datetime": "2026-09-19T05:16"
-  },
-  {
-   "machine": "냉장",
-   "product": "포카리스웨트",
-   "amount": 2500,
-   "datetime": "2026-09-19T05:15"
-  },
-  {
-   "machine": "라면1",
-   "product": "신라면",
-   "amount": 3800,
-   "datetime": "2026-09-19T03:01"
+   "machine": "냉동",
+   "product": "야채김밥",
+   "amount": 4500,
+   "datetime": "2026-11-08T08:32"
   },
   {
    "machine": "냉장",
    "product": "생수",
    "amount": 1000,
-   "datetime": "2026-09-19T02:11"
-  },
-  {
-   "machine": "냉동",
-   "product": "고기만두",
-   "amount": 2500,
-   "datetime": "2026-09-18T22:39"
-  },
-  {
-   "machine": "냉동",
-   "product": "고기만두",
-   "amount": 2500,
-   "datetime": "2026-09-18T22:38"
+   "datetime": "2026-11-08T08:32"
   },
   {
    "machine": "냉장",
-   "product": "단무지",
-   "amount": 800,
-   "datetime": "2026-09-18T22:36"
+   "product": "옥수수수염차",
+   "amount": 2000,
+   "datetime": "2026-11-08T08:32"
   },
   {
-   "machine": "라면1",
-   "product": "참깨라면",
-   "amount": 4000,
-   "datetime": "2026-09-18T22:33"
+   "machine": "냉장",
+   "product": "옥수수수염차",
+   "amount": 2000,
+   "datetime": "2026-11-08T08:32"
   },
   {
-   "machine": "라면1",
-   "product": "짜파게티",
-   "amount": 4000,
-   "datetime": "2026-09-18T22:33"
+   "machine": "냉장",
+   "product": "옥수수수염차",
+   "amount": 2000,
+   "datetime": "2026-11-08T08:32"
+  },
+  {
+   "machine": "냉장",
+   "product": "옥수수수염차",
+   "amount": 2000,
+   "datetime": "2026-11-08T08:32"
+  },
+  {
+   "machine": "냉장",
+   "product": "옥수수수염차",
+   "amount": 2000,
+   "datetime": "2026-11-08T08:29"
+  },
+  {
+   "machine": "냉장",
+   "product": "날계란",
+   "amount": 600,
+   "datetime": "2026-11-08T00:27"
   },
   {
    "machine": "냉장",
    "product": "맛김치",
    "amount": 1500,
-   "datetime": "2026-09-18T20:12"
+   "datetime": "2026-11-08T00:21"
+  },
+  {
+   "machine": "냉장",
+   "product": "체다치즈",
+   "amount": 500,
+   "datetime": "2026-11-08T00:21"
   },
   {
    "machine": "냉동",
-   "product": "고기만두",
-   "amount": 2500,
-   "datetime": "2026-09-18T20:09"
+   "product": "야채김밥",
+   "amount": 4500,
+   "datetime": "2026-11-07T22:05"
   },
   {
-   "machine": "라면1",
-   "product": "삼양라면",
-   "amount": 3500,
-   "datetime": "2026-09-18T20:03"
+   "machine": "냉장",
+   "product": "스트링 치즈",
+   "amount": 1000,
+   "datetime": "2026-11-07T18:41"
   },
   {
-   "machine": "라면1",
-   "product": "무파마",
-   "amount": 3800,
-   "datetime": "2026-09-18T20:03"
+   "machine": "냉장",
+   "product": "스트링 치즈",
+   "amount": 1000,
+   "datetime": "2026-11-07T18:41"
+  },
+  {
+   "machine": "냉장",
+   "product": "생수",
+   "amount": 1000,
+   "datetime": "2026-11-07T18:40"
+  },
+  {
+   "machine": "냉장",
+   "product": "생수",
+   "amount": 1000,
+   "datetime": "2026-11-07T18:40"
+  },
+  {
+   "machine": "냉장",
+   "product": "맛김치",
+   "amount": 1500,
+   "datetime": "2026-11-07T18:40"
+  },
+  {
+   "machine": "냉장",
+   "product": "날계란",
+   "amount": 600,
+   "datetime": "2026-11-07T18:16"
+  },
+  {
+   "machine": "냉장",
+   "product": "맛김치",
+   "amount": 1500,
+   "datetime": "2026-11-07T18:16"
+  },
+  {
+   "machine": "냉장",
+   "product": "생수",
+   "amount": 1000,
+   "datetime": "2026-11-07T12:26"
+  },
+  {
+   "machine": "냉장",
+   "product": "체다치즈",
+   "amount": 500,
+   "datetime": "2026-11-07T12:15"
+  },
+  {
+   "machine": "냉동",
+   "product": "참치김밥",
+   "amount": 4500,
+   "datetime": "2026-11-07T12:08"
+  },
+  {
+   "machine": "냉장",
+   "product": "날계란",
+   "amount": 600,
+   "datetime": "2026-11-07T12:07"
   },
   {
    "machine": "냉동",
    "product": "로제떡볶이",
    "amount": 5000,
-   "datetime": "2026-09-18T18:10"
-  },
-  {
-   "machine": "냉장",
-   "product": "맛김치",
-   "amount": 1500,
-   "datetime": "2026-09-18T16:22"
-  },
-  {
-   "machine": "라면1",
-   "product": "무파마",
-   "amount": 3800,
-   "datetime": "2026-09-18T16:17"
-  },
-  {
-   "machine": "냉장",
-   "product": "생수",
-   "amount": 1000,
-   "datetime": "2026-09-18T13:45"
+   "datetime": "2026-11-07T11:44"
   },
   {
    "machine": "냉동",
-   "product": "야채김밥",
+   "product": "국물떡볶이",
    "amount": 4500,
-   "datetime": "2026-09-18T13:34"
-  },
-  {
-   "machine": "라면2",
-   "product": "진짬뽕",
-   "amount": 4000,
-   "datetime": "2026-09-18T13:30"
-  },
-  {
-   "machine": "라면1",
-   "product": "참깨라면",
-   "amount": 4000,
-   "datetime": "2026-09-18T13:29"
-  },
-  {
-   "machine": "라면1",
-   "product": "안성탕면",
-   "amount": 3500,
-   "datetime": "2026-09-18T13:29"
-  },
-  {
-   "machine": "냉장",
-   "product": "맛김치",
-   "amount": 1500,
-   "datetime": "2026-09-18T13:29"
-  },
-  {
-   "machine": "냉장",
-   "product": "단무지",
-   "amount": 800,
-   "datetime": "2026-09-18T13:29"
-  },
-  {
-   "machine": "냉장",
-   "product": "체다치즈",
-   "amount": 500,
-   "datetime": "2026-09-18T13:29"
-  },
-  {
-   "machine": "냉장",
-   "product": "체다치즈",
-   "amount": 500,
-   "datetime": "2026-09-18T13:29"
-  },
-  {
-   "machine": "냉장",
-   "product": "체다치즈",
-   "amount": 500,
-   "datetime": "2026-09-18T13:29"
-  },
-  {
-   "machine": "냉장",
-   "product": "날계란",
-   "amount": 600,
-   "datetime": "2026-09-18T13:06"
-  },
-  {
-   "machine": "냉장",
-   "product": "의성마늘 소세지",
-   "amount": 2000,
-   "datetime": "2026-09-18T13:06"
-  },
-  {
-   "machine": "냉장",
-   "product": "펩시제로",
-   "amount": 2000,
-   "datetime": "2026-09-18T13:06"
-  },
-  {
-   "machine": "냉장",
-   "product": "펩시제로",
-   "amount": 2000,
-   "datetime": "2026-09-18T13:06"
-  },
-  {
-   "machine": "냉동",
-   "product": "참치김밥",
-   "amount": 4500,
-   "datetime": "2026-09-18T13:05"
-  },
-  {
-   "machine": "라면1",
-   "product": "무파마",
-   "amount": 3800,
-   "datetime": "2026-09-18T13:04"
-  },
-  {
-   "machine": "라면1",
-   "product": "참깨라면",
-   "amount": 4000,
-   "datetime": "2026-09-18T13:03"
-  },
-  {
-   "machine": "냉동",
-   "product": "참치김밥",
-   "amount": 4500,
-   "datetime": "2026-09-18T13:01"
-  },
-  {
-   "machine": "냉동",
-   "product": "오꾸밥(참치마요)",
-   "amount": 2000,
-   "datetime": "2026-09-18T13:00"
+   "datetime": "2026-11-07T08:19"
   },
   {
    "machine": "냉동",
    "product": "오꾸밥(불닭치즈)",
    "amount": 2000,
-   "datetime": "2026-09-18T13:00"
-  },
-  {
-   "machine": "냉장",
-   "product": "단무지",
-   "amount": 800,
-   "datetime": "2026-09-18T12:36"
-  },
-  {
-   "machine": "라면1",
-   "product": "진라면(매운맛)",
-   "amount": 3500,
-   "datetime": "2026-09-18T12:35"
-  },
-  {
-   "machine": "냉동",
-   "product": "고기만두",
-   "amount": 2500,
-   "datetime": "2026-09-18T12:35"
-  },
-  {
-   "machine": "라면2",
-   "product": "신라면",
-   "amount": 3800,
-   "datetime": "2026-09-18T12:34"
+   "datetime": "2026-11-07T08:19"
   },
   {
    "machine": "냉장",
    "product": "옥수수수염차",
    "amount": 2000,
-   "datetime": "2026-09-18T12:21"
+   "datetime": "2026-11-07T08:19"
+  },
+  {
+   "machine": "냉장",
+   "product": "옥수수수염차",
+   "amount": 2000,
+   "datetime": "2026-11-07T08:19"
   },
   {
    "machine": "냉장",
    "product": "생수",
    "amount": 1000,
-   "datetime": "2026-09-18T12:20"
-  },
-  {
-   "machine": "라면1",
-   "product": "삼양라면",
-   "amount": 3500,
-   "datetime": "2026-09-18T12:14"
-  },
-  {
-   "machine": "라면2",
-   "product": "참깨라면",
-   "amount": 4000,
-   "datetime": "2026-09-18T12:13"
-  },
-  {
-   "machine": "냉장",
-   "product": "옥수수수염차",
-   "amount": 2000,
-   "datetime": "2026-09-18T11:13"
-  },
-  {
-   "machine": "냉장",
-   "product": "칠성사이다",
-   "amount": 2000,
-   "datetime": "2026-09-18T10:56"
-  },
-  {
-   "machine": "냉장",
-   "product": "볶음김치",
-   "amount": 1500,
-   "datetime": "2026-09-18T10:56"
-  },
-  {
-   "machine": "라면1",
-   "product": "진라면(순한맛)",
-   "amount": 3500,
-   "datetime": "2026-09-18T10:55"
-  },
-  {
-   "machine": "라면2",
-   "product": "열라면",
-   "amount": 3500,
-   "datetime": "2026-09-18T10:55"
-  },
-  {
-   "machine": "라면2",
-   "product": "멸치칼국수",
-   "amount": 3800,
-   "datetime": "2026-09-18T10:50"
-  },
-  {
-   "machine": "라면2",
-   "product": "짜파게티",
-   "amount": 4000,
-   "datetime": "2026-09-18T10:44"
-  },
-  {
-   "machine": "라면2",
-   "product": "너구리",
-   "amount": 3800,
-   "datetime": "2026-09-18T10:43"
-  },
-  {
-   "machine": "냉장",
-   "product": "옥수수수염차",
-   "amount": 2000,
-   "datetime": "2026-09-18T10:43"
-  },
-  {
-   "machine": "라면2",
-   "product": "오징어짬뽕",
-   "amount": 3800,
-   "datetime": "2026-09-18T07:02"
-  },
-  {
-   "machine": "라면1",
-   "product": "진짬뽕",
-   "amount": 4000,
-   "datetime": "2026-09-18T03:38"
-  },
-  {
-   "machine": "라면1",
-   "product": "오징어짬뽕",
-   "amount": 3800,
-   "datetime": "2026-09-18T03:38"
-  },
-  {
-   "machine": "냉동",
-   "product": "김치만두",
-   "amount": 2500,
-   "datetime": "2026-09-17T23:40"
-  },
-  {
-   "machine": "슬림",
-   "product": "햇반",
-   "amount": 1200,
-   "datetime": "2026-09-17T23:20"
-  },
-  {
-   "machine": "냉장",
-   "product": "날계란",
-   "amount": 600,
-   "datetime": "2026-09-17T23:19"
-  },
-  {
-   "machine": "냉장",
-   "product": "날계란",
-   "amount": 600,
-   "datetime": "2026-09-17T23:19"
-  },
-  {
-   "machine": "냉장",
-   "product": "맛김치",
-   "amount": 1500,
-   "datetime": "2026-09-17T23:19"
-  },
-  {
-   "machine": "라면1",
-   "product": "참깨라면",
-   "amount": 4000,
-   "datetime": "2026-09-17T23:18"
-  },
-  {
-   "machine": "라면2",
-   "product": "무파마",
-   "amount": 3800,
-   "datetime": "2026-09-17T23:18"
-  },
-  {
-   "machine": "라면1",
-   "product": "오징어짬뽕",
-   "amount": 3800,
-   "datetime": "2026-09-17T22:59"
-  },
-  {
-   "machine": "라면2",
-   "product": "짜파게티",
-   "amount": 4000,
-   "datetime": "2026-09-17T22:59"
-  },
-  {
-   "machine": "냉장",
-   "product": "날계란",
-   "amount": 600,
-   "datetime": "2026-09-17T21:57"
-  },
-  {
-   "machine": "슬림",
-   "product": "햇반",
-   "amount": 1200,
-   "datetime": "2026-09-17T21:57"
-  },
-  {
-   "machine": "라면2",
-   "product": "신라면",
-   "amount": 3800,
-   "datetime": "2026-09-17T21:56"
-  },
-  {
-   "machine": "라면2",
-   "product": "진라면(순한맛)",
-   "amount": 3500,
-   "datetime": "2026-09-17T20:10"
-  },
-  {
-   "machine": "라면2",
-   "product": "삼양라면",
-   "amount": 3500,
-   "datetime": "2026-09-17T18:53"
-  },
-  {
-   "machine": "라면2",
-   "product": "진라면(매운맛)",
-   "amount": 3500,
-   "datetime": "2026-09-17T18:53"
-  },
-  {
-   "machine": "라면2",
-   "product": "너구리",
-   "amount": 3800,
-   "datetime": "2026-09-17T18:52"
-  },
-  {
-   "machine": "냉장",
-   "product": "스트링 치즈",
-   "amount": 1000,
-   "datetime": "2026-09-17T18:02"
-  },
-  {
-   "machine": "냉장",
-   "product": "스트링 치즈",
-   "amount": 1000,
-   "datetime": "2026-09-17T18:02"
-  },
-  {
-   "machine": "냉장",
-   "product": "옥수수수염차",
-   "amount": 2000,
-   "datetime": "2026-09-17T17:55"
-  },
-  {
-   "machine": "냉장",
-   "product": "숯불구이 후랑크",
-   "amount": 2000,
-   "datetime": "2026-09-17T12:53"
-  },
-  {
-   "machine": "냉장",
-   "product": "숯불구이 후랑크",
-   "amount": 2000,
-   "datetime": "2026-09-17T12:53"
-  },
-  {
-   "machine": "냉장",
-   "product": "단무지",
-   "amount": 800,
-   "datetime": "2026-09-17T12:40"
-  },
-  {
-   "machine": "라면1",
-   "product": "오징어짬뽕",
-   "amount": 3800,
-   "datetime": "2026-09-17T12:35"
-  },
-  {
-   "machine": "라면1",
-   "product": "신라면",
-   "amount": 3800,
-   "datetime": "2026-09-17T12:34"
-  },
-  {
-   "machine": "라면2",
-   "product": "짜파게티",
-   "amount": 4000,
-   "datetime": "2026-09-17T12:34"
-  },
-  {
-   "machine": "냉장",
-   "product": "단무지",
-   "amount": 800,
-   "datetime": "2026-09-17T11:41"
-  },
-  {
-   "machine": "냉장",
-   "product": "볶음김치",
-   "amount": 1500,
-   "datetime": "2026-09-17T11:39"
-  },
-  {
-   "machine": "라면2",
-   "product": "불닭볶음면",
-   "amount": 4000,
-   "datetime": "2026-09-17T11:36"
-  },
-  {
-   "machine": "라면2",
-   "product": "안성탕면",
-   "amount": 3500,
-   "datetime": "2026-09-17T11:36"
-  },
-  {
-   "machine": "라면2",
-   "product": "멸치칼국수",
-   "amount": 3800,
-   "datetime": "2026-09-17T11:05"
-  },
-  {
-   "machine": "라면2",
-   "product": "안성탕면",
-   "amount": 3500,
-   "datetime": "2026-09-17T10:26"
+   "datetime": "2026-11-07T08:19"
   },
   {
    "machine": "냉장",
    "product": "생수",
    "amount": 1000,
-   "datetime": "2026-09-17T10:25"
+   "datetime": "2026-11-07T08:19"
+  },
+  {
+   "machine": "냉장",
+   "product": "생수",
+   "amount": 1000,
+   "datetime": "2026-11-07T08:19"
+  },
+  {
+   "machine": "냉장",
+   "product": "숯불구이 후랑크",
+   "amount": 2000,
+   "datetime": "2026-11-07T08:19"
+  },
+  {
+   "machine": "냉동",
+   "product": "국물떡볶이",
+   "amount": 4500,
+   "datetime": "2026-11-07T08:02"
   },
   {
    "machine": "냉장",
    "product": "체다치즈",
    "amount": 500,
-   "datetime": "2026-09-17T02:00"
-  },
-  {
-   "machine": "냉장",
-   "product": "코카콜라",
-   "amount": 2000,
-   "datetime": "2026-09-17T02:00"
+   "datetime": "2026-11-07T07:26"
   },
   {
    "machine": "냉동",
-   "product": "매콤제육김밥",
-   "amount": 4500,
-   "datetime": "2026-09-17T01:59"
-  },
-  {
-   "machine": "라면1",
-   "product": "진짬뽕",
-   "amount": 4000,
-   "datetime": "2026-09-17T01:57"
-  },
-  {
-   "machine": "냉장",
-   "product": "옥수수수염차",
-   "amount": 2000,
-   "datetime": "2026-09-17T00:13"
-  },
-  {
-   "machine": "라면2",
-   "product": "참깨라면",
-   "amount": 4000,
-   "datetime": "2026-09-17T00:09"
-  },
-  {
-   "machine": "라면2",
-   "product": "진라면(매운맛)",
-   "amount": 3500,
-   "datetime": "2026-09-16T22:59"
-  },
-  {
-   "machine": "냉장",
-   "product": "나랑드사이다",
-   "amount": 1500,
-   "datetime": "2026-09-16T22:18"
-  },
-  {
-   "machine": "냉장",
-   "product": "칠성사이다",
-   "amount": 2000,
-   "datetime": "2026-09-16T22:18"
-  },
-  {
-   "machine": "냉장",
-   "product": "단무지",
-   "amount": 800,
-   "datetime": "2026-09-16T22:17"
+   "product": "김치만두",
+   "amount": 2500,
+   "datetime": "2026-11-07T00:11"
   },
   {
    "machine": "냉동",
    "product": "참치김밥",
    "amount": 4500,
-   "datetime": "2026-09-16T22:15"
-  },
-  {
-   "machine": "라면1",
-   "product": "진짬뽕",
-   "amount": 4000,
-   "datetime": "2026-09-16T22:12"
-  },
-  {
-   "machine": "라면2",
-   "product": "열라면",
-   "amount": 3500,
-   "datetime": "2026-09-16T22:12"
+   "datetime": "2026-11-06T12:58"
   },
   {
    "machine": "냉장",
-   "product": "생수",
-   "amount": 1000,
-   "datetime": "2026-09-16T21:56"
+   "product": "날계란",
+   "amount": 600,
+   "datetime": "2026-11-06T12:01"
   },
   {
    "machine": "냉장",
-   "product": "생수",
-   "amount": 1000,
-   "datetime": "2026-09-16T21:53"
+   "product": "체다치즈",
+   "amount": 500,
+   "datetime": "2026-11-06T11:53"
   },
   {
-   "machine": "라면2",
-   "product": "오징어짬뽕",
-   "amount": 3800,
-   "datetime": "2026-09-16T21:20"
+   "machine": "냉장",
+   "product": "맛김치",
+   "amount": 1500,
+   "datetime": "2026-11-06T11:53"
   },
   {
    "machine": "냉동",
    "product": "고기만두",
    "amount": 2500,
-   "datetime": "2026-09-16T21:20"
-  },
-  {
-   "machine": "라면2",
-   "product": "오징어짬뽕",
-   "amount": 3800,
-   "datetime": "2026-09-16T21:19"
-  },
-  {
-   "machine": "냉장",
-   "product": "코카콜라",
-   "amount": 2000,
-   "datetime": "2026-09-16T20:52"
+   "datetime": "2026-11-06T11:52"
   },
   {
    "machine": "냉동",
    "product": "참치김밥",
    "amount": 4500,
-   "datetime": "2026-09-16T20:44"
-  },
-  {
-   "machine": "라면2",
-   "product": "신라면",
-   "amount": 3800,
-   "datetime": "2026-09-16T20:43"
-  },
-  {
-   "machine": "냉장",
-   "product": "스트링 치즈",
-   "amount": 1000,
-   "datetime": "2026-09-16T17:46"
+   "datetime": "2026-11-06T11:38"
   },
   {
    "machine": "냉장",
    "product": "옥수수수염차",
    "amount": 2000,
-   "datetime": "2026-09-16T17:45"
-  },
-  {
-   "machine": "냉동",
-   "product": "오뚜기UNO피자(불고기)",
-   "amount": 3500,
-   "datetime": "2026-09-16T17:33"
-  },
-  {
-   "machine": "냉동",
-   "product": "오뚜기UNO피자(콤비)",
-   "amount": 3500,
-   "datetime": "2026-09-16T17:33"
+   "datetime": "2026-11-06T11:17"
   },
   {
    "machine": "냉장",
    "product": "옥수수수염차",
    "amount": 2000,
-   "datetime": "2026-09-16T15:48"
+   "datetime": "2026-11-06T11:17"
   },
   {
-   "machine": "라면2",
-   "product": "까르보불닭",
-   "amount": 4200,
-   "datetime": "2026-09-16T14:34"
+   "machine": "냉장",
+   "product": "옥수수수염차",
+   "amount": 2000,
+   "datetime": "2026-11-06T11:17"
+  },
+  {
+   "machine": "냉장",
+   "product": "옥수수수염차",
+   "amount": 2000,
+   "datetime": "2026-11-06T11:17"
+  },
+  {
+   "machine": "냉장",
+   "product": "옥수수수염차",
+   "amount": 2000,
+   "datetime": "2026-11-06T11:16"
+  },
+  {
+   "machine": "냉장",
+   "product": "옥수수수염차",
+   "amount": 2000,
+   "datetime": "2026-11-06T11:16"
+  },
+  {
+   "machine": "냉장",
+   "product": "옥수수수염차",
+   "amount": 2000,
+   "datetime": "2026-11-06T11:16"
+  },
+  {
+   "machine": "냉장",
+   "product": "옥수수수염차",
+   "amount": 2000,
+   "datetime": "2026-11-06T11:16"
+  },
+  {
+   "machine": "냉장",
+   "product": "옥수수수염차",
+   "amount": 2000,
+   "datetime": "2026-11-06T11:16"
   },
   {
    "machine": "냉장",
    "product": "스트링 치즈",
    "amount": 1000,
-   "datetime": "2026-09-16T13:44"
+   "datetime": "2026-11-06T11:16"
   },
   {
    "machine": "냉장",
    "product": "스트링 치즈",
    "amount": 1000,
-   "datetime": "2026-09-16T13:44"
+   "datetime": "2026-11-06T11:16"
   },
   {
-   "machine": "슬림",
-   "product": "햇반",
-   "amount": 1200,
-   "datetime": "2026-09-16T13:44"
+   "machine": "냉장",
+   "product": "옥수수수염차",
+   "amount": 2000,
+   "datetime": "2026-11-06T08:10"
   },
   {
-   "machine": "슬림",
-   "product": "햇반",
-   "amount": 1200,
-   "datetime": "2026-09-16T13:42"
+   "machine": "냉장",
+   "product": "옥수수수염차",
+   "amount": 2000,
+   "datetime": "2026-11-06T08:10"
   },
   {
-   "machine": "슬림",
-   "product": "햇반",
-   "amount": 1200,
-   "datetime": "2026-09-16T13:42"
+   "machine": "냉장",
+   "product": "옥수수수염차",
+   "amount": 2000,
+   "datetime": "2026-11-06T08:10"
   },
   {
-   "machine": "슬림",
-   "product": "햇반",
-   "amount": 1200,
-   "datetime": "2026-09-16T13:42"
+   "machine": "냉장",
+   "product": "옥수수수염차",
+   "amount": 2000,
+   "datetime": "2026-11-06T08:10"
   },
   {
-   "machine": "슬림",
+   "machine": "냉장",
+   "product": "옥수수수염차",
+   "amount": 2000,
+   "datetime": "2026-11-06T08:10"
+  },
+  {
+   "machine": "냉동",
+   "product": "야채김밥",
+   "amount": 4500,
+   "datetime": "2026-11-06T08:09"
+  },
+  {
+   "machine": "냉장",
+   "product": "스트링 치즈",
+   "amount": 1000,
+   "datetime": "2026-11-06T08:07"
+  },
+  {
+   "machine": "냉동",
+   "product": "매콤제육김밥",
+   "amount": 4500,
+   "datetime": "2026-11-06T07:58"
+  },
+  {
+   "machine": "냉장",
+   "product": "옥수수수염차",
+   "amount": 2000,
+   "datetime": "2026-11-05T21:28"
+  },
+  {
+   "machine": "냉장",
+   "product": "맛김치",
+   "amount": 1500,
+   "datetime": "2026-11-05T20:06"
+  },
+  {
+   "machine": "냉장",
    "product": "햇반",
    "amount": 1200,
-   "datetime": "2026-09-16T13:41"
+   "datetime": "2026-11-05T19:57"
+  },
+  {
+   "machine": "냉동",
+   "product": "김치만두",
+   "amount": 2500,
+   "datetime": "2026-11-05T19:56"
+  },
+  {
+   "machine": "냉장",
+   "product": "체다치즈",
+   "amount": 500,
+   "datetime": "2026-11-05T19:56"
+  },
+  {
+   "machine": "냉장",
+   "product": "날계란",
+   "amount": 600,
+   "datetime": "2026-11-05T19:56"
+  },
+  {
+   "machine": "냉장",
+   "product": "체다치즈",
+   "amount": 500,
+   "datetime": "2026-11-05T14:49"
+  },
+  {
+   "machine": "냉동",
+   "product": "치즈 핫도그",
+   "amount": 2000,
+   "datetime": "2026-11-05T14:14"
+  },
+  {
+   "machine": "냉장",
+   "product": "체다치즈",
+   "amount": 500,
+   "datetime": "2026-11-05T14:14"
+  },
+  {
+   "machine": "냉장",
+   "product": "단무지",
+   "amount": 800,
+   "datetime": "2026-11-05T12:34"
+  },
+  {
+   "machine": "냉장",
+   "product": "햇반",
+   "amount": 1200,
+   "datetime": "2026-11-05T12:34"
   },
   {
    "machine": "냉동",
    "product": "참치김밥",
    "amount": 4500,
-   "datetime": "2026-09-16T09:09"
+   "datetime": "2026-11-05T12:24"
   },
   {
-   "machine": "라면2",
-   "product": "짜파게티",
-   "amount": 4000,
-   "datetime": "2026-09-16T03:12"
+   "machine": "냉동",
+   "product": "김치만두",
+   "amount": 2500,
+   "datetime": "2026-11-05T11:57"
+  },
+  {
+   "machine": "냉장",
+   "product": "맛김치",
+   "amount": 1500,
+   "datetime": "2026-11-05T09:54"
+  },
+  {
+   "machine": "냉장",
+   "product": "단무지",
+   "amount": 800,
+   "datetime": "2026-11-05T09:54"
+  },
+  {
+   "machine": "냉동",
+   "product": "소세지김밥",
+   "amount": 4500,
+   "datetime": "2026-11-05T08:39"
+  },
+  {
+   "machine": "냉동",
+   "product": "매콤제육김밥",
+   "amount": 4500,
+   "datetime": "2026-11-05T08:39"
+  },
+  {
+   "machine": "냉동",
+   "product": "참치김밥",
+   "amount": 4500,
+   "datetime": "2026-11-05T08:39"
+  },
+  {
+   "machine": "냉동",
+   "product": "야채김밥",
+   "amount": 4500,
+   "datetime": "2026-11-05T08:39"
+  },
+  {
+   "machine": "냉동",
+   "product": "오꾸밥(참치마요)",
+   "amount": 2000,
+   "datetime": "2026-11-05T08:39"
+  },
+  {
+   "machine": "냉장",
+   "product": "옥수수수염차",
+   "amount": 2000,
+   "datetime": "2026-11-05T08:34"
+  },
+  {
+   "machine": "냉장",
+   "product": "옥수수수염차",
+   "amount": 2000,
+   "datetime": "2026-11-05T08:34"
+  },
+  {
+   "machine": "냉장",
+   "product": "옥수수수염차",
+   "amount": 2000,
+   "datetime": "2026-11-05T08:34"
+  },
+  {
+   "machine": "냉장",
+   "product": "옥수수수염차",
+   "amount": 2000,
+   "datetime": "2026-11-05T08:34"
+  },
+  {
+   "machine": "냉장",
+   "product": "옥수수수염차",
+   "amount": 2000,
+   "datetime": "2026-11-05T08:34"
+  },
+  {
+   "machine": "냉장",
+   "product": "옥수수수염차",
+   "amount": 2000,
+   "datetime": "2026-11-05T08:34"
+  },
+  {
+   "machine": "냉장",
+   "product": "숯불구이 후랑크",
+   "amount": 2000,
+   "datetime": "2026-11-05T08:34"
+  },
+  {
+   "machine": "냉장",
+   "product": "숯불구이 후랑크",
+   "amount": 2000,
+   "datetime": "2026-11-05T08:34"
   },
   {
    "machine": "냉장",
    "product": "의성마늘 소세지",
    "amount": 2000,
-   "datetime": "2026-09-15T22:29"
+   "datetime": "2026-11-05T08:34"
   },
   {
    "machine": "냉장",
-   "product": "코카콜라",
+   "product": "의성마늘 소세지",
    "amount": 2000,
-   "datetime": "2026-09-15T22:29"
-  },
-  {
-   "machine": "냉동",
-   "product": "김치만두",
-   "amount": 2500,
-   "datetime": "2026-09-15T22:28"
-  },
-  {
-   "machine": "라면1",
-   "product": "열라면",
-   "amount": 3500,
-   "datetime": "2026-09-15T22:27"
-  },
-  {
-   "machine": "냉동",
-   "product": "한맥 불벅",
-   "amount": 3000,
-   "datetime": "2026-09-15T21:44"
-  },
-  {
-   "machine": "냉장",
-   "product": "스트링 치즈",
-   "amount": 1000,
-   "datetime": "2026-09-15T21:41"
-  },
-  {
-   "machine": "냉장",
-   "product": "스트링 치즈",
-   "amount": 1000,
-   "datetime": "2026-09-15T21:41"
-  },
-  {
-   "machine": "냉장",
-   "product": "볶음김치",
-   "amount": 1500,
-   "datetime": "2026-09-15T21:33"
-  },
-  {
-   "machine": "냉동",
-   "product": "야채김밥",
-   "amount": 4500,
-   "datetime": "2026-09-15T21:32"
-  },
-  {
-   "machine": "냉동",
-   "product": "매콤제육김밥",
-   "amount": 4500,
-   "datetime": "2026-09-15T21:32"
-  },
-  {
-   "machine": "냉동",
-   "product": "고기만두",
-   "amount": 2500,
-   "datetime": "2026-09-15T21:31"
-  },
-  {
-   "machine": "라면1",
-   "product": "참깨라면",
-   "amount": 4000,
-   "datetime": "2026-09-15T21:30"
-  },
-  {
-   "machine": "라면1",
-   "product": "참깨라면",
-   "amount": 4000,
-   "datetime": "2026-09-15T21:29"
-  },
-  {
-   "machine": "냉동",
-   "product": "매콤제육김밥",
-   "amount": 4500,
-   "datetime": "2026-09-15T19:31"
-  },
-  {
-   "machine": "냉동",
-   "product": "야채김밥",
-   "amount": 4500,
-   "datetime": "2026-09-15T18:24"
-  },
-  {
-   "machine": "냉동",
-   "product": "한맥 불벅",
-   "amount": 3000,
-   "datetime": "2026-09-15T18:24"
-  },
-  {
-   "machine": "냉장",
-   "product": "옥수수수염차",
-   "amount": 2000,
-   "datetime": "2026-09-15T17:45"
-  },
-  {
-   "machine": "라면2",
-   "product": "안성탕면",
-   "amount": 3500,
-   "datetime": "2026-09-15T17:42"
-  },
-  {
-   "machine": "라면2",
-   "product": "무파마",
-   "amount": 3800,
-   "datetime": "2026-09-15T17:42"
-  },
-  {
-   "machine": "냉동",
-   "product": "참치김밥",
-   "amount": 4500,
-   "datetime": "2026-09-15T17:41"
-  },
-  {
-   "machine": "라면2",
-   "product": "멸치칼국수",
-   "amount": 3800,
-   "datetime": "2026-09-15T16:58"
-  },
-  {
-   "machine": "냉장",
-   "product": "포카리스웨트",
-   "amount": 2500,
-   "datetime": "2026-09-15T16:50"
-  },
-  {
-   "machine": "라면2",
-   "product": "열라면",
-   "amount": 3500,
-   "datetime": "2026-09-15T16:39"
-  },
-  {
-   "machine": "냉장",
-   "product": "생수",
-   "amount": 1000,
-   "datetime": "2026-09-15T14:01"
+   "datetime": "2026-11-05T08:34"
   },
   {
    "machine": "냉장",
    "product": "날계란",
    "amount": 600,
-   "datetime": "2026-09-15T13:53"
+   "datetime": "2026-11-05T06:34"
   },
   {
    "machine": "냉장",
-   "product": "볶음김치",
-   "amount": 1500,
-   "datetime": "2026-09-15T13:53"
+   "product": "단무지",
+   "amount": 800,
+   "datetime": "2026-11-05T02:07"
+  },
+  {
+   "machine": "냉동",
+   "product": "오꾸밥(참치마요)",
+   "amount": 2000,
+   "datetime": "2026-11-04T21:40"
+  },
+  {
+   "machine": "냉장",
+   "product": "옥수수수염차",
+   "amount": 2000,
+   "datetime": "2026-11-04T21:39"
+  },
+  {
+   "machine": "냉동",
+   "product": "매콤제육김밥",
+   "amount": 8000,
+   "datetime": "2026-11-04T17:05"
+  },
+  {
+   "machine": "냉동",
+   "product": "매콤떡볶이",
+   "amount": 4500,
+   "datetime": "2026-11-04T17:00"
   },
   {
    "machine": "냉장",
    "product": "숯불구이 후랑크",
    "amount": 2000,
-   "datetime": "2026-09-15T13:53"
-  },
-  {
-   "machine": "냉동",
-   "product": "고기만두",
-   "amount": 2500,
-   "datetime": "2026-09-15T13:50"
-  },
-  {
-   "machine": "냉동",
-   "product": "김치제육덮밥",
-   "amount": 6000,
-   "datetime": "2026-09-15T13:50"
-  },
-  {
-   "machine": "라면2",
-   "product": "삼양라면",
-   "amount": 3500,
-   "datetime": "2026-09-15T13:49"
-  },
-  {
-   "machine": "라면2",
-   "product": "진라면(순한맛)",
-   "amount": 3500,
-   "datetime": "2026-09-15T13:49"
+   "datetime": "2026-11-04T16:30"
   },
   {
    "machine": "냉장",
-   "product": "옥수수수염차",
+   "product": "단무지",
+   "amount": 800,
+   "datetime": "2026-11-04T16:26"
+  },
+  {
+   "machine": "냉장",
+   "product": "날계란",
+   "amount": 600,
+   "datetime": "2026-11-04T16:24"
+  },
+  {
+   "machine": "냉장",
+   "product": "날계란",
+   "amount": 600,
+   "datetime": "2026-11-04T16:24"
+  },
+  {
+   "machine": "냉장",
+   "product": "숯불구이 후랑크",
    "amount": 2000,
-   "datetime": "2026-09-15T08:11"
+   "datetime": "2026-11-04T16:23"
   },
   {
    "machine": "냉장",
-   "product": "체다치즈",
-   "amount": 500,
-   "datetime": "2026-09-15T08:10"
-  },
-  {
-   "machine": "라면2",
-   "product": "멸치칼국수",
-   "amount": 3800,
-   "datetime": "2026-09-15T08:07"
-  },
-  {
-   "machine": "냉장",
-   "product": "맛김치",
-   "amount": 1500,
-   "datetime": "2026-09-15T06:56"
-  },
-  {
-   "machine": "냉장",
-   "product": "날계란",
-   "amount": 600,
-   "datetime": "2026-09-15T06:53"
-  },
-  {
-   "machine": "슬림",
-   "product": "라면톡(황태)",
-   "amount": 1500,
-   "datetime": "2026-09-15T06:52"
-  },
-  {
-   "machine": "라면1",
-   "product": "무파마",
-   "amount": 3800,
-   "datetime": "2026-09-15T06:51"
-  },
-  {
-   "machine": "라면2",
-   "product": "멸치칼국수",
-   "amount": 3800,
-   "datetime": "2026-09-15T06:51"
-  },
-  {
-   "machine": "냉장",
-   "product": "날계란",
-   "amount": 600,
-   "datetime": "2026-09-15T06:28"
-  },
-  {
-   "machine": "냉장",
-   "product": "날계란",
-   "amount": 600,
-   "datetime": "2026-09-15T06:28"
-  },
-  {
-   "machine": "냉장",
-   "product": "날계란",
-   "amount": 600,
-   "datetime": "2026-09-15T06:28"
-  },
-  {
-   "machine": "냉장",
-   "product": "맛김치",
-   "amount": 1500,
-   "datetime": "2026-09-15T06:28"
-  },
-  {
-   "machine": "냉장",
-   "product": "맛김치",
-   "amount": 1500,
-   "datetime": "2026-09-15T06:28"
-  },
-  {
-   "machine": "라면2",
-   "product": "신라면",
-   "amount": 3800,
-   "datetime": "2026-09-15T06:25"
-  },
-  {
-   "machine": "라면2",
-   "product": "신라면",
-   "amount": 3800,
-   "datetime": "2026-09-15T06:24"
-  },
-  {
-   "machine": "라면2",
-   "product": "신라면",
-   "amount": 3800,
-   "datetime": "2026-09-15T06:24"
-  },
-  {
-   "machine": "라면1",
-   "product": "까르보불닭",
-   "amount": 4200,
-   "datetime": "2026-09-15T03:54"
+   "product": "의성마늘 소세지",
+   "amount": 2000,
+   "datetime": "2026-11-04T16:23"
   },
   {
    "machine": "냉동",
-   "product": "고기만두",
-   "amount": 2500,
-   "datetime": "2026-09-15T03:36"
-  },
-  {
-   "machine": "라면2",
-   "product": "삼양라면",
+   "product": "한맥 더블버거",
    "amount": 3500,
-   "datetime": "2026-09-15T03:21"
+   "datetime": "2026-11-04T15:32"
   },
   {
-   "machine": "라면2",
-   "product": "무파마",
-   "amount": 3800,
-   "datetime": "2026-09-15T03:20"
+   "machine": "냉동",
+   "product": "참치김밥",
+   "amount": 4500,
+   "datetime": "2026-11-04T11:09"
   },
   {
    "machine": "냉동",
    "product": "한맥 불벅",
    "amount": 3000,
-   "datetime": "2026-09-15T03:19"
+   "datetime": "2026-11-04T11:04"
+  },
+  {
+   "machine": "냉동",
+   "product": "로제떡볶이",
+   "amount": 5000,
+   "datetime": "2026-11-04T11:03"
+  },
+  {
+   "machine": "냉동",
+   "product": "로제떡볶이",
+   "amount": 5000,
+   "datetime": "2026-11-04T11:03"
+  },
+  {
+   "machine": "냉동",
+   "product": "로제떡볶이",
+   "amount": 5000,
+   "datetime": "2026-11-04T11:03"
+  },
+  {
+   "machine": "냉동",
+   "product": "오꾸밥(참치마요)",
+   "amount": 2000,
+   "datetime": "2026-11-04T11:01"
+  },
+  {
+   "machine": "냉장",
+   "product": "옥수수수염차",
+   "amount": 2000,
+   "datetime": "2026-11-04T10:55"
+  },
+  {
+   "machine": "냉장",
+   "product": "옥수수수염차",
+   "amount": 2000,
+   "datetime": "2026-11-04T10:55"
+  },
+  {
+   "machine": "냉장",
+   "product": "옥수수수염차",
+   "amount": 2000,
+   "datetime": "2026-11-04T10:54"
+  },
+  {
+   "machine": "냉장",
+   "product": "옥수수수염차",
+   "amount": 2000,
+   "datetime": "2026-11-04T10:54"
+  },
+  {
+   "machine": "냉장",
+   "product": "옥수수수염차",
+   "amount": 2000,
+   "datetime": "2026-11-04T10:54"
+  },
+  {
+   "machine": "냉장",
+   "product": "옥수수수염차",
+   "amount": 2000,
+   "datetime": "2026-11-04T10:54"
+  },
+  {
+   "machine": "냉장",
+   "product": "옥수수수염차",
+   "amount": 2000,
+   "datetime": "2026-11-04T10:54"
+  },
+  {
+   "machine": "냉장",
+   "product": "옥수수수염차",
+   "amount": 2000,
+   "datetime": "2026-11-04T10:54"
+  },
+  {
+   "machine": "냉장",
+   "product": "옥수수수염차",
+   "amount": 2000,
+   "datetime": "2026-11-04T10:52"
+  },
+  {
+   "machine": "냉장",
+   "product": "옥수수수염차",
+   "amount": 2000,
+   "datetime": "2026-11-04T10:48"
+  },
+  {
+   "machine": "냉장",
+   "product": "날계란",
+   "amount": 600,
+   "datetime": "2026-11-04T04:06"
+  },
+  {
+   "machine": "냉동",
+   "product": "고기만두",
+   "amount": 2500,
+   "datetime": "2026-11-03T23:56"
+  },
+  {
+   "machine": "냉장",
+   "product": "맛김치",
+   "amount": 1500,
+   "datetime": "2026-11-03T21:56"
+  },
+  {
+   "machine": "냉동",
+   "product": "한맥 불벅",
+   "amount": 3000,
+   "datetime": "2026-11-03T21:53"
+  },
+  {
+   "machine": "냉동",
+   "product": "참치김밥",
+   "amount": 4500,
+   "datetime": "2026-11-03T21:48"
+  },
+  {
+   "machine": "냉장",
+   "product": "햇반",
+   "amount": 1200,
+   "datetime": "2026-11-03T21:47"
+  },
+  {
+   "machine": "냉장",
+   "product": "날계란",
+   "amount": 600,
+   "datetime": "2026-11-03T21:47"
+  },
+  {
+   "machine": "냉장",
+   "product": "생수",
+   "amount": 1000,
+   "datetime": "2026-11-03T21:47"
+  },
+  {
+   "machine": "냉장",
+   "product": "햇반",
+   "amount": 1200,
+   "datetime": "2026-11-03T16:48"
+  },
+  {
+   "machine": "냉장",
+   "product": "단무지",
+   "amount": 800,
+   "datetime": "2026-11-03T16:48"
+  },
+  {
+   "machine": "냉동",
+   "product": "오꾸밥(참치마요)",
+   "amount": 2000,
+   "datetime": "2026-11-03T16:03"
+  },
+  {
+   "machine": "냉동",
+   "product": "한맥 불벅",
+   "amount": 3000,
+   "datetime": "2026-11-03T15:49"
+  },
+  {
+   "machine": "냉장",
+   "product": "체다치즈",
+   "amount": 500,
+   "datetime": "2026-11-03T15:48"
+  },
+  {
+   "machine": "냉장",
+   "product": "맛김치",
+   "amount": 1500,
+   "datetime": "2026-11-03T12:41"
+  },
+  {
+   "machine": "냉장",
+   "product": "맛김치",
+   "amount": 1500,
+   "datetime": "2026-11-03T12:41"
+  },
+  {
+   "machine": "냉장",
+   "product": "맛김치",
+   "amount": 1500,
+   "datetime": "2026-11-03T12:35"
+  },
+  {
+   "machine": "냉동",
+   "product": "김치만두",
+   "amount": 2500,
+   "datetime": "2026-11-03T12:34"
+  },
+  {
+   "machine": "냉동",
+   "product": "치즈 핫도그",
+   "amount": 2000,
+   "datetime": "2026-11-03T12:25"
+  },
+  {
+   "machine": "냉장",
+   "product": "스트링 치즈",
+   "amount": 1000,
+   "datetime": "2026-11-03T12:24"
+  },
+  {
+   "machine": "냉동",
+   "product": "로제떡볶이",
+   "amount": 5000,
+   "datetime": "2026-11-03T12:17"
+  },
+  {
+   "machine": "냉동",
+   "product": "로제떡볶이",
+   "amount": 5000,
+   "datetime": "2026-11-03T12:17"
+  },
+  {
+   "machine": "냉동",
+   "product": "로제떡볶이",
+   "amount": 5000,
+   "datetime": "2026-11-03T12:17"
+  },
+  {
+   "machine": "냉동",
+   "product": "로제떡볶이",
+   "amount": 5000,
+   "datetime": "2026-11-03T12:17"
+  },
+  {
+   "machine": "냉장",
+   "product": "스트링 치즈",
+   "amount": 1000,
+   "datetime": "2026-11-03T12:16"
+  },
+  {
+   "machine": "냉장",
+   "product": "스트링 치즈",
+   "amount": 1000,
+   "datetime": "2026-11-03T12:16"
+  },
+  {
+   "machine": "냉장",
+   "product": "옥수수수염차",
+   "amount": 2000,
+   "datetime": "2026-11-03T12:15"
+  },
+  {
+   "machine": "냉장",
+   "product": "옥수수수염차",
+   "amount": 2000,
+   "datetime": "2026-11-03T12:15"
+  },
+  {
+   "machine": "냉장",
+   "product": "옥수수수염차",
+   "amount": 2000,
+   "datetime": "2026-11-03T12:15"
+  },
+  {
+   "machine": "냉장",
+   "product": "옥수수수염차",
+   "amount": 2000,
+   "datetime": "2026-11-03T12:15"
+  },
+  {
+   "machine": "냉장",
+   "product": "옥수수수염차",
+   "amount": 2000,
+   "datetime": "2026-11-03T12:15"
+  },
+  {
+   "machine": "냉장",
+   "product": "옥수수수염차",
+   "amount": 2000,
+   "datetime": "2026-11-03T12:15"
+  },
+  {
+   "machine": "냉장",
+   "product": "옥수수수염차",
+   "amount": 2000,
+   "datetime": "2026-11-03T12:15"
+  },
+  {
+   "machine": "냉장",
+   "product": "옥수수수염차",
+   "amount": 2000,
+   "datetime": "2026-11-03T12:15"
+  },
+  {
+   "machine": "냉동",
+   "product": "김치만두",
+   "amount": 2500,
+   "datetime": "2026-11-03T11:57"
   }
  ],
  "stock": {
   "라면1": [
    {
     "product": "신라면",
-    "qty": 8,
+    "qty": 7,
     "price": 3800,
     "order": "1",
     "max": 8
@@ -1968,7 +1224,7 @@
    },
    {
     "product": "참깨라면",
-    "qty": 8,
+    "qty": 7,
     "price": 4000,
     "order": "6",
     "max": 8
@@ -1982,21 +1238,21 @@
    },
    {
     "product": "너구리",
-    "qty": 8,
+    "qty": 7,
     "price": 3800,
     "order": "8",
     "max": 8
    },
    {
     "product": "열라면",
-    "qty": 8,
+    "qty": 7,
     "price": 3500,
     "order": "9",
     "max": 8
    },
    {
     "product": "짜파게티",
-    "qty": 8,
+    "qty": 7,
     "price": 4000,
     "order": "10",
     "max": 8
@@ -2038,7 +1294,7 @@
    },
    {
     "product": "용기1",
-    "qty": 35,
+    "qty": 22,
     "price": 10,
     "order": "18",
     "max": 50
@@ -2054,28 +1310,28 @@
   "라면2": [
    {
     "product": "신라면",
-    "qty": 8,
+    "qty": 7,
     "price": 3800,
     "order": "1",
     "max": 8
    },
    {
     "product": "진라면(매운맛)",
-    "qty": 6,
+    "qty": 7,
     "price": 3500,
     "order": "2",
     "max": 8
    },
    {
     "product": "진라면(순한맛)",
-    "qty": 8,
+    "qty": 7,
     "price": 3500,
     "order": "3",
     "max": 8
    },
    {
     "product": "안성탕면",
-    "qty": 7,
+    "qty": 8,
     "price": 3500,
     "order": "4",
     "max": 8
@@ -2103,7 +1359,7 @@
    },
    {
     "product": "너구리",
-    "qty": 8,
+    "qty": 7,
     "price": 3800,
     "order": "8",
     "max": 8
@@ -2117,7 +1373,7 @@
    },
    {
     "product": "짜파게티",
-    "qty": 8,
+    "qty": 4,
     "price": 4000,
     "order": "10",
     "max": 8
@@ -2145,21 +1401,21 @@
    },
    {
     "product": "진짬뽕",
-    "qty": 8,
+    "qty": 7,
     "price": 4000,
     "order": "14",
     "max": 8
    },
    {
     "product": "멸치칼국수",
-    "qty": 8,
+    "qty": 7,
     "price": 3800,
     "order": "15",
     "max": 8
    },
    {
     "product": "용기1",
-    "qty": 36,
+    "qty": 37,
     "price": 10,
     "order": "18",
     "max": 50
@@ -2175,326 +1431,382 @@
   "냉동": [
    {
     "product": "오꾸밥(참치마요)",
-    "qty": 8,
+    "qty": 6,
     "price": 2000,
     "order": "1",
-    "max": 8
+    "max": 10
    },
    {
     "product": "오꾸밥(소불고기)",
-    "qty": 9,
+    "qty": 3,
     "price": 2000,
     "order": "2",
-    "max": 9
+    "max": 8
    },
    {
     "product": "오꾸밥(김치치즈)",
-    "qty": 9,
+    "qty": 5,
     "price": 2000,
     "order": "3",
     "max": 9
    },
    {
     "product": "오꾸밥(불닭치즈)",
-    "qty": 6,
+    "qty": 3,
     "price": 2000,
     "order": "4",
-    "max": 6
+    "max": 4
    },
    {
     "product": "오뚜기UNO피자(콤비)",
-    "qty": 4,
+    "qty": 3,
     "price": 3500,
     "order": "5",
     "max": 4
    },
    {
     "product": "오뚜기UNO피자(불고기)",
-    "qty": 5,
+    "qty": 2,
     "price": 3500,
     "order": "6",
-    "max": 5
+    "max": 4
    },
    {
     "product": "한맥 불벅",
-    "qty": 6,
+    "qty": 19,
     "price": 3000,
     "order": "7",
-    "max": 6
+    "max": 19
    },
    {
     "product": "한맥 더블버거",
     "qty": 6,
     "price": 3500,
     "order": "8",
-    "max": 6
-   },
-   {
-    "product": "매콤제육김밥",
-    "qty": 4,
-    "price": 4500,
-    "order": "9",
-    "max": 4
+    "max": 11
    },
    {
     "product": "야채김밥",
-    "qty": 7,
+    "qty": 0,
     "price": 4500,
-    "order": "10",
-    "max": 7
+    "order": "9",
+    "max": 10
    },
    {
     "product": "참치김밥",
     "qty": 2,
     "price": 4500,
-    "order": "11",
-    "max": 2
+    "order": "10",
+    "max": 10
    },
    {
-    "product": "김치만두",
+    "product": "매콤제육김밥",
     "qty": 8,
-    "price": 2500,
+    "price": 4500,
+    "order": "11",
+    "max": 11
+   },
+   {
+    "product": "소세지김밥",
+    "qty": 20,
+    "price": 4500,
     "order": "12",
-    "max": 8
+    "max": 21
+   },
+   {
+    "product": "진미채김밥",
+    "qty": 9,
+    "price": 4500,
+    "order": "13",
+    "max": 10
    },
    {
     "product": "고기만두",
-    "qty": 9,
+    "qty": 4,
     "price": 2500,
     "order": "13",
-    "max": 9
+    "max": 20
+   },
+   {
+    "product": "김치만두",
+    "qty": 12,
+    "price": 2500,
+    "order": "14",
+    "max": 20
+   },
+   {
+    "product": "치즈 핫도그",
+    "qty": 5,
+    "price": 2000,
+    "order": "14",
+    "max": 10
    },
    {
     "product": "매콤떡볶이",
-    "qty": 5,
+    "qty": 3,
     "price": 4500,
-    "order": "0",
+    "order": "15",
     "max": 5
    },
    {
-    "product": "통모짜볼로네제",
-    "qty": 5,
-    "price": 6000,
-    "order": "0",
-    "max": 5
-   },
-   {
-    "product": "뽀모도로스파게티",
-    "qty": 6,
+    "product": "국물떡볶이",
+    "qty": 17,
     "price": 4500,
-    "order": "0",
-    "max": 6
-   },
-   {
-    "product": "베이컨크림스파게티",
-    "qty": 7,
-    "price": 4500,
-    "order": "0",
-    "max": 7
-   },
-   {
-    "product": "마시뜨랑건강식",
-    "qty": 9,
-    "price": 5000,
-    "order": "0",
-    "max": 9
+    "order": "16",
+    "max": 20
    },
    {
     "product": "로제떡볶이",
-    "qty": 5,
+    "qty": 9,
     "price": 5000,
+    "order": "16",
+    "max": 20
+   },
+   {
+    "product": "통모짜볼로네제",
+    "qty": 0,
+    "price": 6000,
     "order": "0",
-    "max": 5
+    "max": 0
+   },
+   {
+    "product": "뽀모도로스파게티",
+    "qty": 0,
+    "price": 4500,
+    "order": "0",
+    "max": 0
    },
    {
     "product": "김치제육덮밥",
-    "qty": 7,
+    "qty": 0,
     "price": 6000,
     "order": "0",
-    "max": 7
+    "max": 0
+   },
+   {
+    "product": "베이컨크림스파게티",
+    "qty": 0,
+    "price": 4500,
+    "order": "0",
+    "max": 0
    },
    {
     "product": "피자치즈",
-    "qty": 7,
+    "qty": 0,
     "price": 1800,
     "order": "0",
-    "max": 7
+    "max": 10
+   },
+   {
+    "product": "마시뜨랑건강식",
+    "qty": 0,
+    "price": 6500,
+    "order": "0",
+    "max": 9
    }
   ],
   "냉장": [
    {
     "product": "날계란",
-    "qty": 7,
+    "qty": 33,
     "price": 600,
     "order": "1",
-    "max": 7
+    "max": 99
    },
    {
-    "product": "맛김치",
-    "qty": 8,
-    "price": 1500,
-    "order": "2",
+    "product": "햇반",
+    "qty": 5,
+    "price": 1200,
+    "order": "1",
     "max": 8
    },
    {
+    "product": "맛김치",
+    "qty": 16,
+    "price": 1500,
+    "order": "2",
+    "max": 40
+   },
+   {
     "product": "볶음김치",
-    "qty": 3,
+    "qty": 10,
     "price": 1500,
     "order": "3",
-    "max": 3
+    "max": 17
    },
    {
     "product": "체다치즈",
-    "qty": 6,
+    "qty": 9,
     "price": 500,
     "order": "4",
-    "max": 6
+    "max": 30
    },
    {
     "product": "단무지",
-    "qty": 11,
+    "qty": 35,
     "price": 800,
     "order": "5",
-    "max": 11
+    "max": 50
    },
    {
     "product": "김",
-    "qty": 11,
+    "qty": 3,
     "price": 1000,
     "order": "6",
-    "max": 11
-   },
-   {
-    "product": "스트링 치즈",
-    "qty": 23,
-    "price": 1000,
-    "order": "6",
-    "max": 23
-   },
-   {
-    "product": "의성마늘 소세지",
-    "qty": 7,
-    "price": 2000,
-    "order": "7",
     "max": 7
    },
    {
-    "product": "숯불구이 후랑크",
-    "qty": 16,
-    "price": 2000,
-    "order": "8",
-    "max": 16
+    "product": "스트링 치즈",
+    "qty": 64,
+    "price": 1000,
+    "order": "6",
+    "max": 99
    },
    {
-    "product": "몬스터",
-    "qty": 9,
-    "price": 2000,
-    "order": "9",
-    "max": 9
-   },
-   {
-    "product": "조지아",
+    "product": "의성마늘 소세지",
     "qty": 5,
     "price": 2000,
-    "order": "12",
-    "max": 5
+    "order": "7",
+    "max": 20
    },
    {
-    "product": "코카콜라",
-    "qty": 1,
+    "product": "숯불구이 후랑크",
+    "qty": 10,
     "price": 2000,
-    "order": "0",
-    "max": 1
+    "order": "8",
+    "max": 20
    },
    {
-    "product": "펩시",
-    "qty": 6,
-    "price": 2000,
-    "order": "0",
-    "max": 6
-   },
-   {
-    "product": "펩시제로",
-    "qty": 3,
-    "price": 2000,
-    "order": "0",
-    "max": 3
-   },
-   {
-    "product": "칠성사이다",
-    "qty": 6,
-    "price": 2000,
-    "order": "0",
-    "max": 6
-   },
-   {
-    "product": "포카리스웨트",
-    "qty": 4,
-    "price": 2500,
-    "order": "0",
-    "max": 4
+    "product": "비엔나",
+    "qty": 17,
+    "price": 3200,
+    "order": "9",
+    "max": 18
    },
    {
     "product": "옥수수수염차",
-    "qty": 4,
+    "qty": 57,
     "price": 2000,
-    "order": "0",
+    "order": "9",
+    "max": 100
+   },
+   {
+    "product": "포카리스웨트",
+    "qty": 26,
+    "price": 2300,
+    "order": "10",
+    "max": 30
+   },
+   {
+    "product": "파워에이드",
+    "qty": 4,
+    "price": 2300,
+    "order": "11",
+    "max": 10
+   },
+   {
+    "product": "갈아만든배",
+    "qty": 2,
+    "price": 2300,
+    "order": "12",
     "max": 4
    },
    {
-    "product": "생수",
-    "qty": 11,
+    "product": "조지아",
+    "qty": 0,
+    "price": 2000,
+    "order": "12",
+    "max": 0
+   },
+   {
+    "product": "라면톡",
+    "qty": 20,
     "price": 1000,
     "order": "0",
-    "max": 11
+    "max": 20
+   },
+   {
+    "product": "코카콜라",
+    "qty": 0,
+    "price": 2000,
+    "order": "0",
+    "max": 0
+   },
+   {
+    "product": "펩시",
+    "qty": 0,
+    "price": 2000,
+    "order": "0",
+    "max": 0
+   },
+   {
+    "product": "펩시제로",
+    "qty": 0,
+    "price": 2000,
+    "order": "0",
+    "max": 0
+   },
+   {
+    "product": "칠성사이다",
+    "qty": 0,
+    "price": 2000,
+    "order": "0",
+    "max": 0
+   },
+   {
+    "product": "생수",
+    "qty": 54,
+    "price": 1000,
+    "order": "0",
+    "max": 99
    }
   ],
   "슬림": [
    {
     "product": "햇반",
-    "qty": 7,
+    "qty": 0,
     "price": 1200,
     "order": "1",
     "max": 8
    },
    {
     "product": "햇반",
-    "qty": 8,
+    "qty": 0,
     "price": 1200,
     "order": "2",
     "max": 8
    },
    {
     "product": "햇반",
-    "qty": 6,
+    "qty": 0,
     "price": 1200,
     "order": "3",
     "max": 8
    },
    {
     "product": "스팸마요컵밥",
-    "qty": 3,
+    "qty": 0,
     "price": 4500,
     "order": "4",
-    "max": 3
+    "max": 1
    },
    {
     "product": "스팸김치덮밥",
-    "qty": 3,
+    "qty": 0,
     "price": 4500,
     "order": "5",
     "max": 3
    },
    {
     "product": "치킨마요덮밥",
-    "qty": 3,
+    "qty": 0,
     "price": 4500,
     "order": "6",
     "max": 3
    },
    {
     "product": "김치날치알밥",
-    "qty": 3,
+    "qty": 0,
     "price": 4500,
     "order": "7",
     "max": 3
@@ -2535,25 +1847,25 @@
     "max": 0
    },
    {
-    "product": "라면톡(황태)",
-    "qty": 9,
-    "price": 1500,
+    "product": "에낙",
+    "qty": 0,
+    "price": 1000,
     "order": "13",
-    "max": 9
+    "max": 13
    },
    {
-    "product": "라면톡(황태)",
-    "qty": 9,
-    "price": 1500,
+    "product": "에낙스파이시",
+    "qty": 0,
+    "price": 1200,
     "order": "14",
-    "max": 9
+    "max": 13
    },
    {
     "product": "라면톡(황태)",
-    "qty": 7,
+    "qty": 0,
     "price": 1500,
     "order": "15",
-    "max": 9
+    "max": 5
    }
   ]
  },
@@ -2634,86 +1946,6 @@
       "v": 1500
      }
     }
-   },
-   "라면1": {
-    "c": 14,
-    "v": 52700,
-    "p": {
-     "참깨라면": {
-      "c": 3,
-      "v": 12000
-     },
-     "짜파게티": {
-      "c": 1,
-      "v": 4000
-     },
-     "삼양라면": {
-      "c": 2,
-      "v": 7000
-     },
-     "무파마": {
-      "c": 3,
-      "v": 11400
-     },
-     "안성탕면": {
-      "c": 1,
-      "v": 3500
-     },
-     "진라면(매운맛)": {
-      "c": 1,
-      "v": 3500
-     },
-     "진라면(순한맛)": {
-      "c": 1,
-      "v": 3500
-     },
-     "진짬뽕": {
-      "c": 1,
-      "v": 4000
-     },
-     "오징어짬뽕": {
-      "c": 1,
-      "v": 3800
-     }
-    }
-   },
-   "라면2": {
-    "c": 8,
-    "v": 30700,
-    "p": {
-     "진짬뽕": {
-      "c": 1,
-      "v": 4000
-     },
-     "신라면": {
-      "c": 1,
-      "v": 3800
-     },
-     "참깨라면": {
-      "c": 1,
-      "v": 4000
-     },
-     "열라면": {
-      "c": 1,
-      "v": 3500
-     },
-     "멸치칼국수": {
-      "c": 1,
-      "v": 3800
-     },
-     "짜파게티": {
-      "c": 1,
-      "v": 4000
-     },
-     "너구리": {
-      "c": 1,
-      "v": 3800
-     },
-     "오징어짬뽕": {
-      "c": 1,
-      "v": 3800
-     }
-    }
    }
   },
   "2026-09-17": {
@@ -2728,16 +1960,6 @@
      "매콤제육김밥": {
       "c": 1,
       "v": 4500
-     }
-    }
-   },
-   "슬림": {
-    "c": 2,
-    "v": 2400,
-    "p": {
-     "햇반": {
-      "c": 2,
-      "v": 2400
      }
     }
    },
@@ -2786,111 +2008,9 @@
       "v": 2000
      }
     }
-   },
-   "라면1": {
-    "c": 5,
-    "v": 19400,
-    "p": {
-     "참깨라면": {
-      "c": 1,
-      "v": 4000
-     },
-     "오징어짬뽕": {
-      "c": 2,
-      "v": 7600
-     },
-     "신라면": {
-      "c": 1,
-      "v": 3800
-     },
-     "진짬뽕": {
-      "c": 1,
-      "v": 4000
-     }
-    }
-   },
-   "라면2": {
-    "c": 13,
-    "v": 48700,
-    "p": {
-     "무파마": {
-      "c": 1,
-      "v": 3800
-     },
-     "짜파게티": {
-      "c": 2,
-      "v": 8000
-     },
-     "신라면": {
-      "c": 1,
-      "v": 3800
-     },
-     "진라면(순한맛)": {
-      "c": 1,
-      "v": 3500
-     },
-     "삼양라면": {
-      "c": 1,
-      "v": 3500
-     },
-     "진라면(매운맛)": {
-      "c": 1,
-      "v": 3500
-     },
-     "너구리": {
-      "c": 1,
-      "v": 3800
-     },
-     "불닭볶음면": {
-      "c": 1,
-      "v": 4000
-     },
-     "안성탕면": {
-      "c": 2,
-      "v": 7000
-     },
-     "멸치칼국수": {
-      "c": 1,
-      "v": 3800
-     },
-     "참깨라면": {
-      "c": 1,
-      "v": 4000
-     }
-    }
    }
   },
   "2026-09-16": {
-   "라면2": {
-    "c": 7,
-    "v": 26600,
-    "p": {
-     "진라면(매운맛)": {
-      "c": 1,
-      "v": 3500
-     },
-     "열라면": {
-      "c": 1,
-      "v": 3500
-     },
-     "오징어짬뽕": {
-      "c": 2,
-      "v": 7600
-     },
-     "신라면": {
-      "c": 1,
-      "v": 3800
-     },
-     "까르보불닭": {
-      "c": 1,
-      "v": 4200
-     },
-     "짜파게티": {
-      "c": 1,
-      "v": 4000
-     }
-    }
-   },
    "냉장": {
     "c": 11,
     "v": 15300,
@@ -2944,26 +2064,6 @@
      "오뚜기UNO피자(콤비)": {
       "c": 1,
       "v": 3500
-     }
-    }
-   },
-   "라면1": {
-    "c": 1,
-    "v": 4000,
-    "p": {
-     "진짬뽕": {
-      "c": 1,
-      "v": 4000
-     }
-    }
-   },
-   "슬림": {
-    "c": 5,
-    "v": 6000,
-    "p": {
-     "햇반": {
-      "c": 5,
-      "v": 6000
      }
     }
    }
@@ -3052,117 +2152,9 @@
       "v": 6000
      }
     }
-   },
-   "라면1": {
-    "c": 5,
-    "v": 19500,
-    "p": {
-     "열라면": {
-      "c": 1,
-      "v": 3500
-     },
-     "참깨라면": {
-      "c": 2,
-      "v": 8000
-     },
-     "무파마": {
-      "c": 1,
-      "v": 3800
-     },
-     "까르보불닭": {
-      "c": 1,
-      "v": 4200
-     }
-    }
-   },
-   "라면2": {
-    "c": 13,
-    "v": 47900,
-    "p": {
-     "안성탕면": {
-      "c": 1,
-      "v": 3500
-     },
-     "무파마": {
-      "c": 2,
-      "v": 7600
-     },
-     "멸치칼국수": {
-      "c": 3,
-      "v": 11400
-     },
-     "열라면": {
-      "c": 1,
-      "v": 3500
-     },
-     "삼양라면": {
-      "c": 2,
-      "v": 7000
-     },
-     "진라면(순한맛)": {
-      "c": 1,
-      "v": 3500
-     },
-     "신라면": {
-      "c": 3,
-      "v": 11400
-     }
-    }
-   },
-   "슬림": {
-    "c": 1,
-    "v": 1500,
-    "p": {
-     "라면톡(황태)": {
-      "c": 1,
-      "v": 1500
-     }
-    }
    }
   },
   "2026-09-14": {
-   "라면2": {
-    "c": 13,
-    "v": 49400,
-    "p": {
-     "진라면(매운맛)": {
-      "c": 2,
-      "v": 7000
-     },
-     "안성탕면": {
-      "c": 2,
-      "v": 7000
-     },
-     "오징어짬뽕": {
-      "c": 1,
-      "v": 3800
-     },
-     "진짬뽕": {
-      "c": 1,
-      "v": 4000
-     },
-     "참깨라면": {
-      "c": 2,
-      "v": 8000
-     },
-     "짜파게티": {
-      "c": 2,
-      "v": 8000
-     },
-     "불닭볶음면": {
-      "c": 1,
-      "v": 4000
-     },
-     "무파마": {
-      "c": 1,
-      "v": 3800
-     },
-     "신라면": {
-      "c": 1,
-      "v": 3800
-     }
-    }
-   },
    "냉동": {
     "c": 7,
     "v": 21500,
@@ -3216,32 +2208,6 @@
      "단무지": {
       "c": 2,
       "v": 1600
-     }
-    }
-   },
-   "라면1": {
-    "c": 6,
-    "v": 21900,
-    "p": {
-     "오징어짬뽕": {
-      "c": 1,
-      "v": 3800
-     },
-     "신라면": {
-      "c": 2,
-      "v": 7600
-     },
-     "열라면": {
-      "c": 1,
-      "v": 3500
-     },
-     "진라면(매운맛)": {
-      "c": 1,
-      "v": 3500
-     },
-     "안성탕면": {
-      "c": 1,
-      "v": 3500
      }
     }
    }
@@ -3326,68 +2292,6 @@
       "v": 1500
      }
     }
-   },
-   "라면1": {
-    "c": 5,
-    "v": 18600,
-    "p": {
-     "신라면": {
-      "c": 2,
-      "v": 7600
-     },
-     "안성탕면": {
-      "c": 1,
-      "v": 3500
-     },
-     "진짬뽕": {
-      "c": 1,
-      "v": 4000
-     },
-     "삼양라면": {
-      "c": 1,
-      "v": 3500
-     }
-    }
-   },
-   "라면2": {
-    "c": 8,
-    "v": 29100,
-    "p": {
-     "안성탕면": {
-      "c": 2,
-      "v": 7000
-     },
-     "참깨라면": {
-      "c": 1,
-      "v": 4000
-     },
-     "너구리": {
-      "c": 1,
-      "v": 3800
-     },
-     "신라면": {
-      "c": 1,
-      "v": 3800
-     },
-     "열라면": {
-      "c": 2,
-      "v": 7000
-     },
-     "진라면(매운맛)": {
-      "c": 1,
-      "v": 3500
-     }
-    }
-   },
-   "슬림": {
-    "c": 1,
-    "v": 1500,
-    "p": {
-     "라면톡(황태)": {
-      "c": 1,
-      "v": 1500
-     }
-    }
    }
   },
   "2026-09-12": {
@@ -3426,36 +2330,6 @@
      "오꾸밥(참치마요)": {
       "c": 1,
       "v": 2000
-     }
-    }
-   },
-   "라면1": {
-    "c": 7,
-    "v": 26200,
-    "p": {
-     "신라면": {
-      "c": 2,
-      "v": 7600
-     },
-     "참깨라면": {
-      "c": 1,
-      "v": 4000
-     },
-     "오징어짬뽕": {
-      "c": 1,
-      "v": 3800
-     },
-     "삼양라면": {
-      "c": 1,
-      "v": 3500
-     },
-     "너구리": {
-      "c": 1,
-      "v": 3800
-     },
-     "진라면(매운맛)": {
-      "c": 1,
-      "v": 3500
      }
     }
    },
@@ -3504,121 +2378,9 @@
       "v": 1000
      }
     }
-   },
-   "라면2": {
-    "c": 14,
-    "v": 52900,
-    "p": {
-     "진짬뽕": {
-      "c": 3,
-      "v": 12000
-     },
-     "삼양라면": {
-      "c": 2,
-      "v": 7000
-     },
-     "짜파게티": {
-      "c": 3,
-      "v": 12000
-     },
-     "너구리": {
-      "c": 1,
-      "v": 3800
-     },
-     "무파마": {
-      "c": 1,
-      "v": 3800
-     },
-     "열라면": {
-      "c": 3,
-      "v": 10500
-     },
-     "멸치칼국수": {
-      "c": 1,
-      "v": 3800
-     }
-    }
-   },
-   "슬림": {
-    "c": 1,
-    "v": 1200,
-    "p": {
-     "햇반": {
-      "c": 1,
-      "v": 1200
-     }
-    }
    }
   },
   "2026-09-11": {
-   "슬림": {
-    "c": 1,
-    "v": 1200,
-    "p": {
-     "햇반": {
-      "c": 1,
-      "v": 1200
-     }
-    }
-   },
-   "라면2": {
-    "c": 22,
-    "v": 82800,
-    "p": {
-     "진라면(매운맛)": {
-      "c": 1,
-      "v": 3500
-     },
-     "열라면": {
-      "c": 4,
-      "v": 14000
-     },
-     "불닭볶음면": {
-      "c": 1,
-      "v": 4000
-     },
-     "멸치칼국수": {
-      "c": 1,
-      "v": 3800
-     },
-     "너구리": {
-      "c": 2,
-      "v": 7600
-     },
-     "진짬뽕": {
-      "c": 3,
-      "v": 12000
-     },
-     "신라면": {
-      "c": 2,
-      "v": 7600
-     },
-     "무파마": {
-      "c": 2,
-      "v": 7600
-     },
-     "안성탕면": {
-      "c": 1,
-      "v": 3500
-     },
-     "짜파게티": {
-      "c": 1,
-      "v": 4000
-     },
-     "참깨라면": {
-      "c": 1,
-      "v": 4000
-     },
-     "진라면(순한맛)": {
-      "c": 2,
-      "v": 7000
-     },
-     "까르보불닭": {
-      "c": 1,
-      "v": 4200
-     }
-    }
-   },
    "냉장": {
     "c": 19,
     "v": 26000,
@@ -3694,81 +2456,9 @@
       "v": 1800
      }
     }
-   },
-   "라면1": {
-    "c": 7,
-    "v": 26200,
-    "p": {
-     "짜파게티": {
-      "c": 1,
-      "v": 4000
-     },
-     "너구리": {
-      "c": 1,
-      "v": 3800
-     },
-     "삼양라면": {
-      "c": 1,
-      "v": 3500
-     },
-     "신라면": {
-      "c": 1,
-      "v": 3800
-     },
-     "무파마": {
-      "c": 1,
-      "v": 3800
-     },
-     "멸치칼국수": {
-      "c": 1,
-      "v": 3800
-     },
-     "열라면": {
-      "c": 1,
-      "v": 3500
-     }
-    }
    }
   },
   "2026-09-10": {
-   "라면2": {
-    "c": 10,
-    "v": 38200,
-    "p": {
-     "너구리": {
-      "c": 1,
-      "v": 3800
-     },
-     "무파마": {
-      "c": 3,
-      "v": 11400
-     },
-     "불닭볶음면": {
-      "c": 1,
-      "v": 4000
-     },
-     "까르보불닭": {
-      "c": 1,
-      "v": 4200
-     },
-     "참깨라면": {
-      "c": 1,
-      "v": 4000
-     },
-     "신라면": {
-      "c": 1,
-      "v": 3800
-     },
-     "삼양라면": {
-      "c": 1,
-      "v": 3500
-     },
-     "진라면(순한맛)": {
-      "c": 1,
-      "v": 3500
-     }
-    }
-   },
    "냉장": {
     "c": 12,
     "v": 14900,
@@ -3800,36 +2490,6 @@
      "체다치즈": {
       "c": 2,
       "v": 1000
-     }
-    }
-   },
-   "라면1": {
-    "c": 6,
-    "v": 22600,
-    "p": {
-     "진짬뽕": {
-      "c": 1,
-      "v": 4000
-     },
-     "무파마": {
-      "c": 1,
-      "v": 3800
-     },
-     "신라면": {
-      "c": 1,
-      "v": 3800
-     },
-     "삼양라면": {
-      "c": 1,
-      "v": 3500
-     },
-     "참깨라면": {
-      "c": 1,
-      "v": 4000
-     },
-     "열라면": {
-      "c": 1,
-      "v": 3500
      }
     }
    },
@@ -3866,45 +2526,9 @@
       "v": 2000
      }
     }
-   },
-   "슬림": {
-    "c": 1,
-    "v": 1200,
-    "p": {
-     "햇반": {
-      "c": 1,
-      "v": 1200
-     }
-    }
    }
   },
   "2026-09-09": {
-   "라면1": {
-    "c": 6,
-    "v": 22800,
-    "p": {
-     "짜파게티": {
-      "c": 2,
-      "v": 8000
-     },
-     "진라면(매운맛)": {
-      "c": 1,
-      "v": 3500
-     },
-     "진짬뽕": {
-      "c": 1,
-      "v": 4000
-     },
-     "열라면": {
-      "c": 1,
-      "v": 3500
-     },
-     "신라면": {
-      "c": 1,
-      "v": 3800
-     }
-    }
-   },
    "냉장": {
     "c": 18,
     "v": 23600,
@@ -3944,36 +2568,6 @@
      "체다치즈": {
       "c": 1,
       "v": 500
-     }
-    }
-   },
-   "라면2": {
-    "c": 8,
-    "v": 29900,
-    "p": {
-     "열라면": {
-      "c": 2,
-      "v": 7000
-     },
-     "무파마": {
-      "c": 2,
-      "v": 7600
-     },
-     "진짬뽕": {
-      "c": 1,
-      "v": 4000
-     },
-     "신라면": {
-      "c": 1,
-      "v": 3800
-     },
-     "너구리": {
-      "c": 1,
-      "v": 4000
-     },
-     "삼양라면": {
-      "c": 1,
-      "v": 3500
      }
     }
    },
@@ -4025,64 +2619,6 @@
    }
   },
   "2026-09-08": {
-   "라면2": {
-    "c": 11,
-    "v": 43500,
-    "p": {
-     "너구리": {
-      "c": 1,
-      "v": 4000
-     },
-     "참깨라면": {
-      "c": 1,
-      "v": 4000
-     },
-     "신라면": {
-      "c": 6,
-      "v": 24000
-     },
-     "진라면(매운맛)": {
-      "c": 1,
-      "v": 4000
-     },
-     "진라면(순한맛)": {
-      "c": 1,
-      "v": 4000
-     },
-     "삼양라면": {
-      "c": 1,
-      "v": 3500
-     }
-    }
-   },
-   "라면1": {
-    "c": 3,
-    "v": 12000,
-    "p": {
-     "너구리": {
-      "c": 1,
-      "v": 4000
-     },
-     "무파마": {
-      "c": 1,
-      "v": 4000
-     },
-     "열라면": {
-      "c": 1,
-      "v": 4000
-     }
-    }
-   },
-   "슬림": {
-    "c": 1,
-    "v": 1000,
-    "p": {
-     "햇반": {
-      "c": 1,
-      "v": 1000
-     }
-    }
-   },
    "냉장": {
     "c": 1,
     "v": 1500,
@@ -4095,32 +2631,6 @@
    }
   },
   "2026-09-07": {
-   "라면2": {
-    "c": 5,
-    "v": 20000,
-    "p": {
-     "진라면(매운맛)": {
-      "c": 1,
-      "v": 4000
-     },
-     "신라면": {
-      "c": 1,
-      "v": 4000
-     },
-     "불닭볶음면": {
-      "c": 1,
-      "v": 4000
-     },
-     "열라면": {
-      "c": 1,
-      "v": 4000
-     },
-     "참깨라면": {
-      "c": 1,
-      "v": 4000
-     }
-    }
-   },
    "냉장": {
     "c": 8,
     "v": 10000,
@@ -4160,20 +2670,6 @@
       "v": 2500
      }
     }
-   },
-   "라면1": {
-    "c": 2,
-    "v": 8000,
-    "p": {
-     "신라면": {
-      "c": 1,
-      "v": 4000
-     },
-     "무파마": {
-      "c": 1,
-      "v": 4000
-     }
-    }
    }
   },
   "2026-09-06": {
@@ -4196,58 +2692,6 @@
      "오꾸밥(참치마요)": {
       "c": 1,
       "v": 2000
-     }
-    }
-   },
-   "라면2": {
-    "c": 12,
-    "v": 46000,
-    "p": {
-     "열라면": {
-      "c": 1,
-      "v": 4000
-     },
-     "참깨라면": {
-      "c": 1,
-      "v": 4000
-     },
-     "진라면(순한맛)": {
-      "c": 1,
-      "v": 4000
-     },
-     "너구리": {
-      "c": 2,
-      "v": 8000
-     },
-     "삼양라면": {
-      "c": 4,
-      "v": 14000
-     },
-     "안성탕면": {
-      "c": 2,
-      "v": 8000
-     },
-     "신라면": {
-      "c": 1,
-      "v": 4000
-     }
-    }
-   },
-   "라면1": {
-    "c": 4,
-    "v": 16000,
-    "p": {
-     "안성탕면": {
-      "c": 2,
-      "v": 8000
-     },
-     "진라면(순한맛)": {
-      "c": 1,
-      "v": 4000
-     },
-     "열라면": {
-      "c": 1,
-      "v": 4000
      }
     }
    },
@@ -4297,36 +2741,6 @@
      }
     }
    },
-   "라면2": {
-    "c": 9,
-    "v": 36000,
-    "p": {
-     "진짬뽕": {
-      "c": 1,
-      "v": 4000
-     },
-     "무파마": {
-      "c": 1,
-      "v": 4000
-     },
-     "참깨라면": {
-      "c": 3,
-      "v": 12000
-     },
-     "너구리": {
-      "c": 1,
-      "v": 4000
-     },
-     "안성탕면": {
-      "c": 2,
-      "v": 8000
-     },
-     "짜파게티": {
-      "c": 1,
-      "v": 4000
-     }
-    }
-   },
    "냉장": {
     "c": 13,
     "v": 14500,
@@ -4360,65 +2774,9 @@
       "v": 2000
      }
     }
-   },
-   "라면1": {
-    "c": 4,
-    "v": 15000,
-    "p": {
-     "삼양라면": {
-      "c": 2,
-      "v": 7000
-     },
-     "참깨라면": {
-      "c": 1,
-      "v": 4000
-     },
-     "진짬뽕": {
-      "c": 1,
-      "v": 4000
-     }
-    }
    }
   },
   "2026-09-04": {
-   "라면2": {
-    "c": 15,
-    "v": 60000,
-    "p": {
-     "너구리": {
-      "c": 1,
-      "v": 4000
-     },
-     "신라면": {
-      "c": 4,
-      "v": 16000
-     },
-     "참깨라면": {
-      "c": 1,
-      "v": 4000
-     },
-     "열라면": {
-      "c": 3,
-      "v": 12000
-     },
-     "무파마": {
-      "c": 2,
-      "v": 8000
-     },
-     "멸치칼국수": {
-      "c": 1,
-      "v": 4000
-     },
-     "짜파게티": {
-      "c": 2,
-      "v": 8000
-     },
-     "오징어짬뽕": {
-      "c": 1,
-      "v": 4000
-     }
-    }
-   },
    "냉장": {
     "c": 15,
     "v": 19000,
@@ -4494,40 +2852,6 @@
       "v": 2500
      }
     }
-   },
-   "라면1": {
-    "c": 7,
-    "v": 28000,
-    "p": {
-     "진라면(매운맛)": {
-      "c": 1,
-      "v": 4000
-     },
-     "신라면": {
-      "c": 1,
-      "v": 4000
-     },
-     "참깨라면": {
-      "c": 1,
-      "v": 4000
-     },
-     "오징어짬뽕": {
-      "c": 1,
-      "v": 4000
-     },
-     "너구리": {
-      "c": 1,
-      "v": 4000
-     },
-     "무파마": {
-      "c": 1,
-      "v": 4000
-     },
-     "멸치칼국수": {
-      "c": 1,
-      "v": 4000
-     }
-    }
    }
   },
   "2026-09-03": {
@@ -4557,20 +2881,6 @@
      }
     }
    },
-   "라면1": {
-    "c": 2,
-    "v": 8000,
-    "p": {
-     "신라면": {
-      "c": 1,
-      "v": 4000
-     },
-     "진라면(매운맛)": {
-      "c": 1,
-      "v": 4000
-     }
-    }
-   },
    "냉동": {
     "c": 4,
     "v": 12500,
@@ -4590,36 +2900,6 @@
      "오꾸밥(참치마요)": {
       "c": 1,
       "v": 2000
-     }
-    }
-   },
-   "라면2": {
-    "c": 7,
-    "v": 27500,
-    "p": {
-     "짜파게티": {
-      "c": 2,
-      "v": 8000
-     },
-     "진짬뽕": {
-      "c": 1,
-      "v": 4000
-     },
-     "삼양라면": {
-      "c": 1,
-      "v": 3500
-     },
-     "멸치칼국수": {
-      "c": 1,
-      "v": 4000
-     },
-     "무파마": {
-      "c": 1,
-      "v": 4000
-     },
-     "참깨라면": {
-      "c": 1,
-      "v": 4000
      }
     }
    }
@@ -4652,46 +2932,6 @@
      "생수": {
       "c": 1,
       "v": 1000
-     }
-    }
-   },
-   "라면2": {
-    "c": 6,
-    "v": 24000,
-    "p": {
-     "열라면": {
-      "c": 1,
-      "v": 4000
-     },
-     "무파마": {
-      "c": 3,
-      "v": 12000
-     },
-     "신라면": {
-      "c": 1,
-      "v": 4000
-     },
-     "진라면(매운맛)": {
-      "c": 1,
-      "v": 4000
-     }
-    }
-   },
-   "라면1": {
-    "c": 3,
-    "v": 12000,
-    "p": {
-     "신라면": {
-      "c": 1,
-      "v": 4000
-     },
-     "짜파게티": {
-      "c": 1,
-      "v": 4000
-     },
-     "참깨라면": {
-      "c": 1,
-      "v": 4000
      }
     }
    },
@@ -4730,40 +2970,6 @@
      "김치만두": {
       "c": 1,
       "v": 2500
-     }
-    }
-   },
-   "라면2": {
-    "c": 10,
-    "v": 38000,
-    "p": {
-     "안성탕면": {
-      "c": 1,
-      "v": 4000
-     },
-     "열라면": {
-      "c": 1,
-      "v": 4000
-     },
-     "짜파게티": {
-      "c": 2,
-      "v": 8000
-     },
-     "삼양라면": {
-      "c": 2,
-      "v": 7000
-     },
-     "진짬뽕": {
-      "c": 1,
-      "v": 4000
-     },
-     "참깨라면": {
-      "c": 1,
-      "v": 4000
-     },
-     "신라면": {
-      "c": 2,
-      "v": 7000
      }
     }
    },
@@ -4806,32 +3012,6 @@
      "맛김치": {
       "c": 1,
       "v": 1500
-     }
-    }
-   },
-   "라면1": {
-    "c": 6,
-    "v": 23000,
-    "p": {
-     "불닭볶음면": {
-      "c": 2,
-      "v": 8000
-     },
-     "참깨라면": {
-      "c": 1,
-      "v": 4000
-     },
-     "오징어짬뽕": {
-      "c": 1,
-      "v": 4000
-     },
-     "안성탕면": {
-      "c": 1,
-      "v": 3500
-     },
-     "신라면": {
-      "c": 1,
-      "v": 3500
      }
     }
    }
@@ -5327,82 +3507,6 @@
    }
   },
   "2026-09-19": {
-   "라면1": {
-    "c": 10,
-    "v": 38000,
-    "p": {
-     "오징어짬뽕": {
-      "c": 2,
-      "v": 7600
-     },
-     "안성탕면": {
-      "c": 1,
-      "v": 3500
-     },
-     "너구리": {
-      "c": 1,
-      "v": 3800
-     },
-     "참깨라면": {
-      "c": 1,
-      "v": 4000
-     },
-     "진짬뽕": {
-      "c": 2,
-      "v": 8000
-     },
-     "신라면": {
-      "c": 2,
-      "v": 7600
-     },
-     "진라면(매운맛)": {
-      "c": 1,
-      "v": 3500
-     }
-    }
-   },
-   "라면2": {
-    "c": 11,
-    "v": 42000,
-    "p": {
-     "너구리": {
-      "c": 2,
-      "v": 7600
-     },
-     "신라면": {
-      "c": 1,
-      "v": 3800
-     },
-     "오징어짬뽕": {
-      "c": 2,
-      "v": 7600
-     },
-     "안성탕면": {
-      "c": 1,
-      "v": 3500
-     },
-     "까르보불닭": {
-      "c": 1,
-      "v": 4200
-     },
-     "삼양라면": {
-      "c": 1,
-      "v": 3500
-     },
-     "불닭볶음면": {
-      "c": 1,
-      "v": 4000
-     },
-     "멸치칼국수": {
-      "c": 1,
-      "v": 3800
-     },
-     "진짬뽕": {
-      "c": 1,
-      "v": 4000
-     }
-    }
-   },
    "냉동": {
     "c": 4,
     "v": 12000,
@@ -5478,49 +3582,9 @@
       "v": 4000
      }
     }
-   },
-   "슬림": {
-    "c": 2,
-    "v": 2700,
-    "p": {
-     "햇반": {
-      "c": 1,
-      "v": 1200
-     },
-     "라면톡(황태)": {
-      "c": 1,
-      "v": 1500
-     }
-    }
    }
   },
   "2026-09-20": {
-   "라면2": {
-    "c": 7,
-    "v": 26100,
-    "p": {
-     "안성탕면": {
-      "c": 2,
-      "v": 7000
-     },
-     "열라면": {
-      "c": 1,
-      "v": 3500
-     },
-     "오징어짬뽕": {
-      "c": 1,
-      "v": 3800
-     },
-     "참깨라면": {
-      "c": 2,
-      "v": 8000
-     },
-     "너구리": {
-      "c": 1,
-      "v": 3800
-     }
-    }
-   },
    "냉장": {
     "c": 30,
     "v": 36900,
@@ -5590,70 +3654,6 @@
      "김치만두": {
       "c": 1,
       "v": 2500
-     }
-    }
-   },
-   "슬림": {
-    "c": 2,
-    "v": 2700,
-    "p": {
-     "햇반": {
-      "c": 1,
-      "v": 1200
-     },
-     "라면톡(황태)": {
-      "c": 1,
-      "v": 1500
-     }
-    }
-   },
-   "라면1": {
-    "c": 13,
-    "v": 50400,
-    "p": {
-     "참깨라면": {
-      "c": 1,
-      "v": 4000
-     },
-     "진라면(순한맛)": {
-      "c": 1,
-      "v": 3500
-     },
-     "안성탕면": {
-      "c": 1,
-      "v": 3500
-     },
-     "무파마": {
-      "c": 1,
-      "v": 3800
-     },
-     "까르보불닭": {
-      "c": 2,
-      "v": 8400
-     },
-     "불닭볶음면": {
-      "c": 1,
-      "v": 4000
-     },
-     "멸치칼국수": {
-      "c": 2,
-      "v": 7600
-     },
-     "진짬뽕": {
-      "c": 1,
-      "v": 4000
-     },
-     "짜파게티": {
-      "c": 1,
-      "v": 4000
-     },
-     "오징어짬뽕": {
-      "c": 1,
-      "v": 3800
-     },
-     "너구리": {
-      "c": 1,
-      "v": 3800
      }
     }
    }
@@ -5726,64 +3726,3194 @@
       "v": 2000
      }
     }
-   },
-   "라면2": {
-    "c": 12,
-    "v": 44600,
+   }
+  },
+  "2026-09-22": {
+   "냉장": {
+    "c": 15,
+    "v": 17500,
     "p": {
-     "진라면(매운맛)": {
+     "맛김치": {
+      "c": 2,
+      "v": 3000
+     },
+     "생수": {
+      "c": 1,
+      "v": 1000
+     },
+     "날계란": {
+      "c": 2,
+      "v": 1200
+     },
+     "체다치즈": {
+      "c": 1,
+      "v": 500
+     },
+     "옥수수수염차": {
+      "c": 2,
+      "v": 4000
+     },
+     "단무지": {
+      "c": 1,
+      "v": 800
+     },
+     "스트링 치즈": {
+      "c": 5,
+      "v": 5000
+     },
+     "숯불구이 후랑크": {
+      "c": 1,
+      "v": 2000
+     }
+    }
+   },
+   "냉동": {
+    "c": 7,
+    "v": 26000,
+    "p": {
+     "김치만두": {
+      "c": 1,
+      "v": 2500
+     },
+     "참치김밥": {
+      "c": 1,
+      "v": 4500
+     },
+     "한맥 더블버거": {
       "c": 2,
       "v": 7000
      },
-     "열라면": {
+     "한맥 불벅": {
+      "c": 1,
+      "v": 3000
+     },
+     "야채김밥": {
+      "c": 1,
+      "v": 4500
+     },
+     "매콤제육김밥": {
+      "c": 1,
+      "v": 4500
+     }
+    }
+   }
+  },
+  "2026-09-23": {
+   "냉동": {
+    "c": 4,
+    "v": 11500,
+    "p": {
+     "김치만두": {
+      "c": 1,
+      "v": 2500
+     },
+     "참치김밥": {
+      "c": 1,
+      "v": 4500
+     },
+     "오꾸밥(김치치즈)": {
+      "c": 1,
+      "v": 2000
+     },
+     "고기만두": {
+      "c": 1,
+      "v": 2500
+     }
+    }
+   },
+   "냉장": {
+    "c": 14,
+    "v": 16200,
+    "p": {
+     "스트링 치즈": {
+      "c": 5,
+      "v": 5000
+     },
+     "생수": {
+      "c": 1,
+      "v": 1000
+     },
+     "갈아만든배": {
+      "c": 2,
+      "v": 4600
+     },
+     "날계란": {
+      "c": 3,
+      "v": 1800
+     },
+     "단무지": {
+      "c": 1,
+      "v": 800
+     },
+     "옥수수수염차": {
+      "c": 1,
+      "v": 2000
+     },
+     "김": {
+      "c": 1,
+      "v": 1000
+     }
+    }
+   }
+  },
+  "2026-09-24": {
+   "냉장": {
+    "c": 39,
+    "v": 51100,
+    "p": {
+     "의성마늘 소세지": {
+      "c": 3,
+      "v": 6000
+     },
+     "스트링 치즈": {
+      "c": 3,
+      "v": 3000
+     },
+     "생수": {
+      "c": 4,
+      "v": 4000
+     },
+     "단무지": {
+      "c": 4,
+      "v": 3200
+     },
+     "볶음김치": {
+      "c": 5,
+      "v": 7500
+     },
+     "날계란": {
+      "c": 6,
+      "v": 3600
+     },
+     "맛김치": {
+      "c": 6,
+      "v": 9000
+     },
+     "숯불구이 후랑크": {
+      "c": 1,
+      "v": 2000
+     },
+     "파워에이드": {
+      "c": 1,
+      "v": 2300
+     },
+     "옥수수수염차": {
+      "c": 5,
+      "v": 10000
+     },
+     "체다치즈": {
+      "c": 1,
+      "v": 500
+     }
+    }
+   },
+   "냉동": {
+    "c": 9,
+    "v": 33000,
+    "p": {
+     "김치만두": {
+      "c": 1,
+      "v": 2500
+     },
+     "매콤떡볶이": {
+      "c": 2,
+      "v": 9000
+     },
+     "매콤제육김밥": {
+      "c": 1,
+      "v": 4500
+     },
+     "고기만두": {
+      "c": 2,
+      "v": 5000
+     },
+     "한맥 불벅": {
+      "c": 1,
+      "v": 3000
+     },
+     "참치김밥": {
+      "c": 2,
+      "v": 9000
+     }
+    }
+   }
+  },
+  "2026-09-25": {
+   "냉장": {
+    "c": 15,
+    "v": 14500,
+    "p": {
+     "스트링 치즈": {
+      "c": 6,
+      "v": 6000
+     },
+     "볶음김치": {
+      "c": 1,
+      "v": 1500
+     },
+     "생수": {
+      "c": 2,
+      "v": 2000
+     },
+     "날계란": {
+      "c": 2,
+      "v": 1200
+     },
+     "단무지": {
+      "c": 1,
+      "v": 800
+     },
+     "체다치즈": {
+      "c": 2,
+      "v": 1000
+     },
+     "옥수수수염차": {
+      "c": 1,
+      "v": 2000
+     }
+    }
+   },
+   "냉동": {
+    "c": 12,
+    "v": 39500,
+    "p": {
+     "야채김밥": {
+      "c": 1,
+      "v": 4500
+     },
+     "오꾸밥(참치마요)": {
+      "c": 1,
+      "v": 2000
+     },
+     "오꾸밥(김치치즈)": {
+      "c": 1,
+      "v": 2000
+     },
+     "매콤떡볶이": {
+      "c": 2,
+      "v": 9000
+     },
+     "김치만두": {
+      "c": 2,
+      "v": 5000
+     },
+     "오뚜기UNO피자(불고기)": {
       "c": 1,
       "v": 3500
      },
-     "안성탕면": {
-      "c": 2,
-      "v": 7000
+     "참치김밥": {
+      "c": 1,
+      "v": 4500
      },
-     "무파마": {
-      "c": 2,
-      "v": 7600
+     "고기만두": {
+      "c": 1,
+      "v": 2500
      },
-     "참깨라면": {
+     "한맥 불벅": {
+      "c": 1,
+      "v": 3000
+     },
+     "한맥 더블버거": {
+      "c": 1,
+      "v": 3500
+     }
+    }
+   }
+  },
+  "2026-09-26": {
+   "냉동": {
+    "c": 8,
+    "v": 24500,
+    "p": {
+     "야채김밥": {
+      "c": 2,
+      "v": 9000
+     },
+     "오꾸밥(소불고기)": {
+      "c": 2,
+      "v": 4000
+     },
+     "고기만두": {
+      "c": 2,
+      "v": 5000
+     },
+     "오꾸밥(불닭치즈)": {
+      "c": 1,
+      "v": 2000
+     },
+     "참치김밥": {
+      "c": 1,
+      "v": 4500
+     }
+    }
+   },
+   "냉장": {
+    "c": 28,
+    "v": 35400,
+    "p": {
+     "날계란": {
+      "c": 7,
+      "v": 4200
+     },
+     "맛김치": {
+      "c": 5,
+      "v": 7500
+     },
+     "스트링 치즈": {
+      "c": 2,
+      "v": 2000
+     },
+     "체다치즈": {
+      "c": 2,
+      "v": 1000
+     },
+     "옥수수수염차": {
+      "c": 1,
+      "v": 2000
+     },
+     "포카리스웨트": {
+      "c": 4,
+      "v": 9200
+     },
+     "파워에이드": {
+      "c": 1,
+      "v": 2300
+     },
+     "볶음김치": {
+      "c": 1,
+      "v": 1500
+     },
+     "갈아만든배": {
+      "c": 1,
+      "v": 2300
+     },
+     "단무지": {
+      "c": 3,
+      "v": 2400
+     },
+     "생수": {
+      "c": 1,
+      "v": 1000
+     }
+    }
+   }
+  },
+  "2026-09-27": {
+   "냉장": {
+    "c": 15,
+    "v": 22700,
+    "p": {
+     "옥수수수염차": {
+      "c": 4,
+      "v": 8000
+     },
+     "의성마늘 소세지": {
+      "c": 2,
+      "v": 4000
+     },
+     "볶음김치": {
+      "c": 2,
+      "v": 3000
+     },
+     "단무지": {
+      "c": 1,
+      "v": 800
+     },
+     "맛김치": {
+      "c": 1,
+      "v": 1500
+     },
+     "체다치즈": {
+      "c": 1,
+      "v": 500
+     },
+     "날계란": {
+      "c": 1,
+      "v": 600
+     },
+     "생수": {
+      "c": 1,
+      "v": 1000
+     },
+     "스트링 치즈": {
+      "c": 1,
+      "v": 1000
+     },
+     "포카리스웨트": {
+      "c": 1,
+      "v": 2300
+     }
+    }
+   },
+   "냉동": {
+    "c": 8,
+    "v": 30500,
+    "p": {
+     "고기만두": {
+      "c": 1,
+      "v": 2500
+     },
+     "김치만두": {
+      "c": 1,
+      "v": 2500
+     },
+     "로제떡볶이": {
+      "c": 1,
+      "v": 5000
+     },
+     "오꾸밥(김치치즈)": {
+      "c": 2,
+      "v": 4000
+     },
+     "통모짜볼로네제": {
+      "c": 2,
+      "v": 12000
+     },
+     "매콤제육김밥": {
+      "c": 1,
+      "v": 4500
+     }
+    }
+   }
+  },
+  "2026-09-28": {
+   "냉동": {
+    "c": 4,
+    "v": 16500,
+    "p": {
+     "야채김밥": {
+      "c": 1,
+      "v": 4500
+     },
+     "매콤제육김밥": {
+      "c": 1,
+      "v": 4500
+     },
+     "국물떡볶이": {
+      "c": 1,
+      "v": 4500
+     },
+     "한맥 불벅": {
+      "c": 1,
+      "v": 3000
+     }
+    }
+   },
+   "냉장": {
+    "c": 17,
+    "v": 21000,
+    "p": {
+     "스트링 치즈": {
+      "c": 3,
+      "v": 3000
+     },
+     "날계란": {
+      "c": 3,
+      "v": 1800
+     },
+     "맛김치": {
+      "c": 1,
+      "v": 1500
+     },
+     "갈아만든배": {
+      "c": 2,
+      "v": 4600
+     },
+     "체다치즈": {
+      "c": 1,
+      "v": 500
+     },
+     "단무지": {
+      "c": 2,
+      "v": 1600
+     },
+     "생수": {
+      "c": 2,
+      "v": 2000
+     },
+     "숯불구이 후랑크": {
+      "c": 2,
+      "v": 4000
+     },
+     "옥수수수염차": {
+      "c": 1,
+      "v": 2000
+     }
+    }
+   }
+  },
+  "2026-09-29": {
+   "냉동": {
+    "c": 4,
+    "v": 14000,
+    "p": {
+     "참치김밥": {
+      "c": 1,
+      "v": 4500
+     },
+     "김치만두": {
+      "c": 2,
+      "v": 5000
+     },
+     "야채김밥": {
+      "c": 1,
+      "v": 4500
+     }
+    }
+   },
+   "냉장": {
+    "c": 16,
+    "v": 26600,
+    "p": {
+     "날계란": {
+      "c": 3,
+      "v": 1800
+     },
+     "옥수수수염차": {
+      "c": 3,
+      "v": 6000
+     },
+     "의성마늘 소세지": {
+      "c": 1,
+      "v": 2000
+     },
+     "생수": {
+      "c": 2,
+      "v": 2000
+     },
+     "스트링 치즈": {
+      "c": 2,
+      "v": 2000
+     },
+     "맛김치": {
+      "c": 1,
+      "v": 1500
+     },
+     "비엔나": {
+      "c": 2,
+      "v": 8000
+     },
+     "김": {
+      "c": 1,
+      "v": 1000
+     },
+     "갈아만든배": {
+      "c": 1,
+      "v": 2300
+     }
+    }
+   }
+  },
+  "2026-09-30": {
+   "냉장": {
+    "c": 24,
+    "v": 31200,
+    "p": {
+     "옥수수수염차": {
+      "c": 2,
+      "v": 4000
+     },
+     "볶음김치": {
+      "c": 1,
+      "v": 1500
+     },
+     "생수": {
+      "c": 3,
+      "v": 3000
+     },
+     "스트링 치즈": {
+      "c": 3,
+      "v": 3000
+     },
+     "숯불구이 후랑크": {
+      "c": 2,
+      "v": 4000
+     },
+     "날계란": {
+      "c": 6,
+      "v": 3600
+     },
+     "단무지": {
+      "c": 1,
+      "v": 800
+     },
+     "맛김치": {
+      "c": 2,
+      "v": 3000
+     },
+     "파워에이드": {
+      "c": 1,
+      "v": 2300
+     },
+     "의성마늘 소세지": {
+      "c": 3,
+      "v": 6000
+     }
+    }
+   },
+   "냉동": {
+    "c": 5,
+    "v": 16500,
+    "p": {
+     "로제떡볶이": {
+      "c": 1,
+      "v": 5000
+     },
+     "고기만두": {
+      "c": 2,
+      "v": 5000
+     },
+     "오꾸밥(불닭치즈)": {
+      "c": 1,
+      "v": 2000
+     },
+     "국물떡볶이": {
+      "c": 1,
+      "v": 4500
+     }
+    }
+   }
+  },
+  "2026-10-01": {
+   "냉장": {
+    "c": 22,
+    "v": 27800,
+    "p": {
+     "생수": {
+      "c": 2,
+      "v": 2000
+     },
+     "숯불구이 후랑크": {
+      "c": 2,
+      "v": 4000
+     },
+     "비엔나": {
       "c": 1,
       "v": 4000
      },
-     "까르보불닭": {
+     "날계란": {
+      "c": 3,
+      "v": 1800
+     },
+     "단무지": {
+      "c": 4,
+      "v": 3200
+     },
+     "체다치즈": {
+      "c": 3,
+      "v": 1500
+     },
+     "맛김치": {
+      "c": 3,
+      "v": 4500
+     },
+     "볶음김치": {
       "c": 1,
+      "v": 1500
+     },
+     "스트링 치즈": {
+      "c": 1,
+      "v": 1000
+     },
+     "옥수수수염차": {
+      "c": 1,
+      "v": 2000
+     },
+     "갈아만든배": {
+      "c": 1,
+      "v": 2300
+     }
+    }
+   },
+   "냉동": {
+    "c": 13,
+    "v": 50500,
+    "p": {
+     "한맥 더블버거": {
+      "c": 2,
+      "v": 7000
+     },
+     "참치김밥": {
+      "c": 3,
+      "v": 13500
+     },
+     "고기만두": {
+      "c": 1,
+      "v": 2500
+     },
+     "김치만두": {
+      "c": 1,
+      "v": 2500
+     },
+     "매콤제육김밥": {
+      "c": 1,
+      "v": 4500
+     },
+     "야채김밥": {
+      "c": 1,
+      "v": 4500
+     },
+     "로제떡볶이": {
+      "c": 1,
+      "v": 5000
+     },
+     "국물떡볶이": {
+      "c": 2,
+      "v": 9000
+     },
+     "오꾸밥(김치치즈)": {
+      "c": 1,
+      "v": 2000
+     }
+    }
+   }
+  },
+  "2026-10-02": {
+   "냉장": {
+    "c": 19,
+    "v": 20500,
+    "p": {
+     "맛김치": {
+      "c": 1,
+      "v": 1500
+     },
+     "옥수수수염차": {
+      "c": 3,
+      "v": 6000
+     },
+     "생수": {
+      "c": 3,
+      "v": 3000
+     },
+     "날계란": {
+      "c": 7,
       "v": 4200
      },
-     "오징어짬뽕": {
-      "c": 1,
-      "v": 3800
+     "스트링 치즈": {
+      "c": 3,
+      "v": 3000
      },
-     "삼양라면": {
+     "파워에이드": {
+      "c": 1,
+      "v": 2300
+     },
+     "체다치즈": {
+      "c": 1,
+      "v": 500
+     }
+    }
+   },
+   "냉동": {
+    "c": 6,
+    "v": 23300,
+    "p": {
+     "야채김밥": {
+      "c": 1,
+      "v": 4500
+     },
+     "피자치즈": {
+      "c": 1,
+      "v": 1800
+     },
+     "김치제육덮밥": {
+      "c": 1,
+      "v": 6000
+     },
+     "오꾸밥(김치치즈)": {
+      "c": 1,
+      "v": 2000
+     },
+     "참치김밥": {
+      "c": 2,
+      "v": 9000
+     }
+    }
+   }
+  },
+  "2026-10-03": {
+   "냉장": {
+    "c": 18,
+    "v": 17800,
+    "p": {
+     "날계란": {
+      "c": 4,
+      "v": 2400
+     },
+     "생수": {
+      "c": 2,
+      "v": 2000
+     },
+     "옥수수수염차": {
+      "c": 1,
+      "v": 2000
+     },
+     "스트링 치즈": {
+      "c": 3,
+      "v": 3000
+     },
+     "맛김치": {
+      "c": 2,
+      "v": 3000
+     },
+     "체다치즈": {
+      "c": 2,
+      "v": 1000
+     },
+     "단무지": {
+      "c": 3,
+      "v": 2400
+     },
+     "의성마늘 소세지": {
+      "c": 1,
+      "v": 2000
+     }
+    }
+   },
+   "냉동": {
+    "c": 7,
+    "v": 21500,
+    "p": {
+     "고기만두": {
+      "c": 3,
+      "v": 7500
+     },
+     "참치김밥": {
+      "c": 1,
+      "v": 4500
+     },
+     "한맥 불벅": {
+      "c": 2,
+      "v": 6000
+     },
+     "한맥 더블버거": {
+      "c": 1,
+      "v": 3500
+     }
+    }
+   }
+  },
+  "2026-10-04": {
+   "냉장": {
+    "c": 19,
+    "v": 21300,
+    "p": {
+     "스트링 치즈": {
+      "c": 4,
+      "v": 4000
+     },
+     "단무지": {
+      "c": 1,
+      "v": 800
+     },
+     "맛김치": {
+      "c": 3,
+      "v": 4500
+     },
+     "숯불구이 후랑크": {
+      "c": 1,
+      "v": 2000
+     },
+     "생수": {
+      "c": 2,
+      "v": 2000
+     },
+     "날계란": {
+      "c": 5,
+      "v": 4500
+     },
+     "체다치즈": {
+      "c": 1,
+      "v": 500
+     },
+     "옥수수수염차": {
+      "c": 1,
+      "v": 2000
+     },
+     "김": {
+      "c": 1,
+      "v": 1000
+     }
+    }
+   },
+   "냉동": {
+    "c": 7,
+    "v": 22000,
+    "p": {
+     "고기만두": {
+      "c": 1,
+      "v": 2500
+     },
+     "오꾸밥(김치치즈)": {
+      "c": 2,
+      "v": 4000
+     },
+     "매콤떡볶이": {
+      "c": 1,
+      "v": 4500
+     },
+     "뽀모도로스파게티": {
+      "c": 1,
+      "v": 4500
+     },
+     "오꾸밥(참치마요)": {
+      "c": 1,
+      "v": 2000
+     },
+     "매콤제육김밥": {
+      "c": 1,
+      "v": 4500
+     }
+    }
+   }
+  },
+  "2026-10-05": {
+   "냉동": {
+    "c": 9,
+    "v": 33500,
+    "p": {
+     "고기만두": {
+      "c": 2,
+      "v": 5000
+     },
+     "한맥 더블버거": {
       "c": 1,
       "v": 3500
      },
-     "짜파게티": {
+     "오꾸밥(김치치즈)": {
+      "c": 1,
+      "v": 2000
+     },
+     "로제떡볶이": {
+      "c": 1,
+      "v": 5000
+     },
+     "매콤떡볶이": {
+      "c": 2,
+      "v": 9000
+     },
+     "뽀모도로스파게티": {
+      "c": 1,
+      "v": 4500
+     },
+     "참치김밥": {
+      "c": 1,
+      "v": 4500
+     }
+    }
+   },
+   "냉장": {
+    "c": 18,
+    "v": 20300,
+    "p": {
+     "날계란": {
+      "c": 5,
+      "v": 3000
+     },
+     "볶음김치": {
+      "c": 1,
+      "v": 1500
+     },
+     "의성마늘 소세지": {
+      "c": 1,
+      "v": 2000
+     },
+     "옥수수수염차": {
+      "c": 3,
+      "v": 6000
+     },
+     "생수": {
+      "c": 5,
+      "v": 5000
+     },
+     "맛김치": {
+      "c": 1,
+      "v": 1500
+     },
+     "체다치즈": {
+      "c": 1,
+      "v": 500
+     },
+     "단무지": {
+      "c": 1,
+      "v": 800
+     }
+    }
+   }
+  },
+  "2026-10-06": {
+   "냉장": {
+    "c": 16,
+    "v": 11700,
+    "p": {
+     "날계란": {
+      "c": 4,
+      "v": 2400
+     },
+     "생수": {
+      "c": 2,
+      "v": 2000
+     },
+     "스트링 치즈": {
+      "c": 1,
+      "v": 1000
+     },
+     "옥수수수염차": {
+      "c": 1,
+      "v": 2000
+     },
+     "단무지": {
+      "c": 1,
+      "v": 800
+     },
+     "체다치즈": {
+      "c": 7,
+      "v": 3500
+     }
+    }
+   },
+   "냉동": {
+    "c": 5,
+    "v": 13600,
+    "p": {
+     "피자치즈": {
+      "c": 2,
+      "v": 3600
+     },
+     "한맥 불벅": {
+      "c": 1,
+      "v": 3000
+     },
+     "고기만두": {
+      "c": 1,
+      "v": 2500
+     },
+     "참치김밥": {
+      "c": 1,
+      "v": 4500
+     }
+    }
+   }
+  },
+  "2026-10-07": {
+   "냉장": {
+    "c": 13,
+    "v": 20500,
+    "p": {
+     "볶음김치": {
+      "c": 2,
+      "v": 3000
+     },
+     "숯불구이 후랑크": {
+      "c": 2,
+      "v": 4000
+     },
+     "옥수수수염차": {
+      "c": 2,
+      "v": 4000
+     },
+     "생수": {
+      "c": 2,
+      "v": 2000
+     },
+     "체다치즈": {
+      "c": 1,
+      "v": 500
+     },
+     "스트링 치즈": {
+      "c": 3,
+      "v": 3000
+     },
+     "비엔나": {
       "c": 1,
       "v": 4000
      }
     }
    },
-   "라면1": {
+   "냉동": {
     "c": 3,
-    "v": 11500,
+    "v": 12500,
     "p": {
-     "무파마": {
-      "c": 1,
-      "v": 3800
-     },
-     "까르보불닭": {
-      "c": 1,
-      "v": 4200
-     },
-     "진라면(매운맛)": {
+     "한맥 더블버거": {
       "c": 1,
       "v": 3500
+     },
+     "뽀모도로스파게티": {
+      "c": 2,
+      "v": 9000
+     }
+    }
+   }
+  },
+  "2026-10-08": {
+   "냉장": {
+    "c": 6,
+    "v": 9500,
+    "p": {
+     "숯불구이 후랑크": {
+      "c": 1,
+      "v": 2000
+     },
+     "옥수수수염차": {
+      "c": 2,
+      "v": 4000
+     },
+     "갈아만든배": {
+      "c": 1,
+      "v": 2300
+     },
+     "날계란": {
+      "c": 2,
+      "v": 1200
+     }
+    }
+   },
+   "냉동": {
+    "c": 1,
+    "v": 2000,
+    "p": {
+     "오꾸밥(김치치즈)": {
+      "c": 1,
+      "v": 2000
+     }
+    }
+   }
+  },
+  "2026-10-09": {
+   "냉동": {
+    "c": 2,
+    "v": 7000,
+    "p": {
+     "고기만두": {
+      "c": 1,
+      "v": 2500
+     },
+     "참치김밥": {
+      "c": 1,
+      "v": 4500
+     }
+    }
+   },
+   "냉장": {
+    "c": 12,
+    "v": 10300,
+    "p": {
+     "생수": {
+      "c": 4,
+      "v": 4000
+     },
+     "단무지": {
+      "c": 1,
+      "v": 800
+     },
+     "날계란": {
+      "c": 5,
+      "v": 3000
+     },
+     "맛김치": {
+      "c": 1,
+      "v": 1500
+     },
+     "스트링 치즈": {
+      "c": 1,
+      "v": 1000
+     }
+    }
+   }
+  },
+  "2026-10-10": {
+   "냉장": {
+    "c": 22,
+    "v": 26100,
+    "p": {
+     "단무지": {
+      "c": 1,
+      "v": 800
+     },
+     "체다치즈": {
+      "c": 3,
+      "v": 1500
+     },
+     "옥수수수염차": {
+      "c": 5,
+      "v": 10000
+     },
+     "스트링 치즈": {
+      "c": 5,
+      "v": 5000
+     },
+     "날계란": {
+      "c": 3,
+      "v": 1800
+     },
+     "김": {
+      "c": 1,
+      "v": 1000
+     },
+     "생수": {
+      "c": 2,
+      "v": 2000
+     },
+     "숯불구이 후랑크": {
+      "c": 2,
+      "v": 4000
+     }
+    }
+   },
+   "냉동": {
+    "c": 9,
+    "v": 27100,
+    "p": {
+     "한맥 불벅": {
+      "c": 1,
+      "v": 3000
+     },
+     "김치만두": {
+      "c": 1,
+      "v": 2500
+     },
+     "고기만두": {
+      "c": 1,
+      "v": 2500
+     },
+     "참치김밥": {
+      "c": 3,
+      "v": 13500
+     },
+     "피자치즈": {
+      "c": 2,
+      "v": 3600
+     },
+     "오꾸밥(소불고기)": {
+      "c": 1,
+      "v": 2000
+     }
+    }
+   }
+  },
+  "2026-10-11": {
+   "냉장": {
+    "c": 17,
+    "v": 24200,
+    "p": {
+     "생수": {
+      "c": 4,
+      "v": 4000
+     },
+     "파워에이드": {
+      "c": 3,
+      "v": 6900
+     },
+     "스트링 치즈": {
+      "c": 1,
+      "v": 1000
+     },
+     "체다치즈": {
+      "c": 2,
+      "v": 1000
+     },
+     "맛김치": {
+      "c": 1,
+      "v": 1500
+     },
+     "갈아만든배": {
+      "c": 2,
+      "v": 4600
+     },
+     "옥수수수염차": {
+      "c": 2,
+      "v": 4000
+     },
+     "날계란": {
+      "c": 2,
+      "v": 1200
+     }
+    }
+   },
+   "냉동": {
+    "c": 12,
+    "v": 39000,
+    "p": {
+     "김치만두": {
+      "c": 2,
+      "v": 5000
+     },
+     "참치김밥": {
+      "c": 3,
+      "v": 13500
+     },
+     "고기만두": {
+      "c": 3,
+      "v": 7500
+     },
+     "매콤제육김밥": {
+      "c": 2,
+      "v": 9000
+     },
+     "오꾸밥(소불고기)": {
+      "c": 1,
+      "v": 2000
+     },
+     "오꾸밥(불닭치즈)": {
+      "c": 1,
+      "v": 2000
+     }
+    }
+   }
+  },
+  "2026-10-12": {
+   "냉동": {
+    "c": 7,
+    "v": 19300,
+    "p": {
+     "오꾸밥(불닭치즈)": {
+      "c": 1,
+      "v": 2000
+     },
+     "오꾸밥(김치치즈)": {
+      "c": 1,
+      "v": 2000
+     },
+     "오꾸밥(소불고기)": {
+      "c": 1,
+      "v": 2000
+     },
+     "참치김밥": {
+      "c": 2,
+      "v": 9000
+     },
+     "김치만두": {
+      "c": 1,
+      "v": 2500
+     },
+     "피자치즈": {
+      "c": 1,
+      "v": 1800
+     }
+    }
+   },
+   "냉장": {
+    "c": 15,
+    "v": 16800,
+    "p": {
+     "스트링 치즈": {
+      "c": 2,
+      "v": 2000
+     },
+     "의성마늘 소세지": {
+      "c": 1,
+      "v": 2000
+     },
+     "맛김치": {
+      "c": 1,
+      "v": 1500
+     },
+     "숯불구이 후랑크": {
+      "c": 1,
+      "v": 2000
+     },
+     "체다치즈": {
+      "c": 2,
+      "v": 1000
+     },
+     "생수": {
+      "c": 1,
+      "v": 1000
+     },
+     "날계란": {
+      "c": 5,
+      "v": 3000
+     },
+     "옥수수수염차": {
+      "c": 1,
+      "v": 2000
+     },
+     "파워에이드": {
+      "c": 1,
+      "v": 2300
+     }
+    }
+   }
+  },
+  "2026-10-13": {
+   "냉동": {
+    "c": 6,
+    "v": 18800,
+    "p": {
+     "매콤제육김밥": {
+      "c": 1,
+      "v": 4500
+     },
+     "한맥 더블버거": {
+      "c": 1,
+      "v": 3500
+     },
+     "국물떡볶이": {
+      "c": 1,
+      "v": 4500
+     },
+     "김치만두": {
+      "c": 1,
+      "v": 2500
+     },
+     "오꾸밥(참치마요)": {
+      "c": 1,
+      "v": 2000
+     },
+     "피자치즈": {
+      "c": 1,
+      "v": 1800
+     }
+    }
+   },
+   "냉장": {
+    "c": 9,
+    "v": 12000,
+    "p": {
+     "포카리스웨트": {
+      "c": 1,
+      "v": 2300
+     },
+     "스트링 치즈": {
+      "c": 1,
+      "v": 1000
+     },
+     "의성마늘 소세지": {
+      "c": 2,
+      "v": 4000
+     },
+     "생수": {
+      "c": 1,
+      "v": 1000
+     },
+     "날계란": {
+      "c": 2,
+      "v": 1200
+     },
+     "체다치즈": {
+      "c": 1,
+      "v": 500
+     },
+     "옥수수수염차": {
+      "c": 1,
+      "v": 2000
+     }
+    }
+   }
+  },
+  "2026-10-14": {
+   "냉장": {
+    "c": 22,
+    "v": 30300,
+    "p": {
+     "생수": {
+      "c": 2,
+      "v": 2000
+     },
+     "맛김치": {
+      "c": 2,
+      "v": 3000
+     },
+     "옥수수수염차": {
+      "c": 5,
+      "v": 10000
+     },
+     "체다치즈": {
+      "c": 3,
+      "v": 1500
+     },
+     "스트링 치즈": {
+      "c": 4,
+      "v": 4000
+     },
+     "의성마늘 소세지": {
+      "c": 3,
+      "v": 6000
+     },
+     "볶음김치": {
+      "c": 2,
+      "v": 3000
+     },
+     "단무지": {
+      "c": 1,
+      "v": 800
+     }
+    }
+   },
+   "냉동": {
+    "c": 3,
+    "v": 9500,
+    "p": {
+     "고기만두": {
+      "c": 1,
+      "v": 2500
+     },
+     "로제떡볶이": {
+      "c": 1,
+      "v": 5000
+     },
+     "오꾸밥(참치마요)": {
+      "c": 1,
+      "v": 2000
+     }
+    }
+   }
+  },
+  "2026-10-15": {
+   "냉장": {
+    "c": 37,
+    "v": 59600,
+    "p": {
+     "비엔나": {
+      "c": 1,
+      "v": 4000
+     },
+     "단무지": {
+      "c": 1,
+      "v": 800
+     },
+     "날계란": {
+      "c": 15,
+      "v": 9000
+     },
+     "포카리스웨트": {
+      "c": 1,
+      "v": 2300
+     },
+     "옥수수수염차": {
+      "c": 2,
+      "v": 20000
+     },
+     "볶음김치": {
+      "c": 1,
+      "v": 1500
+     },
+     "체다치즈": {
+      "c": 3,
+      "v": 1500
+     },
+     "생수": {
+      "c": 3,
+      "v": 3000
+     },
+     "숯불구이 후랑크": {
+      "c": 2,
+      "v": 4000
+     },
+     "의성마늘 소세지": {
+      "c": 5,
+      "v": 10000
+     },
+     "맛김치": {
+      "c": 1,
+      "v": 1500
+     },
+     "스트링 치즈": {
+      "c": 2,
+      "v": 2000
+     }
+    }
+   },
+   "냉동": {
+    "c": 5,
+    "v": 13000,
+    "p": {
+     "오꾸밥(소불고기)": {
+      "c": 1,
+      "v": 2000
+     },
+     "오꾸밥(김치치즈)": {
+      "c": 1,
+      "v": 2000
+     },
+     "고기만두": {
+      "c": 1,
+      "v": 2500
+     },
+     "참치김밥": {
+      "c": 1,
+      "v": 4500
+     },
+     "오꾸밥(참치마요)": {
+      "c": 1,
+      "v": 2000
+     }
+    }
+   }
+  },
+  "2026-10-16": {
+   "냉장": {
+    "c": 23,
+    "v": 28700,
+    "p": {
+     "체다치즈": {
+      "c": 1,
+      "v": 500
+     },
+     "옥수수수염차": {
+      "c": 2,
+      "v": 4000
+     },
+     "스트링 치즈": {
+      "c": 2,
+      "v": 2000
+     },
+     "날계란": {
+      "c": 7,
+      "v": 4200
+     },
+     "맛김치": {
+      "c": 3,
+      "v": 4500
+     },
+     "포카리스웨트": {
+      "c": 3,
+      "v": 6900
+     },
+     "파워에이드": {
+      "c": 1,
+      "v": 2300
+     },
+     "생수": {
+      "c": 2,
+      "v": 2000
+     },
+     "단무지": {
+      "c": 1,
+      "v": 800
+     },
+     "볶음김치": {
+      "c": 1,
+      "v": 1500
+     }
+    }
+   },
+   "냉동": {
+    "c": 5,
+    "v": 20500,
+    "p": {
+     "참치김밥": {
+      "c": 2,
+      "v": 9000
+     },
+     "고기만두": {
+      "c": 1,
+      "v": 2500
+     },
+     "소세지김밥": {
+      "c": 1,
+      "v": 4500
+     },
+     "매콤제육김밥": {
+      "c": 1,
+      "v": 4500
+     }
+    }
+   }
+  },
+  "2026-10-17": {
+   "냉동": {
+    "c": 14,
+    "v": 46500,
+    "p": {
+     "고기만두": {
+      "c": 3,
+      "v": 7500
+     },
+     "소세지김밥": {
+      "c": 2,
+      "v": 9000
+     },
+     "오뚜기UNO피자(불고기)": {
+      "c": 1,
+      "v": 3500
+     },
+     "참치김밥": {
+      "c": 2,
+      "v": 9000
+     },
+     "매콤제육김밥": {
+      "c": 1,
+      "v": 4500
+     },
+     "김치만두": {
+      "c": 1,
+      "v": 2500
+     },
+     "야채김밥": {
+      "c": 1,
+      "v": 4500
+     },
+     "오꾸밥(참치마요)": {
+      "c": 1,
+      "v": 2000
+     },
+     "오꾸밥(불닭치즈)": {
+      "c": 1,
+      "v": 2000
+     },
+     "오꾸밥(소불고기)": {
+      "c": 1,
+      "v": 2000
+     }
+    }
+   },
+   "냉장": {
+    "c": 21,
+    "v": 20200,
+    "p": {
+     "단무지": {
+      "c": 3,
+      "v": 2400
+     },
+     "스트링 치즈": {
+      "c": 2,
+      "v": 2000
+     },
+     "날계란": {
+      "c": 8,
+      "v": 4800
+     },
+     "체다치즈": {
+      "c": 2,
+      "v": 1000
+     },
+     "옥수수수염차": {
+      "c": 2,
+      "v": 4000
+     },
+     "생수": {
+      "c": 1,
+      "v": 1000
+     },
+     "맛김치": {
+      "c": 2,
+      "v": 3000
+     },
+     "의성마늘 소세지": {
+      "c": 1,
+      "v": 2000
+     }
+    }
+   }
+  },
+  "2026-10-18": {
+   "냉장": {
+    "c": 7,
+    "v": 6700,
+    "p": {
+     "날계란": {
+      "c": 2,
+      "v": 1200
+     },
+     "체다치즈": {
+      "c": 1,
+      "v": 500
+     },
+     "옥수수수염차": {
+      "c": 1,
+      "v": 2000
+     },
+     "스트링 치즈": {
+      "c": 3,
+      "v": 3000
+     }
+    }
+   },
+   "냉동": {
+    "c": 2,
+    "v": 7500,
+    "p": {
+     "김치만두": {
+      "c": 1,
+      "v": 2500
+     },
+     "로제떡볶이": {
+      "c": 1,
+      "v": 5000
+     }
+    }
+   }
+  },
+  "2026-10-19": {
+   "냉장": {
+    "c": 21,
+    "v": 24600,
+    "p": {
+     "의성마늘 소세지": {
+      "c": 2,
+      "v": 4000
+     },
+     "날계란": {
+      "c": 8,
+      "v": 4800
+     },
+     "숯불구이 후랑크": {
+      "c": 3,
+      "v": 6000
+     },
+     "옥수수수염차": {
+      "c": 2,
+      "v": 4000
+     },
+     "맛김치": {
+      "c": 1,
+      "v": 1500
+     },
+     "단무지": {
+      "c": 1,
+      "v": 800
+     },
+     "생수": {
+      "c": 1,
+      "v": 1000
+     },
+     "스트링 치즈": {
+      "c": 2,
+      "v": 2000
+     },
+     "체다치즈": {
+      "c": 1,
+      "v": 500
+     }
+    }
+   },
+   "냉동": {
+    "c": 17,
+    "v": 56000,
+    "p": {
+     "오꾸밥(불닭치즈)": {
+      "c": 2,
+      "v": 4000
+     },
+     "오꾸밥(참치마요)": {
+      "c": 1,
+      "v": 2000
+     },
+     "오꾸밥(소불고기)": {
+      "c": 1,
+      "v": 2000
+     },
+     "오꾸밥(김치치즈)": {
+      "c": 1,
+      "v": 2000
+     },
+     "오뚜기UNO피자(콤비)": {
+      "c": 1,
+      "v": 3500
+     },
+     "오뚜기UNO피자(불고기)": {
+      "c": 1,
+      "v": 3500
+     },
+     "한맥 불벅": {
+      "c": 2,
+      "v": 6000
+     },
+     "한맥 더블버거": {
+      "c": 1,
+      "v": 3500
+     },
+     "야채김밥": {
+      "c": 1,
+      "v": 4500
+     },
+     "진미채김밥": {
+      "c": 1,
+      "v": 4500
+     },
+     "참치김밥": {
+      "c": 1,
+      "v": 4500
+     },
+     "매콤제육김밥": {
+      "c": 2,
+      "v": 9000
+     },
+     "소세지김밥": {
+      "c": 1,
+      "v": 4500
+     },
+     "고기만두": {
+      "c": 1,
+      "v": 2500
+     }
+    }
+   }
+  },
+  "2026-10-20": {
+   "냉장": {
+    "c": 11,
+    "v": 14000,
+    "p": {
+     "날계란": {
+      "c": 2,
+      "v": 1200
+     },
+     "스트링 치즈": {
+      "c": 2,
+      "v": 2000
+     },
+     "파워에이드": {
+      "c": 1,
+      "v": 2300
+     },
+     "김": {
+      "c": 2,
+      "v": 2000
+     },
+     "의성마늘 소세지": {
+      "c": 3,
+      "v": 6000
+     },
+     "체다치즈": {
+      "c": 1,
+      "v": 500
+     }
+    }
+   },
+   "냉동": {
+    "c": 14,
+    "v": 40900,
+    "p": {
+     "고기만두": {
+      "c": 2,
+      "v": 5000
+     },
+     "참치김밥": {
+      "c": 1,
+      "v": 4500
+     },
+     "매콤제육김밥": {
+      "c": 2,
+      "v": 9000
+     },
+     "피자치즈": {
+      "c": 3,
+      "v": 5400
+     },
+     "오꾸밥(김치치즈)": {
+      "c": 1,
+      "v": 2000
+     },
+     "김치만두": {
+      "c": 1,
+      "v": 2500
+     },
+     "로제떡볶이": {
+      "c": 1,
+      "v": 5000
+     },
+     "한맥 더블버거": {
+      "c": 1,
+      "v": 3500
+     },
+     "오꾸밥(참치마요)": {
+      "c": 2,
+      "v": 4000
+     }
+    }
+   }
+  },
+  "2026-10-21": {
+   "냉장": {
+    "c": 11,
+    "v": 12800,
+    "p": {
+     "포카리스웨트": {
+      "c": 1,
+      "v": 2300
+     },
+     "날계란": {
+      "c": 5,
+      "v": 3000
+     },
+     "숯불구이 후랑크": {
+      "c": 1,
+      "v": 2000
+     },
+     "스트링 치즈": {
+      "c": 2,
+      "v": 2000
+     },
+     "맛김치": {
+      "c": 1,
+      "v": 1500
+     },
+     "옥수수수염차": {
+      "c": 1,
+      "v": 2000
+     }
+    }
+   },
+   "냉동": {
+    "c": 9,
+    "v": 37500,
+    "p": {
+     "한맥 불벅": {
+      "c": 1,
+      "v": 3000
+     },
+     "참치김밥": {
+      "c": 3,
+      "v": 13500
+     },
+     "고기만두": {
+      "c": 1,
+      "v": 2500
+     },
+     "마시뜨랑건강식": {
+      "c": 1,
+      "v": 5000
+     },
+     "야채김밥": {
+      "c": 3,
+      "v": 13500
+     }
+    }
+   }
+  },
+  "2026-10-22": {
+   "냉장": {
+    "c": 15,
+    "v": 16600,
+    "p": {
+     "맛김치": {
+      "c": 5,
+      "v": 7500
+     },
+     "생수": {
+      "c": 1,
+      "v": 1000
+     },
+     "옥수수수염차": {
+      "c": 2,
+      "v": 4000
+     },
+     "날계란": {
+      "c": 6,
+      "v": 3600
+     },
+     "체다치즈": {
+      "c": 1,
+      "v": 500
+     }
+    }
+   },
+   "냉동": {
+    "c": 2,
+    "v": 9000,
+    "p": {
+     "참치김밥": {
+      "c": 1,
+      "v": 4500
+     },
+     "소세지김밥": {
+      "c": 1,
+      "v": 4500
+     }
+    }
+   }
+  },
+  "2026-10-23": {
+   "냉장": {
+    "c": 14,
+    "v": 16700,
+    "p": {
+     "체다치즈": {
+      "c": 1,
+      "v": 500
+     },
+     "맛김치": {
+      "c": 2,
+      "v": 3000
+     },
+     "옥수수수염차": {
+      "c": 1,
+      "v": 2000
+     },
+     "날계란": {
+      "c": 2,
+      "v": 1200
+     },
+     "스트링 치즈": {
+      "c": 4,
+      "v": 4000
+     },
+     "생수": {
+      "c": 2,
+      "v": 2000
+     },
+     "숯불구이 후랑크": {
+      "c": 2,
+      "v": 4000
+     }
+    }
+   },
+   "냉동": {
+    "c": 9,
+    "v": 29500,
+    "p": {
+     "야채김밥": {
+      "c": 1,
+      "v": 4500
+     },
+     "김치만두": {
+      "c": 3,
+      "v": 7500
+     },
+     "매콤제육김밥": {
+      "c": 1,
+      "v": 4500
+     },
+     "참치김밥": {
+      "c": 2,
+      "v": 9000
+     },
+     "오꾸밥(불닭치즈)": {
+      "c": 1,
+      "v": 2000
+     },
+     "오꾸밥(참치마요)": {
+      "c": 1,
+      "v": 2000
+     }
+    }
+   }
+  },
+  "2026-10-24": {
+   "냉장": {
+    "c": 10,
+    "v": 12500,
+    "p": {
+     "날계란": {
+      "c": 4,
+      "v": 2400
+     },
+     "갈아만든배": {
+      "c": 2,
+      "v": 4600
+     },
+     "스트링 치즈": {
+      "c": 1,
+      "v": 1000
+     },
+     "숯불구이 후랑크": {
+      "c": 1,
+      "v": 2000
+     },
+     "체다치즈": {
+      "c": 1,
+      "v": 500
+     },
+     "옥수수수염차": {
+      "c": 1,
+      "v": 2000
+     }
+    }
+   },
+   "냉동": {
+    "c": 3,
+    "v": 6500,
+    "p": {
+     "오꾸밥(참치마요)": {
+      "c": 2,
+      "v": 4000
+     },
+     "고기만두": {
+      "c": 1,
+      "v": 2500
+     }
+    }
+   }
+  },
+  "2026-10-25": {
+   "냉장": {
+    "c": 32,
+    "v": 40000,
+    "p": {
+     "날계란": {
+      "c": 10,
+      "v": 6000
+     },
+     "맛김치": {
+      "c": 5,
+      "v": 7500
+     },
+     "파워에이드": {
+      "c": 1,
+      "v": 2300
+     },
+     "생수": {
+      "c": 2,
+      "v": 2000
+     },
+     "체다치즈": {
+      "c": 1,
+      "v": 500
+     },
+     "의성마늘 소세지": {
+      "c": 5,
+      "v": 10000
+     },
+     "옥수수수염차": {
+      "c": 1,
+      "v": 2000
+     },
+     "스트링 치즈": {
+      "c": 1,
+      "v": 1000
+     },
+     "숯불구이 후랑크": {
+      "c": 2,
+      "v": 4000
+     },
+     "단무지": {
+      "c": 3,
+      "v": 2400
+     },
+     "포카리스웨트": {
+      "c": 1,
+      "v": 2300
+     }
+    }
+   },
+   "냉동": {
+    "c": 12,
+    "v": 40000,
+    "p": {
+     "매콤제육김밥": {
+      "c": 1,
+      "v": 4500
+     },
+     "김치만두": {
+      "c": 2,
+      "v": 5000
+     },
+     "고기만두": {
+      "c": 1,
+      "v": 2500
+     },
+     "참치김밥": {
+      "c": 2,
+      "v": 9000
+     },
+     "야채김밥": {
+      "c": 2,
+      "v": 9000
+     },
+     "오꾸밥(참치마요)": {
+      "c": 2,
+      "v": 4000
+     },
+     "한맥 불벅": {
+      "c": 2,
+      "v": 6000
+     }
+    }
+   }
+  },
+  "2026-10-26": {
+   "냉장": {
+    "c": 9,
+    "v": 11000,
+    "p": {
+     "스트링 치즈": {
+      "c": 1,
+      "v": 1000
+     },
+     "생수": {
+      "c": 2,
+      "v": 2000
+     },
+     "단무지": {
+      "c": 2,
+      "v": 1600
+     },
+     "맛김치": {
+      "c": 1,
+      "v": 1500
+     },
+     "옥수수수염차": {
+      "c": 1,
+      "v": 2000
+     },
+     "파워에이드": {
+      "c": 1,
+      "v": 2300
+     },
+     "날계란": {
+      "c": 1,
+      "v": 600
+     }
+    }
+   },
+   "냉동": {
+    "c": 5,
+    "v": 18800,
+    "p": {
+     "매콤제육김밥": {
+      "c": 2,
+      "v": 9000
+     },
+     "피자치즈": {
+      "c": 1,
+      "v": 1800
+     },
+     "참치김밥": {
+      "c": 1,
+      "v": 4500
+     },
+     "한맥 더블버거": {
+      "c": 1,
+      "v": 3500
+     }
+    }
+   }
+  },
+  "2026-10-27": {
+   "냉장": {
+    "c": 23,
+    "v": 32700,
+    "p": {
+     "파워에이드": {
+      "c": 1,
+      "v": 2300
+     },
+     "날계란": {
+      "c": 6,
+      "v": 3600
+     },
+     "맛김치": {
+      "c": 5,
+      "v": 7500
+     },
+     "포카리스웨트": {
+      "c": 1,
+      "v": 2300
+     },
+     "생수": {
+      "c": 2,
+      "v": 2000
+     },
+     "비엔나": {
+      "c": 1,
+      "v": 3200
+     },
+     "단무지": {
+      "c": 1,
+      "v": 800
+     },
+     "스트링 치즈": {
+      "c": 1,
+      "v": 1000
+     },
+     "옥수수수염차": {
+      "c": 3,
+      "v": 6000
+     },
+     "의성마늘 소세지": {
+      "c": 1,
+      "v": 2000
+     },
+     "숯불구이 후랑크": {
+      "c": 1,
+      "v": 2000
+     }
+    }
+   },
+   "냉동": {
+    "c": 11,
+    "v": 36800,
+    "p": {
+     "한맥 더블버거": {
+      "c": 1,
+      "v": 3500
+     },
+     "한맥 불벅": {
+      "c": 1,
+      "v": 3000
+     },
+     "매콤제육김밥": {
+      "c": 2,
+      "v": 9000
+     },
+     "김치만두": {
+      "c": 3,
+      "v": 7500
+     },
+     "고기만두": {
+      "c": 1,
+      "v": 2500
+     },
+     "참치김밥": {
+      "c": 1,
+      "v": 4500
+     },
+     "피자치즈": {
+      "c": 1,
+      "v": 1800
+     },
+     "로제떡볶이": {
+      "c": 1,
+      "v": 5000
+     }
+    }
+   }
+  },
+  "2026-10-28": {
+   "냉장": {
+    "c": 25,
+    "v": 32400,
+    "p": {
+     "옥수수수염차": {
+      "c": 4,
+      "v": 8000
+     },
+     "숯불구이 후랑크": {
+      "c": 4,
+      "v": 8000
+     },
+     "스트링 치즈": {
+      "c": 5,
+      "v": 5000
+     },
+     "생수": {
+      "c": 1,
+      "v": 1000
+     },
+     "날계란": {
+      "c": 6,
+      "v": 3600
+     },
+     "맛김치": {
+      "c": 4,
+      "v": 6000
+     },
+     "단무지": {
+      "c": 1,
+      "v": 800
+     }
+    }
+   },
+   "냉동": {
+    "c": 9,
+    "v": 21700,
+    "p": {
+     "김치만두": {
+      "c": 1,
+      "v": 2500
+     },
+     "오꾸밥(소불고기)": {
+      "c": 1,
+      "v": 2000
+     },
+     "로제떡볶이": {
+      "c": 1,
+      "v": 5000
+     },
+     "피자치즈": {
+      "c": 4,
+      "v": 7200
+     },
+     "고기만두": {
+      "c": 2,
+      "v": 5000
+     }
+    }
+   }
+  },
+  "2026-10-29": {
+   "냉장": {
+    "c": 16,
+    "v": 18000,
+    "p": {
+     "옥수수수염차": {
+      "c": 3,
+      "v": 6000
+     },
+     "생수": {
+      "c": 2,
+      "v": 2000
+     },
+     "단무지": {
+      "c": 2,
+      "v": 1600
+     },
+     "날계란": {
+      "c": 6,
+      "v": 3600
+     },
+     "숯불구이 후랑크": {
+      "c": 1,
+      "v": 2000
+     },
+     "파워에이드": {
+      "c": 1,
+      "v": 2300
+     },
+     "체다치즈": {
+      "c": 1,
+      "v": 500
+     }
+    }
+   },
+   "냉동": {
+    "c": 6,
+    "v": 19000,
+    "p": {
+     "참치김밥": {
+      "c": 1,
+      "v": 4500
+     },
+     "김치만두": {
+      "c": 2,
+      "v": 5000
+     },
+     "야채김밥": {
+      "c": 1,
+      "v": 4500
+     },
+     "고기만두": {
+      "c": 2,
+      "v": 5000
+     }
+    }
+   }
+  },
+  "2026-10-30": {
+   "냉장": {
+    "c": 17,
+    "v": 17000,
+    "p": {
+     "날계란": {
+      "c": 5,
+      "v": 1500
+     },
+     "햇반": {
+      "c": 1,
+      "v": 1200
+     },
+     "맛김치": {
+      "c": 3,
+      "v": 4500
+     },
+     "의성마늘 소세지": {
+      "c": 1,
+      "v": 2000
+     },
+     "생수": {
+      "c": 5,
+      "v": 5000
+     },
+     "옥수수수염차": {
+      "c": 1,
+      "v": 2000
+     },
+     "단무지": {
+      "c": 1,
+      "v": 800
+     }
+    }
+   },
+   "냉동": {
+    "c": 2,
+    "v": 6500,
+    "p": {
+     "오꾸밥(김치치즈)": {
+      "c": 1,
+      "v": 2000
+     },
+     "매콤제육김밥": {
+      "c": 1,
+      "v": 4500
+     }
+    }
+   }
+  },
+  "2026-10-31": {
+   "냉장": {
+    "c": 11,
+    "v": 9100,
+    "p": {
+     "햇반": {
+      "c": 1,
+      "v": 1200
+     },
+     "날계란": {
+      "c": 4,
+      "v": 900
+     },
+     "스트링 치즈": {
+      "c": 2,
+      "v": 2000
+     },
+     "맛김치": {
+      "c": 1,
+      "v": 1500
+     },
+     "체다치즈": {
+      "c": 1,
+      "v": 500
+     },
+     "생수": {
+      "c": 1,
+      "v": 1000
+     },
+     "옥수수수염차": {
+      "c": 1,
+      "v": 2000
+     }
+    }
+   },
+   "냉동": {
+    "c": 1,
+    "v": 2000,
+    "p": {
+     "오꾸밥(소불고기)": {
+      "c": 1,
+      "v": 2000
+     }
+    }
+   }
+  },
+  "2026-11-01": {
+   "냉동": {
+    "c": 2,
+    "v": 4000,
+    "p": {
+     "치즈 핫도그": {
+      "c": 2,
+      "v": 4000
+     }
+    }
+   },
+   "냉장": {
+    "c": 4,
+    "v": 5600,
+    "p": {
+     "포카리스웨트": {
+      "c": 1,
+      "v": 2300
+     },
+     "맛김치": {
+      "c": 1,
+      "v": 1500
+     },
+     "햇반": {
+      "c": 1,
+      "v": 1200
+     },
+     "날계란": {
+      "c": 1,
+      "v": 600
+     }
+    }
+   }
+  },
+  "2026-11-02": {
+   "냉동": {
+    "c": 6,
+    "v": 23500,
+    "p": {
+     "로제떡볶이": {
+      "c": 1,
+      "v": 5000
+     },
+     "참치김밥": {
+      "c": 2,
+      "v": 9000
+     },
+     "야채김밥": {
+      "c": 1,
+      "v": 4500
+     },
+     "고기만두": {
+      "c": 1,
+      "v": 2500
+     },
+     "김치만두": {
+      "c": 1,
+      "v": 2500
+     }
+    }
+   },
+   "냉장": {
+    "c": 6,
+    "v": 6300,
+    "p": {
+     "날계란": {
+      "c": 3,
+      "v": 1800
+     },
+     "숯불구이 후랑크": {
+      "c": 1,
+      "v": 2000
+     },
+     "생수": {
+      "c": 1,
+      "v": 1000
+     },
+     "맛김치": {
+      "c": 1,
+      "v": 1500
+     }
+    }
+   }
+  },
+  "2026-11-03": {
+   "냉동": {
+    "c": 12,
+    "v": 42000,
+    "p": {
+     "고기만두": {
+      "c": 1,
+      "v": 2500
+     },
+     "한맥 불벅": {
+      "c": 2,
+      "v": 6000
+     },
+     "참치김밥": {
+      "c": 1,
+      "v": 4500
+     },
+     "오꾸밥(참치마요)": {
+      "c": 1,
+      "v": 2000
+     },
+     "김치만두": {
+      "c": 2,
+      "v": 5000
+     },
+     "치즈 핫도그": {
+      "c": 1,
+      "v": 2000
+     },
+     "로제떡볶이": {
+      "c": 4,
+      "v": 20000
+     }
+    }
+   },
+   "냉장": {
+    "c": 21,
+    "v": 30300,
+    "p": {
+     "맛김치": {
+      "c": 4,
+      "v": 6000
+     },
+     "햇반": {
+      "c": 2,
+      "v": 2400
+     },
+     "날계란": {
+      "c": 1,
+      "v": 600
+     },
+     "생수": {
+      "c": 1,
+      "v": 1000
+     },
+     "단무지": {
+      "c": 1,
+      "v": 800
+     },
+     "체다치즈": {
+      "c": 1,
+      "v": 500
+     },
+     "스트링 치즈": {
+      "c": 3,
+      "v": 3000
+     },
+     "옥수수수염차": {
+      "c": 8,
+      "v": 16000
+     }
+    }
+   }
+  },
+  "2026-11-04": {
+   "냉동": {
+    "c": 10,
+    "v": 42500,
+    "p": {
+     "오꾸밥(참치마요)": {
+      "c": 2,
+      "v": 4000
+     },
+     "매콤제육김밥": {
+      "c": 1,
+      "v": 8000
+     },
+     "매콤떡볶이": {
+      "c": 1,
+      "v": 4500
+     },
+     "한맥 더블버거": {
+      "c": 1,
+      "v": 3500
+     },
+     "참치김밥": {
+      "c": 1,
+      "v": 4500
+     },
+     "한맥 불벅": {
+      "c": 1,
+      "v": 3000
+     },
+     "로제떡볶이": {
+      "c": 3,
+      "v": 15000
+     }
+    }
+   },
+   "냉장": {
+    "c": 18,
+    "v": 30600,
+    "p": {
+     "옥수수수염차": {
+      "c": 11,
+      "v": 22000
+     },
+     "숯불구이 후랑크": {
+      "c": 2,
+      "v": 4000
+     },
+     "단무지": {
+      "c": 1,
+      "v": 800
+     },
+     "날계란": {
+      "c": 3,
+      "v": 1800
+     },
+     "의성마늘 소세지": {
+      "c": 1,
+      "v": 2000
+     }
+    }
+   }
+  },
+  "2026-11-05": {
+   "냉장": {
+    "c": 23,
+    "v": 32500,
+    "p": {
+     "옥수수수염차": {
+      "c": 7,
+      "v": 14000
+     },
+     "맛김치": {
+      "c": 2,
+      "v": 3000
+     },
+     "햇반": {
+      "c": 2,
+      "v": 2400
+     },
+     "체다치즈": {
+      "c": 3,
+      "v": 1500
+     },
+     "날계란": {
+      "c": 2,
+      "v": 1200
+     },
+     "단무지": {
+      "c": 3,
+      "v": 2400
+     },
+     "숯불구이 후랑크": {
+      "c": 2,
+      "v": 4000
+     },
+     "의성마늘 소세지": {
+      "c": 2,
+      "v": 4000
+     }
+    }
+   },
+   "냉동": {
+    "c": 9,
+    "v": 31500,
+    "p": {
+     "김치만두": {
+      "c": 2,
+      "v": 5000
+     },
+     "치즈 핫도그": {
+      "c": 1,
+      "v": 2000
+     },
+     "참치김밥": {
+      "c": 2,
+      "v": 9000
+     },
+     "소세지김밥": {
+      "c": 1,
+      "v": 4500
+     },
+     "매콤제육김밥": {
+      "c": 1,
+      "v": 4500
+     },
+     "야채김밥": {
+      "c": 1,
+      "v": 4500
+     },
+     "오꾸밥(참치마요)": {
+      "c": 1,
+      "v": 2000
+     }
+    }
+   }
+  },
+  "2026-11-06": {
+   "냉동": {
+    "c": 5,
+    "v": 20500,
+    "p": {
+     "참치김밥": {
+      "c": 2,
+      "v": 9000
+     },
+     "고기만두": {
+      "c": 1,
+      "v": 2500
+     },
+     "야채김밥": {
+      "c": 1,
+      "v": 4500
+     },
+     "매콤제육김밥": {
+      "c": 1,
+      "v": 4500
+     }
+    }
+   },
+   "냉장": {
+    "c": 20,
+    "v": 33600,
+    "p": {
+     "날계란": {
+      "c": 1,
+      "v": 600
+     },
+     "체다치즈": {
+      "c": 1,
+      "v": 500
+     },
+     "맛김치": {
+      "c": 1,
+      "v": 1500
+     },
+     "옥수수수염차": {
+      "c": 14,
+      "v": 28000
+     },
+     "스트링 치즈": {
+      "c": 3,
+      "v": 3000
+     }
+    }
+   }
+  },
+  "2026-11-07": {
+   "냉동": {
+    "c": 7,
+    "v": 27500,
+    "p": {
+     "야채김밥": {
+      "c": 1,
+      "v": 4500
+     },
+     "참치김밥": {
+      "c": 1,
+      "v": 4500
+     },
+     "로제떡볶이": {
+      "c": 1,
+      "v": 5000
+     },
+     "국물떡볶이": {
+      "c": 2,
+      "v": 9000
+     },
+     "오꾸밥(불닭치즈)": {
+      "c": 1,
+      "v": 2000
+     },
+     "김치만두": {
+      "c": 1,
+      "v": 2500
+     }
+    }
+   },
+   "냉장": {
+    "c": 17,
+    "v": 19200,
+    "p": {
+     "스트링 치즈": {
+      "c": 2,
+      "v": 2000
+     },
+     "생수": {
+      "c": 6,
+      "v": 6000
+     },
+     "맛김치": {
+      "c": 2,
+      "v": 3000
+     },
+     "날계란": {
+      "c": 2,
+      "v": 1200
+     },
+     "체다치즈": {
+      "c": 2,
+      "v": 1000
+     },
+     "옥수수수염차": {
+      "c": 2,
+      "v": 4000
+     },
+     "숯불구이 후랑크": {
+      "c": 1,
+      "v": 2000
+     }
+    }
+   }
+  },
+  "2026-11-08": {
+   "냉장": {
+    "c": 23,
+    "v": 31900,
+    "p": {
+     "햇반": {
+      "c": 1,
+      "v": 1200
+     },
+     "날계란": {
+      "c": 2,
+      "v": 1200
+     },
+     "옥수수수염차": {
+      "c": 7,
+      "v": 14000
+     },
+     "생수": {
+      "c": 6,
+      "v": 6000
+     },
+     "김": {
+      "c": 2,
+      "v": 2000
+     },
+     "숯불구이 후랑크": {
+      "c": 1,
+      "v": 2000
+     },
+     "맛김치": {
+      "c": 2,
+      "v": 3000
+     },
+     "의성마늘 소세지": {
+      "c": 1,
+      "v": 2000
+     },
+     "체다치즈": {
+      "c": 1,
+      "v": 500
+     }
+    }
+   },
+   "냉동": {
+    "c": 6,
+    "v": 24500,
+    "p": {
+     "치즈 핫도그": {
+      "c": 1,
+      "v": 2000
+     },
+     "매콤떡볶이": {
+      "c": 1,
+      "v": 4500
+     },
+     "국물떡볶이": {
+      "c": 1,
+      "v": 4500
+     },
+     "야채김밥": {
+      "c": 2,
+      "v": 9000
+     },
+     "진미채김밥": {
+      "c": 1,
+      "v": 4500
+     }
+    }
+   }
+  },
+  "2026-11-09": {
+   "냉장": {
+    "c": 17,
+    "v": 25500,
+    "p": {
+     "체다치즈": {
+      "c": 1,
+      "v": 500
+     },
+     "생수": {
+      "c": 6,
+      "v": 6000
+     },
+     "숯불구이 후랑크": {
+      "c": 3,
+      "v": 6000
+     },
+     "의성마늘 소세지": {
+      "c": 4,
+      "v": 8000
+     },
+     "옥수수수염차": {
+      "c": 2,
+      "v": 4000
+     },
+     "스트링 치즈": {
+      "c": 1,
+      "v": 1000
+     }
+    }
+   },
+   "냉동": {
+    "c": 8,
+    "v": 31500,
+    "p": {
+     "참치김밥": {
+      "c": 2,
+      "v": 9000
+     },
+     "고기만두": {
+      "c": 1,
+      "v": 2500
+     },
+     "매콤제육김밥": {
+      "c": 2,
+      "v": 9000
+     },
+     "소세지김밥": {
+      "c": 1,
+      "v": 4500
+     },
+     "야채김밥": {
+      "c": 1,
+      "v": 4500
+     },
+     "오꾸밥(소불고기)": {
+      "c": 1,
+      "v": 2000
      }
     }
    }
