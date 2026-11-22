@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-22T13:41+09:00",
+ "generated_at": "2026-11-22T13:57+09:00",
  "machines": [
   "라면1",
   "라면2",
@@ -1522,7 +1522,7 @@
     "product": "오꾸밥(참치마요)",
     "qty": 9,
     "price": 2000,
-    "order": "1",
+    "order": "2",
     "max": 9
    },
    {
@@ -1548,17 +1548,31 @@
    },
    {
     "product": "오뚜기UNO피자(콤비)",
-    "qty": 3,
+    "qty": 0,
     "price": 3500,
     "order": "5",
     "max": 3
    },
    {
+    "product": "미니붕어빵(팥)",
+    "qty": 20,
+    "price": 1000,
+    "order": "5",
+    "max": 20
+   },
+   {
     "product": "오뚜기UNO피자(불고기)",
-    "qty": 2,
+    "qty": 0,
     "price": 3500,
     "order": "6",
     "max": 2
+   },
+   {
+    "product": "미니붕어빵(앙금)",
+    "qty": 20,
+    "price": 1000,
+    "order": "6",
+    "max": 20
    },
    {
     "product": "한맥 불벅",
