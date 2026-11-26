@@ -337,11 +337,12 @@ function renderStock() {
   const m = S.stf, items = stockOf(m), q = S.q.trim().toLowerCase();
   const rows = items.filter((s) => !q || s.product.toLowerCase().includes(q));
   const pend = Object.keys(S.pending[m] || {}).length;
-  const cols = 'minmax(150px, 1fr) 150px 70px 110px 90px 110px';
+  const op = !isVP(m);
+  const cols = 'minmax(150px, 1fr) 150px 70px 110px 90px 110px' + (op ? ' 44px' : '');
   const seg = MACH_ORDER.map((x) => `<button type="button" class="${S.stf === x ? 'on' : ''}" data-act="stf" data-m="${x}">${x}</button>`).join('');
   $('#content').innerHTML = `
     <div class="subbar"><div class="seg">${seg}</div>
-      <span style="margin-left:auto;display:flex;gap:6px"><button type="button" class="tb soft" data-act="refreshStock">${svg('refresh', 13)}재고 새로 읽기</button><button type="button" class="tb soft" data-act="copyReorder">${svg('copy', 13)}발주 목록 복사</button></span></div>
+      <span style="margin-left:auto;display:flex;gap:6px">${op ? `<button type="button" class="tb pri" data-act="addProd"><svg class="ic" width="13" height="13" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>상품 추가</button>` : ''}<button type="button" class="tb soft" data-act="refreshStock">${svg('refresh', 13)}재고 새로 읽기</button><button type="button" class="tb soft" data-act="copyReorder">${svg('copy', 13)}발주 목록 복사</button></span></div>
     ${isVP(m) ? `<div class="strip">${svg('save', 16).replace('class="ic"', 'class="ic" style="color:#1b64da"')}<b>${esc(m)}</b>
       <span style="margin-left:auto;display:flex;gap:6px">
         <button type="button" class="tb" style="height:26px;width:30px;padding:0;background:#fff;border:1px solid #c9dcf7" data-act="snapView" title="저장된 정보 보기" aria-label="저장된 정보 보기">${svg('save', 15)}</button>
@@ -350,14 +351,14 @@ function renderStock() {
     ${jobsFor(m).map(([id, j]) => `<div class="strip"><span class="spin" style="width:12px;height:12px;border-color:#c9dcf7;border-top-color:#1b64da"></span><b>노트북 봇에 '${JOB_LABEL[j.type]}'${j.type === 'refresh' ? '' : ' (' + esc(j.machine) + (j.label ? ' · ' + esc(j.label) : '') + ')'} 요청함</b><span class="mu">${esc(String(j.at || '').slice(11, 16))} · 처리 기다리는 중 (노트북이 켜져 있어야 해요)</span><button type="button" class="tb soft" style="margin-left:auto;height:26px" data-act="cancelJob" data-id="${esc(id)}">요청 취소</button></div>`).join('')}
     ${pend ? `<div class="strip warnbg"><b class="warn">바꾼 것 ${pend}건이 아직 기계에 반영 안 됐어요</b><span style="margin-left:auto;display:flex;gap:6px"><button type="button" class="tb soft" data-act="pendCancel">되돌리기</button><button type="button" class="tb pri" style="height:26px" data-act="pendApply"${jobsFor(m).some(([, j]) => j.type === 'apply') ? ' disabled' : ''}>기계에 반영</button></span></div>` : ''}
     <div class="pane">
-      <div class="th" style="grid-template-columns:${cols}"><span>상품</span><span class="c">현재 수량</span><span class="r">최대</span><span class="c">판매가격</span><span class="r">하루 판매</span><span>상태</span></div>
+      <div class="th" style="grid-template-columns:${cols}"><span>상품</span><span class="c">현재 수량</span><span class="r">최대</span><span class="c">판매가격</span><span class="r">하루 판매</span><span>상태</span>${op ? '<span></span>' : ''}</div>
       ${rows.map((s) => `<div class="tr${S.sel === s.i ? ' sel' : ''}${s.changed ? ' chg' : ''}" style="grid-template-columns:${cols}">
         <span><button type="button" class="rb" data-act="pickStock" data-i="${s.i}" style="font-weight:600">${esc(s.product)}</button></span>
         <span style="display:flex;justify-content:center"><span class="step"><button type="button" data-act="qtyDec" data-i="${s.i}" aria-label="${esc(s.product)} 1개 빼기">−</button><input value="${s.qty}" data-chg="qty" data-i="${s.i}" inputmode="numeric" aria-label="${esc(s.product)} 현재 수량" title="숫자를 입력하고 Enter"><button type="button" data-act="qtyInc" data-i="${s.i}" aria-label="${esc(s.product)} 1개 더하기">+</button></span></span>
         <span class="r mu" style="display:flex">${s.max || '-'}</span>
         <span style="display:flex;justify-content:center"><input class="fld r" style="height:24px;width:84px" value="${s.price != null ? fmt(s.price) : ''}" data-chg="price" data-i="${s.i}" inputmode="numeric" aria-label="${esc(s.product)} 판매가격"></span>
         <span class="r" style="display:flex">${s.perDay ? s.perDay.toFixed(1) + '개' : '-'}</span>
-        <span class="st" style="color:${s.color}"><span class="dot" style="background:${s.color}"></span>${s.state}</span></div>`).join('') || `<div class="empty">${(S.data.stock[m] || []).length ? '검색 결과가 없어요' : '재고 정보가 아직 없어요. [재고 새로 읽기]를 눌러 주세요.'}</div>`}
+        <span class="st" style="color:${s.color}"><span class="dot" style="background:${s.color}"></span>${s.state}</span>${op ? `<span style="display:flex;justify-content:center"><button type="button" class="tb" style="width:30px;height:28px;padding:0;color:var(--mu)" data-act="delProd" data-i="${s.i}" title="상품 삭제" aria-label="${esc(s.product)} 삭제"><svg class="ic" width="15" height="15" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 7h14M10 11v6M14 11v6M7 7l1 13h8l1-13M9 7V4h6v3"/></svg></button></span>` : ''}</div>`).join('') || `<div class="empty">${(S.data.stock[m] || []).length ? '검색 결과가 없어요' : '재고 정보가 아직 없어요. [재고 새로 읽기]를 눌러 주세요.'}</div>`}
     </div>`;
   const low = items.filter((s) => s.lv > 0).length;
   setStatus(rows.length + '개 상품' + (S.sel != null && items[S.sel] ? ' · 선택: ' + items[S.sel].product : ''), '부족 ' + low + '개' + (S.data.generated_at ? ' · 재고 기준 ' + S.data.generated_at.replace('T', ' ').slice(5, 16) : ''));
@@ -557,6 +558,37 @@ const ACT = {
     copyText(txt).then((ok) => toast(ok ? '발주할 목록을 복사했어요 (' + low.length + '개)' : '복사하지 못했어요', { err: !ok }));
   },
   snapView, vpSave, vpLoad,
+  addProd: () => {
+    const m = S.stf;
+    dialog(`<div class="dh"><b style="font-size:15px">${esc(m)} 상품 추가</b><button type="button" class="tb" style="margin-left:auto;width:30px;padding:0" data-act="closeLayer" aria-label="닫기">${svg('x', 14)}</button></div>
+      <div class="db"><div><label class="fl" for="apName">상품명</label><input id="apName" class="fld" style="height:34px" placeholder="예: 치즈 핫도그"></div>
+        <div class="grid2" style="gap:8px"><div><label class="fl" for="apQty">수량</label><input id="apQty" class="fld r" style="height:34px" inputmode="numeric" placeholder="0"></div><div><label class="fl" for="apPrice">판매가격 (원)</label><input id="apPrice" class="fld r" style="height:34px" inputmode="numeric" placeholder="0"></div></div>
+        <div id="apMsg" class="neg" style="font-weight:600"></div>
+        <div class="mu" style="font-size:12px;line-height:1.6">오프너 앱의 [상품입고]에 그대로 등록돼요. 노트북 봇이 30초~1분 안에 처리해요.</div></div>
+      <div class="df"><button type="button" class="tb soft" data-act="closeLayer">취소</button><button type="button" class="tb pri" data-act="addProdSave">추가</button></div>`);
+    setTimeout(() => { const el = $('#apName'); const a = document.activeElement; if (el && !(a && a.closest && a.closest('#layer'))) el.focus(); }, 30);
+  },
+  addProdSave: () => {
+    const m = S.stf, name = ($('#apName').value || '').trim(), qty = num($('#apQty').value), price = num($('#apPrice').value);
+    const msg = $('#apMsg');
+    if (!name) { msg.textContent = '상품명을 입력해 주세요'; return; }
+    if (!price) { msg.textContent = '판매가격을 입력해 주세요'; return; }
+    if ((S.data.stock[m] || []).some((it) => it.product === name)) { msg.textContent = '같은 이름의 상품이 이미 있어요'; return; }
+    closeLayer();
+    requestJob('apply', m, [{ action: 'add', name, qty, price }], '상품 추가: ' + name);
+  },
+  delProd: (d) => {
+    const s = stockOf(S.stf)[num(d.i)]; if (!s) return;
+    dialog(`<div class="dh"><b style="font-size:15px">상품 삭제</b></div>
+      <div class="db" style="line-height:1.7"><div><b>${esc(s.product)}</b> 상품을 <b>${esc(s.machine)}</b> 기계에서 삭제할까요?</div><div class="mu" style="font-size:12px">오프너 앱의 [재고 및 수정]에서 삭제돼요. 되돌릴 수 없어서 다시 쓰려면 [상품 추가]로 새로 넣어야 해요.</div></div>
+      <div class="df"><button type="button" class="tb soft" data-act="closeLayer">취소</button><button type="button" class="tb pri" style="background:var(--neg)" data-act="delProdOk" data-i="${s.i}">삭제</button></div>`);
+  },
+  delProdOk: (d) => {
+    const s = stockOf(S.stf)[num(d.i)]; closeLayer(); if (!s) return;
+    if (S.pending[s.machine]) { delete S.pending[s.machine][s.product]; }
+    S.sel = null;
+    requestJob('apply', s.machine, [{ action: 'delete', oldName: s.product, name: s.product }], '삭제: ' + s.product);
+  },
   eInc: () => { const x = S.expenses.find((e) => e.id === S.sel); if (x) updExp(x.id, { include: x.include === false }); },
   eRep: () => { const x = S.expenses.find((e) => e.id === S.sel); if (x) { updExp(x.id, { repeat: !x.repeat }); if (x.repeat) { ensureRepeats(); render(); } } },
   eDel: () => {
