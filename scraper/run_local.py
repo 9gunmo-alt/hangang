@@ -643,6 +643,11 @@ def main():
     global STOCK_MAX
     STOCK_MAX = load_max()
     log(f"봇 시작 — {INTERVAL}초마다 수집 (Ctrl+C로 종료). 저장소: {REPO}")
+    try:    # '한강라면 관리' 프로그램이 보낸 재고 작업 받기 (15초마다)
+        import jobs
+        jobs.start(sys.modules[__name__], log)
+    except Exception as e:
+        log("재고 작업 받기 시작 실패:", e)
     while True:
         t0 = time.time()
         try:

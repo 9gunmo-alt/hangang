@@ -131,6 +131,11 @@ def main():
     def boot():
         time.sleep(0.6)
         Api().bot_start()   # 켜면 자동 시작
+        try:                # '한강라면 관리' 프로그램이 보낸 재고 작업 받기 (15초마다)
+            import jobs
+            jobs.start(bot, _gui_log)
+        except Exception as e:
+            _gui_log("재고 작업 받기 시작 실패:", e)
     threading.Thread(target=boot, daemon=True).start()
 
     webview.start()   # 창이 닫히면(X) 여기서 리턴

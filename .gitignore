@@ -1,2 +1,7 @@
 scraper/bundle_cache.json
 scraper/__pycache__/
+scraper/github_token.json
+manager/build/
+manager/dist/
+manager/*.spec
+manager/__pycache__/
