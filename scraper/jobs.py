@@ -87,12 +87,78 @@ def _with_max(bot, machine, items):
     return items
 
 
-def _read_machine(bot, machine):
-    s = bot.read_all_stock() or {}
-    if machine in s:
-        bot.STOCK[machine] = _with_max(bot, machine, s[machine])
-        bot.save_max(bot.STOCK_MAX)
-    return bot.STOCK.get(machine)
+def _read_one(bot, machine):
+    """기계 한 대만 '재고 및 수정' 페이지에서 읽음 (입력칸이 다 채워질 때까지 기다림)."""
+    from playwright.sync_api import sync_playwright
+    minfo = {name: (code, plat) for name, code, plat in bot.MACHINES}
+    if machine not in minfo:
+        return None
+    code, plat_key = minfo[machine]
+    plat = bot.PLATFORMS[plat_key]
+    with sync_playwright() as p:
+        b = p.chromium.launch(headless=True)
+        pg = b.new_context(ignore_https_errors=True).new_page()
+        try:
+            pg.goto(plat["machine"].format(code=code), wait_until="networkidle", timeout=45000)
+            pg.wait_for_timeout(500)
+            pg.goto(plat["stock"], wait_until="networkidle", timeout=45000)
+            try:
+                pg.wait_for_function("document.querySelectorAll('input').length > 3", timeout=8000)
+            except Exception:
+                pass
+            pg.wait_for_timeout(1200)
+            return pg.evaluate(bot.STOCK_JS, bot.EDIT[plat_key]["cols"])
+        finally:
+            b.close()
+
+
+def _bump(bot):
+    """재고를 바꿨다고 표시 → 그 사이에 돌던 5분 재고 읽기(옛날 값)가 덮어쓰지 못하게."""
+    try:
+        bot.STOCK_EPOCH = getattr(bot, "STOCK_EPOCH", 0) + 1
+    except Exception:
+        pass
+
+
+def _apply_known(items, changes, results):
+    """기계에 실제로 반영된 것(확인됨)은 그 값으로 확정 — 읽은 값이 늦게 바뀌어도 화면이 되돌아가지 않게."""
+    items = [dict(it) for it in (items or [])]
+    ok = {}
+    for r in results or []:
+        if r.get("ok"):
+            ok[(r.get("action"), (r.get("name") or "").strip())] = True
+    for c in changes or []:
+        act, nm = c.get("action", "update"), (c.get("name") or c.get("oldName") or "").strip()
+        if act == "delete":
+            if ok.get(("delete", (c.get("oldName") or nm).strip())):
+                items = [it for it in items if (it.get("product") or "").strip() != (c.get("oldName") or nm).strip()]
+            continue
+        if not ok.get((act, nm)):
+            continue
+        old = (c.get("oldName") or nm).strip()
+        hit = next((it for it in items if (it.get("product") or "").strip() in (nm, old)), None)
+        if hit is None:
+            hit = {"product": nm, "qty": 0}
+            items.append(hit)
+        hit["product"] = nm
+        if c.get("qty") is not None:
+            hit["qty"] = int(c["qty"])
+        if c.get("price") is not None:
+            hit["price"] = int(c["price"])
+    return items
+
+
+def _read_machine(bot, machine, changes=None, results=None):
+    try:
+        rows = _read_one(bot, machine)
+    except Exception:
+        rows = None
+    base = rows if rows else (bot.STOCK.get(machine) or [])
+    items = _with_max(bot, machine, _apply_known(base, changes, results))
+    bot.STOCK[machine] = items
+    bot.save_max(bot.STOCK_MAX)
+    _bump(bot)
+    return items
 
 
 def vp_button(bot, machine, label):
@@ -138,7 +204,7 @@ def vp_button(bot, machine, label):
             b.close()
     bot.STOCK[machine] = _with_max(bot, machine, rows)
     bot.save_max(bot.STOCK_MAX)
-    bot.LAST_STOCK_RESET()
+    _bump(bot)
     return {"ok": True, "msg": "완료", "items": bot.STOCK[machine]}
 
 
@@ -151,8 +217,9 @@ def process(bot, job):
     except Exception:
         pass
     if t == "apply":
+        _bump(bot)
         res = bot.write_stock(m, job.get("changes") or [])
-        items = _read_machine(bot, m)
+        items = _read_machine(bot, m, job.get("changes") or [], res)
         return {"ok": all(r.get("ok") for r in res), "results": res, "items": items,
                 "msg": f"{sum(1 for r in res if r.get('ok'))}/{len(res)}건 반영"}
     if t == "vp_save":
@@ -165,7 +232,7 @@ def process(bot, job):
             return {"ok": False, "msg": "Playwright 없음"}
         for mm, items in s.items():
             _with_max(bot, mm, items)
-        bot.STOCK.update(s); bot.save_max(bot.STOCK_MAX); bot.LAST_STOCK = time.time()
+        bot.STOCK.update(s); bot.save_max(bot.STOCK_MAX); bot.LAST_STOCK = time.time(); _bump(bot)
         return {"ok": True, "stock": bot.STOCK, "msg": "재고 새로 읽음"}
     return {"ok": False, "msg": "알 수 없는 작업: " + str(t)}
 

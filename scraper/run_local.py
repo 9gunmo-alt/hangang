@@ -65,6 +65,7 @@ UA = {"User-Agent": "Mozilla/5.0 (hanriver-local-bot)"}
 # ── 재고(읽기) ─────────────────────────────────────────────
 STOCK = {}          # {기계이름: [{product, qty}]}
 LAST_STOCK = 0.0
+STOCK_EPOCH = 0     # 프로그램이 재고를 바꿀 때마다 +1 (jobs.py) → 그 사이 읽은 옛날 재고는 버림
 STOCK_EVERY = 300   # 재고 읽기 주기(초). 재고 페이지는 브라우저로 읽어서 무거워 5분 간격
 MAX_PATH = os.path.join(HERE, "stock_max.json")   # 상품별 역대/설정 최대치(게이지 기준)
 
@@ -591,7 +592,12 @@ def build():
     global STOCK, LAST_STOCK, STOCK_MAX
     if time.time() - LAST_STOCK >= STOCK_EVERY:
         try:
+            ep = STOCK_EPOCH
             s = read_all_stock()
+            if s is not None and STOCK_EPOCH != ep:
+                log("재고 읽는 중에 수정이 있어서 이번 읽기는 버림 (다음에 다시 읽음)")
+                LAST_STOCK = time.time() - STOCK_EVERY + 60
+                s = None
             if s is not None:
                 for mname, items in s.items():
                     for it in items:
