@@ -367,11 +367,20 @@ class CoupangApi:
 
 
 def inject_coupang(*_a):
-    if cp_win:
-        try:
-            cp_win.evaluate_js(COUPANG_JS)
-        except Exception:
-            pass
+    # 'loaded'(페이지 다 뜬 뒤)에서만, 별도 스레드로 넣는다.
+    # 화면 스레드에서 evaluate_js 를 부르면(before_load 등) 페이지 준비를 기다리다 서로 막혀 창이 멈추고 꺼짐.
+    w = cp_win
+    if not w:
+        return
+
+    def run():
+        for _ in range(3):
+            try:
+                w.evaluate_js(COUPANG_JS)
+                return
+            except Exception:
+                time.sleep(1.0)
+    threading.Thread(target=run, daemon=True).start()
 
 
 def open_coupang():
@@ -386,10 +395,6 @@ def open_coupang():
     cp_win = webview.create_window("쿠팡 — 로그인하면 이어서 가져와요 (한 페이지만: [이 페이지 가져오기])", COUPANG_URL,
                                    js_api=CoupangApi(), width=1200, height=880, min_size=(900, 600))
     cp_win.events.loaded += inject_coupang
-    try:
-        cp_win.events.before_load += inject_coupang
-    except Exception:
-        pass
 
     def closed(*_a):
         global cp_win

@@ -24,11 +24,25 @@ const mShort = (key) => Number(key.split('-')[1]) + '월';
 const CATS = {
   coupang: { label: '쿠팡 발주', color: '#3182f6' },
   fixed: { label: '고정비', color: '#8b5cf6' },
-  supply: { label: '소모품', color: '#14b8a6' },
-  repair: { label: '수리·기타', color: '#ffb020' },
+  supply: { label: '기타', color: '#ffb020' },   // 예전에 넣은 '소모품'도 '기타'로 보임
+  repair: { label: '기타', color: '#ffb020' },
   fee: { label: '카드 수수료', color: '#a0a8b3' },
 };
 const MACH_ORDER = ['라면1', '라면2', '냉동', '냉장'];
+const NONFOOD_COLOR = '#0d9488';
+
+/* 쿠팡 주문이 음식인지 자동 구별 (틀리면 오른쪽 칸에서 바꿀 수 있음 → settings.cpFood 에 기억) */
+const NONFOOD_STRONG = /트레이|거치대|스타킹|양말|후크|걸이|화이트보드|칠판|자석|케이블|충전기|충전|어댑터|멀티탭|건전지|배터리|전구|LED|조명|용기|포장|봉투|비닐|지퍼백|위생백|위생랩|크린랩|비닐랩|호일|장갑|마스크|앞치마|물티슈|티슈|휴지|키친타올|세제|세정|소독|청소|걸레|수세미|행주|빗자루|쓰레기|분리수거|방향제|탈취|살충|모기|테이프|라벨|스티커|POP|안내문|가격표|아크릴|꽂이|파일|볼펜|마커|매직|노트|가위|커터칼|커터|집게|클립|바구니|박스|상자|수납|정리함|선반|스탠드|케이스|필름|거울|시계|공구|드라이버|나사|실리콘|접착|본드|글루|전선|스위치|콘센트|온도계|저울|선풍기|히터|매트|커버|덮개|자물쇠|열쇠|도어|경첩|축구|튜브|티셔츠|신발|가방|나무젓가락|젓가락|포크|숟가락|스푼|빨대|종이컵|컵홀더|냅킨|이쑤시개|영수증|감열지|롤지|카드단말|프린터|토너|잉크/i;
+const FOOD_HINT = /라면|소면|냉면|당면|짜파|짬뽕|우동|국수|밥|김밥|햇반|덮밥|김치|소시지|비엔나|햄|만두|핫도그|피자|버거|치즈|닭|고기|제육|불고기|돈까스|떡|어묵|계란|달걀|우유|음료|주스|커피|수염차|녹차|보리차|옥수수차|생수|콜라|사이다|과자|스낵|초콜릿|사탕|젤리|빵|케이크|아이스|고춧가루|양념|소스|간장|된장|고추장|설탕|소금|후추|참기름|식용유|마요|케찹|케첩|조미김|김자반|도시락김|단무지|참치|스팸|육수|스프|분말|가루|\d+\s*(g|kg|ml|L)(?![a-z])|kg|\(냉동\)|\(냉장\)|냉동|냉장/i;
+const catLabel = (x) => (x.kind === 'cp' ? (x.food ? '음식' : '소모품') : CATS[x.cat].label);
+function isFood(x) {
+  const o = (S.settings.cpFood || {})[x.id];
+  if (o === true || o === false) return o;
+  const t = (x.name || '') + ' ' + (x.option || '');
+  if (NONFOOD_STRONG.test(x.name || '')) return false;
+  if (FOOD_HINT.test(t)) return true;
+  return !NONFOOD_STRONG.test(t);
+}
 const ICON = {
   overview: 'M4 13h6V4H4zM14 20h6v-9h-6zM14 8h6V4h-6zM4 20h6v-3H4z', sales: 'M4 20V10M10 20V4M16 20v-7M21 20H3',
   exp: 'M4 6h16v13H4zM4 10h16M8 15h3', stock: 'M3 8l9-5 9 5v9l-9 5-9-5zM3 8l9 5 9-5M12 13v9',
@@ -115,6 +129,7 @@ function entriesOf(key) {
     if (!x.date || x.date.slice(0, 7) !== key) return;
     const k = cpKey(x);
     list.push({ kind: 'cp', id: k, date: x.date, name: x.name, option: x.option || '', cat: 'coupang', amount: Math.round(x.final != null ? x.final : (x.total || 0)), memo: x.option ? x.option + (x.qty > 1 ? ' · ' + x.qty + '개' : '') : (x.qty > 1 ? x.qty + '개' : ''), include: S.checked.has(k), exact: !!x.exact, qty: x.qty, orderId: x.orderId });
+    list[list.length - 1].food = isFood(list[list.length - 1]);
   });
   S.expenses.forEach((e) => {
     if (!e.date || e.date.slice(0, 7) !== key) return;
@@ -314,20 +329,21 @@ function renderExp() {
   const t = totals(S.month), q = S.q.trim().toLowerCase();
   const rows = t.list.filter((x) => (S.cat === 'all' || x.cat === S.cat) && (!q || (x.name + ' ' + x.memo).toLowerCase().includes(q)));
   const cols = '34px 64px minmax(200px, 1fr) 96px minmax(120px, .7fr) 112px';
-  const seg = [['all', '전체'], ['coupang', '쿠팡 발주'], ['fixed', '고정비'], ['supply', '소모품'], ['repair', '수리·기타']]
+  const seg = [['all', '전체'], ['coupang', '쿠팡 발주'], ['fixed', '고정비']]
     .map((f) => `<button type="button" class="${S.cat === f[0] ? 'on' : ''}" data-act="cat" data-c="${f[0]}">${f[1]}</button>`).join('');
   $('#content').innerHTML = `
-    <div class="subbar"><div class="seg">${seg}</div><span class="mu" style="font-size:11px;margin-left:6px">체크를 끄면 손익에서 빠져요 (개인 구매 등)</span></div>
+    <div class="subbar"><div class="seg">${seg}</div></div>
     <div class="pane">
-      <div class="th" style="grid-template-columns:${cols}"><span></span><span>날짜</span><span>내용</span><span>분류</span><span>메모</span><span class="r">금액</span></div>
+      <div class="th" style="grid-template-columns:${cols}"><label style="display:flex;justify-content:center">${rows.length ? `<input type="checkbox" class="chk" id="incAll" data-chg="incAll" ${rows.every((x) => x.include) ? 'checked' : ''} aria-label="보이는 지출 전체 선택 / 전체 해제" title="전체 선택 / 전체 해제">` : ''}</label><span>날짜</span><span>내용</span><span>분류</span><span>메모</span><span class="r">금액</span></div>
       ${rows.map((x) => `<div class="tr${S.sel === x.id ? ' sel' : ''}${x.include ? '' : ' off'}" style="grid-template-columns:${cols}">
         <label style="display:flex;justify-content:center"><input type="checkbox" class="chk" data-chg="inc" data-kind="${x.kind}" data-id="${esc(x.id)}" ${x.include ? 'checked' : ''} aria-label="${esc(x.name)} 손익 반영" title="손익 반영"></label>
         <span class="mu">${x.date.slice(5).replace('-', '.')}</span>
-        <span style="display:flex;align-items:center;gap:6px;min-width:0"><button type="button" class="rb strike" data-act="pickExp" data-id="${esc(x.id)}" style="flex:1">${esc(x.name)}</button>${x.kind === 'cp' && !x.exact ? '<span class="dot" style="background:#e8890c" title="실제 결제액 미확인 (목록가)"></span>' : ''}${x.repeat || x.repeatOf ? '<span class="mu" style="font-size:11px">매달</span>' : ''}</span>
-        <span class="st"><span class="dot" style="background:${CATS[x.cat].color}"></span>${CATS[x.cat].label}</span>
+        <span style="display:flex;align-items:center;gap:6px;min-width:0"><button type="button" class="rb strike" data-act="pickExp" data-id="${esc(x.id)}" style="flex:1${x.kind === 'cp' && !x.food ? ';color:' + NONFOOD_COLOR + ';font-weight:600' : ''}"${x.kind === 'cp' && !x.food ? ' title="음식 아닌 것 (소모품)"' : ''}>${esc(x.name)}</button>${x.kind === 'cp' && !x.exact ? '<span class="dot" style="background:#e8890c" title="실제 결제액 미확인 (목록가)"></span>' : ''}${x.repeat || x.repeatOf ? '<span class="mu" style="font-size:11px">매달</span>' : ''}</span>
+        <span class="st"${x.kind === 'cp' && !x.food ? ` style="color:${NONFOOD_COLOR}"` : ''}><span class="dot" style="background:${x.kind === 'cp' && !x.food ? NONFOOD_COLOR : CATS[x.cat].color}"></span>${catLabel(x)}</span>
         <span class="mu ell">${esc(x.memo)}</span>
         <b class="r strike" style="display:flex">${won(x.amount)}</b></div>`).join('') || `<div class="empty">${t.list.length ? '조건에 맞는 지출이 없어요' : '이 달 지출이 없어요.<br>위쪽 [쿠팡 가져오기]나 [지출 추가]로 넣어 주세요.'}</div>`}
     </div>`;
+  const ia = $('#incAll'); if (ia) ia.indeterminate = rows.some((x) => x.include) && !rows.every((x) => x.include);
   const shown = rows.filter((x) => x.include).reduce((a, x) => a + x.amount, 0);
   setStatus(rows.length + '개 항목' + (S.sel ? ' · 선택: ' + ((t.list.find((x) => x.id === S.sel) || {}).name || '') : ''), '표시된 지출 합계 ' + won(shown) + (t.byCat.fee ? ' · 카드 수수료 ' + won(t.byCat.fee) + ' 별도' : ''));
 }
@@ -375,15 +391,15 @@ function renderReport() {
     return { t: (d >= 0 ? '▲ ' : '▼ ') + Math.abs(d).toFixed(1) + '%', c: (inv ? d <= 0 : d >= 0) ? '#0b8a5c' : '#d0312d' };
   };
   const tile = (label, a, b, inv, extra) => { const d = dfx(a, b, inv); return `<div class="box" style="${extra || ''}"><div class="k">${label}</div><div class="kv"${label === '순이익' ? ' style="color:#0b8a5c"' : ''}>${won(a)}</div><div class="ks">전월 ${b != null ? won(b) : '-'} <b style="color:${d.c}">${d.t}</b></div></div>`; };
-  const lines = [{ k: 'sales', label: '매출', color: '#3182f6', fw: 700 }].concat(['coupang', 'fixed', 'supply', 'repair', 'fee'].map((k) => ({ k, label: CATS[k].label, color: CATS[k].color, fw: 400 }))).concat([{ k: 'profit', label: '순이익', color: '#0b8a5c', fw: 700 }]);
-  const val = (r, k) => (k === 'sales' ? r.sales : k === 'profit' ? r.profit : r.byCat[k]);
+  const lines = [{ k: 'sales', label: '매출', color: '#3182f6', fw: 700 }].concat(['coupang', 'fixed', 'etc', 'fee'].map((k) => ({ k, label: k === 'etc' ? '기타' : CATS[k].label, color: k === 'etc' ? CATS.repair.color : CATS[k].color, fw: 400 }))).concat([{ k: 'profit', label: '순이익', color: '#0b8a5c', fw: 700 }]);
+  const val = (r, k) => (k === 'sales' ? r.sales : k === 'profit' ? r.profit : k === 'etc' ? (r.byCat.supply || 0) + (r.byCat.repair || 0) : r.byCat[k]);
   $('#content').innerHTML = `<div class="pane"><div class="pad">
     <div style="display:flex;align-items:center;gap:10px"><b style="font-size:17px">${mLabel(S.month)} 손익</b>${t.isCur ? '<span style="font-size:11px;font-weight:700;color:#b25e00;background:#fff4e0;border-radius:5px;padding:2px 7px">진행 중</span>' : ''}
       <span style="margin-left:auto;display:flex;gap:6px"><button type="button" class="tb soft" data-act="copyText">글자로 복사</button><button type="button" class="tb soft" data-act="exportPdf">PDF</button><button type="button" class="tb soft" data-act="exportXlsx">엑셀</button></span></div>
     <div class="grid3">${tile('매출', t.sales, prev && prev.sales, false)}${tile('지출', t.exp, prev && prev.exp, true)}${tile('순이익', t.profit, prev && prev.profit, false, 'border-color:#b7e4cf;background:#f0faf5')}</div>
     <div class="box" style="padding:6px 16px">
       <div style="display:grid;grid-template-columns:130px 1fr 120px 90px;gap:14px;padding:8px 0;font-size:11px;font-weight:700;color:var(--mu);border-bottom:1px solid var(--line)"><span>항목</span><span>매출 대비</span><span class="r">금액</span><span class="r">전월 대비</span></div>
-      ${lines.map((l, i) => { const v = val(t, l.k), d = dfx(v, prev ? val(prev, l.k) : null, l.k !== 'sales' && l.k !== 'profit'); const p = t.sales ? Math.max(0, v / t.sales * 100) : 0;
+      ${lines.filter((l) => l.k !== 'etc' || val(t, 'etc') || (prev && val(prev, 'etc'))).map((l, i) => { const v = val(t, l.k), d = dfx(v, prev ? val(prev, l.k) : null, l.k !== 'sales' && l.k !== 'profit'); const p = t.sales ? Math.max(0, v / t.sales * 100) : 0;
         return `<div style="display:grid;grid-template-columns:130px 1fr 120px 90px;gap:14px;align-items:center;min-height:38px;border-top:${i === 0 ? '0' : l.k === 'profit' ? '2px solid var(--line)' : '1px solid var(--line2)'};font-weight:${l.fw}">
           <span style="display:flex;align-items:center;gap:8px;font-size:14px"><span class="dot" style="background:${l.color}"></span>${l.label}</span>
           <div style="display:flex;align-items:center;gap:8px"><div class="bar" style="flex:1;height:8px"><i style="width:${Math.min(100, p).toFixed(1)}%;background:${l.color}"></i></div><span class="mu" style="font-size:11px;width:40px;text-align:right">${pct(v, t.sales)}</span></div>
@@ -451,7 +467,7 @@ function renderIns() {
         <div><label class="fl" for="i-name">내용</label><input id="i-name" class="fld" value="${esc(x.name)}" data-chg="eName" placeholder="예: 전기료, 위생장갑"></div>
         <div class="grid2" style="gap:8px"><div><label class="fl" for="i-amt">금액 (원)</label><input id="i-amt" class="fld r" style="font-weight:700" value="${x.amount ? fmt(x.amount) : ''}" data-chg="eAmt" inputmode="numeric" placeholder="0"></div>
           <div><label class="fl" for="i-date">날짜</label><input id="i-date" type="date" class="fld" value="${x.date}" data-chg="eDate"></div></div>
-        <div><label class="fl" for="i-cat">분류</label><select id="i-cat" class="fld" data-chg="eCat">${['fixed', 'supply', 'repair', 'coupang'].map((k) => `<option value="${k}"${x.cat === k ? ' selected' : ''}>${CATS[k].label}</option>`).join('')}</select></div>
+        <div><label class="fl" for="i-cat">분류</label><select id="i-cat" class="fld" data-chg="eCat">${['fixed', 'coupang', 'repair'].concat(x.cat === 'supply' ? ['supply'] : []).map((k) => `<option value="${k}"${x.cat === k ? ' selected' : ''}>${CATS[k].label}</option>`).join('')}</select></div>
         <div><label class="fl" for="i-memo">메모</label><textarea id="i-memo" class="fld" data-chg="eMemo">${esc(x.memo)}</textarea></div>
         <div class="grp" style="display:flex;align-items:center;gap:10px"><div style="flex:1"><b style="font-size:12px">손익에 반영</b><div class="mu" style="font-size:11px">끄면 계산에서 빠짐</div></div><button type="button" class="sw${x.include ? ' on' : ''}" data-act="eInc" aria-label="손익에 반영"></button></div>
         ${x.repeatOf ? '<div class="grp mu" style="font-size:12px">매달 반복 지출로 자동으로 들어간 항목이에요. 금액이 다르면 여기서 고치면 돼요.</div>'
@@ -470,7 +486,8 @@ function renderIns() {
           <span class="mu">주문번호</span><span class="r" style="user-select:text">${esc(x.orderId || '-')}</span>
         </div>
         ${x.exact ? '' : '<div class="grp warn" style="font-size:12px">실제 결제액을 확인하지 못해 목록 가격으로 들어갔어요. 다시 가져오면 확인돼요.</div>'}
-        <div class="grp" style="display:flex;align-items:center;gap:10px"><div style="flex:1"><b style="font-size:12px">손익에 반영</b><div class="mu" style="font-size:11px">개인 구매면 끄세요</div></div><button type="button" class="sw${x.include ? ' on' : ''}" data-act="cpInc" aria-label="손익에 반영"></button></div></div>`;
+        <div class="grp" style="display:flex;align-items:center;gap:10px"><div style="flex:1"><b style="font-size:12px">손익에 반영</b><div class="mu" style="font-size:11px">개인 구매면 끄세요</div></div><button type="button" class="sw${x.include ? ' on' : ''}" data-act="cpInc" aria-label="손익에 반영"></button></div>
+        <div class="grp" style="display:flex;align-items:center;gap:10px"><div style="flex:1"><b style="font-size:12px">종류</b><div class="mu" style="font-size:11px">자동으로 구별해요. 틀리면 바꿔 주세요</div></div><div class="seg"><button type="button" class="${x.food ? 'on' : ''}" data-act="cpFood" data-v="1">음식</button><button type="button" class="${x.food ? '' : 'on'}" data-act="cpFood" data-v="0" style="${x.food ? '' : 'color:' + NONFOOD_COLOR}">소모품</button></div></div></div>`;
     }
   } else if (S.view === 'stock' && S.sel != null) {
     const s = stockOf(S.stf)[S.sel];
@@ -497,12 +514,13 @@ function renderIns() {
       ${prods.length ? `<div class="grp"><div class="fl">많이 팔린 상품</div>${prods.slice(0, 10).map((p) => `<div style="display:flex;gap:8px;font-size:12px;padding:4px 0"><span class="ell" style="flex:1">${esc(p.p)} <span class="mu">${esc(p.m)}</span></span><span class="mu">${p.c}개</span><b>${fmt(p.v)}</b></div>`).join('')}</div>` : ''}</div>`;
   }
   if (!h) {
-    const cats = ['coupang', 'fixed', 'supply', 'repair', 'fee'].filter((k) => t.byCat[k] > 0);
+    const nf = t.list.filter((x) => x.kind === 'cp' && x.include && !x.food).reduce((a, x) => a + x.amount, 0);
+    const cats = ['coupang', 'fixed', 'repair', 'fee'].filter((k) => (k === 'repair' ? t.byCat.supply + t.byCat.repair : t.byCat[k]) > 0);
     h = `<div class="insb"><b style="font-size:14px">${mShort(S.month)} 요약</b>
       <div class="grp" style="display:grid;grid-template-columns:1fr auto;row-gap:8px;font-size:13px">
         <span class="mu">매출</span><b class="r">${won(t.sales)}</b><span class="mu">쿠팡 발주</span><b class="r">${won(t.byCat.coupang)}</b><span class="mu">그 외 지출</span><b class="r">${won(t.exp - t.byCat.coupang)}</b>
         <span style="border-top:1px solid var(--line);padding-top:8px;font-weight:700">순이익</span><b class="r pos" style="border-top:1px solid var(--line);padding-top:8px">${won(t.profit)}</b></div>
-      ${cats.length ? '<div class="fl" style="margin-top:4px">지출 구성</div>' + cats.map((k) => `<div style="display:flex;align-items:center;gap:8px;font-size:12px;padding:3px 0"><span class="dot" style="background:${CATS[k].color}"></span>${CATS[k].label}<span class="mu">${pct(t.byCat[k], t.exp)}</span><b style="margin-left:auto">${won(t.byCat[k])}</b></div>`).join('') : ''}
+      ${cats.length ? '<div class="fl" style="margin-top:4px">지출 구성</div>' + cats.map((k) => { const v = k === 'repair' ? t.byCat.supply + t.byCat.repair : t.byCat[k]; return `<div style="display:flex;align-items:center;gap:8px;font-size:12px;padding:3px 0"><span class="dot" style="background:${CATS[k].color}"></span>${CATS[k].label}<span class="mu">${pct(v, t.exp)}</span><b style="margin-left:auto">${won(v)}</b></div>` + (k === 'coupang' && nf ? `<div style="display:flex;gap:8px;font-size:11px;padding:0 0 3px 16px;color:${NONFOOD_COLOR}">└ 그중 소모품<b style="margin-left:auto">${won(nf)}</b></div>` : ''); }).join('') : ''}
       <div class="mu" style="font-size:11px;line-height:1.6;margin-top:4px">${{ overview: '왼쪽에서 화면을 고르고, 위쪽 ‹ › 로 달을 바꿔요.', sales: '날짜를 누르면 그날 기계별 매출이 여기 떠요.', exp: '표에서 지출을 누르면 여기서 고칠 수 있어요.', stock: '상품 이름을 누르면 자세히 볼 수 있어요. 수량·가격을 바꾸고 [기계에 반영]을 누르면 노트북 봇이 실제 기계에 넣어요 (30초~1분).', report: '지출을 고치면 손익이 바로 다시 계산돼요.', settings: '' }[S.view]}</div></div>`;
   }
   $('#ins').innerHTML = h;
@@ -599,6 +617,7 @@ const ACT = {
     S.sel = null; persist('expenses'); render();
     toast('‘' + (x.name || '지출') + '’ 삭제했어요', { action: '되돌리기', onAction: () => { if (S.undo) { S.expenses = S.undo; S.undo = null; persist('expenses'); render(); toast('되돌렸어요'); } } });
   },
+  cpFood: (d) => { S.settings.cpFood = Object.assign({}, S.settings.cpFood || {}, { [S.sel]: d.v === '1' }); persist('settings'); render(); },
   cpInc: () => { if (S.checked.has(S.sel)) S.checked.delete(S.sel); else S.checked.add(S.sel); persist('checked'); render(); },
   runNow: async () => { try { await B.call('refresh_now'); toast('최신 매출·재고를 받고 있어요'); } catch (e) { toast(e.message, { err: true }); } },
   toggleSet: (d) => {
@@ -630,6 +649,17 @@ document.addEventListener('change', (e) => {
   if (k === 'qty') { const s = stockOf(S.stf)[num(el.dataset.i)]; if (s && v.trim() !== '') setQty(s.i, num(v)); else render(); }
   else if (k === 'price') { const s = stockOf(S.stf)[num(el.dataset.i)]; if (s && v.trim() !== '') setQty(s.i, null, num(v)); else render(); }
   else if (k === 'inc') { if (el.dataset.kind === 'mn') updExp(el.dataset.id, { include: el.checked }); else { if (el.checked) S.checked.add(el.dataset.id); else S.checked.delete(el.dataset.id); persist('checked'); render(); } }
+  else if (k === 'incAll') {
+    const t = totals(S.month), q = S.q.trim().toLowerCase(), on = el.checked;
+    const rows = t.list.filter((x) => (S.cat === 'all' || x.cat === S.cat) && (!q || (x.name + ' ' + x.memo).toLowerCase().includes(q)));
+    let cp = false, mn = false;
+    rows.forEach((x) => {
+      if (x.kind === 'mn') { const e = S.expenses.find((y) => y.id === x.id); if (e) { e.include = on; mn = true; } }
+      else { if (on) S.checked.add(x.id); else S.checked.delete(x.id); cp = true; }
+    });
+    if (cp) persist('checked'); if (mn) { persist('expenses'); buildMonths(); }
+    toast(on ? rows.length + '개 모두 손익에 넣었어요' : rows.length + '개 모두 손익에서 뺐어요'); render();
+  }
   else if (k === 'eName') updExp(S.sel, { name: v.trim() || '지출' });
   else if (k === 'eAmt') updExp(S.sel, { amount: num(v) });
   else if (k === 'eDate') { if (/^\d{4}-\d{2}-\d{2}$/.test(v)) updExp(S.sel, { date: v }); }
@@ -653,7 +683,7 @@ $('#mNext').onclick = () => { const i = S.months.indexOf(S.month); if (i < S.mon
 $('#q').oninput = (e) => { S.q = e.target.value; if (S.view === 'exp' || S.view === 'stock') { ({ exp: renderExp, stock: renderStock })[S.view](); } };
 $('#btnAdd').onclick = () => {
   const day = S.month === CUR ? TODAY : S.month + '-' + pad(dimOf(S.month));
-  const e = { id: newId(), date: day, name: '새 지출', cat: 'supply', amount: 0, memo: '', include: true };
+  const e = { id: newId(), date: day, name: '새 지출', cat: 'fixed', amount: 0, memo: '', include: true };
   S.expenses.push(e); persist('expenses');
   S.view = 'exp'; S.cat = 'all'; S.sel = e.id; render();
   setTimeout(() => { const el = $('#i-name'); if (el) { el.focus(); el.select(); } }, 30);
@@ -842,7 +872,7 @@ async function copyText(txt) {
 function monthText() {
   const t = totals(S.month);
   const L = [`[한강라면 ${mLabel(S.month)} 손익]${t.isCur ? ' (' + t.upto + '일까지)' : ''}`, '', `매출 ${won(t.sales)}`];
-  ['coupang', 'fixed', 'supply', 'repair', 'fee'].forEach((k) => { if (t.byCat[k]) L.push(`- ${CATS[k].label} ${won(t.byCat[k])}`); });
+  [['coupang', t.byCat.coupang], ['fixed', t.byCat.fixed], ['repair', t.byCat.supply + t.byCat.repair], ['fee', t.byCat.fee]].forEach(([k, v]) => { if (v) L.push(`- ${CATS[k].label} ${won(v)}`); });
   L.push(`지출 합계 ${won(t.exp)}`, `순이익 ${won(t.profit)} (마진 ${pct(t.profit, t.sales)})`, '', '기계별 매출');
   machinesOf().forEach((m) => { const a = t.byMach[m]; if (a) L.push(`- ${m} ${won(a.reduce((x, y) => x + y, 0))}`); });
   return L.join('\n');
@@ -864,7 +894,7 @@ async function exportXlsx() {
   const t = totals(S.month), money = '#,##0"원"';
   const ws1 = wb.addWorksheet(mShort(S.month) + ' 지출 내역');
   head(ws1, [{ header: '날짜', key: 'd', width: 12 }, { header: '분류', key: 'c', width: 12 }, { header: '내용', key: 'n', width: 44 }, { header: '메모', key: 'm', width: 26 }, { header: '금액', key: 'a', width: 14, style: { numFmt: money } }, { header: '손익 반영', key: 'i', width: 10 }]);
-  t.list.forEach((x) => ws1.addRow({ d: x.date, c: CATS[x.cat].label, n: x.name, m: x.memo, a: x.amount, i: x.include ? 'O' : 'X' }));
+  t.list.forEach((x) => ws1.addRow({ d: x.date, c: x.kind === 'cp' ? '쿠팡 · ' + catLabel(x) : CATS[x.cat].label, n: x.name, m: x.memo, a: x.amount, i: x.include ? 'O' : 'X' }));
   if (t.byCat.fee) ws1.addRow({ d: '', c: CATS.fee.label, n: '카드 수수료 (' + S.settings.feeRate + '%)', m: '매출 × 수수료율', a: t.byCat.fee, i: 'O' });
   const n1 = ws1.rowCount; const tr = ws1.addRow({ n: '손익 반영 합계', a: { formula: `SUMIF(F2:F${n1},"O",E2:E${n1})` } }); tr.font = { bold: true };
   const ms = machinesOf().filter((m) => t.byMach[m]);
@@ -904,7 +934,7 @@ async function exportPdf() {
     let y = H - 230;
     tx('항목', M, y, 10, true, gray); tx('금액', W - M - 70, y, 10, true, gray, true); tx('매출 대비', W - M, y, 10, true, gray, true);
     y -= 10; pg.drawLine({ start: { x: M, y }, end: { x: W - M, y }, thickness: 1, color: rgb(0.85, 0.87, 0.89) });
-    const lines = [['매출', t.sales, true]].concat(['coupang', 'fixed', 'supply', 'repair', 'fee'].map((k) => ['− ' + CATS[k].label, t.byCat[k], false])).concat([['= 순이익', t.profit, true]]);
+    const lines = [['매출', t.sales, true]].concat([['coupang', t.byCat.coupang], ['fixed', t.byCat.fixed], ['etc', t.byCat.supply + t.byCat.repair], ['fee', t.byCat.fee]].filter((a) => a[0] !== 'etc' || a[1]).map((a) => ['− ' + (a[0] === 'etc' ? '기타' : CATS[a[0]].label), a[1], false])).concat([['= 순이익', t.profit, true]]);
     lines.forEach((l, i) => {
       y -= 26;
       if (i === lines.length - 1) pg.drawLine({ start: { x: M, y: y + 18 }, end: { x: W - M, y: y + 18 }, thickness: 1.2, color: rgb(0.75, 0.78, 0.8) });
