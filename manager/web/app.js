@@ -722,8 +722,9 @@ async function cancelJob(d) {
 function onJob(p) {
   const res = p.result || {}, info = p.info || {}, m = res.machine || info.machine;
   delete S.jobs[p.id];
-  if (res.items && m) S.data.stock[m] = res.items;
-  if (res.stock) S.data.stock = Object.assign({}, S.data.stock, res.stock);
+  const at = String(res.done_at || (TODAY + 'T' + hm())).slice(0, 16);
+  if (res.items && m) { S.data.stock[m] = res.items; JOB_STOCK[m] = { items: res.items, at }; }
+  if (res.stock) { S.data.stock = Object.assign({}, S.data.stock, res.stock); Object.keys(res.stock).forEach((k) => { JOB_STOCK[k] = { items: res.stock[k], at }; }); }
   const t = res.type || info.type;
   if (t === 'apply') {
     const okNames = new Set((res.results || []).filter((x) => x.ok).map((x) => x.name));
@@ -947,11 +948,18 @@ async function exportPdf() {
 
 /* ───────── 파이썬 → 화면 ───────── */
 let dataTimer = null;
+/* 노트북 봇이 방금 기계에 반영한 재고. 봇이 그보다 새 데이터를 올리기 전까지는 이 값을 보여줌 (옛날 값으로 되돌아가 보이지 않게) */
+const JOB_STOCK = {};
 async function loadData() {
   try {
     const d = await B.call('get_data');
     S.data = Object.assign(S.data, { daily: d.daily || {}, stock: d.stock || {}, machines: (d.machines && d.machines.length ? d.machines : MACH_ORDER), generated_at: (d.meta && d.meta.generated_at) || '' });
     if (d.meta) { S.meta = d.meta; S.jobs = Object.assign({}, d.meta.jobs || {}); }
+    const gen = String(S.data.generated_at || '').slice(0, 16);
+    Object.keys(JOB_STOCK).forEach((k) => {
+      if (gen && gen > JOB_STOCK[k].at) delete JOB_STOCK[k];
+      else S.data.stock = Object.assign({}, S.data.stock, { [k]: JOB_STOCK[k].items });
+    });
     buildMonths(); render();
   } catch (e) { toast('데이터를 불러오지 못했어요: ' + e.message, { err: true }); }
 }
