@@ -522,10 +522,18 @@ function renderIns() {
   $('#ins').innerHTML = h;
 }
 
+let scrollKey = '';
 function render() {
+  // 화면을 다시 그려도 같은 화면이면 스크롤 위치 유지 (− / + 누를 때 맨 위로 튀지 않게)
+  const key = S.view + '|' + (S.view === 'stock' ? S.stf : S.month) + '|' + S.cat;
+  const keep = key === scrollKey ? [...document.querySelectorAll('#content, #content .pane, #ins, #ins .insb')].map((el) => el.scrollTop) : null;
+  const ae = document.activeElement, focusSel = ae && ae.closest && ae.closest('#content') && ae.dataset && ae.dataset.chg ? `[data-chg="${ae.dataset.chg}"][data-i="${ae.dataset.i || ''}"]` : null;
   renderToolbar(); renderSide();
   ({ overview: renderOverview, sales: renderSales, exp: renderExp, stock: renderStock, report: renderReport, settings: renderSettings })[S.view]();
   renderIns();
+  if (keep) [...document.querySelectorAll('#content, #content .pane, #ins, #ins .insb')].forEach((el, i) => { if (keep[i]) el.scrollTop = keep[i]; });
+  if (focusSel) { const f = document.querySelector('#content ' + focusSel); if (f && f !== document.activeElement) { try { f.focus({ preventScroll: true }); } catch (e) {} } }
+  scrollKey = key;
 }
 
 /* ───────── 동작 ───────── */
